@@ -1,0 +1,22 @@
+---
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import footerMarkup from '../fragments/footer.html?raw';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+
+const footerColumnsMarkup = config.footer.columns
+  .map(
+    (column, index) => `<div class="col sqs-col-4 span-4"><div class="sqs-block markdown-block sqs-block-markdown" data-block-type="44" id="footer-config-block-${index + 1}"><div class="sqs-block-content"><h2><strong>${column.heading}</strong></h2>
+${column.html.join('\n')}
+</div></div></div>`,
+  )
+  .join('');
+
+const rowRegex = /<div class="row sqs-row">[\s\S]*?<\/div><\/div><\/div><\/div>/;
+const renderedFooterMarkup = footerMarkup.replace(
+  rowRegex,
+  `<div class="row sqs-row">${footerColumnsMarkup}</div></div></div></div>`,
+);
+---
+<Fragment set:html={renderedFooterMarkup} />

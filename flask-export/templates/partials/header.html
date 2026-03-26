@@ -1,0 +1,111 @@
+<header data-test="header" id="header" class="white header theme-col--primary" data-section-theme="white" data-controller="Header" data-section-id="header" data-header-style="dynamic" tabindex="-1">
+  <svg style="display:none" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="circle"><path d="M11.5 17C14.5376 17 17 14.5376 17 11.5C17 8.46243 14.5376 6 11.5 6C8.46243 6 6 8.46243 6 11.5C6 14.5376 8.46243 17 11.5 17Z" fill="none"></path></symbol>
+    <symbol id="circleFilled"><path d="M11.5 17C14.5376 17 17 14.5376 17 11.5C17 8.46243 14.5376 6 11.5 6C8.46243 6 6 8.46243 6 11.5C6 14.5376 8.46243 17 11.5 17Z"></path></symbol>
+    <symbol id="dash"><path d="M11 11H19H3"></path></symbol>
+    <symbol id="squareFilled"><rect x="6" y="6" width="11" height="11"></rect></symbol>
+    <symbol id="square"><rect x="7" y="7" width="9" height="9" fill="none" stroke="inherit"></rect></symbol>
+    <symbol id="plus"><path d="M11 3V19"></path><path d="M19 11L3 11"></path></symbol>
+    <symbol id="closedArrow"><path d="M11 11V2M11 18.1797L17 11.1477L5 11.1477L11 18.1797Z" fill="none"></path></symbol>
+    <symbol id="openArrowHead"><path d="M18 7L11 14L4 7" fill="none"></path></symbol>
+  </svg>
+
+  <div class="sqs-announcement-bar-dropzone"></div>
+  <div class="header-announcement-bar-wrapper">
+    <a href="{{ shell.skip_to_content_url }}" class="header-skip-link sqs-button-element--primary">Skip to Content</a>
+    <div class="header-border" data-header-style="dynamic" data-header-border="false" data-test="header-border"></div>
+    <div class="header-dropshadow" data-header-style="dynamic" data-header-dropshadow="false" data-test="header-dropshadow"></div>
+
+    <div class="header-inner container--fluid header-mobile-layout-logo-left-nav-right header-layout-nav-right" data-test="header-inner">
+      <div class="header-background theme-bg--primary"></div>
+
+      {% for mode in ['desktop', 'mobile'] %}
+      <div class="header-display-{{ mode }}" data-content-field="site-title">
+        <div class="header-title-nav-wrapper">
+          <div class="header-title" data-animation-role="header-element">
+            <div class="header-title-logo">
+              <a href="{{ shell.home_url }}" data-animation-role="header-element">
+                <img elementtiming="nbf-header-logo-desktop" src="{{ url_for('static', filename='sqs-shell/HASAN+TUTORING-logo.png') }}" alt="Expert Tutoring for the ACT and SAT" style="display:block" fetchpriority="high" loading="eager" decoding="async" data-loader="raw">
+              </a>
+            </div>
+          </div>
+
+          <div class="header-nav">
+            <div class="header-nav-wrapper">
+              <nav class="header-nav-list">
+                {% for item in shell.navigation %}
+                <div class="header-nav-item header-nav-item--collection{% if item.home %} header-nav-item--homepage{% endif %}">
+                  <a href="{{ item.href }}" data-animation-role="header-element">{{ item.label }}</a>
+                </div>
+                {% endfor %}
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-actions header-actions--right">
+          <div class="user-accounts-link header-nav-item header-nav-item--collection customerAccountLoginDesktop loaded" data-controller="UserAccountLink" data-animation-role="header-element">
+            <a class="user-accounts-text-link header-nav-item" href="{{ shell.login_url }}" data-animation-role="header-element">
+              <span class="unauth">Login</span>
+            </a>
+          </div>
+
+          <div class="showOnMobile"></div>
+          <div class="showOnDesktop"></div>
+
+          <div class="header-actions-action header-actions-action--cta" data-animation-role="header-element">
+            <a class="btn btn--border theme-btn--primary-inverse sqs-button-element--tertiary" href="{{ shell.cta.href }}">
+              {{ shell.cta.text }}
+            </a>
+          </div>
+        </div>
+
+        <div class="header-burger menu-overlay-has-visible-non-navigation-items" data-animation-role="header-element">
+          <button class="header-burger-btn burger" data-test="header-burger">
+            <span class="js-header-burger-open-title visually-hidden">Open Menu</span>
+            <span hidden class="js-header-burger-close-title visually-hidden">Close Menu</span>
+            <div class="burger-box">
+              <div class="burger-inner header-menu-icon-doubleLineHamburger">
+                <div class="top-bun"></div>
+                <div class="patty"></div>
+                <div class="bottom-bun"></div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="header-menu header-menu--folder-list" data-test="header-menu">
+      <div class="header-menu-bg theme-bg--primary"></div>
+      <div class="header-menu-nav">
+        <nav class="header-menu-nav-list">
+          <div data-folder="root" class="header-menu-nav-folder header-menu-nav-folder--active">
+            <div class="header-menu-nav-folder-content">
+              <div class="header-menu-nav-wrapper">
+                {% for item in shell.navigation %}
+                <div class="container header-menu-nav-item header-menu-nav-item--collection{% if item.home %} header-menu-nav-item--homepage{% endif %}">
+                  <a href="{{ item.href }}">
+                    <div class="header-menu-nav-item-content">{{ item.label }}</div>
+                  </a>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="user-accounts-link header-menu-nav-item header-nav-item--collection customerAccountLoginMobile loaded" data-controller="UserAccountLink" data-animation-role="header-element">
+                <a class="user-accounts-text-link header-nav-item" href="{{ shell.login_url }}" data-animation-role="header-element">
+                  <span class="unauth">Login</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="header-menu-cta">
+              <a class="theme-btn--primary btn sqs-button-element--tertiary" href="{{ shell.cta.href }}">{{ shell.cta.text }}</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

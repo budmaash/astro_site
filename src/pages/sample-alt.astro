@@ -1,0 +1,49 @@
+---
+import PatternPage from './index.astro';
+import { createShellConfig } from '../config/shell';
+
+const altConfig = createShellConfig({
+  siteTitle: 'Sample Alternate Shell',
+  description: 'Alternate sample showing configurable header and footer content.',
+  homeUrl: 'https://example.com/',
+  skipToContentUrl: 'https://example.com/sample-alt#page',
+  loginUrl: 'https://example.com/login',
+  cta: {
+    href: 'https://example.com/portal',
+    text: 'Student Portal',
+  },
+  navigation: [
+    { href: 'https://example.com/', label: 'Home', home: true },
+    { href: 'https://example.com/services', label: 'Services' },
+    { href: 'https://example.com/curriculum', label: 'Curriculum' },
+    { href: 'https://example.com/results', label: 'Results' },
+    { href: 'https://example.com/about', label: 'About' },
+    { href: 'https://example.com/contact', label: 'Contact' },
+  ],
+  footer: {
+    columns: [
+      {
+        heading: 'Resources',
+        html: [
+          '<p><a data-preserve-html-node="true" href="https://example.com/guides" target="_blank">Free Guides</a></p>',
+          '<p><a data-preserve-html-node="true" href="https://example.com/pricing">Pricing</a></p>',
+          '<p><a data-preserve-html-node="true" href="https://example.com/calendar">Calendar</a></p>',
+        ],
+      },
+      {
+        heading: 'Contact',
+        html: [
+          '<p><a href="mailto:hello@example.com">hello@example.com</a><br>555.0100<br><a href="https://example.com/contact">Send a Message</a></p>',
+        ],
+      },
+      {
+        heading: 'Approach',
+        html: [
+          '<p><strong>Keep the shell stable and swap the content.</strong> This sample page shows how the same preserved header/footer can be reused across projects with different navigation and footer content.</p>',
+        ],
+      },
+    ],
+  },
+});
+---
+<PatternPage config={altConfig} />

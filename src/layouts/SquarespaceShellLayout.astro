@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import squarespaceShellScript from '../scripts/squarespace-shell.js?raw';
+
+const htmlAttrs = {
+  xmlnsOg: 'http://opengraphprotocol.org/schema/',
+  xmlnsFb: 'http://www.facebook.com/2008/fbml',
+  lang: 'en-US',
+  class: 'no-js',
+};
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang={htmlAttrs.lang} class={htmlAttrs.class} xmlns:og={htmlAttrs.xmlnsOg} xmlns:fb={htmlAttrs.xmlnsFb}>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="." />
+
+    <title>{config.siteTitle}</title>
+    <meta name="description" content={config.description} />
+    <link rel="icon" type="image/x-icon" href={config.favicon} />
+    <link rel="preconnect" href="https://images.squarespace-cdn.com/" />
+    <link rel="preconnect" href="https://use.typekit.net/" crossorigin />
+    <link rel="preconnect" href="https://p.typekit.net/" crossorigin />
+    <script type="text/javascript" src="/sqs-shell/kQLYMGJF8zwYb4RcPL1Ul1AxDScxnpUYMtZdAtIU_qbfeCGgfFHN4UJLFRbh52jhWDjawQ8qF26tjDBqFDjXFejDZAbtFDj3FsGMJ6U3ScNt-AuyOAozicIKIcBqdh48OAiyScBldhoqOWgkdkG4f5J7IMMjMkMfH6qJn3IbMg6IJMJ7f6K3UMIbMg6BJMJ7fbKlMsMMeMj6MKG4fJCgIMMjgkMfH6qJn6IbMg6bJMJ7fbKwMsMMegI6MKG4.js" async fetchpriority="high" onload="try{Typekit.load();}catch(e){} document.documentElement.classList.remove('wf-loading');"></script>
+    <script type="text/javascript" crossorigin="anonymous" defer nomodule src="/sqs-shell/legacy.js"></script>
+    <script type="text/javascript" crossorigin="anonymous" defer src="/sqs-shell/modern.js"></script>
+    <script crossorigin="anonymous" src="/sqs-shell/extract-css-runtime-b63b749d9c7654f3-min.en-US.js" defer></script>
+    <script crossorigin="anonymous" src="/sqs-shell/extract-css-moment-js-vendor-6f2a1f6ec9a41489-min.en-US.js" defer></script>
+    <script crossorigin="anonymous" src="/sqs-shell/cldr-resource-pack-7a2fb19c02b976ee-min.en-US.js" defer></script>
+    <script crossorigin="anonymous" src="/sqs-shell/common-vendors-stable-fbd854d40b0804b7-min.en-US.js" defer></script>
+    <script crossorigin="anonymous" src="/sqs-shell/common-vendors-f84e21ba016b4075-min.en-US.js" defer></script>
+    <script crossorigin="anonymous" src="/sqs-shell/common-8a5ee2d5bff1eff7-min.en-US.js" defer></script>
+    <script crossorigin="anonymous" src="/sqs-shell/user-account-core-fb9421805d576995-min.en-US.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/sqs-shell/user-account-core-deec763d109d5251-min.en-US.css" />
+    <script crossorigin="anonymous" src="/sqs-shell/performance-295ce1d5a4593ced-min.en-US.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/sqs-shell/website.components.code.styles.css" />
+    <link rel="stylesheet" type="text/css" href="/sqs-shell/website.components.html.styles.css" />
+    <link rel="stylesheet" type="text/css" href="/sqs-shell/website.components.button.styles.css" />
+    <script defer src="/sqs-shell/block-animation-preview-manager.js"></script>
+    <script defer src="/sqs-shell/website.components.code.visitor.js"></script>
+    <script defer src="/sqs-shell/818.js"></script>
+    <script defer src="/sqs-shell/website.components.button.visitor.js"></script>
+    <script defer src="/sqs-shell/website.components.html.visitor.js"></script>
+    <script defer src="/sqs-shell/trigger-animation-runtime.js"></script>
+    <link rel="stylesheet" type="text/css" href="/sqs-shell/site.css" />
+    <link rel="stylesheet" type="text/css" href="/sqs-shell/static.css" />
+    <link rel="stylesheet" type="text/css" href="/brand.css" />
+    <script is:inline>{squarespaceShellScript}</script>
+  </head>
+  <body id={config.bodyId} class={config.bodyClass}>
+    <slot />
+  </body>
+</html>

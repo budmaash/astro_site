@@ -1,0 +1,66 @@
+---
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import headerMarkup from '../fragments/header.html?raw';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+
+const desktopNavMarkup = config.navigation
+  .map(
+    (item) => `
+    <div class="header-nav-item header-nav-item--collection${item.home ? ' header-nav-item--homepage' : ''}">
+      <a href="${item.href}" data-animation-role="header-element">
+        ${item.label}
+      </a>
+    </div>`,
+  )
+  .join('\n');
+
+const mobileNavMarkup = config.navigation
+  .map(
+    (item) => `
+            <div class="container header-menu-nav-item header-menu-nav-item--collection${item.home ? ' header-menu-nav-item--homepage' : ''}">
+              <a href="${item.href}">
+                <div class="header-menu-nav-item-content">
+                  ${item.label}
+                </div>
+              </a>
+            </div>`,
+  )
+  .join('\n');
+
+const replaceOnce = (input, searchValue, replaceValue) => {
+  const index = input.indexOf(searchValue);
+  if (index === -1) return input;
+  return input.slice(0, index) + replaceValue + input.slice(index + searchValue.length);
+};
+
+const desktopNavRegex = /<nav class="header-nav-list">[\s\S]*?<\/nav>/;
+const mobileNavRegex =
+  /<div class="header-menu-nav-wrapper">[\s\S]*?<\/div>\n\n              \n                <div class="user-accounts-link header-menu-nav-item/;
+
+let renderedHeaderMarkup = headerMarkup
+  .replace(desktopNavRegex, `<nav class="header-nav-list">\n${desktopNavMarkup}\n                    </nav>`)
+  .replace(desktopNavRegex, `<nav class="header-nav-list">\n${desktopNavMarkup}\n                    </nav>`)
+  .replace(
+    mobileNavRegex,
+    `<div class="header-menu-nav-wrapper">\n${mobileNavMarkup}\n</div>\n\n              \n                <div class="user-accounts-link header-menu-nav-item`,
+  )
+  .replaceAll('https://www.hasantutoring.com/member-home', config.cta.href)
+  .replaceAll('Member Home', config.cta.text)
+  .replaceAll('https://www.hasantutoring.com/start-here-w/-banner#page', config.skipToContentUrl)
+  .replaceAll('https://www.hasantutoring.com/start-here-w/-banner#', config.loginUrl);
+
+renderedHeaderMarkup = replaceOnce(
+  renderedHeaderMarkup,
+  '<a href="https://www.hasantutoring.com/" data-animation-role="header-element">',
+  `<a href="${config.homeUrl}" data-animation-role="header-element">`,
+);
+
+renderedHeaderMarkup = replaceOnce(
+  renderedHeaderMarkup,
+  '<a href="https://www.hasantutoring.com/" data-animation-role="header-element">',
+  `<a href="${config.homeUrl}" data-animation-role="header-element">`,
+);
+---
+<Fragment set:html={renderedHeaderMarkup} />
