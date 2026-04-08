@@ -27,7 +27,151 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
     <SquarespaceHeader config={config} />
 
-    <main id="page" class="container" tabindex="-1"></main>
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <!-- ======================================================
+           SECTION 1 — HERO
+           ====================================================== -->
+      <section class="ht-hero">
+        <div class="ht-hero__inner">
+          <p class="ht-eyebrow">SAT · ACT · LSAT</p>
+          <h1 class="ht-hero__h1">
+            Anyone Can Improve Their<br>
+            <em class="ht-hero__em">ACT and SAT Scores.</em>
+          </h1>
+          <p class="ht-hero__sub">
+            Practical, step-by-step methods to improve your scores — whether
+            you learn one-on-one with an expert tutor or at your own pace with
+            our SAT Math membership.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 2 — CRIMSON RULE + SPLIT CARDS
+           ====================================================== -->
+      <section class="ht-cards-section">
+        <div class="ht-cards-section__inner">
+          <div class="ht-rule-crimson" aria-hidden="true"></div>
+
+          <div class="ht-cards">
+
+            <!-- LEFT CARD: 1-on-1 tutoring -->
+            <div class="ht-card">
+              <span class="ht-tag">1-on-1 tutoring</span>
+              <h2 class="ht-card__h2">Personalized SAT, ACT &amp; LSAT prep in Kansas City</h2>
+              <p class="ht-card__body">
+                After working with hundreds of students, I've built a reputation
+                for getting results. Every session is tailored to your exact
+                weaknesses — not a generic class syllabus. Free practice test
+                included, no pressure ever.
+              </p>
+              <ul class="ht-list">
+                <li>SAT, ACT &amp; LSAT preparation</li>
+                <li>Kansas City &amp; Overland Park area</li>
+                <li>Free practice test to get started</li>
+                <li>Flexible one-on-one scheduling</li>
+              </ul>
+              <div class="ht-card__btns">
+                <a href="/tutoring" class="ht-btn ht-btn--primary">Get started</a>
+                <a href="/tutoring" class="ht-btn ht-btn--secondary">Learn more</a>
+              </div>
+            </div>
+
+            <!-- RIGHT CARD: Online membership -->
+            <div class="ht-card">
+              <span class="ht-tag">Online membership</span>
+              <h2 class="ht-card__h2">Self-paced SAT Math prep, built for mastery</h2>
+              <p class="ht-card__body">
+                The SAT Math section is just a set of repeating question types.
+                Learn to recognize each type, learn the steps, and the section
+                becomes predictable. Video lessons, a full question bank, and a
+                score report app — all in one membership.
+              </p>
+              <ul class="ht-list">
+                <li>Question-type video lessons</li>
+                <li>324 question-explanation videos</li>
+                <li>Interactive score report app</li>
+                <li>New content added regularly</li>
+              </ul>
+              <div class="ht-card__btns">
+                <a href="/pricing" class="ht-btn ht-btn--crimson">Join the membership</a>
+                <a href="/sat-math" class="ht-btn ht-btn--secondary">See what's included</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 3 — PHILOSOPHY STRIP
+           ====================================================== -->
+      <section class="ht-philosophy">
+        <div class="ht-philosophy__inner">
+          <blockquote class="ht-quote">
+            "Recognize that these exams are extremely repetitive and therefore
+            learnable. There are only so many different types of questions —
+            learn to recognize them and the simple steps to answer each one."
+          </blockquote>
+          <p class="ht-citation">— Majid Hasan, HasanTutoring</p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 4 — THREE PILLARS
+           ====================================================== -->
+      <section class="ht-pillars">
+        <div class="ht-pillars__inner">
+          <div class="ht-pillars__header">
+            <p class="ht-eyebrow ht-eyebrow--crimson">Why it works</p>
+            <h2 class="ht-pillars__h2">The method behind the results</h2>
+          </div>
+
+          <div class="ht-pillars__grid">
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Tests are learnable</h3>
+              <p class="ht-pillar__body">
+                The SAT and ACT repeat the same question types over and over.
+                Once you learn to recognize them and the steps to answer each one,
+                the exam becomes predictable — for anyone.
+              </p>
+              <a href="/tutoring" class="ht-pillar__link">About the approach</a>
+            </div>
+
+            <div class="ht-pillar__divider" aria-hidden="true"></div>
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Pace matters</h3>
+              <p class="ht-pillar__body">
+                Classroom courses move at one speed for everyone. One-on-one
+                tutoring means we only cover what you need, at the pace that actually
+                works for you — no wasted sessions.
+              </p>
+              <a href="/tutoring" class="ht-pillar__link">Why tutoring beats classes</a>
+            </div>
+
+            <div class="ht-pillar__divider" aria-hidden="true"></div>
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Strategy is personal</h3>
+              <p class="ht-pillar__body">
+                Not every student should attempt every question. Your optimal
+                approach depends on your current score, your strengths, and the score
+                you're targeting. That's what we build together.
+              </p>
+              <a href="/tutoring" class="ht-pillar__link">Learn more</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
 
     <SquarespaceFooter config={config} />
   </div>
@@ -35,3 +179,379 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
   <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
 </SquarespaceShellLayout>
+
+<style>
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 1 — HERO
+  ---------------------------------------------------------------- */
+  .ht-hero {
+    background: var(--color-surface);
+    padding: clamp(12rem, 16vw, 15rem) var(--space-section-h) clamp(4rem, 8vw, 7rem);
+  }
+
+  .ht-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ht-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: var(--leading-tight);
+    color: var(--color-text-dark);
+    letter-spacing: var(--tracking-tight);
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-hero__em {
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .ht-hero__sub {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-md);
+    color: var(--color-muted);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 2 — CRIMSON RULE + SPLIT CARDS
+  ---------------------------------------------------------------- */
+  .ht-cards-section {
+    background: var(--color-surface);
+    padding: 0 var(--space-section-h) clamp(4rem, 8vw, 7rem);
+  }
+
+  .ht-cards-section__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+
+  .ht-rule-crimson {
+    width: 3rem;
+    height: 2px;
+    background: var(--color-accent-crimson);
+    margin: 0 auto var(--space-12);
+  }
+
+  .ht-cards {
+    display: flex;
+    gap: var(--space-8);
+    align-items: stretch;
+  }
+
+  .ht-card {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-card-pad);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ht-tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    color: var(--color-muted);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tag);
+    padding: var(--space-1) var(--space-3);
+    margin-bottom: var(--space-5);
+    align-self: flex-start;
+    letter-spacing: var(--tracking-normal);
+  }
+
+  .ht-card__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-xl);
+    color: var(--color-text-dark);
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-card__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-base);
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-8);
+  }
+
+  .ht-list li {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    padding: var(--space-2) 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .ht-list li::before {
+    content: "—";
+    color: var(--color-accent-gold);
+    font-weight: 400;
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+
+  .ht-card__btns {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  /* ----------------------------------------------------------------
+     Buttons
+  ---------------------------------------------------------------- */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .ht-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .ht-btn--crimson {
+    background: var(--color-accent-crimson);
+    color: var(--color-text-light);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--crimson:hover {
+    opacity: 0.88;
+  }
+
+  .ht-btn--secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1.5px solid var(--color-border-strong);
+  }
+
+  .ht-btn--secondary:hover {
+    border-color: var(--color-accent);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 3 — PHILOSOPHY STRIP
+  ---------------------------------------------------------------- */
+  .ht-philosophy {
+    background: var(--color-bg-dark);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-philosophy__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Override any brand.css blockquote defaults for this element */
+  .ht-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-6) !important;
+    padding: 0 !important;
+    border: none !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    text-align: center;
+  }
+
+  .ht-citation {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-accent-gold);
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 4 — THREE PILLARS
+  ---------------------------------------------------------------- */
+  .ht-pillars {
+    background: var(--color-surface-warm);
+    padding: var(--space-section-v) var(--space-section-h);
+  }
+
+  .ht-pillars__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+  }
+
+  .ht-pillars__header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .ht-pillars__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-2xl);
+    color: var(--color-text-dark);
+    line-height: var(--leading-snug);
+    margin: 0;
+  }
+
+  .ht-pillars__grid {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .ht-pillar {
+    flex: 1;
+    padding: 0 var(--space-8);
+  }
+
+  .ht-pillar:first-child {
+    padding-left: 0;
+  }
+
+  .ht-pillar:last-child {
+    padding-right: 0;
+  }
+
+  .ht-pillar__divider {
+    width: 1px;
+    flex-shrink: 0;
+    background: var(--color-border);
+    align-self: stretch;
+  }
+
+  .ht-pillar__rule {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-accent-gold);
+    margin-bottom: var(--space-5);
+  }
+
+  .ht-pillar__h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-xl);
+    color: var(--color-text-dark);
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-pillar__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-5);
+  }
+
+  .ht-pillar__link {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent-gold);
+    padding-bottom: 2px;
+    transition: color var(--transition-fast);
+  }
+
+  .ht-pillar__link:hover {
+    color: var(--color-accent-crimson);
+  }
+
+  /* ----------------------------------------------------------------
+     Responsive
+  ---------------------------------------------------------------- */
+  @media (max-width: 768px) {
+    .ht-cards {
+      flex-direction: column;
+    }
+
+    .ht-pillars__grid {
+      flex-direction: column;
+      gap: var(--space-10);
+    }
+
+    .ht-pillar__divider {
+      display: none;
+    }
+
+    .ht-pillar {
+      padding: 0;
+    }
+  }
+</style>

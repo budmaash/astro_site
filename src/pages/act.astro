@@ -1,0 +1,780 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <!-- ======================================================
+           SECTION 1 — HERO
+           ====================================================== -->
+      <section class="ht-act-hero">
+        <div class="ht-act-hero__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson">Your comprehensive guide</p>
+          <h1 class="ht-act-hero__h1">The ACT</h1>
+          <p class="ht-act-hero__lead">
+            I've been teaching the ACT since 2007. If there's one thing I've
+            learned, it's that this test is extremely learnable — because it
+            is extremely repetitive. Learn the question types, learn the steps,
+            and the exam becomes a mechanical process.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 2 — GUIDE BODY (sticky TOC + content)
+           ====================================================== -->
+      <section class="ht-act-guide">
+        <div class="ht-act-guide__inner">
+
+          <!-- LEFT — STICKY TABLE OF CONTENTS -->
+          <nav class="ht-act-toc" aria-label="Page sections">
+            <span class="ht-act-toc__heading">On this page</span>
+            <ul class="ht-act-toc__list">
+              <li class="ht-act-toc__item">
+                <a href="/act#act-intro" class="ht-act-toc__link">1 — Introduction</a>
+              </li>
+              <li class="ht-act-toc__item">
+                <a href="/act#act-english" class="ht-act-toc__link">2 — English</a>
+              </li>
+              <li class="ht-act-toc__item">
+                <a href="/act#act-math" class="ht-act-toc__link">3 — Math</a>
+              </li>
+              <li class="ht-act-toc__item">
+                <a href="/act#act-reading" class="ht-act-toc__link">4 — Reading</a>
+              </li>
+              <li class="ht-act-toc__item">
+                <a href="/act#act-science" class="ht-act-toc__link">5 — Science</a>
+              </li>
+              <li class="ht-act-toc__item">
+                <a href="/act#act-conclusion" class="ht-act-toc__link">6 — Conclusion</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- RIGHT — GUIDE CONTENT -->
+          <div class="ht-act-content">
+
+            <!-- ── Section 1: Introduction ── -->
+            <div id="act-intro" class="ht-act-section">
+              <span class="ht-act-section__label">Introduction</span>
+              <h2 class="ht-act-section__h2">The ACT is extremely learnable</h2>
+
+              <p class="ht-act-section__p">
+                I've been teaching the ACT since 2007, and if there's one thing
+                I've learned, it's that the ACT is EXTREMELY learnable. This is
+                because the test is extremely repetitive. The best, easiest way
+                to improve your score is to learn the different types of questions,
+                how to recognize them, and the steps to get to the right answer
+                (you'll see this sentence a lot on this website). I teach students
+                to turn the exam into a very mechanical process. You can become
+                an ACT robot.
+              </p>
+
+              <p class="ht-act-section__p">
+                The English section is one of the easiest test sections on either
+                the ACT or the SAT. Over 35 minutes you must answer 50 questions
+                (10 of which won't count) that can be categorized into one of two
+                major categories: mechanics/usage and rhetoric. Mechanics and Usage
+                questions cover topics such as subject-verb agreement, punctuation,
+                apostrophes, pronouns, etc. The Rhetoric questions cover rhetorical
+                issues: Relevant/Irrelevant information, sentence orders, paragraph
+                orders, transition sentences and words, and occasionally word usage.
+              </p>
+
+              <p class="ht-act-section__p">
+                The Math section covers quite a broad array of information.
+                Fortunately, each topic is relatively narrow. So, for instance,
+                all the trigonometry questions are limited to only 3 or so
+                different types of questions. The Math section is extremely
+                predictable, and this predictability is what I teach students
+                to exploit. With some basic math review and strategy, anyone can
+                see a huge improvement on this section.
+              </p>
+
+              <p class="ht-act-section__p">
+                The Reading section is composed of four passages with 9 questions
+                each. The topics and order are always the same: prose fiction,
+                social sciences, humanities, and natural science. This is the one
+                section that does not increase in order of difficulty. Though a
+                very strong reading ability is required for an elite score, anyone
+                can increase their score using my specific strategy that exploits
+                the predictability of the section. There are only so many different
+                types of questions; you can use this to your advantage.
+              </p>
+
+              <p class="ht-act-section__p">
+                The Science section, now optional, is perhaps the one section that
+                causes the most consternation among students. This section is
+                extremely easy and requires virtually no science knowledge at all.
+                It should be called the Common Sense section. There are only so
+                many different types of questions here as well. I teach students
+                to understand how the questions are composed and the simple
+                underlying logic required throughout the exam. If you know what
+                you're doing, this section is the simplest of the four. However,
+                it won't affect your overall ACT score.
+              </p>
+
+              <p class="ht-act-section__p">
+                Oh, and there's an optional essay as well, which also does not
+                affect your 1–36 composite score. Instead, if you decide to take
+                it, you'll receive an extra Writing score from 2–12 and a
+                Writing/English combined score from 1–36.
+              </p>
+            </div><!-- /#act-intro -->
+
+            <!-- ── Section 2: English ── -->
+            <div id="act-english" class="ht-act-section">
+              <span class="ht-act-section__label">Section 2</span>
+              <h2 class="ht-act-section__h2">English</h2>
+
+              <p class="ht-act-section__p">
+                I've said it many times, and I'll say it again: the best way to
+                improve on the English section is by learning the question types!
+                There are only so many types of questions, and once you know them,
+                you can easily learn the steps to get the right answer. Every time!
+              </p>
+
+              <h3 class="ht-act-section__subh">Usage &amp; Mechanics</h3>
+
+              <p class="ht-act-section__p">
+                Basically, these questions cover the grammar topics the English
+                section tests. Punctuation questions can be broken down into two
+                types: varied punctuation and comma-only punctuation. Each type
+                has its own easy process you should use to get to the right answer.
+                Additionally, you'll see questions related to apostrophes,
+                subject-verb agreement, pronouns, who/whom, and a few other topics.
+              </p>
+
+              <p class="ht-act-section__p">
+                The thing to remember is that this section is, by and large,
+                quite straightforward. For instance, let's look at questions about
+                subject-verb agreement. They can be split into two distinct types:
+                plural vs. singular and past vs. present. Whenever you see a verb
+                underlined on the English section, simply: 1. Find the subject.
+                2. Check whether the verb is the appropriate singular or plural
+                form. 3. If there are past and present forms among the answer
+                choices, check the next or previous sentence to arrive at the
+                correct form. It's as simple as a set of instructions. All these
+                types of questions can be reduced in this manner.
+              </p>
+
+              <h3 class="ht-act-section__subh">Rhetoric</h3>
+
+              <p class="ht-act-section__p">
+                A VERY common type of question, VERY easily done. These questions
+                cover rhetorical issues — they test whether you can recognize
+                logical and cohesive writing. Questions will ask you about
+                transition words, transition sentences, sentence relevancy,
+                ordering (where to place a word within a sentence, a sentence
+                within a paragraph, and a paragraph within an essay), active vs.
+                passive voice, and sometimes word usage.
+              </p>
+
+              <p class="ht-act-section__p">
+                Each of these question types can be as easily learned and
+                mechanized as the usage/mechanics questions. For instance, if a
+                question asks where to place a sentence within a paragraph, you
+                only need to look for a logical gap between sentences. 'The little
+                girl went to the mall. Fortunately, her brains were not eaten.'
+                You can easily recognize that these two sentences don't belong
+                next to each other. A question will ask where the sentence
+                'Unfortunately, there was a zombie outbreak' should be placed.
+                If you know you're looking for a logical gap, this question type
+                — which is supposed to be challenging — becomes very simple. This
+                is true of all types of rhetoric questions.
+              </p>
+            </div><!-- /#act-english -->
+
+            <!-- ── Section 3: Math ── -->
+            <div id="act-math" class="ht-act-section">
+              <span class="ht-act-section__label">Section 3</span>
+              <h2 class="ht-act-section__h2">Math</h2>
+
+              <p class="ht-act-section__p">
+                You need to know a lot of information to answer every question on
+                the ACT Math section. Fortunately, most of the actual math you need
+                you've already learned by the time you finish Algebra 2. The rest —
+                which is not much — can easily be learned. What makes it manageable
+                is that the breadth of each subject is very narrow on the ACT, so
+                you don't need to learn the full scope. Trigonometry in school takes
+                quite a while; you need to learn the theory of angles, trig
+                functions, various Pythagorean identities, etc. On the ACT, however,
+                there are only three types of trig questions: finding a missing side
+                of a triangle, finding the value of a trig function on the unit
+                circle, and what sine and cosine transformations look like on the
+                coordinate plane. Each type is extremely repetitive — you can follow
+                the same steps every time.
+              </p>
+
+              <h3 class="ht-act-section__subh">Math Topics</h3>
+
+              <p class="ht-act-section__p">
+                You need to know basic algebra, ratios, percentages, exponents,
+                scientific notation, coordinate geometry, plane geometry (including
+                various formulas), function notation, trigonometry, and a handful
+                of infrequently tested topics: matrices, imaginary numbers,
+                logarithms, and 3D spatial reasoning. These last topics usually
+                appear as later, more difficult questions and are primarily used
+                to limit the number of perfect scores.
+              </p>
+
+              <h3 class="ht-act-section__subh">Test-Taking Strategies</h3>
+
+              <p class="ht-act-section__p">
+                Good test takers learn how to get the right answer without doing
+                the math — especially when they don't know how to do the math. The
+                overarching philosophy is to always turn abstract problems into
+                concrete ones. Often a question will ask you to manipulate
+                quantities they never give you. 'Sarah increased her long jump
+                distance by 20%, and then by 10%.' No initial distance is given.
+                Here you can simply substitute your own number. Abstract to
+                concrete.
+              </p>
+
+              <p class="ht-act-section__p">
+                Many questions ask you to simplify an equation and find the
+                equivalent answer. You can substitute a simple number in for the
+                variable and turn the problem from one requiring advanced algebra
+                into one that only requires basic arithmetic. When all answer
+                choices are numbers listed in order, you can work backwards and
+                plug in answer choices instead of solving the problem from scratch.
+              </p>
+
+              <p class="ht-act-section__p">
+                Here's an example. For an exponents problem, one easy approach:
+                when you raise exponents to a power, you multiply. If both terms
+                end up with exponent 12 (3×4 and 4×3), the right answer must
+                have 12 as an exponent. No further work needed. You've saved time
+                and avoided mistakes by NOT fully expanding the problem. The
+                fallback: set x=2, plug into the expression with your calculator,
+                get the result, then plug x=2 into each answer choice until you
+                find the match. Right answer, no algebra required.
+              </p>
+            </div><!-- /#act-math -->
+
+            <!-- ── Section 4: Reading ── -->
+            <div id="act-reading" class="ht-act-section">
+              <span class="ht-act-section__label">Section 4</span>
+              <h2 class="ht-act-section__h2">Reading</h2>
+
+              <p class="ht-act-section__p">
+                The reading section is for the most part straightforward, but
+                very long and very boring. The length of the passages and the sheer
+                amount of information in each one makes this section especially
+                challenging. Furthermore, the way questions are composed —
+                particularly the extremely tempting wrong answers — adds to the
+                difficulty. However, if you learn how the section is composed and
+                follow an innovative strategy designed to overcome these challenges,
+                you can make this section simple.
+              </p>
+
+              <h3 class="ht-act-section__subh">Types of Questions</h3>
+
+              <p class="ht-act-section__p">
+                There are basically two major types of questions: those that ask
+                about specific details in the passage, and those that ask about the
+                passage overall. Each passage has 10 questions — 7 to 8 will be
+                specific and only 2 to 3 will ask about the passage overall.
+              </p>
+
+              <p class="ht-act-section__p">
+                Think about what the test wants you to do and why. They want you
+                to read the passage first, then go to the questions. Because: 1.
+                You'll spend a lot of time reading material that isn't even asked
+                about. 2. Once you get to the questions, you'll have to go back
+                and re-read, wasting even more time. Furthermore, many of the
+                wrong answers come directly from the passage — but from irrelevant
+                parts. This makes the test very confusing. However, if you can
+                learn to answer the questions without reading the passage first,
+                you can save precious time and avoid the most common wrong-answer
+                traps.
+              </p>
+
+              <h3 class="ht-act-section__subh">Types of Wrong Answers</h3>
+
+              <p class="ht-act-section__p">
+                There are three major types of wrong answers. If you know them,
+                and if you use my reading strategy, you can eliminate wrong answers
+                far more easily. Some answers are completely irrelevant (but appear
+                somewhere in the passage). Some are half right and half wrong. And
+                some are completely wrong — but sound completely right. Fortunately,
+                all three types are easy to learn to recognize. Using my reading
+                strategy, knowledge of wrong answer types, and the process of
+                elimination can get anyone significant increases on their results.
+              </p>
+            </div><!-- /#act-reading -->
+
+            <!-- ── Section 5: Science ── -->
+            <div id="act-science" class="ht-act-section">
+              <span class="ht-act-section__label">Section 5</span>
+              <h2 class="ht-act-section__h2">Science</h2>
+
+              <p class="ht-act-section__p">
+                The Science section might be the one that causes the most
+                apprehension and confusion among students. What is it? What's on
+                it? Have I taken enough science classes to do well?
+              </p>
+
+              <p class="ht-act-section__p">
+                The reality is that this section has virtually nothing to do with
+                actual science knowledge, and it is really, very, truly easy. It
+                should simply be called the Common Sense section. All it tests is
+                whether you can recognize patterns in graphs and tables, see how
+                one variable changes as another does, and apply some basic reading
+                comprehension inside of a science-flavored passage.
+              </p>
+
+              <h3 class="ht-act-section__subh">Increase / Decrease Questions</h3>
+
+              <p class="ht-act-section__p">
+                A good plurality of the Science section is composed of what I
+                call Increase/Decrease questions. Essentially, they can be
+                formulated like this: as X goes up (or down), what happens to Y?
+                Or, as X changes, what other variable goes up? Questions will
+                either ask this outright, or will require you to know this in
+                order to answer a different question.
+              </p>
+
+              <h3 class="ht-act-section__subh">Chart &amp; Graph Analysis</h3>
+
+              <p class="ht-act-section__p">
+                Another major chunk of questions is based primarily on your
+                ability to analyze graphs and charts. These questions are easy —
+                they're simply made to sound difficult. One common tactic is to
+                give you too much information. But if you understand that when
+                they give you one point on one axis and ask for a point on another
+                axis, all you need to do is trace up and over (or over and down,
+                as the case may be). A harder version might ask for a point on one
+                graph and require you to use it on a second graph — but even that
+                follows easily learned steps. It's simply a matter of recognizing
+                the question type and the simple steps to the right answer. This
+                is true of almost every question on this exam.
+              </p>
+            </div><!-- /#act-science -->
+
+            <!-- ── Section 6: Conclusion ── -->
+            <div id="act-conclusion" class="ht-act-section ht-act-section--last">
+              <span class="ht-act-section__label">Conclusion</span>
+              <h2 class="ht-act-section__h2">Anyone can improve their score</h2>
+
+              <p class="ht-act-section__p">
+                As I'm sure you're incredibly tired of hearing by now, the ACT
+                is all about question types. It's simply a matter of learning how
+                to recognize them and the simple steps to get to the right answer.
+                However, don't be fooled. There are some basic abilities a student
+                must have before they can reach a certain level: basic math,
+                reading, and critical thinking skills. Fortunately these skills
+                are basic and can be learned well enough in a short amount of time
+                to see major score increases.
+              </p>
+
+              <p class="ht-act-section__p">
+                If you or your child is planning on taking the exam soon, the
+                first thing you should do is see where you stand. Take a practice
+                test — but make sure it's a REAL ACT. You can find five of them in
+                The Real ACT book (link in my FAQs), or you can contact me for one
+                for free. The more of these basic skills you have — particularly
+                in math — the better along you already are, and the easier time
+                you'll have learning the strategies that have been so successful
+                for so many of my students.
+              </p>
+
+              <p class="ht-act-section__p">
+                Two months is an ideal amount of time before the exam to begin
+                preparation. One 1.5-hour session per week, with a good amount of
+                homework and 2 or 3 full-length practice tests, is sufficient
+                preparation for nearly anyone. For students already scoring very
+                high (28 or 29+), beginning this early gives them sufficient time
+                and the option to decrease meeting frequency once they reach their
+                desired level.
+              </p>
+
+              <p class="ht-act-section__p">
+                If there's anything I can leave you with, it's this: anyone can
+                improve their scores. This test is learnable because of its
+                repetitiveness. Learn how the test is composed and how to exploit
+                it. Please give me a call, text, or email for answers to any
+                questions you might have or for a free practice test. I'd love to
+                help in any way I can.
+              </p>
+
+              <!-- CTA box -->
+              <div class="ht-act-cta-box">
+                <p class="ht-act-cta-box__p">
+                  Ready to get started? I'll provide a free practice ACT,
+                  answer any questions, and give you honest advice — whether
+                  that means working with me or not.
+                </p>
+                <div class="ht-act-cta-box__links">
+                  <a href="/contact" class="ht-btn ht-btn--primary">Get in touch</a>
+                  <a href="/faq" class="ht-btn ht-btn--secondary">Read the FAQs</a>
+                </div>
+              </div>
+
+            </div><!-- /#act-conclusion -->
+
+          </div><!-- /.ht-act-content -->
+        </div><!-- /.ht-act-guide__inner -->
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+</SquarespaceShellLayout>
+
+<style>
+  /* ----------------------------------------------------------------
+     Smooth scroll & section offset for sticky header
+  ---------------------------------------------------------------- */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 1 — HERO
+  ---------------------------------------------------------------- */
+  .ht-act-hero {
+    background: var(--color-surface);
+    padding-top: clamp(12rem, 16vw, 15rem);
+    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    padding-left: var(--space-section-h);
+    padding-right: var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-act-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-act-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-5);
+  }
+
+  .ht-act-hero__lead {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 2 — GUIDE BODY
+  ---------------------------------------------------------------- */
+  .ht-act-guide {
+    background: var(--color-surface);
+    padding: clamp(2rem, 4vw, 3rem) var(--space-section-h)
+             clamp(6rem, 10vw, 9rem) var(--space-section-h);
+  }
+
+  .ht-act-guide__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+    display: flex;
+    gap: clamp(3rem, 5vw, 5rem);
+    align-items: flex-start;
+  }
+
+  /* ----------------------------------------------------------------
+     LEFT — STICKY TOC
+  ---------------------------------------------------------------- */
+  .ht-act-toc {
+    flex: 0 0 220px;
+    position: sticky;
+    top: calc(154px + 2rem);
+    align-self: flex-start;
+    padding: 1.5rem;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+  }
+
+  .ht-act-toc__heading {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .ht-act-toc__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ht-act-toc__item {
+    margin-bottom: 0.25rem;
+  }
+
+  .ht-act-toc__link {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border-left: 2px solid transparent;
+    transition: all 150ms ease;
+    line-height: 1.3;
+  }
+
+  .ht-act-toc__link:hover {
+    color: var(--color-text-dark);
+    background: var(--color-surface);
+  }
+
+  .ht-act-toc__link--active {
+    color: var(--color-accent-crimson);
+    border-left-color: var(--color-accent-crimson);
+    background: var(--color-surface);
+    font-weight: 600;
+  }
+
+  /* ----------------------------------------------------------------
+     RIGHT — GUIDE CONTENT
+  ---------------------------------------------------------------- */
+  .ht-act-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Individual content sections */
+  .ht-act-section {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--color-border);
+    /* Offset scroll position to account for sticky header */
+    scroll-margin-top: calc(154px + 2rem);
+  }
+
+  .ht-act-section--last {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .ht-act-section__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-accent-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .ht-act-section__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .ht-act-section__p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .ht-act-section__p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .ht-act-section__subh {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-text-dark);
+    margin-top: 2rem;
+    margin-bottom: 0.875rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* ----------------------------------------------------------------
+     CTA BOX (inside conclusion section)
+  ---------------------------------------------------------------- */
+  .ht-act-cta-box {
+    margin-top: 2.5rem;
+    padding: 1.75rem 2rem;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent-gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .ht-act-cta-box__p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .ht-act-cta-box__links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* ----------------------------------------------------------------
+     BUTTONS
+  ---------------------------------------------------------------- */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: 0.85em 1.75em;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    transition: background var(--transition-fast), color var(--transition-fast),
+                border-color var(--transition-fast), opacity var(--transition-fast);
+    border: none;
+  }
+
+  .ht-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+  }
+
+  .ht-btn--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .ht-btn--secondary {
+    background: transparent;
+    color: var(--color-text-dark);
+    border: 1.5px solid var(--color-border-strong);
+  }
+
+  .ht-btn--secondary:hover {
+    border-color: var(--color-text-dark);
+  }
+
+  /* ----------------------------------------------------------------
+     Responsive
+  ---------------------------------------------------------------- */
+  @media (max-width: 900px) {
+    .ht-act-guide__inner {
+      flex-direction: column;
+    }
+
+    .ht-act-toc {
+      flex: none;
+      width: 100%;
+      position: static;
+    }
+  }
+</style>
+
+<script>
+  // ----------------------------------------------------------------
+  // Sticky TOC — active state via IntersectionObserver
+  // ----------------------------------------------------------------
+  (function () {
+    const sections = document.querySelectorAll('.ht-act-section');
+    const tocLinks = document.querySelectorAll('.ht-act-toc__link');
+
+    if (!sections.length || !tocLinks.length) return;
+
+    function setActive(id) {
+      tocLinks.forEach(function (link) {
+        if (link.getAttribute('href') === '/act#' + id) {
+          link.classList.add('ht-act-toc__link--active');
+        } else {
+          link.classList.remove('ht-act-toc__link--active');
+        }
+      });
+    }
+
+    // Set the first item active on load
+    if (sections[0]) {
+      setActive(sections[0].id);
+    }
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-10% 0px -75% 0px',
+        threshold: 0,
+      }
+    );
+
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  })();
+</script>

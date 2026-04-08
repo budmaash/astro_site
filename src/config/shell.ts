@@ -1,7 +1,11 @@
 export type ShellNavItem = {
-  href: string;
+  href?: string;
   label: string;
   home?: boolean;
+  children?: Array<{
+    href: string;
+    label: string;
+  }>;
 };
 
 export type ShellFooterColumn = {
@@ -48,7 +52,7 @@ export const shellConfig: ShellConfig = {
   bodyClass:
     'tweak-blog-alternating-side-by-side-width-full tweak-blog-alternating-side-by-side-image-aspect-ratio-11-square tweak-blog-alternating-side-by-side-text-alignment-left tweak-blog-alternating-side-by-side-read-more-style-show tweak-blog-alternating-side-by-side-image-text-alignment-middle tweak-blog-alternating-side-by-side-delimiter-bullet tweak-blog-alternating-side-by-side-meta-position-top tweak-blog-alternating-side-by-side-primary-meta-categories tweak-blog-alternating-side-by-side-secondary-meta-date tweak-blog-alternating-side-by-side-excerpt-show form-field-style-solid form-field-shape-square form-field-border-all form-field-checkbox-type-icon form-field-checkbox-fill-solid form-field-checkbox-color-inverted form-field-checkbox-shape-square form-field-checkbox-layout-stack form-field-radio-type-icon form-field-radio-fill-solid form-field-radio-color-normal form-field-radio-shape-pill form-field-radio-layout-stack form-field-survey-fill-solid form-field-survey-color-normal form-field-survey-shape-pill form-field-hover-focus-outline form-submit-button-style-label tweak-global-animations-complexity-level-detailed tweak-global-animations-animation-style-fade tweak-global-animations-animation-type-none tweak-global-animations-animation-curve-ease tweak-blog-masonry-width-full tweak-blog-masonry-text-alignment-left tweak-blog-masonry-primary-meta-categories tweak-blog-masonry-secondary-meta-date tweak-blog-masonry-meta-position-top tweak-blog-masonry-read-more-style-show tweak-blog-masonry-delimiter-space tweak-blog-masonry-image-placement-above tweak-blog-masonry-excerpt-show tweak-portfolio-grid-overlay-width-full tweak-portfolio-grid-overlay-height-large tweak-portfolio-grid-overlay-image-aspect-ratio-11-square tweak-portfolio-grid-overlay-text-placement-center tweak-portfolio-grid-overlay-show-text-after-hover image-block-poster-text-alignment-center image-block-card-content-position-center image-block-card-text-alignment-center image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-content-position-top image-block-collage-text-alignment-left image-block-stack-text-alignment-left tweak-blog-single-column-width-full tweak-blog-single-column-text-alignment-left tweak-blog-single-column-image-placement-above tweak-blog-single-column-delimiter-bullet tweak-blog-single-column-read-more-style-hide tweak-blog-single-column-primary-meta-date tweak-blog-single-column-secondary-meta-none tweak-blog-single-column-meta-position-above-title tweak-blog-single-column-content-full-post header-width-full tweak-transparent-header tweak-fixed-header-style-basic tweak-blog-item-width-medium tweak-blog-item-text-alignment-center tweak-blog-item-meta-position-above-title tweak-blog-item-show-date tweak-blog-item-delimiter-bullet tweak-blog-side-by-side-width-full tweak-blog-side-by-side-image-placement-left tweak-blog-side-by-side-image-aspect-ratio-11-square tweak-blog-side-by-side-primary-meta-categories tweak-blog-side-by-side-secondary-meta-date tweak-blog-side-by-side-meta-position-top tweak-blog-side-by-side-text-alignment-left tweak-blog-side-by-side-image-text-alignment-middle tweak-blog-side-by-side-read-more-style-show tweak-blog-side-by-side-delimiter-bullet tweak-blog-side-by-side-excerpt-show primary-button-style-solid primary-button-shape-pill secondary-button-style-solid secondary-button-shape-square tertiary-button-style-solid tertiary-button-shape-square tweak-events-stacked-width-full tweak-events-stacked-height-large tweak-events-stacked-show-past-events tweak-events-stacked-show-thumbnails tweak-events-stacked-thumbnail-size-32-standard tweak-events-stacked-date-style-side-tag tweak-events-stacked-show-time tweak-events-stacked-show-location tweak-events-stacked-show-excerpt tweak-blog-basic-grid-width-inset tweak-blog-basic-grid-image-aspect-ratio-32-standard tweak-blog-basic-grid-text-alignment-center tweak-blog-basic-grid-delimiter-bullet tweak-blog-basic-grid-image-placement-above tweak-blog-basic-grid-read-more-style-show tweak-blog-basic-grid-primary-meta-categories tweak-blog-basic-grid-secondary-meta-date tweak-blog-basic-grid-excerpt-show tweak-portfolio-grid-basic-width-full tweak-portfolio-grid-basic-height-large tweak-portfolio-grid-basic-image-aspect-ratio-11-square tweak-portfolio-grid-basic-text-alignment-left tweak-portfolio-grid-basic-hover-effect-fade header-overlay-alignment-center tweak-portfolio-index-background-link-format-stacked tweak-portfolio-index-background-width-full tweak-portfolio-index-background-height-large tweak-portfolio-index-background-vertical-alignment-middle tweak-portfolio-index-background-horizontal-alignment-center tweak-portfolio-index-background-delimiter-none tweak-portfolio-index-background-animation-type-fade tweak-portfolio-index-background-animation-duration-medium tweak-portfolio-hover-follow-layout-inline tweak-portfolio-hover-follow-delimiter-bullet tweak-portfolio-hover-follow-animation-type-fade tweak-portfolio-hover-follow-animation-duration-fast tweak-portfolio-hover-static-layout-inline tweak-portfolio-hover-static-front tweak-portfolio-hover-static-delimiter-hyphen tweak-portfolio-hover-static-animation-type-fade tweak-portfolio-hover-static-animation-duration-fast hide-opentable-icons opentable-style-dark tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light native-currency-code-usd collection-type-page collection-698e6a52b79d7e742279daa8 collection-layout-full-width mobile-style-available sqs-seven-one seven-one-global-animations',
   siteBundle: '/sqs-shell/site-bundle.ffb22c3e841b638295ea13d0eb1a9f48.js',
-  homeUrl: 'https://www.hasantutoring.com/',
+  homeUrl: '/',
   skipToContentUrl: 'https://www.hasantutoring.com/start-here-w/-banner#page',
   loginUrl: 'https://www.hasantutoring.com/start-here-w/-banner#',
   cta: {
@@ -70,7 +74,7 @@ export const shellConfig: ShellConfig = {
       {
         heading: 'Contact Me',
         html: [
-          '<p><a href="mailto:majid@hasantutoring.com">Majid@HasanTutoring.com</a><br>913.210.0611<br><a href="https://www.hasantutoring.com/contact-pages">Or Send Me a Message</a></p>',
+          '<p><a href="mailto:majid@hasantutoring.com">Majid@HasanTutoring.com</a><br>913.210.0611<br><a href="/contact">Or Send Me a Message</a></p>',
         ],
       },
       {
@@ -82,12 +86,20 @@ export const shellConfig: ShellConfig = {
     ],
   },
   navigation: [
-    { href: 'https://www.hasantutoring.com/', label: 'Start Here', home: true },
-    { href: 'https://www.hasantutoring.com/tests-1', label: 'Test Info' },
-    { href: 'https://www.hasantutoring.com/act-vs-sat', label: 'ACT vs. SAT' },
-    { href: 'https://www.hasantutoring.com/test-prep-options', label: 'Why Tutoring?' },
-    { href: 'https://www.hasantutoring.com/about-me', label: 'About Me' },
-    { href: 'https://www.hasantutoring.com/faqs', label: 'FAQs' },
+    { href: '/', label: 'Start Here', home: true },
+    {
+      href: '/tests',
+      label: 'Test Info',
+      children: [
+        { href: '/sat', label: 'SAT' },
+        { href: '/act', label: 'ACT' },
+        { href: '/act-vs-sat', label: 'ACT vs SAT' },
+      ],
+    },
+    { href: '/lsat', label: 'LSAT' },
+    { href: '/tutoring', label: 'Why Tutoring?' },
+    { href: '/about', label: 'About Me' },
+    { href: '/faq', label: 'FAQs' },
     { href: 'https://www.hasantutoring.com/blog', label: 'Blog' },
   ],
 };

@@ -7,25 +7,77 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
 const desktopNavMarkup = config.navigation
   .map(
-    (item) => `
+    (item) => {
+      if (item.children?.length) {
+        const childMarkup = item.children
+          .map(
+            (child) => `
+        <li class="ht-header-submenu__item">
+          <a href="${child.href}" class="ht-header-submenu__link" data-animation-role="header-element">
+            ${child.label}
+          </a>
+        </li>`,
+          )
+          .join('\n');
+
+        return `
+    <div class="header-nav-item header-nav-item--collection ht-header-dropdown">
+      <a href="${item.href}" class="ht-header-dropdown__toggle" data-animation-role="header-element" aria-haspopup="true">
+        ${item.label}
+      </a>
+      <ul class="ht-header-submenu">
+${childMarkup}
+      </ul>
+    </div>`;
+      }
+
+      return `
     <div class="header-nav-item header-nav-item--collection${item.home ? ' header-nav-item--homepage' : ''}">
       <a href="${item.href}" data-animation-role="header-element">
         ${item.label}
       </a>
-    </div>`,
+    </div>`;
+    },
   )
   .join('\n');
 
 const mobileNavMarkup = config.navigation
   .map(
-    (item) => `
+    (item) => {
+      if (item.children?.length) {
+        const childMarkup = item.children
+          .map(
+            (child) => `
+              <li class="ht-header-mobile-submenu__item">
+                <a href="${child.href}" class="ht-header-mobile-submenu__link">
+                  <div class="header-menu-nav-item-content">
+                    ${child.label}
+                  </div>
+                </a>
+              </li>`,
+          )
+          .join('\n');
+
+        return `
+            <div class="container header-menu-nav-item header-menu-nav-item--collection ht-header-mobile-group">
+              <div class="header-menu-nav-item-content ht-header-mobile-group__label">
+                ${item.label}
+              </div>
+              <ul class="ht-header-mobile-submenu">
+${childMarkup}
+              </ul>
+            </div>`;
+      }
+
+      return `
             <div class="container header-menu-nav-item header-menu-nav-item--collection${item.home ? ' header-menu-nav-item--homepage' : ''}">
               <a href="${item.href}">
                 <div class="header-menu-nav-item-content">
                   ${item.label}
                 </div>
               </a>
-            </div>`,
+            </div>`;
+    },
   )
   .join('\n');
 
@@ -38,6 +90,10 @@ const replaceOnce = (input, searchValue, replaceValue) => {
 const desktopNavRegex = /<nav class="header-nav-list">[\s\S]*?<\/nav>/;
 const mobileNavRegex =
   /<div class="header-menu-nav-wrapper">[\s\S]*?<\/div>\n\n              \n                <div class="user-accounts-link header-menu-nav-item/;
+const desktopLoginRegex =
+  /\s*<div class="user-accounts-link header-nav-item header-nav-item--collection customerAccountLoginDesktop loaded"[\s\S]*?<\/div>\s*/;
+const mobileLoginRegex =
+  /\s*<div class="user-accounts-link header-menu-nav-item header-nav-item--collection customerAccountLoginMobile loaded"[\s\S]*?<\/div>\s*/;
 
 let renderedHeaderMarkup = headerMarkup
   .replace(desktopNavRegex, `<nav class="header-nav-list">\n${desktopNavMarkup}\n                    </nav>`)
@@ -46,6 +102,8 @@ let renderedHeaderMarkup = headerMarkup
     mobileNavRegex,
     `<div class="header-menu-nav-wrapper">\n${mobileNavMarkup}\n</div>\n\n              \n                <div class="user-accounts-link header-menu-nav-item`,
   )
+  .replace(desktopLoginRegex, '\n')
+  .replace(mobileLoginRegex, '\n')
   .replaceAll('https://www.hasantutoring.com/member-home', config.cta.href)
   .replaceAll('Member Home', config.cta.text)
   .replaceAll('https://www.hasantutoring.com/start-here-w/-banner#page', config.skipToContentUrl)
@@ -64,3 +122,126 @@ renderedHeaderMarkup = replaceOnce(
 );
 ---
 <Fragment set:html={renderedHeaderMarkup} />
+
+<style is:global>
+  .ht-header-dropdown {
+    position: relative;
+  }
+
+  .ht-header-dropdown::after {
+    content: '';
+    height: 0.75rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+  }
+
+  .ht-header-dropdown__toggle {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    gap: 0.35em;
+    letter-spacing: inherit;
+    line-height: inherit;
+    padding: 0;
+    text-transform: inherit;
+  }
+
+  .ht-header-dropdown__toggle::after {
+    border-left: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+    content: '';
+    display: inline-block;
+    height: 0.42em;
+    margin-top: -0.12em;
+    transform: rotate(225deg);
+    width: 0.42em;
+  }
+
+  .ht-header-submenu {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    list-style: disc;
+    list-style-position: outside;
+    margin: 0;
+    min-width: 8rem;
+    opacity: 0;
+    padding: 0.65rem 1rem 0.65rem 2rem;
+    pointer-events: none;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    transition: opacity 160ms ease;
+    visibility: hidden;
+    z-index: 30;
+  }
+
+  .ht-header-submenu__item {
+    margin: 0;
+  }
+
+  .ht-header-dropdown:hover .ht-header-submenu,
+  .ht-header-dropdown:focus-within .ht-header-submenu {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .ht-header-submenu__link {
+    color: inherit;
+    display: block;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    padding: 0.35rem 1rem;
+    text-align: left;
+    text-decoration: none;
+    text-transform: inherit;
+    white-space: nowrap;
+  }
+
+  .ht-header-mobile-group {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .ht-header-mobile-group__label {
+    opacity: 1;
+  }
+
+  .ht-header-mobile-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    list-style: disc;
+    list-style-position: outside;
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  .ht-header-mobile-submenu__item {
+    margin: 0;
+  }
+
+  .ht-header-mobile-submenu__link {
+    color: inherit;
+    display: block;
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    text-transform: inherit;
+  }
+</style>

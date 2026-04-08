@@ -1,0 +1,656 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <!-- ======================================================
+           SECTION 1 — HERO
+           ====================================================== -->
+      <section class="ht-avs-hero">
+        <div class="ht-avs-hero__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson">ACT vs. SAT</p>
+          <h1 class="ht-avs-hero__h1">
+            Neither test is harder —<br>
+            <em class="ht-avs-hero__em">but one is right for you.</em>
+          </h1>
+          <p class="ht-avs-hero__lead">
+            Both tests are accepted by virtually every U.S. college, and
+            colleges have no strong preference between them. The only question
+            is which one gives you the better score.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 2 — KEY DIFFERENCES
+           ====================================================== -->
+      <section class="ht-avs-diffs">
+        <div class="ht-avs-diffs__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Key differences</p>
+            <h2 class="ht-section-hdr__h2">What makes the two tests different</h2>
+            <p class="ht-section-hdr__lead">
+              I tutor both exams and have watched hundreds of students perform
+              very differently on each. Here's what actually sets them apart.
+            </p>
+          </div>
+
+          <div class="ht-avs-diff-grid">
+
+            <div class="ht-avs-diff-card">
+              <span class="ht-avs-diff-card__num" aria-hidden="true">1</span>
+              <div class="ht-avs-diff-card__content">
+                <h3 class="ht-avs-diff-card__h3">Vocabulary — the SAT tests it directly, the ACT doesn't</h3>
+                <p class="ht-avs-diff-card__body">As of March 2024, the SAT tests vocabulary explicitly throughout its Reading and Writing modules. The ACT has no direct vocabulary questions — though stronger vocabulary still helps on its reading passages. If your student has a weak vocabulary, the ACT presents far less of a challenge. If they're a slower reader, the SAT's shorter passages and more time per question may suit them better.</p>
+              </div>
+            </div>
+
+            <div class="ht-avs-diff-card">
+              <span class="ht-avs-diff-card__num" aria-hidden="true">2</span>
+              <div class="ht-avs-diff-card__content">
+                <h3 class="ht-avs-diff-card__h3">Math — the ACT covers more topics, the SAT is trickier</h3>
+                <p class="ht-avs-diff-card__body">Both exams require algebra, arithmetic, and geometry. The ACT adds trigonometry, matrices, imaginary numbers, logarithms, and more. However, ACT math questions are more straightforward, while SAT math questions are deliberately designed to mislead. More knowledge but less trickery versus less knowledge but more traps — neither is objectively harder, but students respond very differently to each style.</p>
+              </div>
+            </div>
+
+            <div class="ht-avs-diff-card">
+              <span class="ht-avs-diff-card__num" aria-hidden="true">3</span>
+              <div class="ht-avs-diff-card__content">
+                <h3 class="ht-avs-diff-card__h3">Science — the ACT has it, the SAT doesn't</h3>
+                <p class="ht-avs-diff-card__body">The ACT's Science section sounds intimidating, but it barely tests science knowledge. It's almost entirely data interpretation — reading tables, charts, and graphs and applying common sense. There's no equivalent on the SAT. Students who are comfortable with data analysis tend to find it straightforward; students who freeze up at charts sometimes struggle.</p>
+              </div>
+            </div>
+
+            <div class="ht-avs-diff-card">
+              <span class="ht-avs-diff-card__num" aria-hidden="true">4</span>
+              <div class="ht-avs-diff-card__content">
+                <h3 class="ht-avs-diff-card__h3">Pacing — the ACT is faster, the SAT is more forgiving</h3>
+                <p class="ht-avs-diff-card__body">The ACT is significantly more time-pressured. It has more questions and longer sections, requiring sustained focus for extended periods. The SAT breaks its content into shorter modules with more time per question. Students who read quickly and stay calm under pressure often prefer the ACT. Students who prefer more time to think tend to do better on the SAT.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 3 — COLLEGE PREFERENCE
+           ====================================================== -->
+      <section class="ht-avs-colleges">
+        <div class="ht-avs-colleges__inner">
+          <div class="ht-gold-rule" aria-hidden="true"></div>
+          <p class="ht-eyebrow ht-eyebrow--gold">Do colleges care?</p>
+          <h2 class="ht-avs-colleges__h2">Simply put — no.</h2>
+          <p class="ht-avs-colleges__body">
+            The SAT and ACT can be matched up score-for-score. A 36 on
+            the ACT is equivalent to a 1600 on the SAT. A 21 ACT is equivalent
+            to roughly a 1060 SAT. Colleges simply prefer higher scores —
+            they have no meaningful preference for one test over the other.
+          </p>
+          <p class="ht-avs-colleges__body">
+            The only thing that matters is which test produces your higher
+            score. Take both as practice tests, compare the results, and focus
+            your preparation on whichever one you do better on. That's the
+            entire decision.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 4 — DECISION QUIZ
+           ====================================================== -->
+      <section class="ht-avs-quiz">
+        <div class="ht-avs-quiz__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Quick decision helper</p>
+            <h2 class="ht-section-hdr__h2 ht-section-hdr__h2--quiz">Answer 3 questions to get a recommendation</h2>
+            <p class="ht-section-hdr__lead ht-section-hdr__lead--quiz">
+              Majid's recommendation: take a full practice test of each
+              before deciding. But these questions will give you a strong
+              starting signal.
+            </p>
+          </div>
+
+          <div class="ht-avs-quiz__card">
+
+            <!-- Question 1 -->
+            <div class="ht-avs-q">
+              <p class="ht-avs-q__label">1. How is your reading speed?</p>
+              <div class="ht-avs-q__opts">
+                <button class="ht-avs-q__btn" data-q="read" data-val="act">Fast — I read quickly</button>
+                <button class="ht-avs-q__btn" data-q="read" data-val="sat">Steady — I like time to think</button>
+                <button class="ht-avs-q__btn" data-q="read" data-val="both">Not sure</button>
+              </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="ht-avs-q">
+              <p class="ht-avs-q__label">2. How is your math background?</p>
+              <div class="ht-avs-q__opts">
+                <button class="ht-avs-q__btn" data-q="math" data-val="act">Strong in geometry &amp; trig</button>
+                <button class="ht-avs-q__btn" data-q="math" data-val="sat">Strong in algebra</button>
+                <button class="ht-avs-q__btn" data-q="math" data-val="both">About equal</button>
+              </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="ht-avs-q">
+              <p class="ht-avs-q__label">3. How do you feel about a Science section?</p>
+              <div class="ht-avs-q__opts">
+                <button class="ht-avs-q__btn" data-q="sci" data-val="act">Fine — I like data &amp; charts</button>
+                <button class="ht-avs-q__btn" data-q="sci" data-val="sat">I'd rather skip it</button>
+                <button class="ht-avs-q__btn" data-q="sci" data-val="both">Neutral</button>
+              </div>
+            </div>
+
+            <!-- Result area -->
+            <div class="ht-avs-result" id="avs-result" style="display:none">
+              <div class="ht-avs-result__act" id="avs-result-act" style="display:none">
+                <strong>Lean toward the ACT.</strong> Your profile matches students who tend to score better
+                on the ACT — fast readers comfortable with a wider math range
+                who don't mind the Science section. That said, take a practice
+                test of each to confirm.
+              </div>
+              <div class="ht-avs-result__sat" id="avs-result-sat" style="display:none">
+                <strong>Lean toward the SAT.</strong> Your answers suggest the SAT suits you better —
+                more time per question, algebra-focused math, no Science
+                section. Take a practice test of each to confirm.
+              </div>
+              <div class="ht-avs-result__both" id="avs-result-both" style="display:none">
+                <strong>Take a practice test of both.</strong> Your answers are mixed — which is totally normal.
+                The best way to decide is to sit down with an actual practice
+                ACT and SAT. Majid can provide both for free.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 5 — CTA STRIP
+           ====================================================== -->
+      <section class="ht-cta-strip">
+        <h2 class="ht-cta-strip__h2">
+          Free practice tests for both.<br>
+          No pressure, ever.
+        </h2>
+        <p class="ht-cta-strip__body">
+          Contact me and I'll provide a free timed ACT and SAT along with
+          all the information you need to interpret your results. No
+          obligation — just honest advice.
+        </p>
+        <div class="ht-cta-strip__btns">
+          <a href="/contact" class="ht-btn ht-btn--white">Get free practice tests</a>
+          <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+        </div>
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+</SquarespaceShellLayout>
+
+<script>
+  (function () {
+    var picks = {};
+
+    document.querySelectorAll('.ht-avs-q__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var q = btn.getAttribute('data-q');
+        var val = btn.getAttribute('data-val');
+
+        // Deselect siblings in same question group
+        document.querySelectorAll('.ht-avs-q__btn[data-q="' + q + '"]').forEach(function (b) {
+          b.classList.remove('ht-avs-q__btn--act', 'ht-avs-q__btn--sat', 'ht-avs-q__btn--both');
+        });
+
+        // Select this button
+        btn.classList.add('ht-avs-q__btn--' + val);
+        picks[q] = val;
+
+        // Show result when all 3 answered
+        if (picks.read && picks.math && picks.sci) {
+          var actCount = Object.values(picks).filter(function (v) { return v === 'act'; }).length;
+          var satCount = Object.values(picks).filter(function (v) { return v === 'sat'; }).length;
+
+          var result = document.getElementById('avs-result');
+          var actEl  = document.getElementById('avs-result-act');
+          var satEl  = document.getElementById('avs-result-sat');
+          var bothEl = document.getElementById('avs-result-both');
+
+          actEl.style.display  = 'none';
+          satEl.style.display  = 'none';
+          bothEl.style.display = 'none';
+
+          if (actCount >= 2) {
+            actEl.style.display = 'block';
+          } else if (satCount >= 2) {
+            satEl.style.display = 'block';
+          } else {
+            bothEl.style.display = 'block';
+          }
+
+          result.style.display = 'block';
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  .ht-eyebrow--gold {
+    color: var(--color-accent-gold);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 1 — HERO
+  ---------------------------------------------------------------- */
+  .ht-avs-hero {
+    background: var(--color-surface);
+    padding-top: clamp(12rem, 16vw, 15rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    padding-left: var(--space-section-h);
+    padding-right: var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-avs-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-avs-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-avs-hero__em {
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  .ht-avs-hero__lead {
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 2 — KEY DIFFERENCES
+  ---------------------------------------------------------------- */
+  .ht-avs-diffs {
+    background: var(--color-surface-warm);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h);
+  }
+
+  .ht-avs-diffs__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+
+  .ht-section-hdr {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .ht-section-hdr__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-section-hdr__h2--quiz {
+    margin-bottom: 0.75rem;
+  }
+
+  .ht-section-hdr__lead {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-base);
+    color: var(--color-muted);
+    max-width: 620px;
+    margin: 0;
+    line-height: var(--leading-relaxed);
+  }
+
+  .ht-section-hdr__lead--quiz {
+    max-width: 600px;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  /* Diff cards */
+  .ht-avs-diff-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ht-avs-diff-card {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    padding: 2rem 2.25rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1.75rem;
+    align-items: start;
+  }
+
+  .ht-avs-diff-card__num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--color-accent-gold);
+    line-height: 1;
+    padding-top: 0.25rem;
+  }
+
+  .ht-avs-diff-card__h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.375rem;
+    color: var(--color-text-dark);
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .ht-avs-diff-card__body {
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 3 — COLLEGE PREFERENCE
+  ---------------------------------------------------------------- */
+  .ht-avs-colleges {
+    background: var(--color-surface);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h);
+  }
+
+  .ht-avs-colleges__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-gold-rule {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-accent-gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .ht-avs-colleges__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+  }
+
+  .ht-avs-colleges__body {
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .ht-avs-colleges__body:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 4 — QUIZ
+  ---------------------------------------------------------------- */
+  .ht-avs-quiz {
+    background: var(--color-surface-warm);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h);
+  }
+
+  .ht-avs-quiz__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+
+  .ht-avs-quiz__card {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    padding: var(--space-card-pad);
+    box-shadow: var(--shadow-card);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .ht-avs-q {
+    margin-bottom: 1.75rem;
+  }
+
+  .ht-avs-q__label {
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0 0 0.875rem;
+  }
+
+  .ht-avs-q__opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ht-avs-q__btn {
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    padding: 0.6em 1.1em;
+    border-radius: var(--radius-button);
+    border: 1.5px solid var(--color-border-strong);
+    background: var(--color-surface);
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .ht-avs-q__btn--act {
+    background: #e1f5ee;
+    border-color: #0F6E56;
+    color: #085041;
+  }
+
+  .ht-avs-q__btn--sat {
+    background: #eeedfe;
+    border-color: #534AB7;
+    color: #3C3489;
+  }
+
+  .ht-avs-q__btn--both {
+    background: var(--color-surface-warm);
+    border-color: var(--color-border-strong);
+    color: var(--color-text-dark);
+  }
+
+  /* Result area */
+  .ht-avs-result {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .ht-avs-result__act {
+    background: #e1f5ee;
+    border: 1px solid #9FE1CB;
+    color: #085041;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .ht-avs-result__sat {
+    background: #eeedfe;
+    border: 1px solid #AFA9EC;
+    color: #3C3489;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .ht-avs-result__both {
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 5 — CTA STRIP
+  ---------------------------------------------------------------- */
+  .ht-cta-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-cta-strip__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-6);
+    line-height: var(--leading-snug);
+  }
+
+  .ht-cta-strip__body {
+    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .ht-cta-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ----------------------------------------------------------------
+     Buttons
+  ---------------------------------------------------------------- */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .ht-btn--white {
+    background: var(--color-surface);
+    color: var(--color-bg-dark);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--white:hover {
+    opacity: 0.9;
+  }
+
+  .ht-btn--ghost {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .ht-btn--ghost:hover {
+    border-color: var(--color-text-light);
+  }
+
+  /* ----------------------------------------------------------------
+     Responsive
+  ---------------------------------------------------------------- */
+  @media (max-width: 640px) {
+    .ht-avs-diff-card {
+      grid-template-columns: 1fr;
+      gap: 0.75rem 0;
+    }
+
+    .ht-avs-diff-card__num {
+      font-size: 1.75rem;
+      padding-top: 0;
+    }
+  }
+</style>

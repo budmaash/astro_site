@@ -55,5 +55,108 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   </head>
   <body id={config.bodyId} class={config.bodyClass}>
     <slot />
+
+    <!-- Scroll-to-top button — rendered on every page via this layout -->
+    <button id="ht-scroll-top" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 18 18"
+           fill="none" xmlns="http://www.w3.org/2000/svg"
+           aria-hidden="true">
+        <path d="M9 14V4M9 4L4 9M9 4L14 9"
+              stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <script is:inline>
+      (function () {
+        var scrollTopBtn = document.getElementById('ht-scroll-top');
+        if (!scrollTopBtn) return;
+
+        function updateScrollTopVisibility() {
+          var scrolled = window.scrollY;
+          var pageHeight = document.documentElement.scrollHeight;
+          var viewportHeight = window.innerHeight;
+          var halfwayPoint = (pageHeight - viewportHeight) / 2;
+
+          if (scrolled >= halfwayPoint) {
+            scrollTopBtn.classList.add('ht-scroll-top--visible');
+          } else {
+            scrollTopBtn.classList.remove('ht-scroll-top--visible');
+          }
+        }
+
+        // Throttle scroll handler for performance
+        var scrollTicking = false;
+        window.addEventListener('scroll', function () {
+          if (!scrollTicking) {
+            window.requestAnimationFrame(function () {
+              updateScrollTopVisibility();
+              scrollTicking = false;
+            });
+            scrollTicking = true;
+          }
+        }, { passive: true });
+
+        // Recalculate on resize
+        window.addEventListener('resize', updateScrollTopVisibility, { passive: true });
+
+        // Click handler — smooth scroll to top
+        scrollTopBtn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Run once on load
+        updateScrollTopVisibility();
+      })();
+    </script>
   </body>
 </html>
+
+<style is:global>
+  #ht-scroll-top {
+    /* Position — fixed, bottom-right */
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+
+    /* Size & shape */
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-border-strong);
+
+    /* Colors */
+    background: var(--color-surface);
+    color: var(--color-text-dark);
+
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    /* Shadow */
+    box-shadow: var(--shadow-card-sm);
+
+    /* Visibility — hidden by default */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.5rem);
+    transition: opacity 250ms ease,
+                transform 250ms ease,
+                background-color 150ms ease,
+                border-color 150ms ease;
+  }
+
+  #ht-scroll-top.ht-scroll-top--visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  #ht-scroll-top:hover {
+    background: var(--color-bg);
+    border-color: var(--color-accent);
+  }
+</style>

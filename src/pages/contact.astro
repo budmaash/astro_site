@@ -1,0 +1,422 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <!-- ======================================================
+           SECTION 1 — HERO
+           ====================================================== -->
+      <section class="ht-contact-hero">
+        <div class="ht-contact-hero__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson">Get in touch</p>
+          <h1 class="ht-contact-hero__h1">Let's talk.</h1>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 2 — TWO-COLUMN BODY
+           ====================================================== -->
+      <section class="ht-contact-body">
+        <div class="ht-contact-body__inner">
+
+          <!-- LEFT COLUMN -->
+          <div class="ht-contact-body__left">
+            <div class="ht-gold-rule" aria-hidden="true"></div>
+
+            <h2 class="ht-contact-body__h2">Reach out anytime</h2>
+
+            <p class="ht-contact-body__p">
+              Feel free to give me a shout anytime by filling out the
+              form or reaching out directly. I'll gladly answer any questions
+              you have about the ACT or SAT, when you should take them, or
+              which one you should focus on — without any pressure to purchase
+              my services. I can even get you some free practice materials.
+            </p>
+            <p class="ht-contact-body__p ht-contact-body__p--last">
+              I employ a very laid-back, no-pressure approach to my
+              business. Honest advice, always.
+            </p>
+
+            <div class="ht-contact-details">
+
+              <div class="ht-contact-detail">
+                <span class="ht-contact-detail__label">Phone</span>
+                <a href="tel:9132100611" class="ht-contact-detail__value ht-contact-detail__link">
+                  913.210.0611
+                </a>
+              </div>
+
+              <div class="ht-contact-detail">
+                <span class="ht-contact-detail__label">Email</span>
+                <a href="mailto:Majid@HasanTutoring.com" class="ht-contact-detail__value ht-contact-detail__link">
+                  Majid@HasanTutoring.com
+                </a>
+              </div>
+
+              <div class="ht-contact-detail">
+                <span class="ht-contact-detail__label">Location</span>
+                <span class="ht-contact-detail__value">Overland Park &amp; Kansas City, KS</span>
+              </div>
+
+            </div>
+          </div><!-- /.ht-contact-body__left -->
+
+          <!-- RIGHT COLUMN -->
+          <div class="ht-contact-body__right">
+
+            <!--
+              FORM ACTION: Replace the placeholder Formspree endpoint below
+              with the real endpoint before going live.
+              Format: https://formspree.io/f/<YOUR_FORM_ID>
+            -->
+            <form
+              class="ht-contact-form"
+              method="POST"
+              action="https://formspree.io/f/PLACEHOLDER"
+            >
+
+              <!-- Name row: first + last side by side -->
+              <div class="ht-form-row">
+                <div class="ht-form-group">
+                  <label class="ht-form-label" for="first_name">First name</label>
+                  <input
+                    id="first_name"
+                    type="text"
+                    name="first_name"
+                    class="ht-form-input"
+                    required
+                    autocomplete="given-name"
+                  />
+                </div>
+                <div class="ht-form-group">
+                  <label class="ht-form-label" for="last_name">Last name</label>
+                  <input
+                    id="last_name"
+                    type="text"
+                    name="last_name"
+                    class="ht-form-input"
+                    autocomplete="family-name"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="ht-form-group">
+                <label class="ht-form-label" for="email">Email address</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  class="ht-form-input"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+
+              <!-- Subject -->
+              <div class="ht-form-group">
+                <label class="ht-form-label" for="subject">Subject</label>
+                <input
+                  id="subject"
+                  type="text"
+                  name="subject"
+                  class="ht-form-input"
+                />
+              </div>
+
+              <!-- Message -->
+              <div class="ht-form-group">
+                <label class="ht-form-label" for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="ht-form-textarea"
+                  rows="6"
+                  required
+                  style="resize: vertical; min-height: 140px"
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="ht-btn ht-btn--primary">
+                Send message
+              </button>
+
+              <p class="ht-form-note">No pressure, ever. I'll respond personally.</p>
+
+            </form>
+          </div><!-- /.ht-contact-body__right -->
+
+        </div><!-- /.ht-contact-body__inner -->
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+</SquarespaceShellLayout>
+
+<style>
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  .ht-gold-rule {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-accent-gold);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 1 — HERO
+  ---------------------------------------------------------------- */
+  .ht-contact-hero {
+    background: var(--color-surface);
+    padding-top: clamp(12rem, 16vw, 15rem);
+    padding-bottom: clamp(2rem, 3vw, 2.5rem);
+    padding-left: var(--space-section-h);
+    padding-right: var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-contact-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-contact-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 2 — TWO-COLUMN BODY
+  ---------------------------------------------------------------- */
+  .ht-contact-body {
+    background: var(--color-surface);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-h)
+             clamp(5rem, 10vw, 8rem) var(--space-section-h);
+  }
+
+  .ht-contact-body__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+    display: flex;
+    gap: clamp(3rem, 7vw, 6rem);
+    align-items: flex-start;
+  }
+
+  /* LEFT column */
+  .ht-contact-body__left {
+    flex: 0 0 300px;
+  }
+
+  .ht-contact-body__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .ht-contact-body__p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .ht-contact-body__p--last {
+    margin-bottom: 0;
+  }
+
+  /* Contact details */
+  .ht-contact-details {
+    margin-top: 2rem;
+  }
+
+  .ht-contact-detail {
+    margin-bottom: 1rem;
+  }
+
+  .ht-contact-detail__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-muted);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .ht-contact-detail__value {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    color: var(--color-text-dark);
+  }
+
+  .ht-contact-detail__link {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent-gold);
+  }
+
+  /* RIGHT column */
+  .ht-contact-body__right {
+    flex: 1;
+  }
+
+  /* ----------------------------------------------------------------
+     CONTACT FORM
+  ---------------------------------------------------------------- */
+  .ht-contact-form {
+    width: 100%;
+  }
+
+  .ht-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .ht-form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .ht-form-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-muted);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .ht-form-input,
+  .ht-form-textarea {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 300;
+    color: var(--color-text);
+    background: var(--color-surface-tint);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    padding: var(--space-3) var(--space-5);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .ht-form-input:focus,
+  .ht-form-textarea:focus {
+    border-color: var(--color-accent-gold);
+    box-shadow: 0 0 0 3px var(--color-accent-gold-light);
+  }
+
+  /* Submit button */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: 0.85em 2.25em;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    transition: background var(--transition-fast), opacity var(--transition-fast);
+    border: none;
+  }
+
+  .ht-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    width: 100%;
+  }
+
+  .ht-btn--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  /* Form footnote */
+  .ht-form-note {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    text-align: center;
+    margin-top: 0.875rem;
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     Responsive
+  ---------------------------------------------------------------- */
+  @media (max-width: 768px) {
+    .ht-contact-body__inner {
+      flex-direction: column;
+    }
+
+    .ht-contact-body__left {
+      flex: none;
+      width: 100%;
+    }
+
+    .ht-form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
