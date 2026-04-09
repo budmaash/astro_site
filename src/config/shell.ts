@@ -89,7 +89,7 @@ export const shellConfig: ShellConfig = {
     { href: '/', label: 'Start Here', home: true },
     {
       href: '/tests',
-      label: 'Test Info',
+      label: 'ACT/SAT Info',
       children: [
         { href: '/sat', label: 'SAT' },
         { href: '/act', label: 'ACT' },
