@@ -1,0 +1,1218 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <!-- ======================================================
+           SECTION 1 — HERO
+           ====================================================== -->
+      <section class="ht-mp-hero">
+        <div class="ht-mp-hero__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson">SAT Math Membership</p>
+          <h1 class="ht-mp-hero__h1">You don't need to be better at math.</h1>
+          <p class="ht-mp-hero__lead">
+            The SAT Math section isn't a math test — it's a pattern test.
+            Every question type appears over and over, and every one can be
+            answered with a repeatable process. You don't need to understand
+            the theory. You need to learn the steps. That's exactly what
+            this membership teaches.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 2 — PHILOSOPHY STRIP
+           ====================================================== -->
+      <section class="ht-mp-philosophy">
+        <div class="ht-mp-philosophy__grid">
+          <div class="ht-mp-philosophy__item">
+            <span class="ht-mp-philosophy__number">44</span>
+            <p class="ht-mp-philosophy__heading">Question types on the SAT Math</p>
+            <p class="ht-mp-philosophy__body">Not infinite variety — just 44 repeating patterns. Learn the process for each one.</p>
+          </div>
+          <div class="ht-mp-philosophy__item">
+            <span class="ht-mp-philosophy__number">324</span>
+            <p class="ht-mp-philosophy__heading">Individual questions explained on video</p>
+            <p class="ht-mp-philosophy__body">Every question from 6 full SAT exams, walked through step by step. And growing.</p>
+          </div>
+          <div class="ht-mp-philosophy__item">
+            <span class="ht-mp-philosophy__number">3×</span>
+            <p class="ht-mp-philosophy__heading">Solving methods per question</p>
+            <p class="ht-mp-philosophy__body">Algebraically, with Desmos, and with a TI-84 — so you can use whatever works best for you.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           FEATURE SECTIONS
+           ====================================================== -->
+      <div class="ht-mp-features">
+
+        <!-- ======================================================
+             FEATURE 1 — Question-Type Video Lessons
+             ====================================================== -->
+        <div class="ht-mp-feature">
+          <div class="ht-mp-feature__text">
+            <p class="ht-eyebrow ht-eyebrow--gold">Video Lessons</p>
+            <h2 class="ht-mp-feature__h2">Learn the process, not the theory</h2>
+            <p class="ht-mp-feature__p">
+              The SAT Math section is built from repeating question types.
+              Two quadratics questions might use different numbers, but
+              they're answered the exact same way — every single time.
+              These videos teach you that way.
+            </p>
+            <p class="ht-mp-feature__p">
+              Each question-type video covers multiple methods and multiple
+              worked examples. You're not learning math from scratch —
+              you're learning a repeatable sequence of steps that gets the
+              right answer, regardless of the specific numbers in the problem.
+            </p>
+            <p class="ht-mp-feature__p ht-mp-feature__p--em">
+              No prerequisite math knowledge required.
+            </p>
+            <div class="ht-mp-stats">
+              <div class="ht-mp-stat">
+                <span class="ht-mp-stat__number">44</span>
+                <span class="ht-mp-stat__label">Question types</span>
+              </div>
+              <div class="ht-mp-stat">
+                <span class="ht-mp-stat__number">8–12 min</span>
+                <span class="ht-mp-stat__label">Avg. video length</span>
+              </div>
+            </div>
+          </div>
+          <div class="ht-mp-feature__visual">
+            <div class="ht-mp-video">
+              <div class="ht-mp-video__frame">
+                <iframe
+                  src="https://player.vimeo.com/video/1110065444"
+                  title="Quadratics - Sum of Solutions"
+                  width="100%"
+                  height="100%"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                  style="position:absolute;top:0;left:0;width:100%;height:100%"
+                ></iframe>
+              </div>
+            </div>
+            <p class="ht-mp-video__caption">Example: Quadratics — Sum of Solutions</p>
+          </div>
+        </div><!-- /.ht-mp-feature -->
+
+        <!-- ======================================================
+             FEATURE 2 — Question Bank (reversed, warm)
+             ====================================================== -->
+        <div class="ht-mp-feature ht-mp-feature--reverse ht-mp-feature--warm">
+          <div class="ht-mp-feature__text">
+            <p class="ht-eyebrow ht-eyebrow--gold">Question Bank</p>
+            <h2 class="ht-mp-feature__h2">Every exam question, explained on video</h2>
+            <p class="ht-mp-feature__p">
+              As a member, you get video explanations for every single
+              question from 6 full SAT Math exams — 324 questions in total,
+              and growing. Each explanation walks through multiple solving
+              approaches: algebraically, with a Desmos graph, and with a
+              TI-84 graphing calculator.
+            </p>
+            <p class="ht-mp-feature__p">
+              Each video page links to similar questions so you can
+              practice the same type further. Browse by question type,
+              difficulty, or exam — and each video connects back to the
+              relevant question-type lesson.
+            </p>
+            <div class="ht-mp-stats">
+              <div class="ht-mp-stat">
+                <span class="ht-mp-stat__number">324</span>
+                <span class="ht-mp-stat__label">Questions covered</span>
+              </div>
+              <div class="ht-mp-stat">
+                <span class="ht-mp-stat__number">6</span>
+                <span class="ht-mp-stat__label">Full SAT exams</span>
+              </div>
+              <div class="ht-mp-stat">
+                <span class="ht-mp-stat__number">Growing</span>
+                <span class="ht-mp-stat__label">New videos added regularly</span>
+              </div>
+            </div>
+          </div>
+          <div class="ht-mp-feature__visual">
+            <div class="ht-mp-video">
+              <div class="ht-mp-video__frame">
+                <iframe
+                  src="https://player.vimeo.com/video/1121776902"
+                  title="Module 2, Question 25"
+                  width="100%"
+                  height="100%"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                  style="position:absolute;top:0;left:0;width:100%;height:100%"
+                ></iframe>
+              </div>
+            </div>
+            <p class="ht-mp-video__caption">Example: Module 2, Question 25</p>
+          </div>
+        </div><!-- /.ht-mp-feature -->
+
+        <!-- ======================================================
+             FEATURE 3 — Score Report App (warm)
+             ====================================================== -->
+        <div class="ht-mp-feature ht-mp-feature--warm">
+          <div class="ht-mp-feature__text">
+            <p class="ht-eyebrow ht-eyebrow--gold">Score Report App</p>
+            <h2 class="ht-mp-feature__h2">Enter your answers. See exactly where you need help.</h2>
+            <p class="ht-mp-feature__p">
+              Enter your answers to any SAT Math module and get an
+              automated score report — broken down question by question,
+              with your answer, the correct answer, the question type,
+              and a direct link to the video explanation for every
+              question you missed.
+            </p>
+            <p class="ht-mp-feature__p">
+              Your performance is tracked across attempts so you can
+              see exactly which question types need the most work —
+              and go straight to the videos that address them.
+            </p>
+            <a
+              href="https://app.hasantutoring.com"
+              class="ht-btn ht-btn--secondary ht-mp-feature__cta"
+            >
+              Try the score report app
+            </a>
+          </div>
+          <div class="ht-mp-feature__visual">
+            <div class="ht-mp-score-table">
+              <div class="ht-mp-score-table__heading">Question review</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Your answer</th>
+                    <th>Correct answer</th>
+                    <th>Question-Type</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>A</td>
+                    <td>A</td>
+                    <td>Increasing/Decreasing by Percents</td>
+                    <td><span class="ht-mp-badge ht-mp-badge--correct">✓ Correct</span></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>A</td>
+                    <td>A</td>
+                    <td>Basic Algebra</td>
+                    <td><span class="ht-mp-badge ht-mp-badge--correct">✓ Correct</span></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>A</td>
+                    <td>A</td>
+                    <td>Lines from Graphs</td>
+                    <td><span class="ht-mp-badge ht-mp-badge--correct">✓ Correct</span></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>D</td>
+                    <td>D</td>
+                    <td>Graphs Basic</td>
+                    <td><span class="ht-mp-badge ht-mp-badge--correct">✓ Correct</span></td>
+                  </tr>
+                  <tr class="ht-mp-score-table__row--incorrect">
+                    <td>5</td>
+                    <td>A</td>
+                    <td>B</td>
+                    <td>Equivalent Expressions</td>
+                    <td><span class="ht-mp-badge ht-mp-badge--incorrect">✗ Incorrect</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!-- /.ht-mp-feature -->
+
+        <!-- ======================================================
+             FEATURE 4 — Quiz Generator (reversed)
+             ====================================================== -->
+        <div class="ht-mp-feature ht-mp-feature--reverse">
+          <div class="ht-mp-feature__text">
+            <p class="ht-eyebrow ht-eyebrow--gold">Practice Quizzes</p>
+            <h2 class="ht-mp-feature__h2">Quiz yourself on what you actually need to work on</h2>
+            <p class="ht-mp-feature__p">
+              Once you know which question types are giving you trouble,
+              the quiz generator lets you practice exactly those. Choose
+              a question type, a difficulty level, or both — and get a
+              targeted set of questions pulled from the full question bank.
+            </p>
+            <p class="ht-mp-feature__p">
+              Take a quiz, see your results, and link directly to the
+              video explanation for anything you got wrong. Focused
+              practice on your weak spots, not time wasted on what
+              you already know.
+            </p>
+          </div>
+          <div class="ht-mp-feature__visual">
+            <div class="ht-mp-quiz-mock">
+              <div class="ht-mp-quiz-mock__header">Generate a quiz</div>
+              <div class="ht-mp-quiz-mock__body">
+                <div class="ht-mp-quiz-mock__row">
+                  <label class="ht-mp-quiz-mock__label">Question type</label>
+                  <div class="ht-mp-quiz-mock__select">
+                    <span>Quadratics</span>
+                    <span class="ht-mp-quiz-mock__chevron">▾</span>
+                  </div>
+                </div>
+                <div class="ht-mp-quiz-mock__row">
+                  <label class="ht-mp-quiz-mock__label">Difficulty</label>
+                  <div class="ht-mp-quiz-mock__select">
+                    <span>Medium</span>
+                    <span class="ht-mp-quiz-mock__chevron">▾</span>
+                  </div>
+                </div>
+                <div class="ht-mp-quiz-mock__btn">Generate quiz (12 questions)</div>
+                <p class="ht-mp-quiz-mock__note">Results link to video explanations</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.ht-mp-feature -->
+
+        <!-- ======================================================
+             FEATURE 5 — Video Library (warm, last)
+             ====================================================== -->
+        <div class="ht-mp-feature ht-mp-feature--warm ht-mp-feature--last">
+          <div class="ht-mp-feature__text">
+            <p class="ht-eyebrow ht-eyebrow--gold">Video Library</p>
+            <h2 class="ht-mp-feature__h2">Browse videos. Practice from the video.</h2>
+            <p class="ht-mp-feature__p">
+              Both video libraries — question-type lessons and individual
+              question explanations — are fully browsable. Filter by topic,
+              question type, or difficulty. Each video page links directly
+              to related practice questions from the question bank, so you
+              can watch a lesson and immediately test yourself on the same
+              type.
+            </p>
+            <p class="ht-mp-feature__p">
+              More videos are added regularly as the library grows
+              to cover additional SAT Math material and question types.
+            </p>
+          </div>
+          <div class="ht-mp-feature__visual">
+            <div class="ht-mp-library-mock">
+              <div class="ht-mp-library-mock__header">Question-Type Library</div>
+              <div class="ht-mp-library-mock__body">
+                <div class="ht-mp-library-mock__item">
+                  <div class="ht-mp-library-mock__play">▶</div>
+                  <div class="ht-mp-library-mock__title-col">
+                    <span class="ht-mp-library-mock__title">Quadratics</span>
+                    <span class="ht-mp-library-mock__tag">Algebra</span>
+                  </div>
+                  <span class="ht-mp-library-mock__duration">8:29</span>
+                </div>
+                <div class="ht-mp-library-mock__item">
+                  <div class="ht-mp-library-mock__play">▶</div>
+                  <div class="ht-mp-library-mock__title-col">
+                    <span class="ht-mp-library-mock__title">Linear Equations</span>
+                    <span class="ht-mp-library-mock__tag">Algebra</span>
+                  </div>
+                  <span class="ht-mp-library-mock__duration">6:14</span>
+                </div>
+                <div class="ht-mp-library-mock__item">
+                  <div class="ht-mp-library-mock__play">▶</div>
+                  <div class="ht-mp-library-mock__title-col">
+                    <span class="ht-mp-library-mock__title">Graphs in Context</span>
+                    <span class="ht-mp-library-mock__tag">Functions</span>
+                  </div>
+                  <span class="ht-mp-library-mock__duration">9:03</span>
+                </div>
+                <div class="ht-mp-library-mock__item">
+                  <div class="ht-mp-library-mock__play">▶</div>
+                  <div class="ht-mp-library-mock__title-col">
+                    <span class="ht-mp-library-mock__title">Ratios &amp; Proportions</span>
+                    <span class="ht-mp-library-mock__tag">Word Problems</span>
+                  </div>
+                  <span class="ht-mp-library-mock__duration">7:41</span>
+                </div>
+                <div class="ht-mp-library-mock__item ht-mp-library-mock__item--last">
+                  <div class="ht-mp-library-mock__play">▶</div>
+                  <div class="ht-mp-library-mock__title-col">
+                    <span class="ht-mp-library-mock__title">Circle Theorems</span>
+                    <span class="ht-mp-library-mock__tag">Geometry</span>
+                  </div>
+                  <span class="ht-mp-library-mock__duration">11:22</span>
+                </div>
+                <p class="ht-mp-library-mock__note">Each video links to related practice questions</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.ht-mp-feature -->
+
+      </div><!-- /.ht-mp-features -->
+
+      <!-- ======================================================
+           SECTION — FREE VS. PAID TIER
+           ====================================================== -->
+      <section class="ht-mp-tiers">
+        <div class="ht-mp-tiers__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson ht-mp-tiers__eyebrow">Free vs. Membership</p>
+          <h2 class="ht-mp-tiers__h2">Start free. Upgrade when you're ready.</h2>
+          <div class="ht-mp-tiers__grid">
+
+            <!-- Free tier -->
+            <div class="ht-mp-tier ht-mp-tier--free">
+              <p class="ht-mp-tier__label">Free</p>
+              <p class="ht-mp-tier__price">$0</p>
+              <p class="ht-mp-tier__subtext">No account required to start</p>
+              <ul class="ht-mp-tier__list">
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>1 free SAT Math test with full score report</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>Video explanations for every question on that test</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>2–3 free question-type video lessons</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>Access to app.hasantutoring.com</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Paid tier -->
+            <div class="ht-mp-tier ht-mp-tier--paid">
+              <p class="ht-mp-tier__label ht-mp-tier__label--gold">Membership</p>
+              <div class="ht-mp-tier__price-row">
+                <span class="ht-mp-tier__price">$19</span>
+                <span class="ht-mp-tier__period">/ month</span>
+              </div>
+              <p class="ht-mp-tier__subtext">Cancel anytime</p>
+              <ul class="ht-mp-tier__list">
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>All 44 question-type video lessons</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>All 324 question-explanation videos (and growing)</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>Unlimited score reports across all 6 SAT exams</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>Performance tracking across attempts</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>Quiz generator by question type &amp; difficulty</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>Full video library browsing with practice question links</span>
+                </li>
+                <li class="ht-mp-tier__item">
+                  <span class="ht-mp-tier__check" aria-hidden="true">✓</span>
+                  <span>New content added regularly</span>
+                </li>
+              </ul>
+              <a href="/subscribe" class="ht-btn ht-btn--primary ht-mp-tier__cta">
+                Start your membership
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION — DARK CTA STRIP
+           ====================================================== -->
+      <section class="ht-cta-strip">
+        <div class="ht-cta-strip__inner">
+          <h2 class="ht-cta-strip__h2">The SAT Math section is learnable.</h2>
+          <p class="ht-cta-strip__body">
+            Not because you'll suddenly become great at math — but
+            because the questions repeat, the processes work, and the
+            tools are here. Start free or jump straight in.
+          </p>
+          <div class="ht-cta-strip__btns">
+            <a href="/subscribe" class="ht-btn ht-btn--white">Start your membership</a>
+            <a href="https://app.hasantutoring.com" class="ht-btn ht-btn--ghost">Try the free test first</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+</SquarespaceShellLayout>
+
+<style>
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson { color: var(--color-accent-crimson); }
+  .ht-eyebrow--gold    { color: var(--color-accent-gold); }
+
+  /* ----------------------------------------------------------------
+     SECTION 1 — HERO
+  ---------------------------------------------------------------- */
+  .ht-mp-hero {
+    background: var(--color-surface);
+    padding-top: clamp(12rem, 16vw, 15rem);
+    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    padding-left: var(--space-section-h);
+    padding-right: var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-mp-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-mp-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-5);
+  }
+
+  .ht-mp-hero__lead {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 2 — PHILOSOPHY STRIP
+  ---------------------------------------------------------------- */
+  .ht-mp-philosophy {
+    background: var(--color-bg-dark);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-h);
+  }
+
+  .ht-mp-philosophy__grid {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .ht-mp-philosophy__number {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--color-accent-gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .ht-mp-philosophy__heading {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 0.5rem;
+  }
+
+  .ht-mp-philosophy__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     FEATURE SECTIONS
+  ---------------------------------------------------------------- */
+  .ht-mp-features {
+    /* no extra styles — backgrounds come from modifier classes */
+  }
+
+  .ht-mp-feature {
+    background: var(--color-surface);
+    padding: clamp(4rem, 8vw, 6.5rem) var(--space-section-h);
+    display: flex;
+    gap: clamp(3rem, 6vw, 5rem);
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-mp-feature--warm {
+    background: var(--color-surface-warm);
+  }
+
+  .ht-mp-feature--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .ht-mp-feature--last {
+    border-bottom: none;
+  }
+
+  .ht-mp-feature__text {
+    flex: 1;
+  }
+
+  .ht-mp-feature__visual {
+    flex: 1;
+  }
+
+  .ht-mp-feature__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .ht-mp-feature__p {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .ht-mp-feature__p--em {
+    color: var(--color-text-dark);
+    font-weight: 400;
+  }
+
+  .ht-mp-feature__cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+  }
+
+  /* ----------------------------------------------------------------
+     STAT ROW
+  ---------------------------------------------------------------- */
+  .ht-mp-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .ht-mp-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ht-mp-stat__number {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    line-height: 1;
+    display: block;
+  }
+
+  .ht-mp-stat__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+  }
+
+  /* ----------------------------------------------------------------
+     VIMEO EMBED
+  ---------------------------------------------------------------- */
+  .ht-mp-video {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    width: 100%;
+    background: var(--color-bg-dark);
+  }
+
+  .ht-mp-video__frame {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 */
+    width: 100%;
+  }
+
+  .ht-mp-video__caption {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--color-muted);
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  /* ----------------------------------------------------------------
+     SCORE REPORT TABLE
+  ---------------------------------------------------------------- */
+  .ht-mp-score-table {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1.5px solid var(--color-border-strong);
+    box-shadow: var(--shadow-card);
+  }
+
+  .ht-mp-score-table__heading {
+    background: var(--color-bg-dark);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .ht-mp-score-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .ht-mp-score-table thead {
+    background: var(--color-surface-warm);
+  }
+
+  .ht-mp-score-table thead th {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .ht-mp-score-table tbody td {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 300;
+    color: var(--color-text);
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-mp-score-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .ht-mp-score-table__row--incorrect td {
+    background: var(--color-surface-warm);
+  }
+
+  /* Status badges — semantic state colors, not in brand.css */
+  .ht-mp-badge {
+    padding: 0.2em 0.6em;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .ht-mp-badge--correct {
+    color: #0F6E56;
+    background: #e1f5ee;
+  }
+
+  .ht-mp-badge--incorrect {
+    color: #A32D2D;
+    background: #fcebeb;
+  }
+
+  /* ----------------------------------------------------------------
+     QUIZ MOCK
+  ---------------------------------------------------------------- */
+  .ht-mp-quiz-mock {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .ht-mp-quiz-mock__header {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .ht-mp-quiz-mock__body {
+    padding: 1.25rem;
+  }
+
+  .ht-mp-quiz-mock__row {
+    margin-bottom: 1rem;
+  }
+
+  .ht-mp-quiz-mock__label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .ht-mp-quiz-mock__select {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    background: var(--color-surface-tint);
+    padding: 0.625rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--color-text-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ht-mp-quiz-mock__chevron {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+  }
+
+  .ht-mp-quiz-mock__btn {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    border-radius: var(--radius-button);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .ht-mp-quiz-mock__note {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--color-muted);
+    text-align: center;
+    margin: 0.75rem 0 0;
+  }
+
+  /* ----------------------------------------------------------------
+     LIBRARY MOCK
+  ---------------------------------------------------------------- */
+  .ht-mp-library-mock {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .ht-mp-library-mock__header {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .ht-mp-library-mock__body {
+    padding: 0.5rem 1.25rem 1.25rem;
+  }
+
+  .ht-mp-library-mock__item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-mp-library-mock__item--last {
+    border-bottom: none;
+  }
+
+  .ht-mp-library-mock__play {
+    width: 24px;
+    height: 24px;
+    background: var(--color-accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 9px;
+    color: var(--color-text-light);
+    padding-left: 2px;
+    box-sizing: content-box;
+  }
+
+  .ht-mp-library-mock__title-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .ht-mp-library-mock__title {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+  }
+
+  .ht-mp-library-mock__tag {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--color-accent-gold-light);
+    color: var(--color-text-dark);
+    border-radius: 999px;
+    padding: 0.15em 0.6em;
+    margin-left: 0.25rem;
+  }
+
+  .ht-mp-library-mock__duration {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--color-muted);
+    flex-shrink: 0;
+  }
+
+  .ht-mp-library-mock__note {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--color-muted);
+    margin: 0.875rem 0 0;
+    text-align: center;
+  }
+
+  /* ----------------------------------------------------------------
+     TIERS SECTION
+  ---------------------------------------------------------------- */
+  .ht-mp-tiers {
+    background: var(--color-surface);
+    padding: clamp(4rem, 8vw, 6.5rem) var(--space-section-h);
+  }
+
+  .ht-mp-tiers__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+
+  .ht-mp-tiers__eyebrow {
+    text-align: center;
+  }
+
+  .ht-mp-tiers__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  .ht-mp-tiers__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .ht-mp-tier {
+    border-radius: var(--radius-card);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+  }
+
+  .ht-mp-tier--free {
+    background: var(--color-surface-warm);
+    border: 1.5px solid var(--color-border);
+  }
+
+  .ht-mp-tier--paid {
+    background: var(--color-surface);
+    border: 2px solid var(--color-accent-gold);
+    box-shadow: var(--shadow-card);
+  }
+
+  .ht-mp-tier__label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    margin: 0 0 0.5rem;
+  }
+
+  .ht-mp-tier__label--gold {
+    color: var(--color-accent-gold);
+  }
+
+  .ht-mp-tier__price {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    margin: 0 0 0.25rem;
+    line-height: 1;
+  }
+
+  .ht-mp-tier__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .ht-mp-tier__period {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--color-muted);
+  }
+
+  .ht-mp-tier__subtext {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    margin: 0 0 1.75rem;
+  }
+
+  .ht-mp-tier__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ht-mp-tier__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .ht-mp-tier__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .ht-mp-tier__check {
+    color: var(--color-accent-gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .ht-mp-tier__cta {
+    display: block;
+    text-align: center;
+    margin-top: 1.75rem;
+  }
+
+  /* ----------------------------------------------------------------
+     DARK CTA STRIP
+  ---------------------------------------------------------------- */
+  .ht-cta-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-cta-strip__inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .ht-cta-strip__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-cta-strip__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .ht-cta-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ----------------------------------------------------------------
+     BUTTONS
+  ---------------------------------------------------------------- */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+    transition: background var(--transition-fast), color var(--transition-fast),
+                border-color var(--transition-fast), opacity var(--transition-fast);
+    border: none;
+  }
+
+  .ht-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+  }
+
+  .ht-btn--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .ht-btn--secondary {
+    background: transparent;
+    color: var(--color-text-dark);
+    border: 1.5px solid var(--color-border-strong);
+  }
+
+  .ht-btn--secondary:hover {
+    border-color: var(--color-text-dark);
+  }
+
+  .ht-btn--white {
+    background: var(--color-surface);
+    color: var(--color-bg-dark);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--white:hover {
+    opacity: 0.9;
+  }
+
+  .ht-btn--ghost {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .ht-btn--ghost:hover {
+    border-color: var(--color-text-light);
+  }
+
+  /* ----------------------------------------------------------------
+     Responsive
+  ---------------------------------------------------------------- */
+  @media (max-width: 768px) {
+    .ht-mp-feature,
+    .ht-mp-feature--reverse {
+      flex-direction: column;
+    }
+
+    .ht-mp-philosophy__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-mp-tiers__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-mp-stats {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+  }
+</style>

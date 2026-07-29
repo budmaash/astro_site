@@ -30,77 +30,68 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     <main id="page" class="ht-main" tabindex="-1">
 
       <!-- ======================================================
-           SECTION 1 — HERO
+           SECTION 1 — HERO + CARDS BAND
            ====================================================== -->
-      <section class="ht-hero">
-        <div class="ht-hero__inner">
-          <p class="ht-eyebrow">SAT · ACT · LSAT</p>
-          <h1 class="ht-hero__h1">
-            Anyone Can Improve Their<br>
-            <em class="ht-hero__em">ACT and SAT Scores.</em>
-          </h1>
-          <p class="ht-hero__sub">
-            Practical, step-by-step methods to improve your scores — whether
-            you learn one-on-one with an expert tutor or at your own pace with
-            our SAT Math membership.
-          </p>
-        </div>
-      </section>
+      <section class="ht-top">
+        <div class="ht-top__inner">
 
-      <!-- ======================================================
-           SECTION 2 — CRIMSON RULE + SPLIT CARDS
-           ====================================================== -->
-      <section class="ht-cards-section">
-        <div class="ht-cards-section__inner">
-          <div class="ht-rule-crimson" aria-hidden="true"></div>
+          <div class="ht-top__hero">
+            <p class="ht-top__eyebrow">SAT · ACT · LSAT</p>
+            <h1 class="ht-top__h1">
+              Anyone Can Improve Their <em>ACT and SAT Scores.</em>
+            </h1>
+            <p class="ht-top__sub">
+              Practical, step-by-step methods to raise your scores — taught by a
+              tutor who has worked with hundreds of students.
+            </p>
+            <div class="ht-top__rule" aria-hidden="true"></div>
+            <div class="ht-top__proof">
+              <div class="ht-top__proof-item">Kansas City &amp; Overland Park</div>
+              <div class="ht-top__proof-item">Free practice test, no pressure</div>
+              <div class="ht-top__proof-item">Hundreds of students taught</div>
+            </div>
+          </div>
 
-          <div class="ht-cards">
+          <div class="ht-top__cards">
 
-            <!-- LEFT CARD: 1-on-1 tutoring -->
-            <div class="ht-card">
-              <span class="ht-tag">1-on-1 tutoring</span>
-              <h2 class="ht-card__h2">Personalized SAT, ACT &amp; LSAT prep in Kansas City</h2>
-              <p class="ht-card__body">
-                After working with hundreds of students, I've built a reputation
-                for getting results. Every session is tailored to your exact
-                weaknesses — not a generic class syllabus. Free practice test
-                included, no pressure ever.
+            <article class="ht-top__card">
+              <span class="ht-top__tag">1-on-1 tutoring</span>
+              <h2 class="ht-top__card-h2">Personalized SAT, ACT &amp; LSAT prep</h2>
+              <p class="ht-top__card-body">
+                Every session tailored to your weaknesses — not a generic class
+                syllabus. Free practice test to get started.
               </p>
-              <ul class="ht-list">
+              <ul class="ht-top__list">
                 <li>SAT, ACT &amp; LSAT preparation</li>
-                <li>Kansas City &amp; Overland Park area</li>
-                <li>Free practice test to get started</li>
-                <li>Flexible one-on-one scheduling</li>
+                <li>Kansas City &amp; Overland Park</li>
+                <li>Flexible scheduling</li>
               </ul>
-              <div class="ht-card__btns">
+              <div class="ht-top__btns">
                 <a href="/tutoring" class="ht-btn ht-btn--primary">Get started</a>
                 <a href="/tutoring" class="ht-btn ht-btn--secondary">Learn more</a>
               </div>
-            </div>
+            </article>
 
-            <!-- RIGHT CARD: Online membership -->
-            <div class="ht-card">
-              <span class="ht-tag">Online membership</span>
-              <h2 class="ht-card__h2">Self-paced SAT Math prep, built for mastery</h2>
-              <p class="ht-card__body">
-                The SAT Math section is just a set of repeating question types.
-                Learn to recognize each type, learn the steps, and the section
-                becomes predictable. Video lessons, a full question bank, and a
-                score report app — all in one membership.
+            <article class="ht-top__card">
+              <span class="ht-top__tag">Online membership</span>
+              <h2 class="ht-top__card-h2">Self-paced SAT Math, built for mastery</h2>
+              <p class="ht-top__card-body">
+                SAT Math is a set of repeating types. Learn each one with video
+                lessons, a question bank, and a score-report app.
               </p>
-              <ul class="ht-list">
+              <ul class="ht-top__list">
                 <li>Question-type video lessons</li>
-                <li>324 question-explanation videos</li>
-                <li>Interactive score report app</li>
-                <li>New content added regularly</li>
+                <li>324 explanation videos</li>
+                <li>Interactive score-report app</li>
               </ul>
-              <div class="ht-card__btns">
-                <a href="/pricing" class="ht-btn ht-btn--crimson">Join the membership</a>
-                <a href="/sat-math" class="ht-btn ht-btn--secondary">See what's included</a>
+              <div class="ht-top__btns">
+                <a href="/pricing" class="ht-btn ht-btn--crimson">Join membership</a>
+                <a href="/member-preview" class="ht-btn ht-btn--secondary">What's included</a>
               </div>
-            </div>
+            </article>
 
           </div>
+
         </div>
       </section>
 
@@ -110,11 +101,10 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
       <section class="ht-philosophy">
         <div class="ht-philosophy__inner">
           <blockquote class="ht-quote">
-            "Recognize that these exams are extremely repetitive and therefore
+            Recognize that these exams are extremely repetitive and therefore
             learnable. There are only so many different types of questions —
-            learn to recognize them and the simple steps to answer each one."
+            learn to recognize them and the simple steps to answer each one.
           </blockquote>
-          <p class="ht-citation">— Majid Hasan, HasanTutoring</p>
         </div>
       </section>
 
@@ -178,6 +168,18 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
   <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
   <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+
+  <script is:inline>
+    function applyHeaderOffset() {
+      const header = document.getElementById('header');
+      const top = document.querySelector('.ht-top');
+      if (header && top) {
+        top.style.paddingTop = 'calc(' + header.offsetHeight + 'px + clamp(2.5rem, 5vw, 4rem))';
+      }
+    }
+    document.addEventListener('DOMContentLoaded', applyHeaderOffset);
+    window.addEventListener('resize', applyHeaderOffset);
+  </script>
 </SquarespaceShellLayout>
 
 <style>
@@ -209,82 +211,112 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   }
 
   /* ----------------------------------------------------------------
-     SECTION 1 — HERO
+     SECTION 1 — TOP BAND (hero copy + product cards)
   ---------------------------------------------------------------- */
-  .ht-hero {
+  .ht-top {
     background: var(--color-surface);
-    padding: clamp(12rem, 16vw, 15rem) var(--space-section-h) clamp(4rem, 8vw, 7rem);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-h);
   }
 
-  .ht-hero__inner {
-    max-width: var(--content-max);
+  .ht-top__inner {
+    max-width: 1280px;
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: minmax(320px, 380px) 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: start;
   }
 
-  .ht-hero__h1 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-    line-height: var(--leading-tight);
-    color: var(--color-text-dark);
-    letter-spacing: var(--tracking-tight);
-    margin: 0 0 var(--space-6);
-  }
-
-  .ht-hero__em {
-    color: var(--color-muted);
-    font-style: italic;
-  }
-
-  .ht-hero__sub {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: var(--text-md);
-    color: var(--color-muted);
-    max-width: 580px;
-    margin: 0 auto;
-    line-height: var(--leading-relaxed);
-  }
-
-  /* ----------------------------------------------------------------
-     SECTION 2 — CRIMSON RULE + SPLIT CARDS
-  ---------------------------------------------------------------- */
-  .ht-cards-section {
-    background: var(--color-surface);
-    padding: 0 var(--space-section-h) clamp(4rem, 8vw, 7rem);
-  }
-
-  .ht-cards-section__inner {
-    max-width: var(--content-wide);
-    margin: 0 auto;
-  }
-
-  .ht-rule-crimson {
-    width: 3rem;
-    height: 2px;
-    background: var(--color-accent-crimson);
-    margin: 0 auto var(--space-12);
-  }
-
-  .ht-cards {
-    display: flex;
-    gap: var(--space-8);
-    align-items: stretch;
-  }
-
-  .ht-card {
-    flex: 1;
-    background: var(--color-surface);
-    border: 1.5px solid var(--color-border-strong);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    padding: var(--space-card-pad);
+  .ht-top__hero {
     display: flex;
     flex-direction: column;
   }
 
-  .ht-tag {
+  .ht-top__eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-5);
+  }
+
+  .ht-top__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-5);
+  }
+  .ht-top__h1 em {
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .ht-top__sub {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-base);
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-6);
+    max-width: 38ch;
+  }
+
+  .ht-top__rule {
+    width: 3rem;
+    height: 2px;
+    background: var(--color-accent-crimson);
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-top__proof {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+  .ht-top__proof-item {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .ht-top__proof-item::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent-gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .ht-top__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .ht-top__card {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.25rem, 2.2vw, 1.875rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ht-top__tag {
     display: inline-block;
     font-family: var(--font-sans);
     font-size: var(--text-xs);
@@ -294,60 +326,58 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-tag);
     padding: var(--space-1) var(--space-3);
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
     align-self: flex-start;
-    letter-spacing: var(--tracking-normal);
   }
 
-  .ht-card__h2 {
+  .ht-top__card-h2 {
     font-family: var(--font-serif);
     font-weight: 400;
-    font-size: var(--text-xl);
+    font-size: 1.4rem;
     color: var(--color-text-dark);
     line-height: var(--leading-snug);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-top__card-body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
     margin: 0 0 var(--space-4);
   }
 
-  .ht-card__body {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: var(--text-base);
-    color: var(--color-muted);
-    line-height: var(--leading-relaxed);
-    margin: 0 0 var(--space-6);
-  }
-
-  .ht-list {
+  .ht-top__list {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--space-8);
+    margin: 0 0 var(--space-6);
   }
-
-  .ht-list li {
+  .ht-top__list li {
     font-family: var(--font-sans);
     font-weight: 300;
-    font-size: var(--text-sm);
+    font-size: 0.85rem;
     color: var(--color-muted);
-    line-height: var(--leading-relaxed);
-    padding: var(--space-2) 0;
+    line-height: var(--leading-snug);
+    padding: 3px 0;
     display: flex;
-    align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
-
-  .ht-list li::before {
+  .ht-top__list li::before {
     content: "—";
     color: var(--color-accent-gold);
-    font-weight: 400;
     flex-shrink: 0;
-    margin-top: 0.05em;
   }
 
-  .ht-card__btns {
+  .ht-top__btns {
     display: flex;
-    gap: var(--space-3);
+    gap: var(--space-2);
     flex-wrap: wrap;
     margin-top: auto;
+  }
+  .ht-top__btns .ht-btn {
+    padding: 11px 18px;
+    font-size: 0.78rem;
   }
 
   /* ----------------------------------------------------------------
@@ -536,11 +566,23 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   /* ----------------------------------------------------------------
      Responsive
   ---------------------------------------------------------------- */
-  @media (max-width: 768px) {
-    .ht-cards {
-      flex-direction: column;
+  @media (max-width: 960px) {
+    .ht-top__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
     }
+    .ht-top__sub {
+      max-width: 60ch;
+    }
+  }
 
+  @media (max-width: 640px) {
+    .ht-top__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
     .ht-pillars__grid {
       flex-direction: column;
       gap: var(--space-10);

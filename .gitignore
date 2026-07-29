@@ -19,3 +19,11 @@ Thumbs.db
 # Editor files (optional)
 .vscode/
 .idea/
+
+# Documents
+Docs/
+new_site_structure.svg
+.agents
+.agents/
+.claude
+skills-lock.json
