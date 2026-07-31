@@ -13,20 +13,24 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
     <main id="page" class="ht-main" tabindex="-1">
 
-      <!-- ======================================================
-           SECTION 1 — HERO
-           ====================================================== -->
-      <section class="ht-avs-hero">
-        <div class="ht-avs-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">ACT vs. SAT</p>
-          <h1 class="ht-avs-hero__h1">
-            Neither test is harder —<br>
-            <em class="ht-avs-hero__em">but one is right for you.</em>
-          </h1>
-          <p class="ht-avs-hero__lead">
-            Both tests are accepted by virtually every U.S. college, and
-            colleges have no strong preference between them. The only question
-            is which one gives you the better score.
+      <section class="ht-avs-contact-strip">
+        <div class="ht-avs-contact-strip__inner">
+          <h1 class="ht-avs-contact-strip__h1">Neither test is harder — but one might be right for you.</h1>
+          <div class="ht-avs-contact-strip__btns">
+            <a href="mailto:majid@hasantutoring.com" class="ht-btn ht-btn--white">Get in touch</a>
+            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="ht-avs-guidance" aria-label="Practice test guidance">
+        <div class="ht-avs-guidance__inner">
+          <h2 class="ht-avs-guidance__heading">My Advice</h2>
+          <p class="ht-avs-guidance__body">
+            If you're undecided, just take a practice test of both. You can take
+            one on your own, timing yourself, and see your results. No need to be
+            in a proctored environment. If you do better on one than the other,
+            take that one. Otherwise, go with whatever one you like better.
           </p>
         </div>
       </section>
@@ -37,162 +41,39 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
       <section class="ht-avs-diffs">
         <div class="ht-avs-diffs__inner">
           <div class="ht-section-hdr">
-            <p class="ht-eyebrow ht-eyebrow--gold">Key differences</p>
             <h2 class="ht-section-hdr__h2">What makes the two tests different</h2>
             <p class="ht-section-hdr__lead">
-              I tutor both exams and have watched hundreds of students perform
-              very differently on each. Here's what actually sets them apart.
+              Both tests are accepted by virtually every U.S. college, and
+              colleges have no strong preference between them. Objectively,
+              they’re equally difficult, but you might prefer one over the other.
             </p>
           </div>
 
           <div class="ht-avs-diff-grid">
 
             <div class="ht-avs-diff-card">
-              <span class="ht-avs-diff-card__num" aria-hidden="true">1</span>
               <div class="ht-avs-diff-card__content">
-                <h3 class="ht-avs-diff-card__h3">Vocabulary — the SAT tests it directly, the ACT doesn't</h3>
-                <p class="ht-avs-diff-card__body">As of March 2024, the SAT tests vocabulary explicitly throughout its Reading and Writing modules. The ACT has no direct vocabulary questions — though stronger vocabulary still helps on its reading passages. If your student has a weak vocabulary, the ACT presents far less of a challenge. If they're a slower reader, the SAT's shorter passages and more time per question may suit them better.</p>
+                <h3 class="ht-avs-diff-card__h3">The SAT tests far more vocabulary than the ACT does.</h3>
+                <p class="ht-avs-diff-card__body">As of the March 2024 exam, the SAT has questions that specifically test vocabulary. Reading and Writing is tested over two modules; both consist of vocabulary, logical reasoning, and Standards of English questions in that order. However, the SAT now does not test multiple questions over long passages; each question is confined to a single short text prompt. The ACT, in contrast, does not explicitly test vocabulary but does have multiple questions each on four long reading passages. Having a strong vocabulary obviously will help students on the Reading and English portions of both exams. However, if your child has a very weak vocabulary, the ACT will pose far less of a challenge than the SAT. On the other hand, if your student is a bit of a slower reader, the SAT format and more time per question might be a better option.</p>
               </div>
             </div>
 
             <div class="ht-avs-diff-card">
-              <span class="ht-avs-diff-card__num" aria-hidden="true">2</span>
               <div class="ht-avs-diff-card__content">
-                <h3 class="ht-avs-diff-card__h3">Math — the ACT covers more topics, the SAT is trickier</h3>
-                <p class="ht-avs-diff-card__body">Both exams require algebra, arithmetic, and geometry. The ACT adds trigonometry, matrices, imaginary numbers, logarithms, and more. However, ACT math questions are more straightforward, while SAT math questions are deliberately designed to mislead. More knowledge but less trickery versus less knowledge but more traps — neither is objectively harder, but students respond very differently to each style.</p>
+                <h3 class="ht-avs-diff-card__h3">The ACT has slightly more complex math, covering a much broader array of topics.</h3>
+                <p class="ht-avs-diff-card__body">Both exams require strong knowledge of arithmetic, algebra, and geometry. The ACT requires more than that though, covering topics such as trigonometry, matrices, imaginary numbers, 3D spatial reasoning, logarithms, quadratic equations, and more. However, the ACT math questions are definitely more straightforward while the SAT questions are far more "tricky." Thus, I don't believe that either section is more difficult than the other.</p>
+                <p class="ht-avs-diff-card__body">On the other hand, Math is only one-third of your overall ACT score, while it’s an entire half of your SAT score.</p>
               </div>
             </div>
 
             <div class="ht-avs-diff-card">
-              <span class="ht-avs-diff-card__num" aria-hidden="true">3</span>
               <div class="ht-avs-diff-card__content">
-                <h3 class="ht-avs-diff-card__h3">Science — the ACT has it, the SAT doesn't</h3>
-                <p class="ht-avs-diff-card__body">The ACT's Science section sounds intimidating, but it barely tests science knowledge. It's almost entirely data interpretation — reading tables, charts, and graphs and applying common sense. There's no equivalent on the SAT. Students who are comfortable with data analysis tend to find it straightforward; students who freeze up at charts sometimes struggle.</p>
-              </div>
-            </div>
-
-            <div class="ht-avs-diff-card">
-              <span class="ht-avs-diff-card__num" aria-hidden="true">4</span>
-              <div class="ht-avs-diff-card__content">
-                <h3 class="ht-avs-diff-card__h3">Pacing — the ACT is faster, the SAT is more forgiving</h3>
-                <p class="ht-avs-diff-card__body">The ACT is significantly more time-pressured. It has more questions and longer sections, requiring sustained focus for extended periods. The SAT breaks its content into shorter modules with more time per question. Students who read quickly and stay calm under pressure often prefer the ACT. Students who prefer more time to think tend to do better on the SAT.</p>
+                <h3 class="ht-avs-diff-card__h3">If you don’t like reading long passages, that’s one factor in favor of the SAT.</h3>
+                <p class="ht-avs-diff-card__body">The SAT has done away with long reading passages. Now, instead, its reading comprehension is tested mainly by questions over short paragraphs and questions over a list of bullet points. Short-paragraph questions ask you to find the main point, a logical conclusion, what might strengthen or weaken an argument, the function of a phrase, or to analyze or use data in a graph or table. Bullet-point questions (synthesizing information) ask you to use the points and present some specific information therein. The ACT, on the other hand, has an entire third of the test ask about four long passages, with questions about the general themes of each passage and specific information within it.</p>
               </div>
             </div>
 
           </div>
-        </div>
-      </section>
-
-      <!-- ======================================================
-           SECTION 3 — COLLEGE PREFERENCE
-           ====================================================== -->
-      <section class="ht-avs-colleges">
-        <div class="ht-avs-colleges__inner">
-          <div class="ht-gold-rule" aria-hidden="true"></div>
-          <p class="ht-eyebrow ht-eyebrow--gold">Do colleges care?</p>
-          <h2 class="ht-avs-colleges__h2">Simply put — no.</h2>
-          <p class="ht-avs-colleges__body">
-            The SAT and ACT can be matched up score-for-score. A 36 on
-            the ACT is equivalent to a 1600 on the SAT. A 21 ACT is equivalent
-            to roughly a 1060 SAT. Colleges simply prefer higher scores —
-            they have no meaningful preference for one test over the other.
-          </p>
-          <p class="ht-avs-colleges__body">
-            The only thing that matters is which test produces your higher
-            score. Take both as practice tests, compare the results, and focus
-            your preparation on whichever one you do better on. That's the
-            entire decision.
-          </p>
-        </div>
-      </section>
-
-      <!-- ======================================================
-           SECTION 4 — DECISION QUIZ
-           ====================================================== -->
-      <section class="ht-avs-quiz">
-        <div class="ht-avs-quiz__inner">
-          <div class="ht-section-hdr">
-            <p class="ht-eyebrow ht-eyebrow--gold">Quick decision helper</p>
-            <h2 class="ht-section-hdr__h2 ht-section-hdr__h2--quiz">Answer 3 questions to get a recommendation</h2>
-            <p class="ht-section-hdr__lead ht-section-hdr__lead--quiz">
-              Majid's recommendation: take a full practice test of each
-              before deciding. But these questions will give you a strong
-              starting signal.
-            </p>
-          </div>
-
-          <div class="ht-avs-quiz__card">
-
-            <!-- Question 1 -->
-            <div class="ht-avs-q">
-              <p class="ht-avs-q__label">1. How is your reading speed?</p>
-              <div class="ht-avs-q__opts">
-                <button class="ht-avs-q__btn" data-q="read" data-val="act">Fast — I read quickly</button>
-                <button class="ht-avs-q__btn" data-q="read" data-val="sat">Steady — I like time to think</button>
-                <button class="ht-avs-q__btn" data-q="read" data-val="both">Not sure</button>
-              </div>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="ht-avs-q">
-              <p class="ht-avs-q__label">2. How is your math background?</p>
-              <div class="ht-avs-q__opts">
-                <button class="ht-avs-q__btn" data-q="math" data-val="act">Strong in geometry &amp; trig</button>
-                <button class="ht-avs-q__btn" data-q="math" data-val="sat">Strong in algebra</button>
-                <button class="ht-avs-q__btn" data-q="math" data-val="both">About equal</button>
-              </div>
-            </div>
-
-            <!-- Question 3 -->
-            <div class="ht-avs-q">
-              <p class="ht-avs-q__label">3. How do you feel about a Science section?</p>
-              <div class="ht-avs-q__opts">
-                <button class="ht-avs-q__btn" data-q="sci" data-val="act">Fine — I like data &amp; charts</button>
-                <button class="ht-avs-q__btn" data-q="sci" data-val="sat">I'd rather skip it</button>
-                <button class="ht-avs-q__btn" data-q="sci" data-val="both">Neutral</button>
-              </div>
-            </div>
-
-            <!-- Result area -->
-            <div class="ht-avs-result" id="avs-result" style="display:none">
-              <div class="ht-avs-result__act" id="avs-result-act" style="display:none">
-                <strong>Lean toward the ACT.</strong> Your profile matches students who tend to score better
-                on the ACT — fast readers comfortable with a wider math range
-                who don't mind the Science section. That said, take a practice
-                test of each to confirm.
-              </div>
-              <div class="ht-avs-result__sat" id="avs-result-sat" style="display:none">
-                <strong>Lean toward the SAT.</strong> Your answers suggest the SAT suits you better —
-                more time per question, algebra-focused math, no Science
-                section. Take a practice test of each to confirm.
-              </div>
-              <div class="ht-avs-result__both" id="avs-result-both" style="display:none">
-                <strong>Take a practice test of both.</strong> Your answers are mixed — which is totally normal.
-                The best way to decide is to sit down with an actual practice
-                ACT and SAT. Majid can provide both for free.
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================
-           SECTION 5 — CTA STRIP
-           ====================================================== -->
-      <section class="ht-cta-strip">
-        <h2 class="ht-cta-strip__h2">
-          Free practice tests for both.<br>
-          No pressure, ever.
-        </h2>
-        <p class="ht-cta-strip__body">
-          Contact me and I'll provide a free timed ACT and SAT along with
-          all the information you need to interpret your results. No
-          obligation — just honest advice.
-        </p>
-        <div class="ht-cta-strip__btns">
-          <a href="/contact" class="ht-btn ht-btn--white">Get free practice tests</a>
-          <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
         </div>
       </section>
 
@@ -204,53 +85,6 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
   <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
 </SquarespaceShellLayout>
-
-<script>
-  (function () {
-    var picks = {};
-
-    document.querySelectorAll('.ht-avs-q__btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var q = btn.getAttribute('data-q');
-        var val = btn.getAttribute('data-val');
-
-        // Deselect siblings in same question group
-        document.querySelectorAll('.ht-avs-q__btn[data-q="' + q + '"]').forEach(function (b) {
-          b.classList.remove('ht-avs-q__btn--act', 'ht-avs-q__btn--sat', 'ht-avs-q__btn--both');
-        });
-
-        // Select this button
-        btn.classList.add('ht-avs-q__btn--' + val);
-        picks[q] = val;
-
-        // Show result when all 3 answered
-        if (picks.read && picks.math && picks.sci) {
-          var actCount = Object.values(picks).filter(function (v) { return v === 'act'; }).length;
-          var satCount = Object.values(picks).filter(function (v) { return v === 'sat'; }).length;
-
-          var result = document.getElementById('avs-result');
-          var actEl  = document.getElementById('avs-result-act');
-          var satEl  = document.getElementById('avs-result-sat');
-          var bothEl = document.getElementById('avs-result-both');
-
-          actEl.style.display  = 'none';
-          satEl.style.display  = 'none';
-          bothEl.style.display = 'none';
-
-          if (actCount >= 2) {
-            actEl.style.display = 'block';
-          } else if (satCount >= 2) {
-            satEl.style.display = 'block';
-          } else {
-            bothEl.style.display = 'block';
-          }
-
-          result.style.display = 'block';
-        }
-      });
-    });
-  })();
-</script>
 
 <style>
   /* ----------------------------------------------------------------
@@ -273,7 +107,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     text-transform: uppercase;
     letter-spacing: var(--tracking-widest);
     color: var(--color-text-dark);
-    margin: 0 0 var(--space-3);
+    margin: 0;
   }
 
   .ht-eyebrow--crimson {
@@ -326,21 +160,96 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     line-height: 1.8;
   }
 
+  .ht-avs-contact-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(1.25rem, 2.5vw, 2rem) var(--space-section-h);
+  }
+
+  .ht-avs-contact-strip__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .ht-avs-contact-strip__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-avs-contact-strip__body {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .ht-avs-contact-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    flex-wrap: nowrap;
+  }
+
+  .ht-avs-guidance {
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-h);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-avs-guidance__inner {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+    padding-left: clamp(1rem, 2vw, 1.75rem);
+    border-left: 3px solid var(--color-accent-crimson);
+  }
+
+  .ht-avs-guidance__body {
+    margin: 0;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .ht-avs-guidance__heading {
+    margin: 0 0 0.6rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
   /* ----------------------------------------------------------------
      SECTION 2 — KEY DIFFERENCES
   ---------------------------------------------------------------- */
   .ht-avs-diffs {
     background: var(--color-surface-warm);
-    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h);
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-h)
+             clamp(3.5rem, 7vw, 6rem);
   }
 
   .ht-avs-diffs__inner {
-    max-width: var(--content-wide);
+    max-width: var(--content-full);
     margin: 0 auto;
   }
 
   .ht-section-hdr {
     margin-bottom: clamp(2rem, 4vw, 3rem);
+    text-align: center;
   }
 
   .ht-section-hdr__h2 {
@@ -362,8 +271,8 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     font-weight: 300;
     font-size: var(--text-base);
     color: var(--color-muted);
-    max-width: 620px;
-    margin: 0;
+    max-width: 720px;
+    margin: 0 auto;
     line-height: var(--leading-relaxed);
   }
 
@@ -372,22 +281,29 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     margin-bottom: clamp(2rem, 4vw, 3rem);
   }
 
-  /* Diff cards */
+  /* Three-column comparison */
   .ht-avs-diff-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
   }
 
   .ht-avs-diff-card {
-    background: var(--color-surface);
-    border: 1.5px solid var(--color-border-strong);
-    border-radius: var(--radius-card);
-    padding: 2rem 2.25rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0 1.75rem;
-    align-items: start;
+    min-width: 0;
+    padding: 0 clamp(1.5rem, 3vw, 3rem);
+    background: transparent;
+  }
+
+  .ht-avs-diff-card:first-child {
+    padding-left: 0;
+  }
+
+  .ht-avs-diff-card + .ht-avs-diff-card {
+    border-left: 1px solid var(--color-border-strong);
+  }
+
+  .ht-avs-diff-card:last-child {
+    padding-right: 0;
   }
 
   .ht-avs-diff-card__num {
@@ -396,7 +312,8 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     font-weight: 400;
     color: var(--color-accent-gold);
     line-height: 1;
-    padding-top: 0.25rem;
+    display: block;
+    margin-bottom: var(--space-5);
   }
 
   .ht-avs-diff-card__h3 {
@@ -415,6 +332,10 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     color: var(--color-muted);
     line-height: 1.8;
     margin: 0;
+  }
+
+  .ht-avs-diff-card__body + .ht-avs-diff-card__body {
+    margin-top: 1rem;
   }
 
   /* ----------------------------------------------------------------
@@ -642,12 +563,41 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   /* ----------------------------------------------------------------
      Responsive
   ---------------------------------------------------------------- */
-  @media (max-width: 640px) {
-    .ht-avs-diff-card {
+  @media (max-width: 900px) {
+    .ht-avs-diff-grid {
       grid-template-columns: 1fr;
-      gap: 0.75rem 0;
     }
 
+    .ht-avs-diff-card,
+    .ht-avs-diff-card:first-child,
+    .ht-avs-diff-card:last-child {
+      padding: var(--space-8) 0;
+    }
+
+    .ht-avs-diff-card:first-child {
+      padding-top: 0;
+    }
+
+    .ht-avs-diff-card + .ht-avs-diff-card {
+      border-top: 1px solid var(--color-border-strong);
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .ht-avs-contact-strip__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-avs-contact-strip__btns {
+      grid-column: 1;
+      grid-row: auto;
+      margin-top: var(--space-5);
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 640px) {
     .ht-avs-diff-card__num {
       font-size: 1.75rem;
       padding-top: 0;

@@ -1,0 +1,625 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import HomepageIntroduction from '../components/HomepageIntroduction.astro';
+import type { HomepageIntroVariant } from '../components/HomepageIntroduction.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+type Props = {
+  config?: ShellConfig;
+  introVariant?: HomepageIntroVariant;
+};
+
+const { config = shellConfig, introVariant }: Props = Astro.props;
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <div id="floatingCart" class="floating-cart hidden">
+      <a href="https://www.hasantutoring.com/cart" class="icon icon--stroke icon--fill icon--cart sqs-custom-cart">
+        <span class="Cart-inner">
+          <svg class="icon icon--cart" width="61" height="49" viewBox="0 0 61 49">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 2C0.5 1.17157 1.17157 0.5 2 0.5H13.6362C14.3878 0.5 15.0234 1.05632 15.123 1.80135L16.431 11.5916H59C59.5122 11.5916 59.989 11.8529 60.2645 12.2847C60.54 12.7165 60.5762 13.2591 60.3604 13.7236L50.182 35.632C49.9361 36.1614 49.4054 36.5 48.8217 36.5H18.0453C17.2937 36.5 16.6581 35.9437 16.5585 35.1987L12.3233 3.5H2C1.17157 3.5 0.5 2.82843 0.5 2ZM16.8319 14.5916L19.3582 33.5H47.8646L56.6491 14.5916H16.8319Z"></path>
+            <path d="M18.589 35H49.7083L60 13H16L18.589 35Z"></path>
+            <path d="M21 49C23.2091 49 25 47.2091 25 45C25 42.7909 23.2091 41 21 41C18.7909 41 17 42.7909 17 45C17 47.2091 18.7909 49 21 49Z"></path>
+            <path d="M45 49C47.2091 49 49 47.2091 49 45C49 42.7909 47.2091 41 45 41C42.7909 41 41 42.7909 41 45C41 47.2091 42.7909 49 45 49Z"></path>
+          </svg>
+          <div class="legacy-cart icon-cart-quantity">
+            <span class="sqs-cart-quantity">0</span>
+          </div>
+        </span>
+      </a>
+    </div>
+
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      {introVariant && <HomepageIntroduction variant={introVariant} />}
+
+      <section class="ht-cta-strip">
+        <div class="ht-cta-strip__inner">
+          <h2 class="ht-cta-strip__h2">Let's talk — no sales pitch.</h2>
+          <p class="ht-cta-strip__body">
+            Call or email me anytime. I'm happy to answer questions, talk
+            through your situation, and give you a free practice test to
+            get a baseline score.
+          </p>
+          <div class="ht-cta-strip__btns">
+            <a href="mailto:majid@hasantutoring.com" class="ht-btn ht-btn--white">Get in touch</a>
+            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 4: THREE PILLARS
+           ====================================================== -->
+      <section class="ht-pillars">
+        <div class="ht-pillars__inner">
+          <div class="ht-pillars__grid">
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Get Information About Both Tests</h3>
+              <p class="ht-pillar__body">
+                The ACT and SAT are two standardized college-entrance exams
+                accepted by the majority of colleges and universities in the
+                United States. Each one varies in subject matter, timing, and
+                composition. They both offer their own unique challenges and
+                should be prepared for using their own respective strategies.
+                Click below for more information about the subject matter,
+                timing, and composition of each as well as when you should start
+                preparing.
+              </p>
+              <a href="/tests" class="ht-pillar__link">Learn about both exams</a>
+            </div>
+
+            <div class="ht-pillar__divider" aria-hidden="true"></div>
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Do I take the ACT or SAT?</h3>
+              <p class="ht-pillar__body">
+                A question asked by so many students! The answer is that you
+                should take whichever one you want to take! However, I firmly
+                believe some students will do far better on one than the other.
+                It's important to figure out which one! Some people like to take
+                both because they're just covering all their bases or because
+                the particular university they like prefers both. I recommend
+                that students take both as practice tests and then decide which
+                one they'd like to focus on.
+              </p>
+              <a href="/act-vs-sat" class="ht-pillar__link">Help Deciding on ACT or SAT</a>
+            </div>
+
+            <div class="ht-pillar__divider" aria-hidden="true"></div>
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Why 1-on-1?</h3>
+              <p class="ht-pillar__body">
+                I firmly believe one-on-one tutoring is the optimal way to
+                prepare for both the SAT and ACT. I can tell you from experience
+                that classroom courses are ineffective. Test-prep companies love
+                them because they are easy to offer and are very profitable.
+                Instead of taking a class, you can learn at your own pace
+                focusing on your own needs for about the same price. Click below
+                to learn about my prices, my approach to preparation, and why
+                one-on-one prep is better.
+              </p>
+              <a href="/tutoring" class="ht-pillar__link">Learn more</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+
+</SquarespaceShellLayout>
+
+<style>
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 1: TOP BAND (hero copy + product cards)
+  ---------------------------------------------------------------- */
+  .ht-top {
+    background: var(--color-surface);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--space-section-h);
+  }
+
+  .ht-top__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .ht-top__hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ht-top__eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-5);
+  }
+
+  .ht-top__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 3.2vw, 2.6rem);
+    line-height: 1.15;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-5);
+  }
+  .ht-top__h1 em {
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .ht-top__sub {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-base);
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-6);
+    max-width: 38ch;
+  }
+
+  .ht-top__rule {
+    width: 3rem;
+    height: 2px;
+    background: var(--color-accent-crimson);
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-top__proof {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+  .ht-top__proof-item {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-muted);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .ht-top__proof-item::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent-gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .ht-top__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .ht-top__card {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.25rem, 2.2vw, 1.875rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ht-top__tag {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    color: var(--color-muted);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tag);
+    padding: var(--space-1) var(--space-3);
+    margin-bottom: var(--space-4);
+    align-self: flex-start;
+  }
+
+  .ht-top__card-h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--color-text-dark);
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-top__card-body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-top__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-6);
+  }
+  .ht-top__list li {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    line-height: var(--leading-snug);
+    padding: 3px 0;
+    display: flex;
+    gap: var(--space-2);
+  }
+  .ht-top__list li::before {
+    content: "-";
+    color: var(--color-accent-gold);
+    flex-shrink: 0;
+  }
+
+  .ht-top__btns {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .ht-top__btns .ht-btn {
+    padding: 11px 18px;
+    font-size: 0.78rem;
+  }
+
+  /* ----------------------------------------------------------------
+     Buttons
+  ---------------------------------------------------------------- */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .ht-btn--primary {
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .ht-btn--crimson {
+    background: var(--color-accent-crimson);
+    color: var(--color-text-light);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--crimson:hover {
+    opacity: 0.88;
+  }
+
+  .ht-btn--secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1.5px solid var(--color-border-strong);
+  }
+
+  .ht-btn--secondary:hover {
+    border-color: var(--color-accent);
+  }
+
+  .ht-cta-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(1.25rem, 2.5vw, 2rem) var(--space-section-h);
+  }
+
+  .ht-cta-strip__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .ht-cta-strip__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-cta-strip__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 620px;
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .ht-cta-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    flex-wrap: nowrap;
+  }
+
+  .ht-btn--white {
+    background: var(--color-surface);
+    color: var(--color-bg-dark);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--white:hover {
+    opacity: 0.9;
+  }
+
+  .ht-btn--ghost {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .ht-btn--ghost:hover {
+    border-color: var(--color-text-light);
+  }
+
+  @media (max-width: 760px) {
+    .ht-cta-strip__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-cta-strip__btns {
+      grid-column: 1;
+      grid-row: auto;
+      margin-top: var(--space-5);
+      flex-wrap: wrap;
+    }
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 3: PHILOSOPHY STRIP
+  ---------------------------------------------------------------- */
+  .ht-philosophy {
+    background: var(--color-surface-warm);
+    padding: clamp(0.35rem, 0.7vw, 0.6rem) var(--space-section-h);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-philosophy__inner {
+    max-width: none;
+    margin: 0 auto;
+  }
+
+  /* Override any brand.css blockquote defaults for this element */
+  .ht-quote {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.45vw, 1.25rem);
+    color: var(--color-text-dark);
+    line-height: var(--leading-relaxed);
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .ht-quote__highlight {
+    color: #ff0303;
+  }
+
+  @media (max-width: 760px) {
+    .ht-quote {
+      white-space: normal;
+    }
+  }
+
+  .ht-citation {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-accent-gold);
+    margin: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 4: THREE PILLARS
+  ---------------------------------------------------------------- */
+  .ht-pillars {
+    background: var(--color-surface-warm);
+    padding: var(--space-section-v) var(--space-section-h);
+  }
+
+  .ht-pillars__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+  }
+
+  .ht-pillars__header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .ht-pillars__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-2xl);
+    color: var(--color-text-dark);
+    line-height: var(--leading-snug);
+    margin: 0;
+  }
+
+  .ht-pillars__grid {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .ht-pillar {
+    flex: 1;
+    padding: 0 var(--space-8);
+  }
+
+  .ht-pillar:first-child {
+    padding-left: 0;
+  }
+
+  .ht-pillar:last-child {
+    padding-right: 0;
+  }
+
+  .ht-pillar__divider {
+    width: 1px;
+    flex-shrink: 0;
+    background: var(--color-border);
+    align-self: stretch;
+  }
+
+  .ht-pillar__rule {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-accent-gold);
+    margin-bottom: var(--space-5);
+  }
+
+  .ht-pillar__h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-xl);
+    color: var(--color-text-dark);
+    line-height: var(--leading-snug);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-pillar__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 var(--space-5);
+  }
+
+  .ht-pillar__link {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-accent-gold);
+    padding-bottom: 2px;
+    transition: color var(--transition-fast);
+  }
+
+  .ht-pillar__link:hover {
+    color: var(--color-accent-crimson);
+  }
+
+  /* ----------------------------------------------------------------
+     Responsive
+  ---------------------------------------------------------------- */
+  @media (max-width: 960px) {
+    .ht-top__inner {
+      grid-template-columns: 1fr;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .ht-top__sub {
+      max-width: 60ch;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ht-top__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ht-pillars__grid {
+      flex-direction: column;
+      gap: var(--space-10);
+    }
+
+    .ht-pillar__divider {
+      display: none;
+    }
+
+    .ht-pillar {
+      padding: 0;
+    }
+  }
+</style>

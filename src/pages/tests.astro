@@ -4,6 +4,8 @@ import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
 import { shellConfig } from '../config/shell';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+import actLogo from '../assets/images/ACT_logo.webp';
+import satLogo from '../assets/images/SAT_logo.png';
 
 const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 ---
@@ -18,12 +20,9 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
            ====================================================== -->
       <section class="ht-tests-hero">
         <div class="ht-tests-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">Test information</p>
-          <h1 class="ht-tests-hero__h1">The ACT and the SAT</h1>
           <p class="ht-tests-hero__lead">
-            Use this page to learn the basics of each exam — how they're
-            structured, how timing and scoring work, and what topics each
-            one covers.
+            <span>Use this page to learn the basics of each exam — how they're structured,</span>
+            <span>how timing and scoring work, and what topics each one covers.</span>
           </p>
         </div>
       </section>
@@ -36,9 +35,10 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
           <!-- ACT CARD -->
           <div class="ht-test-card">
-            <span class="ht-tag">ACT</span>
-
-            <h2 class="ht-test-card__h2">The ACT</h2>
+            <div class="ht-test-card__heading">
+              <h2 class="ht-test-card__h2">The ACT</h2>
+              <img class="ht-test-card__logo" src={actLogo.src} alt="ACT" />
+            </div>
 
             <p class="ht-test-card__intro">
               The ACT is one of two major college entrance exams. It has
@@ -51,26 +51,28 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
             <ul class="ht-styled-list">
               <li>
-                <strong>English</strong> — Grammar, punctuation, and rhetorical
-                understanding of composition. 50 questions, 35 minutes.
+                The English section tests students' abilities to handle grammar
+                and punctuation as well as deeper rhetorical and logical
+                understanding of English composition.
               </li>
               <li>
-                <strong>Math</strong> — Algebra, geometry, trigonometry, and
-                pre-calculus. More topics than the SAT but more straightforward
-                question styles.
+                The Math section is a straightforward Math exam that tests
+                topics ranging from basic Algebra, Geometry, Advanced Algebra,
+                Trigonometry, and Pre-Calculus.
               </li>
               <li>
-                <strong>Reading</strong> — Four long passages with specific
-                detail and general understanding questions.
+                The Reading section tests specific detail understanding as well
+                as broader general reading understanding.
               </li>
               <li>
-                <strong>Science</strong> (optional) — Data interpretation from
-                charts and graphs. Requires virtually no science knowledge.
-                Does not affect your composite score.
-              </li>
-              <li>
-                <strong>Essay</strong> (optional) — 35-minute written response.
-                Separate score, does not affect the 1–36 composite.
+                Finally the Science section tests understanding of patterns and
+                trends in data displayed primarily in charts and graphs. The
+                Science section is now entirely optional! If you do decide to
+                take the Science section, it will not affect your composite ACT
+                score. Instead, you’ll receive a separate STEM score. It’s
+                unclear whether colleges prefer, or even consider, your Science
+                score. There is a separate Essay portion that is optional and
+                costs an additional fee.
               </li>
             </ul>
 
@@ -79,32 +81,36 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
           <!-- SAT CARD -->
           <div class="ht-test-card">
-            <span class="ht-tag">SAT</span>
-
-            <h2 class="ht-test-card__h2">The SAT</h2>
+            <div class="ht-test-card__heading">
+              <h2 class="ht-test-card__h2">The SAT</h2>
+              <img class="ht-test-card__logo" src={satLogo.src} alt="SAT" />
+            </div>
 
             <p class="ht-test-card__intro">
-              The SAT is the other major college entrance exam. As of 2024
-              it is offered only in digital format. It consists of two scored
-              areas — Reading/Writing and Math — each with a maximum of 800
-              points, for a total possible score of 1600. Both sections use an
-              adaptive two-module format.
+              The SAT is the older, more-established college entrance exam,
+              though no more accepted or regarded by colleges and universities.
+              As of this year offered only digitally, it consists of two
+              separate scores, first Reading and Writing and second, Math, each
+              with a possible score of 800, for a total possible score of 1600.
+              Each score is tested over two modules, both identical in their
+              format and content. The second module of each section is adaptive
+              and is based on your performance on the first module.
             </p>
 
             <p class="ht-test-card__sections-label">Sections</p>
 
             <ul class="ht-styled-list">
               <li>
-                <strong>Reading &amp; Writing</strong> — Two identical modules
-                (27 questions, 32 minutes each). Tests vocabulary, logical
-                reasoning, grammar, and synthesizing information. No long
-                passages — each question has its own short paragraph.
+                The Reading and Writing modules test vocabulary, rhetorical and
+                logical reasoning, grammar and punctuation, and finally
+                synthesizing information. There are no longer long reading
+                passages with 10 or so questions. Instead, all Reading questions
+                are one paragraph with one question each.
               </li>
               <li>
-                <strong>Math</strong> — Two identical modules (22 questions,
-                35 minutes each). Covers algebra, geometry, and basic
-                trigonometry. Fewer topics than the ACT but questions require
-                higher analytical ability.
+                The subject matter of the Math sections remains unchanged from
+                previous iterations of the exam, covering algebra, geometry and
+                basic trigonometry.
               </li>
             </ul>
 
@@ -174,8 +180,8 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   ---------------------------------------------------------------- */
   .ht-tests-hero {
     background: var(--color-surface);
-    padding-top: clamp(12rem, 16vw, 15rem);
-    padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    padding-top: clamp(1.25rem, 2.5vw, 2rem);
+    padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
     padding-left: var(--space-section-h);
     padding-right: var(--space-section-h);
     text-align: center;
@@ -201,9 +207,13 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     font-weight: 300;
     font-size: 1.125rem;
     color: var(--color-muted);
-    max-width: 580px;
+    max-width: 760px;
     margin: 0 auto;
     line-height: 1.8;
+  }
+
+  .ht-tests-hero__lead span {
+    display: block;
   }
 
   /* ----------------------------------------------------------------
@@ -211,26 +221,36 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   ---------------------------------------------------------------- */
   .ht-tests-cards {
     background: var(--color-surface-warm);
-    padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h);
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-h)
+             clamp(3.5rem, 7vw, 6rem);
   }
 
   .ht-tests-cards__inner {
-    max-width: var(--content-wide);
+    max-width: var(--content-full);
     margin: 0 auto;
     display: flex;
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: 0;
     align-items: stretch;
   }
 
   .ht-test-card {
     flex: 1 1 0%;
-    background: var(--color-surface);
-    border: 1.5px solid var(--color-border-strong);
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    padding: var(--space-card-pad);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
     display: flex;
     flex-direction: column;
+  }
+
+  .ht-test-card:first-child {
+    padding-right: clamp(2rem, 4vw, 4rem);
+  }
+
+  .ht-test-card + .ht-test-card {
+    border-left: 3px solid #000;
+    padding-left: clamp(2rem, 4vw, 4rem);
   }
 
   /* Tag pill */
@@ -256,7 +276,21 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     color: var(--color-text-dark);
     letter-spacing: -0.01em;
     line-height: 1.2;
+    margin: 0;
+  }
+
+  .ht-test-card__heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
     margin-bottom: var(--space-4);
+  }
+
+  .ht-test-card__logo {
+    width: 144px;
+    height: 104px;
+    object-fit: contain;
+    flex: 0 0 auto;
   }
 
   .ht-test-card__intro {
@@ -406,6 +440,18 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   @media (max-width: 768px) {
     .ht-tests-cards__inner {
       flex-direction: column;
+    }
+
+    .ht-test-card:first-child {
+      padding-right: 0;
+      padding-bottom: var(--space-8);
+    }
+
+    .ht-test-card + .ht-test-card {
+      border-left: 0;
+      border-top: 3px solid #000;
+      padding-top: var(--space-8);
+      padding-left: 0;
     }
   }
 </style>

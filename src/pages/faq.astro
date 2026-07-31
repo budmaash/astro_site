@@ -13,269 +13,258 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
     <main id="page" class="ht-main" tabindex="-1">
 
-      <!-- ======================================================
-           SECTION 1 — HERO
-           ====================================================== -->
-      <section class="ht-faq-hero">
-        <div class="ht-faq-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">Frequently asked questions</p>
-          <h1 class="ht-faq-hero__h1">Everything you need to know</h1>
-          <p class="ht-faq-hero__lead">
-            If you don't see what you're looking for here, feel free to
-            call or email — I'm happy to talk through any questions you have.
+      <section class="ht-faq-contact-strip">
+        <div class="ht-faq-contact-strip__inner">
+          <h1 class="ht-faq-contact-strip__h1">Everything you need to know</h1>
+          <p class="ht-faq-contact-strip__body">
+            Don't see the info you're looking for? Feel free to call or email
+            antyime. I'm happy to answer questions, talk through your
+            situation, and help anyway I can.
           </p>
+          <div class="ht-faq-contact-strip__btns">
+            <a href="mailto:majid@hasantutoring.com" class="ht-btn ht-btn--white">Get in touch</a>
+            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+          </div>
         </div>
       </section>
 
       <!-- ======================================================
-           SECTION 2 — FAQ ACCORDION
+           SECTION 2 — FAQ DIRECTORY
            ====================================================== -->
       <section class="ht-faq-body">
         <div class="ht-faq-body__inner">
 
+          <nav class="ht-faq-nav" aria-label="FAQ sections">
+            <p class="ht-faq-nav__label">On this page</p>
+            <a href="/faq#general-questions">General questions</a>
+            <a href="/faq#act-questions">Questions about the ACT</a>
+            <a href="/faq#sat-questions">Questions about the SAT</a>
+          </nav>
+
+          <div class="ht-faq-content">
+
           <!-- GROUP 1 — General questions -->
-          <div class="ht-faq-group">
+          <div id="general-questions" class="ht-faq-group">
             <h2 class="ht-faq-group__heading">General questions</h2>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How much do you charge?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>I charge $210 per 1.5-hour session. I've found throughout the years that 1.5 hours is the ideal amount of time — one hour generally isn't enough to cover all the material, and after two hours students stop paying attention. Not a bad deal, considering how much experienced tutoring can cost elsewhere.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How many sessions do students usually get?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>It depends. Most students I advise start prepping two months in advance. One session per week is plenty — on average I'll meet with a student for 8 sessions. I assign about 2 hours of homework per session. Students who only need help on one section may need fewer. This is one of the advantages of individual tutoring: we adjust to exactly what each student needs.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 When do students start taking the ACT or SAT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>Students generally start prepping in earnest the second semester of their junior year. Taking the exam in February of junior year establishes a baseline score and allows almost a full year — and plenty of re-takes — to reach their goal before college applications are due. The summer between junior and senior year is also an excellent time to focus.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 Can you tell me more about the process of getting started?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The most important thing prior to starting is having a baseline exam. If a student hasn't taken the exam recently, I'll assign a practice exam to complete before our first meeting. During the first session, I take the student's impressions of the exam: what they found easy or challenging and what types of questions they need to work on. I only use previously administered exams — I strongly discourage using prep materials from anyone other than the College Board (SAT) or ACT Inc. (ACT).</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What if I only have a short time to prepare?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>First, relax! Prepping for under a month isn't ideal, but it's hardly the end of the world. I've had plenty of students achieve their goals with just a few weeks of prep time. Some have worked with me on only one or two sections with just days to go and seen dramatic improvements. The flexibility of individual instruction means we can meet several times a week if needed.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What materials do I need to begin studying?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>For the SAT, you'll need the College Board's Bluebook app (available on their website or provided by your school). For the ACT, you'll need nothing — just a pen or pencil, a notebook, and a calculator. I'll provide the rest. One note: I highly recommend using a graphing calculator (TI-83, TI-84, or TI-85). Some very useful math strategies are much easier to implement with one.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How important are the ACT and SAT to college admissions?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>Quite important. Colleges don't treat test scores as just one small piece of the application. If your scores don't meet their threshold, they may not even read the rest of your application. High scores won't guarantee admission, but low scores can definitely keep you out.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 Should I take both the ACT and SAT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>At the very least, take a practice test of each. Some students perform significantly better on one than the other. The vast majority of schools have no strong preference between the two, so I generally advise focusing on one — and if you do take both, prepare for only one at a time. This is against my financial interest to say, but I genuinely don't think it's necessary for most students to take both.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How do I compare ACT and SAT scores?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The College Board and ACT Inc. publish a concordance table that converts scores between the two exams. A 21 on the ACT is roughly equivalent to a 1060 on the SAT; a 33 ACT is roughly a 1490 SAT. You can find the official concordance table on the College Board website.</p>
               </div>
-            </details>
+            </article>
           </div>
 
           <!-- GROUP 2 — Questions about the ACT -->
-          <div class="ht-faq-group">
+          <div id="act-questions" class="ht-faq-group">
             <h2 class="ht-faq-group__heading">Questions about the ACT</h2>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What's on the ACT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The ACT has four sections in this order: English (75 questions, 45 minutes), Math (60 questions, 60 minutes), Reading (40 questions, 35 minutes), and Science (40 questions, 35 minutes). There's a 10-minute break between Math and Reading. An optional Writing essay can be added for an extra fee.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How is the ACT scored?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The ACT is scored from 1 to 36, as is each individual section. Your composite score is the average of your four section scores, rounded to the nearest whole number (up at .5, down at .25). A 21 is perfectly average; a 33 puts you in the top 1% of all test takers.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What's a good ACT score?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>A good score is whatever score gets you into the school you want or earns you scholarship money at a school you can already get into. Objectively, a 21 is average and a 33 is top 1%.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 When is the ACT offered?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The ACT is offered on Saturdays in February, April, June, September, October, and December each year. Accommodations are available for Sabbath observers and students with documented disabilities.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 Is the writing section required?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The Writing section is optional, though many colleges require it. It's a 35-minute essay on a topic pertaining to high school life. It does not affect your 1–36 composite score — you'll receive a separate 1–12 Writing score and a combined English/Writing score. With the right outline structure and a few learnable tips, anyone can improve their Writing score.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What are the best books to use for the ACT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>I strongly recommend using only materials published by ACT Inc. The only book with actual previously administered exams is <em>The Real ACT Prep Guide</em>. I maintain a bank of real ACTs for use in lessons and homework. Avoid prep materials from Kaplan, Princeton Review, and similar companies — they don't use real tests.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What science knowledge do I need for the Science section?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>Virtually none. The Science section tests your ability to read tables, charts, and graphs and spot patterns — not actual scientific knowledge. It's mostly common sense and data interpretation. Occasionally you'll need one-off science facts (like knowing which planet is largest), but that's once per section at most.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What vocabulary should I study for the ACT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>Unlike the SAT, the ACT does not test vocabulary directly. The ACT may include occasional "word in context" questions, but it does not test word meanings. If you're planning to take both exams, I do recommend studying vocabulary for the SAT as soon as possible.</p>
               </div>
-            </details>
+            </article>
           </div>
 
           <!-- GROUP 3 — Questions about the SAT -->
-          <div class="ht-faq-group">
+          <div id="sat-questions" class="ht-faq-group">
             <h2 class="ht-faq-group__heading">Questions about the SAT</h2>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What's on the SAT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The SAT has two scored areas: Verbal and Math, each scored up to 800, for a total of 1600. Verbal is tested across two identical modules (27 questions, 32 minutes each). Math is tested across two modules as well (22 questions, 35 minutes each). The exam is adaptive — the difficulty of the second module in each section is based on your performance on the first.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How is the SAT scored?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>Your total score out of 1600 is the sum of your Verbal and Math scores. Both are calculated using the number of correct answers, but question difficulty also affects the score because of the adaptive format. A 1050 is a perfectly average score; 1500 and above is in the 99th percentile.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What's a good SAT score?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>A good score is whatever makes you competitive at the schools you're targeting or earns you scholarship money. Objectively, 1050 is average and 1500+ is 99th percentile.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 When is the SAT offered?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The SAT is offered seven times per year: January, March, May, June, October, November, and December. Check the College Board website for exact dates and registration deadlines.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 What are the best books to use for the SAT?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>Only use materials published by the College Board — the <em>Official SAT Study Guide</em> contains actual previously administered exams. I have a bank of real SATs I use for lessons and homework. Avoid Kaplan, Princeton Review, Barron's, and similar publishers.</p>
               </div>
-            </details>
+            </article>
 
-            <details class="ht-faq-item">
-              <summary class="ht-faq-item__q">
+            <article class="ht-faq-item">
+              <h3 class="ht-faq-item__q">
                 How can I take a practice test?
-                <span class="ht-faq-item__icon" aria-hidden="true"></span>
-              </summary>
+              </h3>
               <div class="ht-faq-item__a">
                 <p>The College Board's Bluebook app provides free official digital practice tests. You can also contact me directly — I'll provide a free recent SAT along with the answer key and scoring information, and I'm happy to go over the results with you.</p>
               </div>
-            </details>
+            </article>
+          </div>
+
           </div>
 
         </div>
@@ -370,8 +359,49 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     line-height: 1.8;
   }
 
+  .ht-faq-contact-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(1.25rem, 2.5vw, 2rem) var(--space-section-h);
+  }
+
+  .ht-faq-contact-strip__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .ht-faq-contact-strip__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-faq-contact-strip__body {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .ht-faq-contact-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    flex-wrap: nowrap;
+  }
+
   /* ----------------------------------------------------------------
-     SECTION 2 — FAQ ACCORDION
+     SECTION 2 — FAQ DIRECTORY
   ---------------------------------------------------------------- */
   .ht-faq-body {
     background: var(--color-surface);
@@ -381,10 +411,62 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   .ht-faq-body__inner {
     max-width: var(--content-wide);
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(180px, 230px) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  .ht-faq-nav {
+    position: sticky;
+    top: calc(143px + 2rem);
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    padding: 1.5rem;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+  }
+
+  .ht-faq-nav__label {
+    margin: 0 0 1rem;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .ht-faq-nav a {
+    display: block;
+    margin-bottom: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border-left: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.3;
+    text-decoration: none;
+    transition: all 150ms ease;
+  }
+
+  .ht-faq-nav a:hover,
+  .ht-faq-nav a:focus-visible {
+    color: var(--color-text-dark);
+    background: var(--color-surface);
+  }
+
+  .ht-faq-content {
+    min-width: 0;
   }
 
   .ht-faq-group {
     margin-bottom: clamp(3rem, 5vw, 4rem);
+    scroll-margin-top: 7rem;
   }
 
   .ht-faq-group__heading {
@@ -397,13 +479,13 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     border-bottom: 1px solid var(--color-border);
   }
 
-  /* Accordion items */
+  /* Permanently visible question and answer cards */
   .ht-faq-item {
-    background: var(--color-surface-warm);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
     margin-bottom: 0.625rem;
-    overflow: hidden;
+    padding: 1.25rem 1.5rem;
   }
 
   .ht-faq-item__q {
@@ -411,40 +493,12 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--color-text-dark);
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    list-style: none;
-    gap: 1rem;
-  }
-
-  .ht-faq-item__q::-webkit-details-marker {
-    display: none;
-  }
-
-  /* The +/− icon */
-  .ht-faq-item__icon {
-    font-family: proxima-nova, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--color-muted);
-    flex-shrink: 0;
-    line-height: 1;
-  }
-
-  .ht-faq-item__icon::before {
-    content: "+";
-  }
-
-  details[open] .ht-faq-item__icon::before {
-    content: "−";
+    margin: 0 0 0.55rem;
+    line-height: 1.35;
   }
 
   /* Answer body */
   .ht-faq-item__a {
-    padding: 0 1.5rem 1.25rem;
     font-family: var(--font-sans);
     font-size: 0.9375rem;
     font-weight: 300;
@@ -531,5 +585,33 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
   .ht-btn--ghost:hover {
     border-color: var(--color-text-light);
+  }
+
+  @media (max-width: 900px) {
+    .ht-faq-body__inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .ht-faq-nav {
+      position: static;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .ht-faq-contact-strip__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-faq-contact-strip__btns {
+      grid-column: 1;
+      grid-row: auto;
+      margin-top: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .ht-faq-item {
+      padding: 1.1rem 1.2rem;
+    }
   }
 </style>

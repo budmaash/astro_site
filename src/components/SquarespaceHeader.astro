@@ -109,6 +109,16 @@ let renderedHeaderMarkup = headerMarkup
   .replaceAll('https://www.hasantutoring.com/start-here-w/-banner#page', config.skipToContentUrl)
   .replaceAll('https://www.hasantutoring.com/start-here-w/-banner#', config.loginUrl);
 
+renderedHeaderMarkup = renderedHeaderMarkup
+  .replace(
+    /\s*<div class="header-nav-item header-nav-item--collection">\s*<a href="https:\/\/www\.hasantutoring\.com\/blog"[\s\S]*?<\/a>\s*<\/div>/g,
+    '',
+  )
+  .replace(
+    /\s*<div class="container header-menu-nav-item header-menu-nav-item--collection">\s*<a href="https:\/\/www\.hasantutoring\.com\/blog">[\s\S]*?<\/a>\s*<\/div>/g,
+    '',
+  );
+
 renderedHeaderMarkup = replaceOnce(
   renderedHeaderMarkup,
   '<a href="https://www.hasantutoring.com/" data-animation-role="header-element">',
@@ -124,6 +134,35 @@ renderedHeaderMarkup = replaceOnce(
 <Fragment set:html={renderedHeaderMarkup} />
 
 <style is:global>
+  #header {
+    position: sticky !important;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(20, 18, 15, 0.08),
+                0 8px 24px rgba(20, 18, 15, 0.06);
+  }
+
+  #header .header-background,
+  #header .header-menu-bg {
+    background: #fff !important;
+  }
+
+  #header .header-announcement-bar-wrapper,
+  #header .header-inner,
+  #header .header-display-desktop,
+  #header .header-display-mobile {
+    background-color: #fff !important;
+    opacity: 1 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  #header .header-announcement-bar-wrapper {
+    padding-top: clamp(0.55rem, 1vw, 0.8rem) !important;
+    padding-bottom: clamp(0.55rem, 1vw, 0.8rem) !important;
+  }
+
   .ht-header-dropdown {
     position: relative;
   }

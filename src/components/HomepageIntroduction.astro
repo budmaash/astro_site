@@ -1,0 +1,210 @@
+---
+export type HomepageIntroVariant = 'compact-stacked' | 'compact-split' | 'compact-letter';
+
+type Props = {
+  variant: HomepageIntroVariant;
+};
+
+const { variant } = Astro.props;
+---
+
+<section
+  class:list={['ht-intro', `ht-intro--${variant}`]}
+  aria-labelledby={`ht-intro-title-${variant}`}
+>
+  <div class="ht-intro__inner">
+    <div class="ht-intro__heading">
+      <h2 id={`ht-intro-title-${variant}`} class="ht-intro__title">
+        <span class="ht-intro__highlight">Practical</span>, step-by-step methods to improve your ACT and SAT scores
+      </h2>
+    </div>
+
+    <div class="ht-intro__copy">
+      <p>
+        Hello, my name is Majid Hasan, thanks for visiting! After working with
+        hundreds of students both one-on-one and in classroom settings, I've
+        earned a reputation as one of the best ACT and SAT test-prep tutors in
+        the Kansas City area.
+      </p>
+      <p>
+        I've created this site to let people know of my tutoring services as well
+        as share insights into the ACT and SAT. Here you'll find information about
+        the testing process and methods and strategies I've created to help
+        students tackle these tests.
+      </p>
+      <p>
+        If there's any information you can't find here, or if you'd simply like
+        to chat with me about you or your student, feel free to drop me a line for
+        a friendly, no-pressure talk. Also feel free to contact me for a free
+        practice test and or to talk about your student's scores.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ht-intro {
+    padding: clamp(1.75rem, 3vw, 2.75rem) var(--space-section-h);
+    background: #fff;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-intro__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+  }
+
+  .ht-intro__eyebrow {
+    margin: 0 0 0.3rem;
+    color: var(--color-accent-crimson);
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .ht-intro__title {
+    margin: 0;
+    max-width: 22ch;
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+
+  .ht-intro__title em {
+    color: var(--color-muted);
+    font-weight: 400;
+  }
+
+  .ht-intro__highlight {
+    color: #ff0303;
+  }
+
+  .ht-intro__copy {
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: clamp(0.92rem, 1.1vw, 1rem);
+    font-weight: 300;
+    line-height: 1.58;
+  }
+
+  .ht-intro__copy p {
+    margin: 0;
+  }
+
+  .ht-intro__copy p + p {
+    margin-top: 0.7rem;
+  }
+
+  /* Version A: a compact stacked introduction with three short reading columns. */
+  .ht-intro--compact-stacked .ht-intro__heading {
+    margin-bottom: clamp(0.75rem, 1.5vw, 1.1rem);
+  }
+
+  .ht-intro--compact-stacked .ht-intro__copy {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  }
+
+  .ht-intro--compact-stacked .ht-intro__copy p + p {
+    margin-top: 0;
+  }
+
+  /* Version B: title and note share one tight horizontal band. */
+  .ht-intro--compact-split .ht-intro__inner {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.8fr) minmax(30rem, 1.2fr);
+    gap: clamp(1.75rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .ht-intro--compact-split .ht-intro__title {
+    max-width: 15ch;
+    font-size: clamp(1.75rem, 2.7vw, 2.45rem);
+  }
+
+  .ht-intro--compact-split .ht-intro__copy {
+    columns: 2;
+    column-gap: clamp(1.5rem, 3vw, 2.75rem);
+  }
+
+  .ht-intro--compact-split .ht-intro__copy p {
+    break-inside: avoid;
+  }
+
+  /* Version C: a restrained letter treatment with the smallest vertical footprint. */
+  .ht-intro--compact-letter {
+    background: var(--color-surface);
+  }
+
+  .ht-intro--compact-letter .ht-intro__inner {
+    max-width: 1020px;
+    padding-left: clamp(1rem, 2.5vw, 2rem);
+    border-left: 3px solid var(--color-accent-crimson);
+  }
+
+  .ht-intro--compact-letter .ht-intro__heading {
+    display: flex;
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+  }
+
+  .ht-intro--compact-letter .ht-intro__eyebrow {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .ht-intro--compact-letter .ht-intro__title {
+    max-width: none;
+    font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+  }
+
+  .ht-intro--compact-letter .ht-intro__copy {
+    columns: 2;
+    column-gap: clamp(1.5rem, 3vw, 2.75rem);
+  }
+
+  .ht-intro--compact-letter .ht-intro__copy p {
+    break-inside: avoid;
+  }
+
+  @media (max-width: 760px) {
+    .ht-intro {
+      padding: 1.5rem var(--space-section-h);
+    }
+
+    .ht-intro--compact-stacked .ht-intro__copy,
+    .ht-intro--compact-split .ht-intro__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-intro--compact-split .ht-intro__inner {
+      gap: 0.9rem;
+    }
+
+    .ht-intro--compact-split .ht-intro__copy,
+    .ht-intro--compact-letter .ht-intro__copy {
+      columns: 1;
+    }
+
+    .ht-intro--compact-stacked .ht-intro__copy {
+      gap: 0.7rem;
+    }
+
+    .ht-intro--compact-letter .ht-intro__heading {
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    .ht-intro--compact-letter .ht-intro__eyebrow {
+      margin-bottom: 0.3rem;
+    }
+  }
+</style>

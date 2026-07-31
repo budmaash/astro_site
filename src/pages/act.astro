@@ -13,19 +13,68 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
     <main id="page" class="ht-main" tabindex="-1">
 
-      <!-- ======================================================
-           SECTION 1 — HERO
-           ====================================================== -->
-      <section class="ht-act-hero">
-        <div class="ht-act-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">Your comprehensive guide</p>
-          <h1 class="ht-act-hero__h1">The ACT</h1>
-          <p class="ht-act-hero__lead">
-            I've been teaching the ACT since 2007. If there's one thing I've
-            learned, it's that this test is extremely learnable — because it
-            is extremely repetitive. Learn the question types, learn the steps,
-            and the exam becomes a mechanical process.
-          </p>
+      <section class="ht-act-facts" aria-labelledby="act-facts-title">
+        <div class="ht-act-facts__inner">
+          <h1 id="act-facts-title" class="ht-act-facts__title">ACT Quick Facts</h1>
+
+          <div class="ht-act-facts__grid">
+            <section class="ht-act-facts__group">
+              <h2 class="ht-act-facts__heading">Basics</h2>
+              <dl class="ht-act-facts__list">
+                <div>
+                  <dt>ACT Length</dt>
+                  <dd>2 hours and 5 minutes (125 minutes), plus 40 minutes for optional Science</dd>
+                </div>
+                <div>
+                  <dt>Sections</dt>
+                  <dd>3 sections: English, Math, and Reading; optional fourth section: Science</dd>
+                </div>
+                <div>
+                  <dt>Score Range</dt>
+                  <dd>Each section: 1–36; composite average: 1–36</dd>
+                </div>
+                <div>
+                  <dt>Format</dt>
+                  <dd>Paper or digital</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="ht-act-facts__group">
+              <h2 class="ht-act-facts__heading">Test Composition</h2>
+              <dl class="ht-act-facts__list">
+                <div class="ht-act-facts__timing"><dt>English</dt><dd>35 minutes for 50 questions</dd></div>
+                <div class="ht-act-facts__timing"><dt>Math</dt><dd>50 minutes for 45 questions</dd></div>
+                <div class="ht-act-facts__timing"><dt>Reading</dt><dd>40 minutes for 36 questions</dd></div>
+                <div class="ht-act-facts__timing"><dt>Science (Optional)</dt><dd>40 minutes for 40 questions</dd></div>
+                <div>
+                  <dt>Math Topics</dt>
+                  <dd>Pre-algebra, elementary and intermediate algebra, coordinate and plane geometry, and trigonometry</dd>
+                </div>
+                <div>
+                  <dt>English Topics</dt>
+                  <dd>Grammar and punctuation, rhetoric, writing style, and tone</dd>
+                </div>
+                <div>
+                  <dt>Reading</dt>
+                  <dd>4 long passages, specific information, and general themes</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="ht-act-facts__group">
+              <h2 class="ht-act-facts__heading">When It’s Offered</h2>
+              <p class="ht-act-facts__months">
+                February, April, June, July, September, October, and December
+              </p>
+              <a
+                class="ht-act-facts__signup"
+                href="https://my.act.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Sign up or create an ACT account</a>
+            </section>
+          </div>
         </div>
       </section>
 
@@ -507,6 +556,118 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     line-height: 1.8;
   }
 
+  .ht-act-facts {
+    padding: clamp(0.9rem, 1.8vw, 1.35rem) var(--space-section-h);
+    background: var(--color-surface-warm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-act-facts__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+  }
+
+  .ht-act-facts__title {
+    margin: 0 0 0.45rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .ht-act-facts__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr 0.8fr;
+    gap: 0;
+    border-top: 2px solid var(--color-text-dark);
+  }
+
+  .ht-act-facts__group {
+    padding: 1.35rem clamp(1.25rem, 2.5vw, 2.25rem) 0;
+    border-left: 1px solid var(--color-border-strong);
+  }
+
+  .ht-act-facts__group:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .ht-act-facts__heading {
+    margin: 0 0 1rem;
+    color: var(--color-accent-crimson);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+  }
+
+  .ht-act-facts__list {
+    margin: 0;
+  }
+
+  .ht-act-facts__list > div {
+    padding: 0.65rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .ht-act-facts__list > div:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .ht-act-facts__list > .ht-act-facts__timing {
+    display: grid;
+    grid-template-columns: minmax(8.5rem, 0.8fr) minmax(11rem, 1fr);
+    column-gap: 1.25rem;
+    align-items: baseline;
+    text-align: left;
+  }
+
+  .ht-act-facts__timing dt,
+  .ht-act-facts__timing dd {
+    margin: 0;
+    text-align: left;
+  }
+
+  .ht-act-facts__list dt {
+    margin-bottom: 0.15rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .ht-act-facts__list dd,
+  .ht-act-facts__months {
+    margin: 0;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .ht-act-facts__signup {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding-bottom: 0.2rem;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid var(--color-accent-crimson);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .ht-act-facts__signup:hover {
+    color: var(--color-accent-crimson);
+  }
+
   /* ----------------------------------------------------------------
      SECTION 2 — GUIDE BODY
   ---------------------------------------------------------------- */
@@ -722,6 +883,21 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
      Responsive
   ---------------------------------------------------------------- */
   @media (max-width: 900px) {
+    .ht-act-facts__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-act-facts__group,
+    .ht-act-facts__group:first-child {
+      padding: 1.35rem 0;
+      border-left: 0;
+      border-bottom: 1px solid var(--color-border-strong);
+    }
+
+    .ht-act-facts__group:last-child {
+      border-bottom: 0;
+    }
+
     .ht-act-guide__inner {
       flex-direction: column;
     }

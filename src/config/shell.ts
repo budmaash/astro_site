@@ -56,7 +56,7 @@ export const shellConfig: ShellConfig = {
   skipToContentUrl: 'https://www.hasantutoring.com/start-here-w/-banner#page',
   loginUrl: 'https://www.hasantutoring.com/start-here-w/-banner#',
   cta: {
-    href: 'https://www.hasantutoring.com/member-home',
+    href: 'https://app.hasantutoring.com',
     text: 'Member Home',
   },
   footer: {
@@ -96,11 +96,9 @@ export const shellConfig: ShellConfig = {
         { href: '/act-vs-sat', label: 'ACT vs SAT' },
       ],
     },
-    { href: '/lsat', label: 'LSAT' },
     { href: '/tutoring', label: 'Why Tutoring?' },
     { href: '/about', label: 'About Me' },
     { href: '/faq', label: 'FAQs' },
-    { href: 'https://www.hasantutoring.com/blog', label: 'Blog' },
   ],
 };
 

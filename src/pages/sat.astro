@@ -13,19 +13,68 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
     <main id="page" class="ht-main" tabindex="-1">
 
-      <!-- ======================================================
-           SECTION 1 — HERO
-           ====================================================== -->
-      <section class="ht-sat-hero">
-        <div class="ht-sat-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">Your comprehensive guide</p>
-          <h1 class="ht-sat-hero__h1">The SAT</h1>
-          <p class="ht-sat-hero__lead">
-            I've been teaching the SAT since 2007. Like the ACT, the SAT
-            can be learned — because it is made up of only so many types of
-            questions. Learn to recognize them, learn the steps to answer
-            each one, and the exam becomes a mechanical process.
-          </p>
+      <section class="ht-sat-facts" aria-labelledby="sat-facts-title">
+        <div class="ht-sat-facts__inner">
+          <h1 id="sat-facts-title" class="ht-sat-facts__title">SAT Quick Facts</h1>
+
+          <div class="ht-sat-facts__grid">
+            <section class="ht-sat-facts__group">
+              <h2 class="ht-sat-facts__heading">Basics</h2>
+              <dl class="ht-sat-facts__list">
+                <div>
+                  <dt>SAT Length</dt>
+                  <dd>2 hours 14 minutes</dd>
+                </div>
+                <div>
+                  <dt>Sections</dt>
+                  <dd>4 modules: 2 Reading/Writing and 2 Math</dd>
+                </div>
+                <div>
+                  <dt>Score Range</dt>
+                  <dd>200–800 each for Reading/Writing and Math; 400–1600 total</dd>
+                </div>
+                <div>
+                  <dt>Format</dt>
+                  <dd>Digital and adaptive</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="ht-sat-facts__group">
+              <h2 class="ht-sat-facts__heading">Test Composition</h2>
+              <dl class="ht-sat-facts__list">
+                <div>
+                  <dt>Reading and Writing</dt>
+                  <dd>2 modules, each with 27 questions and 32 minutes</dd>
+                </div>
+                <div>
+                  <dt>Math</dt>
+                  <dd>2 modules, each with 22 questions and 35 minutes</dd>
+                </div>
+                <div>
+                  <dt>Math Topics</dt>
+                  <dd>Algebra, Advanced Math, Problem-Solving and Data Analysis, and Geometry and Trigonometry</dd>
+                </div>
+                <div>
+                  <dt>Reading and Writing Topics</dt>
+                  <dd>Vocabulary, short reading comprehension, grammar and punctuation, transition words, and synthesizing information</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="ht-sat-facts__group">
+              <h2 class="ht-sat-facts__heading">When It’s Offered</h2>
+              <p class="ht-sat-facts__months">
+                March, May, June, August, October, November, and December
+              </p>
+              <a
+                class="ht-sat-facts__signup"
+                href="https://satsuite.collegeboard.org/sat/registration"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Sign up for the SAT</a>
+            </section>
+          </div>
         </div>
       </section>
 
@@ -352,6 +401,104 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     line-height: 1.8;
   }
 
+  .ht-sat-facts {
+    padding: clamp(0.9rem, 1.8vw, 1.35rem) var(--space-section-h);
+    background: var(--color-surface-warm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-sat-facts__inner {
+    max-width: var(--content-full);
+    margin: 0 auto;
+  }
+
+  .ht-sat-facts__title {
+    margin: 0 0 0.45rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .ht-sat-facts__grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr 0.8fr;
+    gap: 0;
+    border-top: 2px solid var(--color-text-dark);
+  }
+
+  .ht-sat-facts__group {
+    padding: 1.35rem clamp(1.25rem, 2.5vw, 2.25rem) 0;
+    border-left: 1px solid var(--color-border-strong);
+  }
+
+  .ht-sat-facts__group:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .ht-sat-facts__heading {
+    margin: 0 0 1rem;
+    color: var(--color-accent-crimson);
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+  }
+
+  .ht-sat-facts__list {
+    margin: 0;
+  }
+
+  .ht-sat-facts__list > div {
+    padding: 0.65rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .ht-sat-facts__list > div:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .ht-sat-facts__list dt {
+    margin-bottom: 0.15rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .ht-sat-facts__list dd,
+  .ht-sat-facts__months {
+    margin: 0;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .ht-sat-facts__signup {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding-bottom: 0.2rem;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid var(--color-accent-crimson);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .ht-sat-facts__signup:hover {
+    color: var(--color-accent-crimson);
+  }
+
   /* ----------------------------------------------------------------
      SECTION 2 — GUIDE BODY
   ---------------------------------------------------------------- */
@@ -566,6 +713,21 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
      Responsive
   ---------------------------------------------------------------- */
   @media (max-width: 900px) {
+    .ht-sat-facts__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ht-sat-facts__group,
+    .ht-sat-facts__group:first-child {
+      padding: 1.35rem 0;
+      border-left: 0;
+      border-bottom: 1px solid var(--color-border-strong);
+    }
+
+    .ht-sat-facts__group:last-child {
+      border-bottom: 0;
+    }
+
     .ht-sat-guide__inner {
       flex-direction: column;
     }

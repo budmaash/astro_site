@@ -14,109 +14,72 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     <main id="page" class="ht-main" tabindex="-1">
 
       <!-- ======================================================
-           SECTION 1 — HERO
-           ====================================================== -->
-      <section class="ht-about-hero">
-        <div class="ht-about-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">About Majid Hasan</p>
-          <h1 class="ht-about-hero__h1">
-            Tutor. Law graduate.<br>
-            <em class="ht-about-hero__em">Kansas City native.</em>
-          </h1>
-          <p class="ht-about-hero__lead">
-            Nearly 20 years helping students improve their ACT, SAT, and LSAT
-            scores — one session at a time.
-          </p>
-        </div>
-      </section>
-
-      <!-- ======================================================
            SECTION 2 — BACKGROUND / BIOGRAPHY
            ====================================================== -->
       <section class="ht-about-bio">
         <div class="ht-about-bio__layout">
-
-          <!-- LEFT: credentials sidebar -->
-          <aside class="ht-about-bio__sidebar">
-            <div class="ht-credential">
-              <div class="ht-gold-rule" aria-hidden="true"></div>
-              <p class="ht-credential__label">Started</p>
-              <p class="ht-credential__value">2006 at Kaplan Test Prep</p>
-            </div>
-            <div class="ht-credential">
-              <div class="ht-gold-rule" aria-hidden="true"></div>
-              <p class="ht-credential__label">Education</p>
-              <p class="ht-credential__value">KU School of Law</p>
-            </div>
-            <div class="ht-credential">
-              <div class="ht-gold-rule" aria-hidden="true"></div>
-              <p class="ht-credential__label">Location</p>
-              <p class="ht-credential__value">Overland Park &amp; Kansas City</p>
-            </div>
-            <div class="ht-credential">
-              <div class="ht-gold-rule" aria-hidden="true"></div>
-              <p class="ht-credential__label">Clients</p>
-              <p class="ht-credential__value">Built entirely by word of mouth</p>
-            </div>
-          </aside>
-
-          <!-- RIGHT: bio prose -->
-          <div class="ht-about-bio__prose">
-            <p class="ht-eyebrow ht-eyebrow--gold">Background</p>
-            <h2 class="ht-about-bio__h2">Nearly two decades of test-prep experience</h2>
+          <article class="ht-about-bio__prose">
+            <h1 class="ht-about-bio__h2">Background</h1>
+            <p class="ht-about-bio__p">
+              My name is Majid Hasan, and I’m a graduate of the KU School of Law
+              and a professional tutor. I have years of experience tutoring, a
+              deep understanding of these exams, and people use me because I get
+              students results.
+            </p>
             <p class="ht-about-bio__p">
               I started out teaching standardized tests in 2006 at Kaplan Test
-              Prep — first the LSAT, then quickly moving on to the ACT and SAT.
-              After finishing undergrad at KU, I moved back to Kansas City, my
-              hometown, and began working at the Kauffman Foundation while also
-              teaching at Get Smarter Prep in Overland Park.
-            </p>
-            <p class="ht-about-bio__p">
-              During my second year of law school, I began tutoring on my own.
-              Since then, I've built up a significant client base entirely
-              through word of mouth — which I like to think reflects how
-              satisfied students and their families are with the results.
+              Prep. At first I taught the LSAT, the Law School Admissions Test,
+              and then quickly moved on to the ACT and SAT. After finishing
+              undergrad at KU, I moved back to Kansas City, my hometown, and
+              started working at the Kauffman Foundation. Soon after, I was also
+              working at Get Smarter Prep, a test prep company here in Overland
+              Park. During my second year of law school, I began tutoring on my
+              own. All in all, I have nearly 8 years of experience teaching
+              classrooms and tutoring one-on-one.
             </p>
             <p class="ht-about-bio__p ht-about-bio__p--last">
-              Chances are, if your child attends school in the Overland
-              Park or Kansas City area, they already know classmates who've
-              worked with me.
+              Since tutoring on my own, I've built up a significant number of
+              clients purely through word of mouth. I like to think this is
+              because I leave my students (and their parents of course!) highly
+              satisfied with my services. Chances are if your child attends
+              school in the Overland Park/Kansas City area, they know classmates
+              who've used my services.
             </p>
-          </div>
+          </article>
 
-        </div>
-      </section>
-
-      <!-- ======================================================
-           SECTION 3 — TEACHING PHILOSOPHY
-           ====================================================== -->
-      <section class="ht-about-philosophy">
-        <div class="ht-about-philosophy__inner">
-          <div class="ht-gold-rule ht-gold-rule--wide" aria-hidden="true"></div>
-          <p class="ht-eyebrow ht-eyebrow--gold">Teaching philosophy</p>
-          <h2 class="ht-about-philosophy__h2">These tests are learnable — by anyone</h2>
-          <p class="ht-about-philosophy__p">
-            The ACT and SAT should be taught differently than academic subjects.
-            These tests are highly repetitive and highly coachable. Think of it
-            like a physics professor who assigns the same homework every semester —
-            only the numbers change. The approach to every question is identical.
-            These tests work the same way. There are only so many question types.
-            Learn to recognize them, learn the steps to answer each one, and
-            your score improves.
-          </p>
-          <p class="ht-about-philosophy__p">
-            I employ a very laid-back, no-pressure approach to both my teaching
-            and my business. I assign a solid amount of work, but students
-            generally enjoy working with me because I create an easy-going
-            environment where mistakes are part of the process. I've always been
-            good at explaining things in a way that anyone can understand.
-          </p>
-          <p class="ht-about-philosophy__p ht-about-philosophy__p--last">
-            If you're interested in tutoring for your son or daughter, reach out
-            anytime. I'll answer your questions, give you honest advice on how to
-            proceed — whether that means working with me or not — and provide
-            free practice exams to get started. No pressure, ever.
-          </p>
+          <article class="ht-about-bio__prose ht-about-bio__prose--philosophy">
+            <h2 class="ht-about-bio__h2">Teaching Philosophy</h2>
+            <p class="ht-about-bio__p">
+              In my opinion, the ACT and SAT should be taught differently than
+              academic subjects in school are taught. These tests are highly
+              repetitive and highly coachable. Once in a Physics class I took,
+              we students had long since figured out that the professor's
+              homework was exactly the same semester after semester; only the
+              individual numbers in the questions were different. This meant
+              that every question was done the same way and all we had to do was
+              substitute the different numbers in. These tests are the same way.
+              There are only so many different types of questions. The way to
+              improve is to simply learn the types of questions, how to recognize
+              them, and learn the simple steps to arrive at the right answer. I
+              teach students how to recognize the different types of questions
+              and the steps to answer them. The types of questions that appear on
+              the tests are the same from test to test. Anyone, with some
+              coaching and practice, can improve their scores using this method.
+            </p>
+            <p class="ht-about-bio__p ht-about-bio__p--last">
+              I employ a very laid back, no pressure attitude towards both my
+              teaching and my teaching business. I assign a good amount of work,
+              but students generally like working with me because I create a very
+              easy going environment in which students are free to make mistakes.
+              I've always been good at explaining things in a way everyone can
+              understand. I'm the same way with my business approach to teaching.
+              If you are interested in tutoring for your son or daughter, please
+              feel free to call or email me. I'll answer whatever questions you
+              have about my services, will give you solid and honest advice about
+              how you should proceed, supply you with free practice exams, and
+              never pressure you in any way. Please give me a shout anytime.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -242,10 +205,11 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   }
 
   .ht-about-bio__layout {
-    display: flex;
-    gap: clamp(3rem, 6vw, 5rem);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
     align-items: flex-start;
-    max-width: var(--content-wide);
+    max-width: var(--content-full);
     margin: 0 auto;
   }
 
@@ -277,7 +241,14 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
   /* RIGHT: bio prose */
   .ht-about-bio__prose {
-    flex: 1;
+    min-width: 0;
+    padding-right: clamp(2rem, 4vw, 4rem);
+  }
+
+  .ht-about-bio__prose--philosophy {
+    padding-right: 0;
+    padding-left: clamp(2rem, 4vw, 4rem);
+    border-left: 1px solid var(--color-border-strong);
   }
 
   .ht-about-bio__prose .ht-eyebrow {
@@ -425,12 +396,19 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   ---------------------------------------------------------------- */
   @media (max-width: 768px) {
     .ht-about-bio__layout {
-      flex-direction: column;
+      grid-template-columns: 1fr;
     }
 
-    .ht-about-bio__sidebar {
-      flex: none;
-      width: 100%;
+    .ht-about-bio__prose {
+      padding-right: 0;
+    }
+
+    .ht-about-bio__prose--philosophy {
+      margin-top: var(--space-10);
+      padding-top: var(--space-10);
+      padding-left: 0;
+      border-top: 1px solid var(--color-border-strong);
+      border-left: 0;
     }
   }
 </style>

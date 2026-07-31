@@ -56,7 +56,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   <body id={config.bodyId} class={config.bodyClass}>
     <slot />
 
-    <!-- Scroll-to-top button — rendered on every page via this layout -->
+    <!-- Scroll-to-top button, rendered on every page via this layout -->
     <button id="ht-scroll-top" aria-label="Back to top">
       <svg width="18" height="18" viewBox="0 0 18 18"
            fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
         // Recalculate on resize
         window.addEventListener('resize', updateScrollTopVisibility, { passive: true });
 
-        // Click handler — smooth scroll to top
+        // Click handler for smooth scrolling to the top
         scrollTopBtn.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
