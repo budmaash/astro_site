@@ -1,0 +1,194 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+const directionContract = `
+THESIS: Private tutoring is explained as a clear comparison and a practical method; the page refuses the card-heavy sales layout.
+OWN-WORLD: The ACT-vs-SAT page's charcoal opening strip, white guidance band, warm editorial columns, Garamond hierarchy, crimson rules, and quiet dividers.
+STORY: Understand why classes fall short, see how one-on-one preparation works, review pricing, then start a low-pressure conversation.
+FIRST VIEWPORT: A compact dark thesis strip with contact actions leads directly into a white, crimson-ruled summary of the tutoring approach.
+FORM: Direct adaptation of the established ACT-vs-SAT editorial structure.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+`.trim();
+---
+
+<SquarespaceShellLayout config={config} directionContract={directionContract}>
+  <div id="siteWrapper" class="clearfix site-wrapper tutoring1-page">
+    <SquarespaceHeader config={config} />
+    <main id="page" class="ht-main" tabindex="-1">
+      <section class="t1-contact">
+        <div class="t1-contact__inner">
+          <h1>The best way to prepare for the SAT and ACT is <em>not a class.</em></h1>
+          <div class="t1-actions">
+            <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
+            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="t1-guidance" aria-labelledby="t1-guidance-title">
+        <div class="t1-guidance__inner">
+          <h2 id="t1-guidance-title">Why one-on-one?</h2>
+          <p>After teaching hundreds of students in both classrooms and one-on-one settings, I can tell you from experience: private tutoring can focus on the individual student in a way a fixed-curriculum class cannot—and it costs about the same.</p>
+        </div>
+      </section>
+
+      <section class="t1-reasons" aria-labelledby="t1-reasons-title">
+        <div class="t1-reasons__inner">
+          <header class="t1-section-head">
+            <h2 id="t1-reasons-title">Why test-prep classes fall short</h2>
+            <p>Classes are built around the needs of a group. Effective preparation is built around the student in front of me.</p>
+          </header>
+          <div class="t1-columns">
+            <article>
+              <h3>Classes can’t focus on you</h3>
+              <p>Most students excel at either Math and Science or Reading and English—not both. A class follows a fixed syllabus covering everything, including topics you already know. One-on-one means we work on what you actually need.</p>
+            </article>
+            <article>
+              <h3>One speed doesn’t fit everyone</h3>
+              <p>When a class moves on before you’re ready, you fall behind. When it moves too slowly, you stop paying attention. Private tutoring moves faster through your strengths and more deliberately through your weaknesses.</p>
+            </article>
+            <article>
+              <h3>Your strategy has to be personal</h3>
+              <p>Your best approach depends on your current score, target score, reading speed, strengths, weaknesses, and test date. That level of customization simply isn’t possible in a group class.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="t1-approach" aria-labelledby="t1-approach-title">
+        <div class="t1-approach__inner">
+          <div class="t1-rule" aria-hidden="true"></div>
+          <h2 id="t1-approach-title">I teach the SAT and ACT—not broad academic subjects</h2>
+          <p>I try to teach as little academic knowledge as possible. Instead, I teach the tests themselves. These exams are sets of repeating question types. Students learn to recognize each type and apply the same simple steps every time: a mechanical, learnable process.</p>
+          <p>I keep meticulous notes on what we’ve covered and what each student struggles with. Every session is built around improving those weaknesses and reinforcing the systematic approach. Homework is tailored to each student. By test day, the exam is planned down to the minute.</p>
+          <p>I’ve been doing this since 2006—first at Kaplan, then at Get Smarter Prep, then on my own.</p>
+        </div>
+      </section>
+
+      <section id="pricing" class="t1-pricing" aria-labelledby="t1-pricing-title">
+        <div class="t1-pricing__inner">
+          <header class="t1-section-head">
+            <h2 id="t1-pricing-title">Straightforward tutoring and pricing</h2>
+            <p>One-on-one preparation is tailored to the student’s weaknesses, pace, goals, and test date.</p>
+          </header>
+          <div class="t1-price-grid">
+            <div class="t1-price-main">
+              <p class="t1-price"><strong>$140</strong> / hour</p>
+              <p>Recommended: 1.5-hour sessions at $210, starting two to three months before the exam.</p>
+            </div>
+            <ul class="t1-includes">
+              <li>SAT, ACT, and LSAT preparation</li>
+              <li>Preparation customized to individual weaknesses</li>
+              <li>Free practice test to establish a baseline</li>
+              <li>Detailed session notes and tailored homework</li>
+              <li>Free initial consultation with no pressure</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="t1-cta">
+        <div class="t1-cta__inner">
+          <h2>Free practice test. No sales pitch.</h2>
+          <p>Contact me for a free recent SAT or ACT, answers to your questions, and honest advice about how to proceed—whether that means working with me or not.</p>
+          <div class="t1-actions t1-actions--center">
+            <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
+            <a href="mailto:Majid@HasanTutoring.com" class="ht-btn ht-btn--ghost">Majid@HasanTutoring.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <SquarespaceFooter config={config} />
+  </div>
+</SquarespaceShellLayout>
+
+<style>
+  :global(#page.ht-main) { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .tutoring1-page { overflow-x: clip; color: var(--color-text-dark); }
+  .tutoring1-page *, .tutoring1-page *::before, .tutoring1-page *::after { box-sizing: border-box; }
+
+  .t1-contact { padding: clamp(1.25rem, 2.5vw, 2rem) var(--space-section-h); background: var(--color-bg-dark); }
+  .t1-contact__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 5vw, 5rem); align-items: center; max-width: var(--content-full); margin: 0 auto; }
+  .t1-contact h1 { max-width: 34ch; margin: 0; color: var(--color-text-light); font: 400 clamp(1.5rem, 3vw, 2rem)/1.2 var(--font-serif); letter-spacing: -.02em; }
+  .t1-contact h1 em { color: rgba(255, 255, 255, .72); font-weight: 400; }
+
+  .t1-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .ht-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: var(--space-3) var(--space-6); border-radius: var(--radius-button); font: 600 var(--text-sm)/1 var(--font-sans); text-decoration: none; white-space: nowrap; transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast); }
+  .ht-btn:focus-visible { outline: 3px solid var(--color-accent-gold-light); outline-offset: 3px; }
+  .ht-btn--white { color: var(--color-bg-dark); background: var(--color-surface); border: 1px solid var(--color-surface); }
+  .ht-btn--white:hover { color: var(--color-text-light); background: transparent; }
+  .ht-btn--ghost { color: var(--color-text-light); background: transparent; border: 1px solid rgba(255, 255, 255, .45); }
+  .ht-btn--ghost:hover { border-color: var(--color-text-light); }
+
+  .t1-guidance { padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-h); background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
+  .t1-guidance__inner { max-width: var(--content-wide); margin: 0 auto; padding-left: clamp(1rem, 2vw, 1.75rem); border-left: 3px solid var(--color-accent-crimson); }
+  .t1-guidance h2 { margin: 0 0 .6rem; font: 400 clamp(1.25rem, 2vw, 1.55rem)/1.2 var(--font-serif); letter-spacing: -.01em; }
+  .t1-guidance p { max-width: 75ch; margin: 0; color: var(--color-muted); font: 300 clamp(.95rem, 1.15vw, 1.05rem)/1.7 var(--font-sans); }
+
+  .t1-reasons, .t1-pricing { padding: clamp(2.5rem, 5vw, 4.75rem) var(--space-section-h) clamp(3.5rem, 7vw, 6rem); background: var(--color-surface-warm); }
+  .t1-reasons__inner, .t1-pricing__inner { max-width: var(--content-full); margin: 0 auto; }
+  .t1-section-head { margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; }
+  .t1-section-head h2 { margin: 0 0 var(--space-4); font: 400 clamp(1.75rem, 3.5vw, 2.25rem)/var(--leading-snug) var(--font-serif); letter-spacing: -.02em; }
+  .t1-section-head p { max-width: 720px; margin: 0 auto; color: var(--color-muted); font: 300 var(--text-base)/var(--leading-relaxed) var(--font-sans); }
+
+  .t1-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .t1-columns article { min-width: 0; padding: 0 clamp(1.5rem, 3vw, 3rem); }
+  .t1-columns article:first-child { padding-left: 0; }
+  .t1-columns article:last-child { padding-right: 0; }
+  .t1-columns article + article { border-left: 1px solid var(--color-border-strong); }
+  .t1-columns h3 { margin: 0 0 .75rem; font: 400 1.375rem/1.3 var(--font-serif); }
+  .t1-columns p { margin: 0; color: var(--color-muted); font: 300 .9375rem/1.8 var(--font-sans); }
+
+  .t1-approach { padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h); background: var(--color-surface); }
+  .t1-approach__inner { max-width: var(--content-max); margin: 0 auto; }
+  .t1-rule { width: 2.5rem; height: 1px; margin-bottom: 1.5rem; background: var(--color-accent-gold); }
+  .t1-approach h2 { max-width: 24ch; margin: 0 0 1.5rem; font: 400 clamp(1.5rem, 3vw, 2rem)/var(--leading-snug) var(--font-serif); letter-spacing: -.02em; }
+  .t1-approach p { max-width: 72ch; margin: 0 0 1.25rem; color: var(--color-muted); font: 300 1rem/1.8 var(--font-sans); }
+  .t1-approach p:last-child { margin-bottom: 0; }
+
+  .t1-price-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); border-top: 1px solid var(--color-border-strong); border-bottom: 1px solid var(--color-border-strong); }
+  .t1-price-main { padding: clamp(1.75rem, 4vw, 3rem) clamp(1rem, 3vw, 2.5rem) clamp(1.75rem, 4vw, 3rem) 0; }
+  .t1-price { margin: 0 0 .8rem; color: var(--color-muted); font: 300 .95rem/1.4 var(--font-sans); }
+  .t1-price strong { color: var(--color-text-dark); font: 400 3rem/1 var(--font-serif); }
+  .t1-price-main > p:last-child { max-width: 40ch; margin: 0; color: var(--color-muted); font: 300 .95rem/1.65 var(--font-sans); }
+  .t1-includes { margin: 0; padding: clamp(1.25rem, 3vw, 2rem) 0 clamp(1.25rem, 3vw, 2rem) clamp(1.5rem, 4vw, 3.5rem); border-left: 1px solid var(--color-border-strong); list-style: none; }
+  .t1-includes li { position: relative; padding: .75rem 0 .75rem 1.25rem; color: var(--color-muted); border-bottom: 1px solid var(--color-border); font: 300 .9rem/1.5 var(--font-sans); }
+  .t1-includes li:last-child { border-bottom: 0; }
+  .t1-includes li::before { content: ''; position: absolute; top: 1.45rem; left: 0; width: .65rem; height: 1px; background: var(--color-accent-gold); }
+
+  .t1-cta { padding: clamp(3rem, 6vw, 5rem) var(--space-section-h); color: var(--color-text-light); background: var(--color-bg-dark); text-align: center; }
+  .t1-cta__inner { max-width: 680px; margin: 0 auto; }
+  .t1-cta h2 { margin: 0 0 var(--space-5); color: var(--color-text-light); font: 400 clamp(1.5rem, 3vw, 2rem)/var(--leading-snug) var(--font-serif); }
+  .t1-cta p { max-width: 58ch; margin: 0 auto var(--space-8); color: rgba(255, 255, 255, .72); font: 300 var(--text-base)/var(--leading-relaxed) var(--font-sans); }
+  .t1-actions--center { justify-content: center; }
+
+  @media (max-width: 900px) {
+    .t1-columns { grid-template-columns: 1fr; }
+    .t1-columns article, .t1-columns article:first-child, .t1-columns article:last-child { padding: var(--space-8) 0; }
+    .t1-columns article:first-child { padding-top: 0; }
+    .t1-columns article + article { border-top: 1px solid var(--color-border-strong); border-left: 0; }
+  }
+
+  @media (max-width: 760px) {
+    :global(#page.ht-main) { width: 100vw !important; max-width: 100vw !important; overflow: hidden; }
+    .t1-contact, .t1-guidance, .t1-reasons, .t1-approach, .t1-pricing, .t1-cta { width: 100vw; max-width: 100vw; }
+    .t1-contact__inner, .t1-guidance__inner, .t1-reasons__inner, .t1-approach__inner, .t1-pricing__inner, .t1-cta__inner {
+      width: calc(100vw - (2 * var(--space-section-h)));
+      max-width: calc(100vw - (2 * var(--space-section-h)));
+      min-width: 0;
+    }
+    .t1-contact h1, .t1-guidance p, .t1-section-head h2, .t1-section-head p, .t1-columns article, .t1-approach p, .t1-price-main, .t1-includes, .t1-cta p { min-width: 0; overflow-wrap: anywhere; }
+    .t1-contact__inner { grid-template-columns: 1fr; }
+    .t1-contact .t1-actions { margin-top: var(--space-5); }
+    .t1-price-grid { grid-template-columns: 1fr; }
+    .t1-price-main { padding-right: 0; }
+    .t1-includes { padding-left: 0; border-top: 1px solid var(--color-border-strong); border-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { .ht-btn { transition: none; } }
+</style>

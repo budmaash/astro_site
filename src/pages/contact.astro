@@ -74,17 +74,18 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
           <!-- RIGHT COLUMN -->
           <div class="ht-contact-body__right">
 
-            {/* TODO: Replace this form with a link to Flask /contact once hasantutoring.com is live on Render */}
-            <!--
-              FORM ACTION: Replace the placeholder Formspree endpoint below
-              with the real endpoint before going live.
-              Format: https://formspree.io/f/<YOUR_FORM_ID>
-            -->
             <form
               class="ht-contact-form"
               method="POST"
-              action="https://formspree.io/f/PLACEHOLDER"
+              action="https://formspree.io/f/mpqvgbyy"
             >
+
+              <input type="hidden" name="_subject" value="New message from HasanTutoring.com" />
+
+              <div class="ht-form-honeypot" aria-hidden="true">
+                <label for="company_website">Leave this field empty</label>
+                <input id="company_website" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
 
               <!-- Name row: first + last side by side -->
               <div class="ht-form-row">
@@ -97,6 +98,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
                     class="ht-form-input"
                     required
                     autocomplete="given-name"
+                    maxlength="80"
                   />
                 </div>
                 <div class="ht-form-group">
@@ -107,6 +109,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
                     name="last_name"
                     class="ht-form-input"
                     autocomplete="family-name"
+                    maxlength="80"
                   />
                 </div>
               </div>
@@ -121,6 +124,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
                   class="ht-form-input"
                   required
                   autocomplete="email"
+                  maxlength="254"
                 />
               </div>
 
@@ -132,6 +136,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
                   type="text"
                   name="subject"
                   class="ht-form-input"
+                  maxlength="150"
                 />
               </div>
 
@@ -144,15 +149,17 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
                   class="ht-form-textarea"
                   rows="6"
                   required
+                  maxlength="5000"
                   style="resize: vertical; min-height: 140px"
                 ></textarea>
               </div>
 
               <!-- Submit -->
-              <button type="submit" class="ht-btn ht-btn--primary">
-                Send message
+              <button type="submit" class="ht-btn ht-btn--primary" data-contact-submit>
+                <span data-contact-submit-label>Send message</span>
               </button>
 
+              <div class="ht-form-status" data-contact-status role="status" aria-live="polite" tabindex="-1"></div>
               <p class="ht-form-note">No pressure, ever. I'll respond personally.</p>
 
             </form>
@@ -167,6 +174,61 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   </div>
 
   <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <script is:inline>
+    (function () {
+      var form = document.querySelector('.ht-contact-form');
+      if (!form || !window.fetch || !window.FormData) return;
+
+      var submitButton = form.querySelector('[data-contact-submit]');
+      var submitLabel = form.querySelector('[data-contact-submit-label]');
+      var status = form.querySelector('[data-contact-status]');
+
+      function setStatus(kind, message) {
+        status.className = 'ht-form-status ht-form-status--' + kind;
+        status.textContent = message;
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-busy', 'true');
+        submitLabel.textContent = 'Sending…';
+        setStatus('pending', 'Sending your message…');
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        })
+          .then(function (response) {
+            if (!response.ok) {
+              return response.json().catch(function () { return {}; }).then(function (data) {
+                var detail = data.errors && data.errors.length
+                  ? data.errors.map(function (error) { return error.message; }).join(' ')
+                  : '';
+                throw new Error(detail);
+              });
+            }
+
+            form.reset();
+            setStatus('success', 'Thanks—your message has been sent. I’ll respond personally.');
+            status.focus();
+          })
+          .catch(function (error) {
+            var detail = error && error.message ? ' ' + error.message : '';
+            setStatus('error', 'Your message could not be sent.' + detail + ' Please try again, or email Majid@HasanTutoring.com.');
+            status.focus();
+          })
+          .finally(function () {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-busy');
+            submitLabel.textContent = 'Send message';
+          });
+      });
+    })();
+  </script>
   <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
 </SquarespaceShellLayout>
 
@@ -321,6 +383,16 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     width: 100%;
   }
 
+  .ht-form-honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
   .ht-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -370,7 +442,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     align-items: center;
     justify-content: center;
     font-family: var(--font-sans);
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     border-radius: var(--radius-button);
     padding: 0.85em 2.25em;
@@ -390,6 +462,45 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
   .ht-btn--primary:hover {
     background: var(--color-accent-hover);
+  }
+
+  .ht-btn--primary:disabled {
+    cursor: wait;
+    opacity: 0.66;
+  }
+
+  .ht-form-status {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .ht-form-status--pending,
+  .ht-form-status--success,
+  .ht-form-status--error {
+    display: block;
+  }
+
+  .ht-form-status--pending {
+    color: var(--color-muted);
+    background: var(--color-surface-warm);
+  }
+
+  .ht-form-status--success {
+    color: var(--color-text-dark);
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-accent-gold);
+  }
+
+  .ht-form-status--error {
+    color: var(--color-accent-crimson);
+    background: var(--color-surface-tint);
+    border: 1px solid var(--color-accent-crimson);
   }
 
   /* Form footnote */

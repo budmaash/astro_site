@@ -44,8 +44,9 @@ export type ShellConfigOverride = Partial<
 };
 
 export const shellConfig: ShellConfig = {
-  siteTitle: 'Hasan Tutoring Static Shell',
-  description: 'Reusable Astro shell for the Hasan Tutoring header and footer.',
+  siteTitle: 'Hasan Tutoring | Personalized ACT & SAT Preparation',
+  description:
+    'Personalized ACT and SAT tutoring in the Kansas City area and online, with practical strategies tailored to each student.',
   favicon:
     'https://images.squarespace-cdn.com/content/v1/6719d488c1d7644f3ed87605/f9b991be-6150-45fb-9276-f2464992f9d7/favicon.ico?format=100w',
   bodyId: 'collection-698e6a52b79d7e742279daa8',
@@ -68,7 +69,7 @@ export const shellConfig: ShellConfig = {
           '<p><a data-preserve-html-node="true" href="https://services.actstudent.org/OA_HTML/actibeCAcdLogin.jsp" target="_blank">Sign Up for the ACT</a></p>',
           '<p><a data-preserve-html-node="true" href="http://sat.collegeboard.org/register/sat-us-dates" target="_blank">SAT Testing Dates</a></p>',
           '<p><a data-preserve-html-node="true" href="http://sat.collegeboard.org/login?applicationId=115&amp;destinationpage=https://nsat.collegeboard.org/satweb/login.jsp&amp;view=NSAT" target="_blank">Sign Up for the SAT</a></p>',
-          '<p><a data-preserve-html-node="true" href="https://majid-hasan.squarespace.com/test-prep-options#Pricing" target="_blank">How Much for Tutoring?</a></p>',
+          '<p><a data-preserve-html-node="true" href="/tutoring#pricing">How Much for Tutoring?</a></p>',
         ],
       },
       {

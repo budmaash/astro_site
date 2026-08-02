@@ -1,0 +1,205 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { shellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+import actLogo from '../assets/images/ACT_logo.webp';
+import satLogo from '../assets/images/SAT_logo.png';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+const directionContract = `
+THESIS: The ACT and SAT are introduced as two equally valid systems to understand; the page refuses oversized product cards.
+OWN-WORLD: The ACT-vs-SAT page's charcoal opening strip, crimson-ruled guidance, warm paper field, Garamond headings, light sans-serif copy, and crisp vertical dividers.
+STORY: Learn what each exam is, scan its sections, follow the relevant exam guide, or compare both before choosing.
+FIRST VIEWPORT: A compact dark thesis strip with comparison actions leads into a white summary, then two balanced exam columns.
+FORM: Direct adaptation of the established ACT-vs-SAT editorial comparison structure.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+`.trim();
+---
+
+<SquarespaceShellLayout config={config} directionContract={directionContract}>
+  <div id="siteWrapper" class="clearfix site-wrapper tests1-page">
+    <SquarespaceHeader config={config} />
+    <main id="page" class="ht-main" tabindex="-1">
+      <section class="tests1-contact">
+        <div class="tests1-contact__inner">
+          <h1>Two college entrance exams. Two different ways to show what you know.</h1>
+          <div class="tests1-actions">
+            <a href="/act-vs-sat" class="ht-btn ht-btn--white">Compare the tests</a>
+            <a href="/contact" class="ht-btn ht-btn--ghost">Get practice tests</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="tests1-guidance" aria-labelledby="tests1-guidance-title">
+        <div class="tests1-guidance__inner">
+          <h2 id="tests1-guidance-title">Start with the basics</h2>
+          <p>Use this page to learn how each exam is structured, how its sections work, and what topics it covers. Neither test is universally better; understanding both makes it easier to decide which one fits you.</p>
+        </div>
+      </section>
+
+      <section class="tests1-exams" aria-labelledby="tests1-exams-title">
+        <div class="tests1-exams__inner">
+          <header class="tests1-section-head">
+            <h2 id="tests1-exams-title">Understand each exam</h2>
+            <p>The ACT and SAT test many of the same underlying skills, but their formats, timing, and emphasis feel different.</p>
+          </header>
+
+          <div class="tests1-grid">
+            <article class="tests1-exam">
+              <header class="tests1-exam__head">
+                <h3>The ACT</h3>
+                <img src={actLogo.src} alt="ACT" />
+              </header>
+              <p class="tests1-exam__intro">The ACT is one of two major college entrance exams. It has recently been updated, making each section shorter with fewer questions but more time per question. The exam is composed of four timed sections, each testing a distinct skill set.</p>
+              <div class="tests1-sections">
+                <section>
+                  <h4>English</h4>
+                  <p>Tests grammar and punctuation, along with deeper rhetorical and logical understanding of English composition.</p>
+                </section>
+                <section>
+                  <h4>Math</h4>
+                  <p>A straightforward math exam covering basic algebra, geometry, advanced algebra, trigonometry, and pre-calculus.</p>
+                </section>
+                <section>
+                  <h4>Reading</h4>
+                  <p>Tests understanding of specific details as well as broader reading comprehension.</p>
+                </section>
+                <section>
+                  <h4>Science and essay</h4>
+                  <p>Science focuses on patterns and trends in charts and graphs. It is now optional and produces a separate STEM score. The optional essay costs an additional fee.</p>
+                </section>
+              </div>
+              <a href="/act" class="tests1-link">Learn more about the ACT</a>
+            </article>
+
+            <article class="tests1-exam">
+              <header class="tests1-exam__head">
+                <h3>The SAT</h3>
+                <img src={satLogo.src} alt="SAT" />
+              </header>
+              <p class="tests1-exam__intro">The SAT is the older, more-established college entrance exam, though it is no more accepted or regarded by colleges and universities. Offered digitally, it produces a Reading and Writing score and a Math score, each out of 800, for a total possible score of 1600.</p>
+              <div class="tests1-sections">
+                <section>
+                  <h4>Adaptive modules</h4>
+                  <p>Each area is tested over two modules with the same format and content. The second module adapts based on performance in the first.</p>
+                </section>
+                <section>
+                  <h4>Reading and Writing</h4>
+                  <p>Tests vocabulary, rhetorical and logical reasoning, grammar, punctuation, and synthesizing information. Questions use short passages rather than long passages with many questions.</p>
+                </section>
+                <section>
+                  <h4>Math</h4>
+                  <p>Covers algebra, geometry, and basic trigonometry.</p>
+                </section>
+              </div>
+              <a href="/sat" class="tests1-link">Learn more about the SAT</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="tests1-advice" aria-labelledby="tests1-advice-title">
+        <div class="tests1-advice__inner">
+          <div class="tests1-rule" aria-hidden="true"></div>
+          <h2 id="tests1-advice-title">Not sure which test to take?</h2>
+          <p>Take a timed practice test of both and compare your scores and experience. I can provide free practice tests and help you think through the results without pressure or a sales pitch.</p>
+          <a href="/act-vs-sat" class="tests1-link">See the ACT and SAT comparison</a>
+        </div>
+      </section>
+
+      <section class="tests1-cta">
+        <div class="tests1-cta__inner">
+          <h2>Start with a free practice test.</h2>
+          <p>Contact me for an ACT or SAT practice test and honest advice about what to do next.</p>
+          <div class="tests1-actions tests1-actions--center">
+            <a href="/contact" class="ht-btn ht-btn--white">Get free practice tests</a>
+            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <SquarespaceFooter config={config} />
+  </div>
+</SquarespaceShellLayout>
+
+<style>
+  :global(#page.ht-main) { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .tests1-page { overflow-x: clip; color: var(--color-text-dark); }
+  .tests1-page *, .tests1-page *::before, .tests1-page *::after { box-sizing: border-box; }
+
+  .tests1-contact { padding: clamp(1.25rem, 2.5vw, 2rem) var(--space-section-h); background: var(--color-bg-dark); }
+  .tests1-contact__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 5vw, 5rem); align-items: center; max-width: var(--content-full); margin: 0 auto; }
+  .tests1-contact h1 { max-width: 34ch; margin: 0; color: var(--color-text-light); font: 400 clamp(1.5rem, 3vw, 2rem)/1.2 var(--font-serif); letter-spacing: -.02em; }
+  .tests1-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+  .ht-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: var(--space-3) var(--space-6); border-radius: var(--radius-button); font: 600 var(--text-sm)/1 var(--font-sans); text-decoration: none; white-space: nowrap; transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast); }
+  .ht-btn:focus-visible, .tests1-link:focus-visible { outline: 3px solid var(--color-accent-gold-light); outline-offset: 3px; }
+  .ht-btn--white { color: var(--color-bg-dark); background: var(--color-surface); border: 1px solid var(--color-surface); }
+  .ht-btn--white:hover { color: var(--color-text-light); background: transparent; }
+  .ht-btn--ghost { color: var(--color-text-light); background: transparent; border: 1px solid rgba(255, 255, 255, .45); }
+  .ht-btn--ghost:hover { border-color: var(--color-text-light); }
+
+  .tests1-guidance { padding: clamp(1.5rem, 3vw, 2.5rem) var(--space-section-h); background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
+  .tests1-guidance__inner { max-width: var(--content-wide); margin: 0 auto; padding-left: clamp(1rem, 2vw, 1.75rem); border-left: 3px solid var(--color-accent-crimson); }
+  .tests1-guidance h2 { margin: 0 0 .6rem; font: 400 clamp(1.25rem, 2vw, 1.55rem)/1.2 var(--font-serif); letter-spacing: -.01em; }
+  .tests1-guidance p { max-width: 75ch; margin: 0; color: var(--color-muted); font: 300 clamp(.95rem, 1.15vw, 1.05rem)/1.7 var(--font-sans); }
+
+  .tests1-exams { padding: clamp(2.5rem, 5vw, 4.75rem) var(--space-section-h) clamp(3.5rem, 7vw, 6rem); background: var(--color-surface-warm); }
+  .tests1-exams__inner { max-width: var(--content-full); margin: 0 auto; }
+  .tests1-section-head { margin-bottom: clamp(2rem, 4vw, 3rem); text-align: center; }
+  .tests1-section-head h2 { margin: 0 0 var(--space-4); font: 400 clamp(1.75rem, 3.5vw, 2.25rem)/var(--leading-snug) var(--font-serif); letter-spacing: -.02em; }
+  .tests1-section-head p { max-width: 720px; margin: 0 auto; color: var(--color-muted); font: 300 var(--text-base)/var(--leading-relaxed) var(--font-sans); }
+
+  .tests1-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tests1-exam { min-width: 0; padding: 0 clamp(2rem, 4vw, 4rem); }
+  .tests1-exam:first-child { padding-left: 0; }
+  .tests1-exam:last-child { padding-right: 0; border-left: 1px solid var(--color-border-strong); }
+  .tests1-exam__head { display: flex; min-height: 80px; margin-bottom: 1rem; justify-content: space-between; align-items: center; gap: 1.5rem; }
+  .tests1-exam__head h3 { margin: 0; font: 400 clamp(2rem, 4vw, 3rem)/1 var(--font-serif); letter-spacing: -.02em; }
+  .tests1-exam__head img { width: 116px; height: 70px; object-fit: contain; }
+  .tests1-exam__intro { margin: 0 0 1.5rem; color: var(--color-muted); font: 300 .975rem/1.75 var(--font-sans); }
+  .tests1-sections { border-top: 1px solid var(--color-border-strong); }
+  .tests1-sections section { display: grid; grid-template-columns: minmax(7rem, .35fr) minmax(0, 1fr); gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--color-border); }
+  .tests1-sections h4 { margin: 0; font: 400 1.05rem/1.35 var(--font-serif); }
+  .tests1-sections p { margin: 0; color: var(--color-muted); font: 300 .875rem/1.65 var(--font-sans); }
+  .tests1-link { display: inline-flex; margin-top: 1.5rem; padding-bottom: .25rem; color: var(--color-text-dark); border-bottom: 1px solid currentColor; font: 600 .78rem/1.3 var(--font-sans); letter-spacing: .08em; text-decoration: none; text-transform: uppercase; transition: color var(--transition-fast); }
+  .tests1-link:hover { color: var(--color-accent-crimson); }
+
+  .tests1-advice { padding: clamp(3.5rem, 7vw, 6rem) var(--space-section-h); background: var(--color-surface); }
+  .tests1-advice__inner { max-width: var(--content-max); margin: 0 auto; }
+  .tests1-rule { width: 2.5rem; height: 1px; margin-bottom: 1.5rem; background: var(--color-accent-gold); }
+  .tests1-advice h2 { margin: 0 0 1.25rem; font: 400 clamp(1.5rem, 3vw, 2rem)/var(--leading-snug) var(--font-serif); letter-spacing: -.02em; }
+  .tests1-advice p { max-width: 72ch; margin: 0; color: var(--color-muted); font: 300 1rem/1.8 var(--font-sans); }
+
+  .tests1-cta { padding: clamp(3rem, 6vw, 5rem) var(--space-section-h); color: var(--color-text-light); background: var(--color-bg-dark); text-align: center; }
+  .tests1-cta__inner { max-width: 680px; margin: 0 auto; }
+  .tests1-cta h2 { margin: 0 0 var(--space-5); color: var(--color-text-light); font: 400 clamp(1.5rem, 3vw, 2rem)/var(--leading-snug) var(--font-serif); }
+  .tests1-cta p { max-width: 54ch; margin: 0 auto var(--space-8); color: rgba(255, 255, 255, .72); font: 300 var(--text-base)/var(--leading-relaxed) var(--font-sans); }
+  .tests1-actions--center { justify-content: center; }
+
+  @media (max-width: 900px) {
+    .tests1-grid { grid-template-columns: 1fr; }
+    .tests1-exam, .tests1-exam:first-child, .tests1-exam:last-child { padding: var(--space-8) 0; }
+    .tests1-exam:first-child { padding-top: 0; }
+    .tests1-exam:last-child { border-top: 1px solid var(--color-border-strong); border-left: 0; }
+  }
+
+  @media (max-width: 760px) {
+    :global(#page.ht-main) { width: 100vw !important; max-width: 100vw !important; overflow: hidden; }
+    .tests1-contact, .tests1-guidance, .tests1-exams, .tests1-advice, .tests1-cta { width: 100vw; max-width: 100vw; }
+    .tests1-contact__inner, .tests1-guidance__inner, .tests1-exams__inner, .tests1-advice__inner, .tests1-cta__inner { width: calc(100vw - 3rem); max-width: calc(100vw - 3rem); min-width: 0; }
+    .tests1-contact h1, .tests1-guidance p, .tests1-section-head h2, .tests1-section-head p, .tests1-exam, .tests1-exam__intro, .tests1-sections section, .tests1-advice p, .tests1-cta p { min-width: 0; overflow-wrap: anywhere; }
+    .tests1-contact h1, .tests1-guidance h2, .tests1-guidance p, .tests1-section-head h2, .tests1-section-head p, .tests1-exam, .tests1-exam__intro, .tests1-sections, .tests1-advice h2, .tests1-advice p, .tests1-cta h2, .tests1-cta p { width: 100% !important; max-width: calc(100vw - 4rem) !important; }
+    .tests1-contact__inner { grid-template-columns: 1fr; }
+    .tests1-contact .tests1-actions { margin-top: var(--space-5); }
+    .tests1-sections section { grid-template-columns: 1fr; gap: .35rem; }
+  }
+
+  @media (max-width: 420px) {
+    .tests1-exam__head img { width: 90px; height: 58px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { .ht-btn, .tests1-link { transition: none; } }
+</style>

@@ -11,7 +11,10 @@ const htmlAttrs = {
   class: 'no-js',
 };
 
-const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+const {
+  config = shellConfig,
+  directionContract,
+}: { config?: ShellConfig; directionContract?: string } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang={htmlAttrs.lang} class={htmlAttrs.class} xmlns:og={htmlAttrs.xmlnsOg} xmlns:fb={htmlAttrs.xmlnsFb}>
@@ -54,6 +57,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
     <script is:inline>{squarespaceShellScript}</script>
   </head>
   <body id={config.bodyId} class={config.bodyClass}>
+    {directionContract && <Fragment set:html={`<!-- ${directionContract} -->`} />}
     <slot />
 
     <!-- Scroll-to-top button, rendered on every page via this layout -->
