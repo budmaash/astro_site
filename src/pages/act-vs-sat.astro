@@ -15,10 +15,9 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 
       <section class="ht-avs-contact-strip">
         <div class="ht-avs-contact-strip__inner">
-          <h1 class="ht-avs-contact-strip__h1">Neither test is harder — but one might be right for you.</h1>
+          <h1 class="ht-avs-contact-strip__h1">Would you like some advice on which test to take?</h1>
           <div class="ht-avs-contact-strip__btns">
-            <a href="mailto:majid@hasantutoring.com" class="ht-btn ht-btn--white">Get in touch</a>
-            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+            <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
           </div>
         </div>
       </section>
@@ -32,6 +31,7 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
             in a proctored environment. If you do better on one than the other,
             take that one. Otherwise, go with whatever one you like better.
           </p>
+          <a href="/practice-tests" class="ht-btn ht-avs-guidance__cta">Practice Tests</a>
         </div>
       </section>
 
@@ -210,11 +210,15 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   .ht-avs-guidance__inner {
     max-width: var(--content-wide);
     margin: 0 auto;
-    padding-left: clamp(1rem, 2vw, 1.75rem);
-    border-left: 3px solid var(--color-accent-crimson);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: clamp(var(--space-6), 4vw, var(--space-10));
+    row-gap: 0.6rem;
+    align-items: center;
   }
 
   .ht-avs-guidance__body {
+    grid-column: 1;
     margin: 0;
     color: var(--color-muted);
     font-family: var(--font-sans);
@@ -224,13 +228,32 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
   }
 
   .ht-avs-guidance__heading {
-    margin: 0 0 0.6rem;
+    grid-column: 1;
+    margin: 0;
     color: var(--color-text-dark);
     font-family: var(--font-serif);
     font-size: clamp(1.25rem, 2vw, 1.55rem);
     font-weight: 400;
     letter-spacing: -0.01em;
     line-height: 1.2;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-crimson);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.22em;
+  }
+
+  .ht-avs-guidance__cta {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    justify-self: start;
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    border: 1.5px solid var(--color-bg-dark);
+  }
+
+  .ht-avs-guidance__cta:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
   }
 
   /* ----------------------------------------------------------------
@@ -594,6 +617,22 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
       grid-row: auto;
       margin-top: var(--space-5);
       flex-wrap: wrap;
+    }
+
+    .ht-avs-guidance__inner {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-3);
+    }
+
+    .ht-avs-guidance__heading,
+    .ht-avs-guidance__body,
+    .ht-avs-guidance__cta {
+      grid-column: 1;
+    }
+
+    .ht-avs-guidance__cta {
+      grid-row: 3;
+      margin-top: var(--space-2);
     }
   }
 

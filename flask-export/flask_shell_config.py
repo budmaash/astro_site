@@ -15,7 +15,7 @@ SHELL_CONFIG = {
         "text": "Member Home",
     },
     "navigation": [
-        {"href": "https://www.hasantutoring.com/", "label": "Start Here", "home": True},
+        {"href": "https://www.hasantutoring.com/", "label": "Home", "home": True},
         {"href": "https://www.hasantutoring.com/tests-1", "label": "Test Info"},
         {"href": "https://www.hasantutoring.com/act-vs-sat", "label": "ACT vs. SAT"},
         {"href": "https://www.hasantutoring.com/test-prep-options", "label": "Why Tutoring?"},

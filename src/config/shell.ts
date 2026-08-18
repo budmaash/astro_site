@@ -87,7 +87,7 @@ export const shellConfig: ShellConfig = {
     ],
   },
   navigation: [
-    { href: '/', label: 'Start Here', home: true },
+    { href: '/', label: 'Home', home: true },
     {
       href: '/tests',
       label: 'ACT/SAT Info',
