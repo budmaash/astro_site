@@ -1,0 +1,1372 @@
+---
+import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../../config/shell';
+import { shellConfig } from '../../config/shell';
+import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
+
+const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+
+const IMG = '/lessons/punctuation';
+
+const navItems = [
+  { href: '#prerequisites', label: 'Prerequisites' },
+  { href: '#complete-complete', label: '"Complete | Complete"' },
+  { href: '#run-ons', label: 'Run-ons' },
+  { href: '#colons', label: 'Colons' },
+  { href: '#commas', label: 'Commas' },
+  { href: '#dashes', label: 'Dashes' },
+  { href: '#strategies', label: 'Strategies' },
+  { href: '#title-occupation-name', label: 'Title/Occupation + Name' },
+  { href: '#niche-question-types', label: 'Niche question types' },
+];
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <!-- ======================================================
+           SECTION 1 — HERO
+           ====================================================== -->
+      <section class="ht-pn-hero">
+        <div class="ht-pn-hero__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson">SAT Writing &amp; Language</p>
+          <h1 class="ht-pn-hero__h1">Punctuation &amp; sentence boundaries</h1>
+          <p class="ht-pn-hero__lead">
+            A huge share of Standard English Convention questions on the SAT
+            come down to one skill: recognizing where a sentence's boundaries
+            are. Once you can reliably tell a complete sentence from an
+            incomplete one, periods, semicolons, colons, commas, and dashes
+            all start to feel like the same question wearing different
+            costumes.
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           LEFT NAV + CONTENT LAYOUT
+           ====================================================== -->
+      <div class="ht-pn-layout">
+        <aside class="ht-pn-nav" aria-label="Lesson sections">
+          <nav class="ht-pn-nav__inner">
+            <p class="ht-pn-nav__label">On this page</p>
+            <ul class="ht-pn-nav__list">
+              {navItems.map((item) => (
+                <li>
+                  <a href={item.href} class="ht-pn-nav__link" data-nav-link>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="ht-pn-content">
+
+      <!-- ======================================================
+           SECTION 2 — PREREQUISITES: COMPLETE SENTENCES
+           ====================================================== -->
+      <section class="ht-pn-section" id="prerequisites">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Prerequisite</p>
+            <h2 class="ht-section-hdr__h2">What counts as a complete sentence?</h2>
+            <p class="ht-section-hdr__lead">
+              Every rule in this lesson — colons, semicolons, commas, dashes —
+              depends on being able to answer one question quickly: is this a
+              complete sentence, or not? A complete sentence is exactly one
+              independent clause, plus any number of dependent clauses
+              (including zero).
+            </p>
+          </div>
+
+          <div class="ht-pn-figure">
+            <img src={`${IMG}/P1.png`} alt="Diagram of a sentence split into two halves, each labeled 'complete?' — the core question to ask on every boundary punctuation question." loading="lazy" />
+          </div>
+
+          <h3 class="ht-pn-h3">Independent clauses</h3>
+          <p class="ht-pn-body">
+            An independent clause has a subject and a verb. You can usually
+            just tell: if it sounds like it could stand on its own, or like a
+            complete thought, it's an independent clause — and therefore a
+            complete sentence by itself.
+          </p>
+
+          <ul class="ht-styled-list">
+            <li>The committee reached a compromise after weeks of unproductive debate.</li>
+            <li>The engineer revised the design so that it could withstand greater pressure.</li>
+            <li>The student who had submitted her essay late asked for additional feedback.</li>
+          </ul>
+
+          <h3 class="ht-pn-h3">Dependent clauses</h3>
+          <p class="ht-pn-body">
+            Dependent clauses can't stand on their own. You don't need to
+            memorize grammar terminology — just learn to recognize these four
+            common patterns.
+          </p>
+
+          <div class="ht-pn-card-grid">
+            <div class="ht-pn-card">
+              <span class="ht-pn-card__num" aria-hidden="true">1</span>
+              <h4 class="ht-pn-card__h4">Phrases that set time or place</h4>
+              <p class="ht-pn-card__body">Prepositional phrases — anything starting with "As," "While," "In," "At," "Near," "Above," "Below," and similar words.</p>
+              <ul class="ht-pn-card__ex">
+                <li>In the 1950s</li>
+                <li>While the board members debated the merits of the proposal</li>
+                <li>Over twenty years ago</li>
+                <li>Above the building</li>
+                <li>Formed in 1967 to foster political and economic stability within the Asia-Pacific region</li>
+                <li>When the manuscript was returned to the author with extensive notes and corrections</li>
+              </ul>
+            </div>
+
+            <div class="ht-pn-card">
+              <span class="ht-pn-card__num" aria-hidden="true">2</span>
+              <h4 class="ht-pn-card__h4">Conditional phrases</h4>
+              <p class="ht-pn-card__body">Phrases that start with words like "Because," "If," "Although," "Since."</p>
+              <ul class="ht-pn-card__ex">
+                <li>Since the creation of the oversight committee</li>
+                <li>If the leverage ratio reaches a certain point</li>
+                <li>Because these organisms are so tiny</li>
+              </ul>
+            </div>
+
+            <div class="ht-pn-card">
+              <span class="ht-pn-card__num" aria-hidden="true">3</span>
+              <h4 class="ht-pn-card__h4">Phrases that start with an "-ing" word</h4>
+              <p class="ht-pn-card__body">A very common pattern that's easy to spot once you're looking for it.</p>
+              <ul class="ht-pn-card__ex">
+                <li>Starting with the lowest number</li>
+                <li>Solidifying her position within the organization</li>
+                <li>Forming a layer of sedimentary bedrock</li>
+                <li>Ensuring that proteins retain their original configurations</li>
+              </ul>
+            </div>
+
+            <div class="ht-pn-card">
+              <span class="ht-pn-card__num" aria-hidden="true">4</span>
+              <h4 class="ht-pn-card__h4">Interjections</h4>
+              <p class="ht-pn-card__body">
+                A dependent clause tucked inside another clause. If you can
+                remove the phrase and the sentence still flows, it's an
+                interjection. They're usually found inside independent
+                clauses, but on harder questions can appear inside a
+                dependent clause too. They're explicitly tested with commas
+                and dashes, and recognizing — then mentally removing — them
+                makes many questions far easier.
+              </p>
+              <ul class="ht-pn-card__ex">
+                <li>The company, <em>though battered by years of declining profits</em>, announced an ambitious new initiative.</li>
+                <li>In <em>The Book of Salt</em>, for example, the exiled character of Bình connects to his native Saigon through the food he prepares</li>
+                <li>The artwork, <em>though controversial at its unveiling</em>, has since become widely celebrated.</li>
+                <li>The invention, <em>which transformed communication across continents</em>, changed history.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="ht-pn-h3">Common sentence-structure patterns</h3>
+          <p class="ht-pn-body">
+            These are the shapes you'll see over and over on the SAT. Getting
+            fast at spotting them makes every boundary question easier.
+          </p>
+
+          <div class="ht-pn-pattern-list">
+            <div class="ht-pn-pattern">
+              <p class="ht-pn-pattern__label">Independent clause only</p>
+              <ul class="ht-styled-list">
+                <li>The engineer revised the design so that it could withstand greater pressure.</li>
+                <li>Beatrix Potter is perhaps best known for writing and illustrating children's books such as <em>The Tale of Peter Rabbit</em> (1902).</li>
+                <li>The orchestra performed a piece that blended classical structure with modern dissonance.</li>
+              </ul>
+            </div>
+
+            <div class="ht-pn-pattern">
+              <p class="ht-pn-pattern__label">Dependent, Independent</p>
+              <ul class="ht-styled-list">
+                <li>In 1933, the Twentieth Amendment to the US Constitution was ratified.</li>
+                <li>In her poetry collection <em>Thomas and Beulah</em>, Rita Dove interweaves the titular characters' personal stories with broader historical narratives.</li>
+                <li>In a study of the cognitive abilities of white-faced capuchin monkeys (<em>Cebus imitator</em>), researchers neglected to control for the physical difficulty of the tasks they used to evaluate the monkeys.</li>
+              </ul>
+            </div>
+
+            <div class="ht-pn-pattern">
+              <p class="ht-pn-pattern__label">Independent, Dependent</p>
+              <ul class="ht-styled-list">
+                <li>The intense pressure found in the deep ocean can affect the structure of proteins in fish's cells, distorting the proteins' shape.</li>
+                <li>The cognitive abilities of monkeys given problems requiring little dexterity were judged by the same criteria as were those of monkeys given physically demanding problems, such as unscrewing a bottle and inserting a straw.</li>
+              </ul>
+            </div>
+
+            <div class="ht-pn-pattern">
+              <p class="ht-pn-pattern__label">Dependent, Independent, Dependent</p>
+              <ul class="ht-styled-list">
+                <li>In the 1950s, a man named Joseph McVicker was struggling to keep his business afloat when his sister-in-law Kay Zufall advised him to repurpose the company's product — a nontoxic, clay-like substance for removing soot from wallpaper — as a modeling putty for kids.</li>
+                <li>Compiled in the late 1500s largely through the efforts of Indigenous scribes, <em>Cantares Mexicanos</em> is the most important collection of poetry in Classical Nahuatl, the principal language of the Aztec Empire.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 3 — "COMPLETE | COMPLETE"
+           ====================================================== -->
+      <section class="ht-pn-section ht-pn-section--tint" id="complete-complete">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">The core rule</p>
+            <h2 class="ht-section-hdr__h2">"Complete | Complete"</h2>
+            <p class="ht-section-hdr__lead">
+              Three punctuation marks require a complete sentence <em>before</em>
+              them and a complete sentence <em>after</em> them: periods,
+              semicolons, and comma+FANBOYS. Note that a comma followed by a
+              FANBOYS word (and, but, or, nor, for, so, yet) isn't "just a
+              comma" — the comma and the FANBOYS work together as a single
+              punctuation mark, equal in strength to a period or a semicolon.
+            </p>
+          </div>
+
+          <p class="ht-pn-body">
+            So whenever you're testing one of these three, read up to the
+            punctuation mark and check whether it's a complete sentence. If
+            it's not, the answer is wrong. Then read from that point to the
+            end of the sentence and run the same check.
+          </p>
+
+          <div class="ht-pn-figure">
+            <img src={`${IMG}/P4.png`} alt="Diagram showing a sentence checked for completeness on both sides of a boundary, with a period at the end." loading="lazy" />
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P25.png`} alt="SAT-style question about a jam-tasting experiment, with answer choices testing a period, comma, and comma-plus-FANBOYS after the word 'varied.'" loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Let's test the period in answer choice A. Read up to the
+              period — "The number of jams available for tasting varied" —
+              complete. Read from after the period to the end of the sentence
+              — "some shoppers had twenty-four different options, others only
+              six" — also complete. Both sides check out, so A is correct.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P7.png`} alt="SAT-style question about video game graphics, testing a comma-plus-FANBOYS ('but') split." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Here we see a comma+FANBOYS ("<span class="ht-pn-mono">,but</span>")
+              in answer choice D. Reading from the beginning of the sentence
+              up to "<span class="ht-pn-mono">,but</span>" — "While many video
+              game creators strive to make their graphics ever more
+              lifelike" — that's not a complete sentence, so D is out. A
+              comma+FANBOYS requires a complete sentence on both sides.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P10.png`} alt="Annotation showing why answer D fails the complete-sentence test before the comma-plus-FANBOYS." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — when comma+FANBOYS is correct</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P11.png`} alt="SAT-style question about marginalia in a book once owned by Walt Whitman, where a comma-plus-FANBOYS answer choice is correct." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Here's an example where a comma+FANBOYS answer choice, A, is
+              correct: both "Typically, underlines, scribbles, and notes...
+              lower a book's value" and "but when the former owner is a
+              famous poet like Walt Whitman... can be a gold mine to literary
+              scholars" are complete sentences on their own.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — eliminating by pattern</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P12.png`} alt="SAT-style question with three answer choices sharing a period, semicolon, or comma-plus-FANBOYS, all of which fail because the text after the boundary isn't complete." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Three of the four answer choices here use one of the three
+              "complete | complete" marks (period, semicolon, comma+FANBOYS),
+              and none of them change any other words in the sentence. That
+              means logically none of the three can be correct — if we test
+              the phrase that follows, starting with "the stitching...," it
+              isn't a complete sentence, so a period, semicolon, or
+              comma+FANBOYS can't go there.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 4 — RUN-ONS
+           ====================================================== -->
+      <section class="ht-pn-section" id="run-ons">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">What to avoid</p>
+            <h2 class="ht-section-hdr__h2">Run-ons</h2>
+            <p class="ht-section-hdr__lead">
+              A run-on is two complete sentences connected by only a comma,
+              only a FANBOYS word, or by nothing at all. On the SAT, run-ons
+              almost always show up as incorrect answer choices whenever
+              other choices offer a period, semicolon, comma+FANBOYS, or
+              colon.
+            </p>
+          </div>
+
+          <div class="ht-pn-figure">
+            <img src={`${IMG}/P13.png`} alt="Diagram labeled 'Run-Ons' showing two complete sentences joined incorrectly by only a comma, only a FANBOYS word, or nothing." loading="lazy" />
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P14.png`} alt="SAT-style question about deep-sea fish proteins and TMAO, with four answer choices to evaluate for run-ons." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              We already know there are two complete sentences here: one
+              ending at "configurations" and another running from "TMAO" to
+              the period. Answer B separates them with nothing, C with only a
+              comma, and D with only a FANBOYS ("and") — all three are
+              run-ons and all three are wrong.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P15.png`} alt="Annotated diagram marking both halves of the sentence as complete, with the boundary options tested." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P16.png`} alt="Annotation showing why answers B, C, and D are all run-ons for the TMAO example." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P18.png`} alt="SAT-style question with two complete sentences, up to 'value' and from 'when.'" loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P19.png`} alt="Answer choices tested for run-ons, with the correct comma-plus-FANBOYS choice circled." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Again, two complete sentences — one ending at "value," another
+              starting at "when." Only the answer choice that pairs a comma
+              with a FANBOYS word avoids a run-on.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P21.png`} alt="SAT-style question about plastic-bag taxes and the 'rebound effect,' testing boundaries at 'percent' and 'such.'" loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P24.png`} alt="Diagram marking both halves of the sentence complete around the words 'percent' and 'such.'" loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P22.png`} alt="Answer choices eliminated for being run-ons, leaving the period-plus-capital-letter choice correct." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Same pattern once more: two complete statements, ending at
+              "percent" and starting at "such." Only the choice with a real
+              boundary between them — not a comma, not a FANBOYS alone, not
+              nothing — survives.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 5 — COLONS
+           ====================================================== -->
+      <section class="ht-pn-section ht-pn-section--tint" id="colons">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">A different pattern</p>
+            <h2 class="ht-section-hdr__h2">Colons</h2>
+            <p class="ht-section-hdr__lead">
+              Colons can be used many ways, but on the SAT the rule is
+              consistent: you must have a complete sentence up to the colon,
+              but what follows only has to be an example or explanation of
+              what came before — it can be complete or incomplete. So a colon
+              can have two completes on either side, but doesn't have to. The
+              only requirement is that the two sides are genuinely two
+              different statements, not a continuation of the same one.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P25.png`} alt="SAT-style question about the jam-tasting experiment, testing a colon versus comma answer choice." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Testing answer choice A: "The number of jams available for
+              tasting varied" is complete on its own, so we're good so far.
+              What follows — "some shoppers had twenty-four different
+              options, others only six" — is an explanation of the first
+              phrase. A is correct.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P26.png`} alt="Annotation confirming the complete clause before the colon and the example/explanation relationship after it." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P28.png`} alt="SAT-style question running the same colon test, with answer B correct." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Running the same test on this next question, we find that
+              answer choice B is correct — complete before the colon,
+              explanation after it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 6 — COMMAS
+           ====================================================== -->
+      <section class="ht-pn-section" id="commas">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">The two comma rules</p>
+            <h2 class="ht-section-hdr__h2">Commas</h2>
+            <p class="ht-section-hdr__lead">
+              Commas are mostly tested two ways on the SAT: bookending an
+              interjection, or separating an independent clause from a
+              dependent one. Interjections need commas (or dashes) on both
+              sides; commas are the far more common way to do it. The second
+              rule is simpler still — on the SAT, you always separate
+              independent and dependent clauses with a comma.
+            </p>
+          </div>
+
+          <div class="ht-pn-card-grid ht-pn-card-grid--two">
+            <div class="ht-pn-card">
+              <span class="ht-tag">Rule</span>
+              <h4 class="ht-pn-card__h4">Bookending an interjection</h4>
+              <p class="ht-pn-card__body">
+                Read the sentence with the interjection removed. If it still
+                flows as a complete, sensible sentence, the phrase between
+                the commas is an interjection and the commas belong.
+              </p>
+            </div>
+            <div class="ht-pn-card">
+              <span class="ht-tag">Rule</span>
+              <h4 class="ht-pn-card__h4">Separating independent &amp; dependent</h4>
+              <p class="ht-pn-card__body">
+                Whenever an independent clause and a dependent clause meet in
+                the same sentence, the SAT always puts a comma at the seam.
+              </p>
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — interjection</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P29.png`} alt="SAT-style question about Julia Alvarez's novel In the Time of the Butterflies, testing whether a phrase is a removable interjection." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Notice that answer choice A pairs "and" with a comma but has no
+              complete sentence before it — that's out. Testing the
+              comma-only choice: removing the phrase "a fictionalized...
+              sisters," leaves "<em>Julia Alvarez's 1994 novel In the Time of
+              the Butterflies can serve as a starting point for...</em>" —
+              it flows. Choice C is correct.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P49.png`} alt="Annotation marking answer choice A as incorrect because the clause before 'and' is not complete." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P50.png`} alt="Annotation confirming choice C is correct because the sentence still flows once the interjection is removed." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — interjection</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P45.png`} alt="SAT-style question testing whether 'for instance' can be removed as an interjection." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Since we can remove the phrase "for instance" without breaking
+              the sentence, choice B is correct. None of the other choices
+              have a complete sentence up to the word "newts," which they all
+              require, so they're eliminated for that reason alone.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P51.png`} alt="Diagram showing the phrase 'for instance' being tested for removability." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P52.png`} alt="Confirmation that removing the interjection leaves a complete, flowing sentence." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Two more that work the same way</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P53.png`} alt="SAT-style question about the 12th Amendment and US presidential elections, testing an interjection." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P54.png`} alt="SAT-style question about carbon-13 hibernation research, testing an interjection." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — independent/dependent seam</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P40.png`} alt="SAT-style question about Epicurus and pleasure, testing where a comma should separate independent and dependent clauses." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Choices C and D don't have a required complete sentence
+              starting from "positing," and D doesn't offer an example or
+              explanation (though it comes close). Notice that phrase starts
+              with an "-ing" word, "positing" — a common dependent-clause
+              pattern. "Epicurus... soul" works as an independent clause, so
+              a comma belongs at that seam. Choice A is correct.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P55.png`} alt="Diagram marking the independent and dependent clauses on either side of 'positing.'" loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P56.png`} alt="Answer choices A) and C) circled with reasoning about which options avoid a run-on." loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 7 — DASHES
+           ====================================================== -->
+      <section class="ht-pn-section ht-pn-section--tint" id="dashes">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Rarer, but predictable</p>
+            <h2 class="ht-section-hdr__h2">Dashes</h2>
+            <p class="ht-section-hdr__lead">
+              Dashes are tested exactly like commas, just far less often on
+              the SAT. A sentence can have 0, 1, or 2 dashes. A single dash
+              must separate an independent clause from a dependent one; two
+              dashes must bookend an interjection. The SAT rarely tests a
+              lone dash separating independent and dependent clauses.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P44.png`} alt="SAT-style question about solar panel installers and pollinator populations, with one dash already present in the sentence." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Notice there's already a dash in the sentence — a strong signal
+              to test the two-dash answer choice. Reading the sentence
+              without the phrase "assuming solar panel installers'
+              cooperation," it flows. Choice B is correct.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P57.png`} alt="Annotation confirming the interjection can be removed and the sentence still flows." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Another example that works the same way</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P32.png`} alt="SAT-style question about Sophie Calle's photography exhibition, testing dash placement." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P68.png`} alt="Diagram testing whether the phrase between dashes can be removed." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P69.png`} alt="Confirmation that the phrase flows once removed, making the two-dash answer correct." loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 8 — STRATEGIES
+           ====================================================== -->
+      <section class="ht-pn-section" id="strategies">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Common answer patterns</p>
+            <h2 class="ht-section-hdr__h2">Strategies &amp; punctuation hierarchy</h2>
+            <p class="ht-section-hdr__lead">
+              A few answer-choice patterns show up often enough on the SAT
+              that they're worth learning as their own categories, separate
+              from the core boundary rules above. The two below — naming
+              conventions and a handful of niche question types — round out
+              the toolkit.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 8A — TITLE/OCCUPATION + NAME
+           ====================================================== -->
+      <section class="ht-pn-section ht-pn-section--tint" id="title-occupation-name">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Looks like a comma question — isn't</p>
+            <h2 class="ht-section-hdr__h2">Title/Occupation + Name</h2>
+            <p class="ht-section-hdr__lead">
+              These questions look like they're testing comma usage, but they
+              deserve their own category. Whenever you see a title or
+              occupation directly before a name — "SAT tutor Majid Hasan,"
+              "theoretical physicist Robert J. Oppenheimer," "cartoon character
+              Krusty the Clown" — the vast majority of the time, no commas go
+              before or after the name.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked examples</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P58.png`} alt="SAT-style question about screen actor Anna May Wong, testing whether commas belong around the title-plus-name construction." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P59.png`} alt="A second SAT-style example testing the title/occupation-plus-name pattern with no commas around the name." loading="lazy" />
+            </div>
+          </div>
+
+          <p class="ht-pn-body">
+            <strong>The exception:</strong> every so often you'll need a
+            comma <em>after</em> the name (never before) if there's an
+            interjection — or a dependent clause — right after it. For
+            example: "The book was written by legendary journalist Bob
+            Woodward, who won a Pulitzer prize the following year." A comma
+            belongs after the name there, to separate the independent clause
+            from the dependent one that follows.
+          </p>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — the exception</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P60.png`} alt="ACT-style question showing an interjection right after a name, requiring a comma after the name but not before it." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              See the interjection that starts right after "Ien Chi"? No
+              comma before the name, but one is needed right after it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 8B — NICHE QUESTION TYPES
+           ====================================================== -->
+      <section class="ht-pn-section" id="niche-question-types">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Rare, but worth knowing</p>
+            <h2 class="ht-section-hdr__h2">Niche (infrequent) question types</h2>
+          </div>
+
+          <div class="ht-pn-card-grid ht-pn-card-grid--two">
+            <div class="ht-pn-card">
+              <span class="ht-tag">Infrequent</span>
+              <h4 class="ht-pn-card__h4">Multiple semicolons</h4>
+              <p class="ht-pn-card__body">
+                If the answer choices would let you add a second semicolon to
+                a sentence that already has one, the semicolon choice is
+                almost always correct — the two semicolons are functioning
+                like commas in a list. When more than one choice would create
+                two semicolons, follow the pattern already set by the
+                sentence.
+              </p>
+            </div>
+            <div class="ht-pn-card">
+              <span class="ht-tag">Infrequent</span>
+              <h4 class="ht-pn-card__h4">Two correct comp/comp answers (transitions)</h4>
+              <p class="ht-pn-card__body">
+                Some questions offer two grammatically correct ways to link
+                two complete sentences. The real question is which
+                transition word captures the relationship correctly. Think of
+                the sentence as three statements, S1, S2, and S3 — so far,
+                it's always S1 and S2 that contrast, not S2 and S3.
+              </p>
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — multiple semicolons</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P61.png`} alt="SAT-style question where only one answer choice would create two semicolons in the sentence." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              In this first example, the answer has to be B, since that's the
+              only option that results in two semicolons in the sentence.
+            </p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P63.png`} alt="Annotation confirming answer B as the only choice producing two semicolons." loading="lazy" />
+            </div>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P62.png`} alt="Full question text showing the semicolon used as a list separator." loading="lazy" />
+            </div>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — following the pattern</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P64.png`} alt="SAT-style question where two answer choices would both produce two semicolons, requiring the list pattern to be followed." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Here, two options would each result in two semicolons in the
+              sentence. So we need to follow the pattern already established:
+              "…dedicated; …fostering; and educating…"
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Worked example — transitions</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P70.png`} alt="SAT-style question about a mathematician's wartime and postwar career, testing which transition correctly links two complete sentences." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Answer choice C would imply that the idea of her subsequent
+              career being more than just solving equations contrasts with
+              the idea that she helped usher in the digital age — but that's
+              not the contrast being drawn. The idea that she solved
+              equations during the war is what contrasts with the idea that
+              the rest of her career was about more than equations. Choice A
+              makes that clear.
+            </p>
+          </div>
+
+          <div class="ht-pn-example">
+            <p class="ht-pn-example__label">Another example, same logic</p>
+            <div class="ht-pn-example__figure">
+              <img src={`${IMG}/P67.png`} alt="SAT-style question about a sociologist on a historic-sites review board, testing which transition correctly links two complete sentences." loading="lazy" />
+            </div>
+            <p class="ht-pn-body">
+              Choice A indicates that the reviewer sits on the board but
+              doesn't make decisions alone. Choice B would imply that "not
+              deciding alone" contrasts with "all decisions are made
+              collectively by a group of experts" — which doesn't make sense,
+              since those two ideas actually agree with each other.
+            </p>
+          </div>
+        </div>
+      </section>
+
+        </div>
+      </div>
+
+      <!-- ======================================================
+           SECTION 9 — CTA STRIP
+           ====================================================== -->
+      <section class="ht-cta-strip">
+        <h2 class="ht-cta-strip__h2">Want help putting this into practice?</h2>
+        <p class="ht-cta-strip__body">
+          These patterns click fastest with real SAT questions and someone
+          to check your reasoning. I'm happy to walk through a few together.
+        </p>
+        <div class="ht-cta-strip__btns">
+          <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
+          <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+        </div>
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
+  <div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
+
+  <script is:inline>
+    (function () {
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav-link]'));
+      if (!navLinks.length) return;
+
+      var sections = navLinks
+        .map(function (link) {
+          var id = link.getAttribute('href').slice(1);
+          return document.getElementById(id);
+        })
+        .filter(Boolean);
+
+      function setActive(id) {
+        navLinks.forEach(function (link) {
+          link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                setActive(entry.target.id);
+              }
+            });
+          },
+          { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+        );
+
+        sections.forEach(function (section) {
+          observer.observe(section);
+        });
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          var id = link.getAttribute('href').slice(1);
+          var target = document.getElementById(id);
+          if (!target) return;
+
+          // Handle the scroll ourselves instead of relying on the browser's
+          // native #hash jump, which can be swallowed by the Squarespace
+          // shell's own click/routing handlers on this page.
+          event.preventDefault();
+          event.stopPropagation();
+
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          if (window.history && window.history.pushState) {
+            window.history.pushState(null, '', '#' + id);
+          } else {
+            window.location.hash = id;
+          }
+
+          setActive(id);
+        });
+      });
+    })();
+  </script>
+</SquarespaceShellLayout>
+
+<style>
+  /* ----------------------------------------------------------------
+     Reset Squarespace container constraints on main
+  ---------------------------------------------------------------- */
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ----------------------------------------------------------------
+     Shared utilities (mirrors faq.astro / act-vs-sat.astro)
+  ---------------------------------------------------------------- */
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  .ht-eyebrow--gold {
+    color: var(--color-accent-gold);
+  }
+
+  .ht-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--color-accent-crimson);
+    background: var(--color-accent-gold-light);
+    border-radius: var(--radius-tag);
+    padding: 0.3rem 0.8rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .ht-styled-list {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    padding-left: 1.25rem;
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-styled-list li {
+    margin-bottom: 0.6rem;
+  }
+
+  .ht-styled-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     SECTION 1 — HERO
+  ---------------------------------------------------------------- */
+  .ht-pn-hero {
+    background: var(--color-surface);
+    padding-top: clamp(12rem, 16vw, 15rem);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    padding-left: var(--space-section-h);
+    padding-right: var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-pn-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-pn-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-6);
+    line-height: 1.2;
+  }
+
+  .ht-pn-hero__lead {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ----------------------------------------------------------------
+     Left nav + content layout
+  ---------------------------------------------------------------- */
+  .ht-pn-layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    max-width: calc(var(--content-wide) + 220px + 3.5rem);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 3.5rem) var(--space-section-h) 0;
+  }
+
+  .ht-pn-content {
+    min-width: 0;
+  }
+
+  .ht-pn-nav {
+    position: sticky;
+    top: 7rem;
+    align-self: start;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+  }
+
+  .ht-pn-nav__label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-muted);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-pn-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 0.9rem;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .ht-pn-nav__link {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 0.45rem 0;
+    border-left: 2px solid transparent;
+    margin-left: -0.96rem;
+    padding-left: 0.9rem;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .ht-pn-nav__link:hover {
+    color: var(--color-text-dark);
+  }
+
+  .ht-pn-nav__link.is-active {
+    color: var(--color-accent-crimson);
+    border-left-color: var(--color-accent-crimson);
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .ht-pn-layout {
+      grid-template-columns: 1fr;
+      padding-left: var(--space-section-h);
+      padding-right: var(--space-section-h);
+    }
+
+    .ht-pn-nav {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      margin-bottom: 1rem;
+    }
+
+    .ht-pn-nav__inner {
+      background: var(--color-surface-warm);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+    }
+
+    .ht-pn-nav__list {
+      border-left: none;
+      padding-left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+    }
+
+    .ht-pn-nav__link {
+      margin-left: 0;
+      padding-left: 0;
+      border-left: none;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.2rem;
+    }
+
+    .ht-pn-nav__link.is-active {
+      border-left-color: transparent;
+      border-bottom-color: var(--color-accent-crimson);
+    }
+  }
+
+  /* ----------------------------------------------------------------
+     Section shells
+  ---------------------------------------------------------------- */
+  .ht-pn-section {
+    background: var(--color-surface);
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    scroll-margin-top: 6.5rem;
+  }
+
+  .ht-pn-section--tint {
+    background: var(--color-bg);
+    border-radius: var(--radius-card);
+  }
+
+  .ht-pn-section__inner {
+    max-width: none;
+    margin: 0;
+  }
+
+  .ht-section-hdr {
+    max-width: 720px;
+    margin: 0 0 var(--space-10);
+  }
+
+  .ht-section-hdr__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-4);
+    line-height: var(--leading-tight);
+  }
+
+  .ht-section-hdr__lead {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.0625rem;
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .ht-pn-h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--color-text-dark);
+    margin: var(--space-10) 0 var(--space-3);
+  }
+
+  .ht-pn-body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    max-width: 760px;
+    margin: 0 0 var(--space-6);
+  }
+
+  .ht-pn-body strong {
+    color: var(--color-text-dark);
+    font-weight: 600;
+  }
+
+  .ht-pn-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.35rem;
+    padding: 0.05rem 0.4rem;
+    font-size: 0.85em;
+  }
+
+  /* ----------------------------------------------------------------
+     Card grid (dependent-clause types, comma rules, niche types)
+  ---------------------------------------------------------------- */
+  .ht-pn-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 0 0 var(--space-8);
+  }
+
+  .ht-pn-card-grid--two {
+    margin-bottom: var(--space-8);
+  }
+
+  @media (max-width: 767px) {
+    .ht-pn-card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ht-pn-card {
+    position: relative;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-card-pad);
+  }
+
+  .ht-pn-card__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--color-accent-gold-light);
+    color: var(--color-accent-crimson);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .ht-pn-card__h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.125rem;
+    color: var(--color-text-dark);
+    margin: 0 0 0.6rem;
+    line-height: var(--leading-snug);
+  }
+
+  .ht-pn-card__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 0 0.75rem;
+  }
+
+  .ht-pn-card__ex {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.875rem;
+    color: var(--color-text);
+    line-height: var(--leading-normal);
+    padding-left: 1.1rem;
+    margin: 0;
+  }
+
+  .ht-pn-card__ex li {
+    margin-bottom: 0.4rem;
+  }
+
+  .ht-pn-card__ex li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     Sentence pattern list
+  ---------------------------------------------------------------- */
+  .ht-pn-pattern-list {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-pn-pattern {
+    border-left: 3px solid var(--color-accent-gold);
+    padding: 0.25rem 0 0.25rem 1.25rem;
+  }
+
+  .ht-pn-pattern__label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-dark);
+    margin: 0 0 0.6rem;
+  }
+
+  .ht-pn-pattern .ht-styled-list {
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     Figures (diagrams) and worked examples (question screenshots)
+  ---------------------------------------------------------------- */
+  .ht-pn-figure {
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-6);
+    margin: 0 0 var(--space-8);
+    text-align: center;
+  }
+
+  .ht-pn-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+  }
+
+  .ht-pn-example {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card-sm);
+    padding: var(--space-card-pad);
+    margin: 0 0 var(--space-8);
+  }
+
+  .ht-pn-example__label {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-accent-crimson);
+    margin: 0 0 var(--space-4);
+  }
+
+  .ht-pn-example__figure {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+    margin: 0 0 var(--space-4);
+    text-align: center;
+  }
+
+  .ht-pn-example__figure:last-child {
+    margin-bottom: 0;
+  }
+
+  .ht-pn-example__figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.4rem;
+  }
+
+  .ht-pn-example .ht-pn-body {
+    max-width: none;
+  }
+
+  .ht-pn-example .ht-pn-body:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     CTA strip (mirrors faq.astro)
+  ---------------------------------------------------------------- */
+  .ht-cta-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-cta-strip__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-6);
+    line-height: var(--leading-snug);
+  }
+
+  .ht-cta-strip__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .ht-cta-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .ht-btn--white {
+    background: var(--color-surface);
+    color: var(--color-bg-dark);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--white:hover {
+    opacity: 0.9;
+  }
+
+  .ht-btn--ghost {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .ht-btn--ghost:hover {
+    border-color: var(--color-text-light);
+  }
+</style>
