@@ -1,6 +1,8 @@
 ---
 import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import actLogo from '../assets/images/ACT_logo.webp';
+import satLogo from '../assets/images/SAT_logo.png';
 import { createShellConfig } from '../config/shell';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
@@ -36,6 +38,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
               <li>Anytime, at your convenience</li>
             </ul>
             <p class="practice-intro__note">You don’t have to create an account. You don’t have to have a consultation (sales pitch) to see your score report. Take a practice test in the comfort of your own home, see where you’re at, and then, feel free to reach out if you want more information or want to talk through your options.</p>
+            <a class="practice-intro__cta" href="#exam-picker">Get Started</a>
           </div>
           <div class="practice-intro__visual">
             <img
@@ -50,10 +53,22 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </div>
       </section>
 
-      <section class="exam-picker" aria-labelledby="exam-picker-title">
+      <section id="exam-picker" class="exam-picker" aria-labelledby="exam-picker-title">
         <div class="exam-picker__inner">
-          <h2 id="exam-picker-title">Choose your exam</h2>
-          <p>Understand your baseline with a practice test at no cost. See your options below.</p>
+          <div class="exam-picker__header">
+            <h2 id="exam-picker-title">Choose your exam</h2>
+            <div class="exam-picker__downloads" aria-label="Practice test downloads">
+              <a href="/sat-practice-test-1-digital.pdf">
+                <img src={satLogo.src} width="282" height="178" alt="" aria-hidden="true" />
+                <span>SAT Practice Test</span>
+              </a>
+              <a href="/Practice%20Test%202.pdf">
+                <img src={actLogo.src} width="225" height="225" alt="" aria-hidden="true" />
+                <span>ACT Practice Test</span>
+              </a>
+            </div>
+            <p>Understand your baseline with a practice test at no cost. See your options below.</p>
+          </div>
           <div class="exam-cards">
             <article class="exam-card">
               <div class="exam-card__header">
@@ -175,6 +190,33 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     font: 300 1rem/1.65 var(--font-sans);
   }
 
+  .practice-intro__cta {
+    display: inline-flex;
+    min-height: 46px;
+    margin-top: 1.5rem;
+    padding: .85rem 1.4rem;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: var(--color-text-dark);
+    border: 1px solid var(--color-text-dark);
+    border-radius: 999px;
+    font: 600 .8rem/1 var(--font-sans);
+    letter-spacing: .04em;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+
+  .practice-intro__cta:hover {
+    background: var(--color-accent-crimson);
+    border-color: var(--color-accent-crimson);
+  }
+
+  .practice-intro__cta:focus-visible {
+    outline: 3px solid var(--color-accent-gold-light);
+    outline-offset: 3px;
+  }
+
   .practice-intro__visual img {
     display: block;
     width: 114%;
@@ -185,6 +227,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   .exam-picker {
     padding: clamp(3rem, 5vw, 4.75rem) var(--space-section-h);
     background: var(--color-surface);
+    scroll-margin-top: 7rem;
   }
 
   .exam-picker__inner {
@@ -197,12 +240,54 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     letter-spacing: -.02em;
   }
 
+  .exam-picker__header {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(1.25rem, 2.5vw, 2rem);
+    align-items: start;
+  }
+
   .exam-picker p {
+    grid-column: 1 / -1;
     max-width: none;
-    margin: .85rem 0 0;
+    margin: 0;
     color: var(--color-muted);
     font: 300 1rem/1.65 var(--font-sans);
     white-space: nowrap;
+  }
+
+  .exam-picker__downloads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem 1.5rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: .45rem;
+  }
+
+  .exam-picker__downloads a {
+    display: inline-flex;
+    gap: .55rem;
+    align-items: center;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid currentColor;
+    font: 600 .82rem/1.4 var(--font-sans);
+    letter-spacing: .03em;
+    text-decoration: none;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+
+  .exam-picker__downloads img {
+    width: 2rem;
+    height: 1.5rem;
+    object-fit: contain;
+  }
+
+  .exam-picker__downloads a:hover { color: var(--color-accent-crimson); }
+
+  .exam-picker__downloads a:focus-visible {
+    outline: 3px solid var(--color-accent-gold-light);
+    outline-offset: 4px;
   }
 
   .exam-cards {
@@ -273,8 +358,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   @media (max-width: 860px) {
     .practice-intro__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .exam-picker__header,
     .exam-cards { grid-template-columns: 1fr; }
     .exam-picker p { white-space: normal; }
+    .exam-picker__downloads { justify-content: flex-start; }
 
     .practice-intro h1 { max-width: 12ch; }
     .practice-intro__visual { margin-top: .75rem; }
@@ -299,6 +386,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .practice-intro__cta,
+    .exam-picker__downloads a,
     .exam-card__header a { transition: none; }
   }
 </style>
