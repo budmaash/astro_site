@@ -4,7 +4,8 @@ import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import { createShellConfig } from '../config/shell';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const appUrl = 'https://app.hasantutoring.com';
+const actAppUrl = 'https://app.hasantutoring.com/act-practice-test';
+const satAppUrl = 'https://app.hasantutoring.com/sat-practice-test';
 const config = createShellConfig({
   siteTitle: 'Free SAT & ACT Practice Tests | Hasan Tutoring',
   description: 'Take a free SAT or ACT practice test and get a detailed score report.',
@@ -27,57 +28,62 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <main id="page" class="practice-main" tabindex="-1">
       <section class="practice-intro" aria-labelledby="practice-title">
         <div class="practice-intro__inner">
-          <h1 id="practice-title"><span>Free</span> SAT &amp; ACT practice tests</h1>
-          <div class="practice-intro__copy">
-            <p>Start with a full-length practice test to get a clear baseline. You can take the test online, or work from a provided test and enter your answers afterward.</p>
-            <p>Both options lead to the same detailed score report, including the questions you missed and the areas that deserve your attention next.</p>
+          <div class="practice-intro__heading">
+            <h1 id="practice-title"><span>Free</span> Practice Tests</h1>
+            <ul class="practice-checklist" aria-label="Practice test benefits">
+              <li>Test yourself at home</li>
+              <li>Self-proctored</li>
+              <li>Anytime, at your convenience</li>
+            </ul>
+            <p class="practice-intro__note">You don’t have to create an account. You don’t have to have a consultation (sales pitch) to see your score report. Take a practice test in the comfort of your own home, see where you’re at, and then, feel free to reach out if you want more information or want to talk through your options.</p>
+          </div>
+          <div class="practice-intro__visual">
+            <img
+              src="/practice_test_splash.png"
+              width="1211"
+              height="1021"
+              alt="Two sample Hasan Tutoring ACT practice test score reports"
+              loading="eager"
+              fetchpriority="high"
+            />
           </div>
         </div>
       </section>
 
-      <section class="exam-choices" aria-label="Choose a practice test">
-        <div class="exam-choices__inner">
-          <article class="exam-choice">
-            <div class="exam-choice__rule" aria-hidden="true"></div>
-            <h2>SAT practice test</h2>
-            <p>Choose the format that works best for you. Complete the test online, or use a provided test and submit your answers when you finish.</p>
-            <div class="exam-choice__actions">
-              <a class="practice-link practice-link--primary" href={appUrl}>Take the SAT online</a>
-              <a class="practice-link" href={appUrl}>Use a provided SAT test</a>
-            </div>
-          </article>
+      <section class="exam-picker" aria-labelledby="exam-picker-title">
+        <div class="exam-picker__inner">
+          <h2 id="exam-picker-title">Choose your exam</h2>
+          <p>Understand your baseline with a practice test at no cost. See your options below.</p>
+          <div class="exam-cards">
+            <article class="exam-card">
+              <div class="exam-card__header">
+                <h3>ACT Practice Test</h3>
+                <a href={actAppUrl}>Get Started</a>
+              </div>
+              <ul>
+                <li>Download/Print off the provided ACT.</li>
+                <li>Self-proctor, 35 min. for English, 45 for Math, and 40 for Reading.</li>
+                <li>Take each section in one sitting (10 min. break between Math and Reading).</li>
+                <li>Or score one section at a time.</li>
+              </ul>
+            </article>
 
-          <div class="exam-choices__divider" aria-hidden="true"></div>
-
-          <article class="exam-choice">
-            <div class="exam-choice__rule" aria-hidden="true"></div>
-            <h2>ACT practice test</h2>
-            <p>Choose the format that works best for you. Complete the test online, or use a provided test and submit your answers when you finish.</p>
-            <div class="exam-choice__actions">
-              <a class="practice-link practice-link--primary" href={appUrl}>Take the ACT online</a>
-              <a class="practice-link" href={appUrl}>Use a provided ACT test</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="practice-assurance" aria-labelledby="assurance-title">
-        <div class="practice-assurance__inner">
-          <h2 id="assurance-title">Two ways to test. One useful result.</h2>
-          <p>Your report shows your score, correct and missed questions, and performance by category—so the next step is easier to see.</p>
-          <a href={appUrl}>Choose a practice test</a>
-        </div>
-      </section>
-
-      <section class="practice-details" aria-labelledby="details-title">
-        <div class="practice-details__inner">
-          <h2 id="details-title">What happens after the test?</h2>
-          <div class="practice-details__copy">
-            <p>Submit your answers and receive a detailed diagnostic report. It gives you more than a score: it helps you identify patterns in what you know, what you missed, and where focused practice can help.</p>
-            <p>The practice tests are free to use, and you do not need an account to begin.</p>
+            <article class="exam-card">
+              <div class="exam-card__header">
+                <h3>SAT Practice Test</h3>
+                <a href={satAppUrl}>Get Started</a>
+              </div>
+              <ul>
+                <li>The SAT is now digital, so the best way to take a practice exam is on the Bluebook Exam app.</li>
+                <li>On Bluebook, you’ll see which questions you got right and wrong and get a report with College Board’s Question Types.</li>
+                <li>Here, you can take a paper version of the digital exam, enter your answers, and get a more detailed score report.</li>
+                <li>Score both Reading and Writing and Math, or just one or the other.</li>
+              </ul>
+            </article>
           </div>
         </div>
       </section>
+
     </main>
 
     <SquarespaceFooter config={config} />
@@ -103,175 +109,196 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   }
 
   .practice-intro__inner,
-  .exam-choices__inner,
-  .practice-assurance__inner,
-  .practice-details__inner {
+  .exam-picker__inner {
     width: min(100%, 1280px);
     min-width: 0;
     margin: 0 auto;
   }
 
   .practice-intro__inner {
+    width: min(100%, 1040px);
     display: grid;
-    grid-template-columns: minmax(0, .9fr) minmax(32rem, 1.1fr);
-    gap: clamp(2.5rem, 7vw, 7rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
     align-items: start;
   }
 
   .practice-intro h1 {
     max-width: 11ch;
     margin: 0;
-    font: 400 clamp(2.8rem, 5.5vw, 5rem)/.98 var(--font-serif);
+    font: 700 clamp(2.15rem, 4vw, 3.5rem)/1.02 var(--font-serif);
     letter-spacing: -.025em;
     text-wrap: balance;
   }
 
-  .practice-intro h1 span { color: var(--color-accent-crimson); }
+  .practice-intro h1 span { color: var(--color-highlight-vivid); }
 
-  .practice-intro__copy {
-    max-width: 68ch;
-    padding-top: .4rem;
-    color: var(--color-muted);
-    font: 300 clamp(1rem, 1.3vw, 1.12rem)/1.65 var(--font-sans);
+  .practice-checklist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .practice-intro__copy p { margin: 0; }
-  .practice-intro__copy p + p { margin-top: 1rem; }
-
-  .exam-choices {
-    padding: clamp(3.75rem, 7vw, 6.75rem) var(--space-section-h);
-    background: var(--color-surface);
+  .practice-checklist li {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 40px;
+    padding: .55rem 1rem .55rem .72rem;
+    color: #172231;
+    background: #f0fff6;
+    border: 1px solid #a9efc5;
+    border-radius: 999px;
+    font: 400 .96rem/1.25 var(--font-sans);
   }
 
-  .exam-choices__inner {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: clamp(2.25rem, 5vw, 5.5rem);
+  .practice-checklist li::before {
+    content: '✓';
+    display: inline-grid;
+    flex: 0 0 1rem;
+    width: 1rem;
+    height: 1rem;
+    place-items: center;
+    color: #fff;
+    background: #16a85b;
+    border-radius: 50%;
+    font: 700 .7rem/1 var(--font-sans);
   }
 
-  .exam-choices__divider { background: var(--color-border-strong); }
-
-  .exam-choice__rule {
-    width: 3.25rem;
-    height: 2px;
-    margin-bottom: 1.5rem;
-    background: var(--color-accent-crimson);
-  }
-
-  .exam-choice h2 {
-    margin: 0 0 1rem;
-    font: 400 clamp(2.15rem, 3.6vw, 3.4rem)/1.05 var(--font-serif);
-    letter-spacing: -.02em;
-  }
-
-  .exam-choice p {
-    max-width: 53ch;
-    margin: 0 0 2rem;
+  .practice-intro__note {
+    max-width: 52ch;
+    margin: 1.5rem 0 0;
     color: var(--color-muted);
     font: 300 1rem/1.65 var(--font-sans);
   }
 
-  .exam-choice__actions { display: flex; flex-wrap: wrap; gap: .75rem 1.6rem; align-items: center; }
-
-  .practice-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: var(--color-text-dark);
-    border-bottom: 1px solid currentColor;
-    font: 600 .78rem/1.3 var(--font-sans);
-    letter-spacing: .08em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 160ms ease, border-color 160ms ease;
+  .practice-intro__visual img {
+    display: block;
+    width: 114%;
+    height: auto;
+    margin-inline: 0 auto;
   }
 
-  .practice-link:hover { color: var(--color-accent-crimson); }
-  .practice-link:focus-visible { outline: 3px solid var(--color-accent-gold-light); outline-offset: 4px; }
+  .exam-picker {
+    padding: clamp(3rem, 5vw, 4.75rem) var(--space-section-h);
+    background: var(--color-surface);
+  }
 
-  .practice-link--primary {
-    min-height: 46px;
-    padding: .85rem 1.45rem;
+  .exam-picker__inner {
+    width: min(100%, 1040px);
+  }
+
+  .exam-picker h2 {
+    margin: 0;
+    font: 700 clamp(2rem, 3vw, 2.8rem)/1.05 var(--font-serif);
+    letter-spacing: -.02em;
+  }
+
+  .exam-picker p {
+    max-width: none;
+    margin: .85rem 0 0;
+    color: var(--color-muted);
+    font: 300 1rem/1.65 var(--font-sans);
+    white-space: nowrap;
+  }
+
+  .exam-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .exam-card {
+    min-width: 0;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: #fff;
+    border: 1px solid var(--color-border);
+  }
+
+  .exam-card h3 {
+    margin: 0;
+    font: 700 clamp(1.35rem, 2vw, 1.65rem)/1.12 var(--font-serif);
+    letter-spacing: -.02em;
+  }
+
+  .exam-card__header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .exam-card__header a {
+    display: inline-flex;
+    flex: 0 0 auto;
+    min-height: 42px;
+    padding: .7rem 1.1rem;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     background: var(--color-text-dark);
     border: 1px solid var(--color-text-dark);
     border-radius: 999px;
+    font: 600 .78rem/1 var(--font-sans);
+    letter-spacing: .04em;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease;
   }
 
-  .practice-link--primary:hover { color: #fff; background: var(--color-accent-crimson); border-color: var(--color-accent-crimson); }
-
-  .practice-assurance {
-    padding: clamp(3rem, 5vw, 4.75rem) var(--space-section-h);
-    color: #fff;
+  .exam-card__header a:hover {
     background: var(--color-accent-crimson);
+    border-color: var(--color-accent-crimson);
   }
 
-  .practice-assurance__inner {
+  .exam-card__header a:focus-visible {
+    outline: 3px solid var(--color-accent-gold-light);
+    outline-offset: 3px;
+  }
+
+  .exam-card ul {
     display: grid;
-    grid-template-columns: minmax(0, .8fr) minmax(24rem, 1.2fr) auto;
-    gap: clamp(1.5rem, 4vw, 4rem);
-    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--color-text-dark);
+    font: 300 1rem/1.55 var(--font-sans);
   }
 
-  .practice-assurance h2 { margin: 0; color: #fff; font: 400 clamp(2rem, 3vw, 2.75rem)/1.05 var(--font-serif); letter-spacing: -.02em; }
-  .practice-assurance p { max-width: 55ch; margin: 0; color: #fff; font: 300 1rem/1.6 var(--font-sans); }
-  .practice-assurance a { display: inline-flex; justify-content: center; min-height: 46px; padding: .9rem 1.5rem; color: var(--color-text-dark); background: #fff; border: 1px solid #fff; border-radius: 999px; font: 600 .78rem/1.2 var(--font-sans); letter-spacing: .08em; text-decoration: none; text-transform: uppercase; white-space: nowrap; transition: background-color 160ms ease, color 160ms ease; }
-  .practice-assurance a:hover { color: #fff; background: transparent; }
-  .practice-assurance a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-
-  .practice-details { padding: clamp(3.75rem, 7vw, 6.5rem) var(--space-section-h); background: #fff; }
-  .practice-details__inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(32rem, 1.2fr); gap: clamp(2.5rem, 7vw, 7rem); }
-  .practice-details h2 { max-width: 12ch; margin: 0; font: 400 clamp(2.1rem, 3.5vw, 3.4rem)/1.08 var(--font-serif); letter-spacing: -.02em; }
-  .practice-details__copy { max-width: 68ch; color: var(--color-muted); font: 300 1rem/1.65 var(--font-sans); }
-  .practice-details__copy p { margin: 0; }
-  .practice-details__copy p + p { margin-top: 1rem; }
+  .exam-card li { padding-left: .25rem; }
+  .exam-card li::marker { color: var(--color-text-dark); }
 
   @media (max-width: 860px) {
-    .practice-intro__inner,
-    .practice-details__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .practice-intro__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .exam-cards { grid-template-columns: 1fr; }
+    .exam-picker p { white-space: normal; }
 
     .practice-intro h1 { max-width: 12ch; }
+    .practice-intro__visual { margin-top: .75rem; }
+    .practice-intro__visual img { width: 67%; margin-inline: auto; }
 
-    .practice-assurance__inner { grid-template-columns: 1fr; gap: 1rem; }
-    .practice-assurance a { width: fit-content; margin-top: .5rem; }
   }
 
   @media (max-width: 680px) {
     :global(#page.practice-main) { width: 100vw !important; max-width: 100vw !important; }
 
     .practice-intro,
-    .exam-choices,
-    .practice-assurance,
-    .practice-details { width: 100vw; max-width: 100vw; }
+    .exam-picker { width: 100vw; max-width: 100vw; }
 
     .practice-intro__inner,
-    .exam-choices__inner,
-    .practice-assurance__inner,
-    .practice-details__inner { width: 100%; min-width: 0; }
+    .exam-picker__inner { width: 100%; min-width: 0; }
 
-    .practice-intro__inner,
-    .exam-choices__inner,
-    .practice-assurance__inner,
-    .practice-details__inner { display: block; }
-
-    .practice-intro__copy,
-    .exam-choice,
-    .practice-details__copy { min-width: 0; overflow-wrap: anywhere; }
+    .practice-intro__inner { display: block; }
 
     .practice-intro { padding-top: 2.5rem; padding-bottom: 2.75rem; }
-    .practice-intro h1 { font-size: clamp(2.5rem, 13vw, 4.5rem); }
+    .practice-checklist { align-items: flex-start; flex-direction: column; margin-top: 1.5rem; }
 
-    .exam-choices__inner { grid-template-columns: 1fr; gap: 2.75rem; }
-    .exam-choices__divider { width: 100%; height: 1px; margin: 2.75rem 0; }
-    .exam-choice__actions { align-items: flex-start; flex-direction: column; }
-    .practice-link--primary { width: 100%; justify-content: center; }
-    .practice-assurance p { margin-top: 1rem; }
-    .practice-assurance a { margin-top: 1.5rem; }
-    .practice-details__copy { margin-top: 1.5rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .practice-link,
-    .practice-assurance a { transition: none; }
+    .exam-card__header a { transition: none; }
   }
 </style>
