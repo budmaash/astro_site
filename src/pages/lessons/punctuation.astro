@@ -32,15 +32,17 @@ const navItems = [
            ====================================================== -->
       <section class="ht-pn-hero">
         <div class="ht-pn-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">SAT Writing &amp; Language</p>
-          <h1 class="ht-pn-hero__h1">Punctuation &amp; sentence boundaries</h1>
+          <p class="ht-eyebrow ht-eyebrow--crimson">SAT Reading &amp; Writing</p>
+          <h1 class="ht-pn-hero__h1">Punctuation (Boundaries)</h1>
           <p class="ht-pn-hero__lead">
-            A huge share of Standard English Convention questions on the SAT
-            come down to one skill: recognizing where a sentence's boundaries
-            are. Once you can reliably tell a complete sentence from an
-            incomplete one, periods, semicolons, colons, commas, and dashes
-            all start to feel like the same question wearing different
-            costumes.
+            Much of the Standard English Conventions questions on the Reading
+            and Writing modules of the SAT are what the College Board calls
+            “Boundaries” (the other known as “Form, Structure, and Sense”).
+            These are essentially questions about punctuation. This guide
+            explains how to handle all boundaries/punctuation problems.
+            Instead of just the blanket-term “boundaries,” we’ll break down
+            each and every specific type of these questions, how to spot it,
+            and the process to handle it.
           </p>
         </div>
       </section>
@@ -73,24 +75,23 @@ const navItems = [
             <p class="ht-eyebrow ht-eyebrow--gold">Prerequisite</p>
             <h2 class="ht-section-hdr__h2">What counts as a complete sentence?</h2>
             <p class="ht-section-hdr__lead">
-              Every rule in this lesson — colons, semicolons, commas, dashes —
-              depends on being able to answer one question quickly: is this a
-              complete sentence, or not? A complete sentence is exactly one
-              independent clause, plus any number of dependent clauses
-              (including zero).
+              To use these processes, you need to be able to discern between a
+              complete and incomplete sentence and independent and dependent
+              clauses. If you can read a phrase and determine if it’s a complete
+              sentence, everything else will fall into place. So what is a
+              complete sentence, or rather, how should we think about them on
+              the SATs? Think of them like this: a complete sentence is exactly
+              one Independent clause + Literally any number of dependent
+              clauses, including zero dependent clauses.
             </p>
-          </div>
-
-          <div class="ht-pn-figure">
-            <img src={`${IMG}/P1.png`} alt="Diagram of a sentence split into two halves, each labeled 'complete?' — the core question to ask on every boundary punctuation question." loading="lazy" />
           </div>
 
           <h3 class="ht-pn-h3">Independent clauses</h3>
           <p class="ht-pn-body">
             An independent clause has a subject and a verb. You can usually
             just tell: if it sounds like it could stand on its own, or like a
-            complete thought, it's an independent clause — and therefore a
-            complete sentence by itself.
+            complete thought, it's an independent clause and therefore a
+            complete sentence by itself. A few examples:
           </p>
 
           <ul class="ht-styled-list">
@@ -102,7 +103,7 @@ const navItems = [
           <h3 class="ht-pn-h3">Dependent clauses</h3>
           <p class="ht-pn-body">
             Dependent clauses can't stand on their own. You don't need to
-            memorize grammar terminology — just learn to recognize these four
+            memorize grammar terminology; just learn to recognize these four
             common patterns.
           </p>
 
@@ -110,7 +111,7 @@ const navItems = [
             <div class="ht-pn-card">
               <span class="ht-pn-card__num" aria-hidden="true">1</span>
               <h4 class="ht-pn-card__h4">Phrases that set time or place</h4>
-              <p class="ht-pn-card__body">Prepositional phrases — anything starting with "As," "While," "In," "At," "Near," "Above," "Below," and similar words.</p>
+              <p class="ht-pn-card__body">Prepositional phrases are phrases that set time and place by starting with words like "As," "While," "In," "At," "Near," "Above," "Below," and similar words.</p>
               <ul class="ht-pn-card__ex">
                 <li>In the 1950s</li>
                 <li>While the board members debated the merits of the proposal</li>
@@ -225,6 +226,10 @@ const navItems = [
               comma" — the comma and the FANBOYS work together as a single
               punctuation mark, equal in strength to a period or a semicolon.
             </p>
+          </div>
+
+          <div class="ht-pn-figure">
+            <img src={`${IMG}/P1.png`} alt="Diagram of a sentence split into two halves, each labeled 'complete?' — the core question to ask on every boundary punctuation question." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -913,7 +918,7 @@ const navItems = [
   ---------------------------------------------------------------- */
   .ht-pn-hero {
     background: var(--color-surface);
-    padding-top: clamp(12rem, 16vw, 15rem);
+    padding-top: clamp(2rem, 3vw, 3rem);
     padding-bottom: clamp(2rem, 4vw, 3rem);
     padding-left: var(--space-section-h);
     padding-right: var(--space-section-h);
@@ -963,9 +968,10 @@ const navItems = [
 
   .ht-pn-nav {
     position: sticky;
-    top: 7rem;
+    top: 9rem;
     align-self: start;
-    max-height: calc(100vh - 8rem);
+    margin-top: -22rem;
+    max-height: calc(100vh - 10rem);
     overflow-y: auto;
   }
 
@@ -1022,7 +1028,7 @@ const navItems = [
       position: static;
       max-height: none;
       overflow: visible;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem;
     }
 
     .ht-pn-nav__inner {
