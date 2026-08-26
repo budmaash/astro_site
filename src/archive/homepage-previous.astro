@@ -40,15 +40,17 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
 
       <section class="ht-cta-strip">
         <div class="ht-cta-strip__inner">
-          <h2 class="ht-cta-strip__h2">Let's talk — no sales pitch.</h2>
-          <p class="ht-cta-strip__body">
-            Call or email me anytime. I'm happy to answer questions, talk
-            through your situation, and give you a free practice test to
-            get a baseline score.
-          </p>
-          <div class="ht-cta-strip__btns">
-            <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
-            <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+          <div class="ht-cta-strip__group">
+            <h2 class="ht-cta-strip__h2">Let's talk — no sales pitch.</h2>
+            <div class="ht-cta-strip__btns">
+              <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
+            </div>
+          </div>
+          <div class="ht-cta-strip__practice">
+            <h2 class="ht-cta-strip__h2">Free Practice Tests - No account needed</h2>
+            <div class="ht-cta-strip__btns">
+              <a href="/practice-tests" class="ht-btn ht-btn--white">Free Practice Test</a>
+            </div>
           </div>
         </div>
       </section>
@@ -59,6 +61,17 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
       <section class="ht-pillars">
         <div class="ht-pillars__inner">
           <div class="ht-pillars__grid">
+
+            <div class="ht-pillar">
+              <div class="ht-pillar__rule" aria-hidden="true"></div>
+              <h3 class="ht-pillar__h3">Understanding the Testing Process</h3>
+              <p class="ht-pillar__body">
+                Figuring out where to start can be a challenge. Should I take the ACT or SAT? When should I start testing? How much time should I dedicate to studying? Luckily, figuring it out is not that complicated. Taking a practice test of each tells you which to take. Taking a practice test is simple. You can take them here w/ no need to sign up for anything. Start pretty much whenever you’d like and give yourself a few months and a couple of tries.
+              </p>
+              <a href="/start" class="ht-pillar__link">Help getting started</a>
+            </div>
+
+            <div class="ht-pillar__divider" aria-hidden="true"></div>
 
             <div class="ht-pillar">
               <div class="ht-pillar__rule" aria-hidden="true"></div>
@@ -80,36 +93,11 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
 
             <div class="ht-pillar">
               <div class="ht-pillar__rule" aria-hidden="true"></div>
-              <h3 class="ht-pillar__h3">Do I take the ACT or SAT?</h3>
+              <h3 class="ht-pillar__h3">How I Teach</h3>
               <p class="ht-pillar__body">
-                A question asked by so many students! The answer is that you
-                should take whichever one you want to take! However, I firmly
-                believe some students will do far better on one than the other.
-                It's important to figure out which one! Some people like to take
-                both because they're just covering all their bases or because
-                the particular university they like prefers both. I recommend
-                that students take both as practice tests and then decide which
-                one they'd like to focus on.
+                If you’ve looked at these exams enough, you’ll realize the repetitive nature of their questions. Imagine two different math word problems where only the numbers are different. After you’ve solved one, the second is trivial: you use the new numbers but do the same thing. That’s how ACT/SAT question types are. We get hyper-specific on question types, learn them, and learn their process. It’s not about learning Math, English, or Reading concepts.
               </p>
-              <a href="/act-vs-sat" class="ht-pillar__link">Help Deciding on ACT or SAT</a>
-            </div>
-
-            <div class="ht-pillar__divider" aria-hidden="true"></div>
-
-            <div class="ht-pillar">
-              <div class="ht-pillar__rule" aria-hidden="true"></div>
-              <h3 class="ht-pillar__h3">Why 1-on-1?</h3>
-              <p class="ht-pillar__body">
-                I firmly believe one-on-one tutoring is the optimal way to
-                prepare for both the SAT and ACT. I can tell you from experience
-                that classroom courses are ineffective. Test-prep companies love
-                them because they are easy to offer and are very profitable.
-                Instead of taking a class, you can learn at your own pace
-                focusing on your own needs for about the same price. Click below
-                to learn about my prices, my approach to preparation, and why
-                one-on-one prep is better.
-              </p>
-              <a href="/tutoring" class="ht-pillar__link">Learn more</a>
+              <a href="/about" class="ht-pillar__link">Learn more</a>
             </div>
 
           </div>
@@ -378,9 +366,9 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
     max-width: var(--content-full);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    column-gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: clamp(2rem, 6vw, 6rem);
   }
 
   .ht-cta-strip__h2 {
@@ -389,7 +377,7 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
     font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--color-text-light);
     letter-spacing: -0.02em;
-    margin: 0 0 var(--space-3);
+    margin: 0;
   }
 
   .ht-cta-strip__body {
@@ -405,9 +393,13 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
   .ht-cta-strip__btns {
     display: flex;
     gap: 0.75rem;
-    grid-column: 2;
-    grid-row: 1 / span 2;
+    margin-top: var(--space-4);
     flex-wrap: nowrap;
+  }
+
+  .ht-cta-strip__h2,
+  .ht-cta-strip__body {
+    min-height: 3.25rem;
   }
 
   .ht-btn--white {
@@ -436,9 +428,6 @@ const { config = shellConfig, introVariant }: Props = Astro.props;
     }
 
     .ht-cta-strip__btns {
-      grid-column: 1;
-      grid-row: auto;
-      margin-top: var(--space-5);
       flex-wrap: wrap;
     }
   }
