@@ -668,6 +668,30 @@ const navItems = [
         document.documentElement.style.setProperty('--lesson-scroll-offset', getScrollOffset() + 'px');
       }
 
+      var navigationRun = 0;
+
+      function alignTarget(target, behavior) {
+        var delta = target.getBoundingClientRect().top - getScrollOffset();
+        if (Math.abs(delta) > 2) {
+          window.scrollBy({ top: delta, behavior: behavior || 'auto' });
+        }
+      }
+
+      function settleOnTarget(target, run) {
+        [350, 800, 1400, 2200].forEach(function (delay) {
+          window.setTimeout(function () {
+            if (run === navigationRun) alignTarget(target, 'auto');
+          }, delay);
+        });
+      }
+
+      function cancelPendingAlignment() {
+        navigationRun += 1;
+      }
+
+      window.addEventListener('wheel', cancelPendingAlignment, { passive: true });
+      window.addEventListener('touchstart', cancelPendingAlignment, { passive: true });
+
       var sections = navLinks
         .map(function (link) {
           var id = getLinkId(link);
@@ -713,8 +737,10 @@ const navItems = [
           event.preventDefault();
           event.stopPropagation();
 
-          var targetTop = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
-          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          navigationRun += 1;
+          var run = navigationRun;
+          alignTarget(target, 'smooth');
+          settleOnTarget(target, run);
 
           if (window.history && window.history.pushState) {
             window.history.pushState(null, '', '#' + id);
@@ -724,6 +750,17 @@ const navItems = [
 
           setActive(id);
         });
+      });
+
+      window.addEventListener('load', function () {
+        var id = window.location.hash.slice(1);
+        var target = id && document.getElementById(id);
+        if (!target) return;
+
+        navigationRun += 1;
+        var run = navigationRun;
+        alignTarget(target, 'auto');
+        settleOnTarget(target, run);
       });
     })();
   </script>
