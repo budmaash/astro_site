@@ -1,0 +1,247 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import { createShellConfig } from '../config/shell';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const config = createShellConfig({
+  siteTitle: 'Start Your ACT or SAT Prep | Hasan Tutoring',
+  description: 'A simple three-step roadmap for choosing an exam, selecting a test date, and beginning ACT or SAT preparation.',
+});
+---
+
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper start-page">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="start-main" tabindex="-1">
+      <section class="start-hero" aria-labelledby="start-title">
+        <div class="start-hero__inner">
+          <p class="start-kicker">Your test prep roadmap</p>
+          <h1 id="start-title">Start with the <span class="start-hero__break">right</span><br /><em>next step.</em></h1>
+          <p class="start-hero__lede">Test prep gets much simpler when you make the big decisions in the right order. Use this guide to choose your exam, set a date, and build a plan that fits.</p>
+          <a class="start-hero__cta" href="/start/#pick-an-exam">Begin with step one <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="start-hero__route" aria-hidden="true">
+          <span>01</span><i></i><span>02</span><i></i><span>03</span>
+        </div>
+      </section>
+
+      <nav class="step-nav" aria-label="Test prep roadmap">
+        <div class="step-nav__inner">
+          <a href="/start/#pick-an-exam" class="is-active" data-step-link="pick-an-exam"><b>01</b><span>Pick an Exam</span></a>
+          <a href="/start/#pick-a-date" data-step-link="pick-a-date"><b>02</b><span>Pick an Exam Date</span></a>
+          <a href="/start/#get-started" data-step-link="get-started"><b>03</b><span>Start Test Prep</span></a>
+        </div>
+      </nav>
+
+      <div class="roadmap">
+        <section id="pick-an-exam" class="roadmap-step" data-step-section>
+          <div class="roadmap-step__number" aria-hidden="true">01</div>
+          <div class="roadmap-step__heading">
+            <p>Step one</p>
+            <h2>Pick an Exam</h2>
+            <h3>Which test should I take?</h3>
+          </div>
+          <div class="roadmap-step__content">
+            <p class="roadmap-step__lead">Colleges accept both the ACT and SAT. The best exam is usually the one that better matches the way you read, reason, and manage time.</p>
+            <div class="decision-grid">
+              <article>
+                <span>ACT</span>
+                <h4>A quicker, more direct pace</h4>
+                <p>Consider the ACT if you prefer straightforward questions, are comfortable moving quickly, and don’t mind longer reading passages.</p>
+              </article>
+              <article>
+                <span>SAT</span>
+                <h4>More time, shorter passages</h4>
+                <p>Consider the SAT if you prefer more time per question, short reading prompts, and are comfortable with vocabulary and multi-step math.</p>
+              </article>
+            </div>
+            <div class="roadmap-note"><strong>Still unsure?</strong> Take one practice test of each and compare both your scores and how each test felt.</div>
+            <div class="roadmap-actions">
+              <a class="button button--dark" href="/act-vs-sat">Compare ACT vs. SAT</a>
+              <a class="text-link" href="/practice-tests">Take a free practice test <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="pick-a-date" class="roadmap-step roadmap-step--paper" data-step-section>
+          <div class="roadmap-step__number" aria-hidden="true">02</div>
+          <div class="roadmap-step__heading">
+            <p>Step two</p>
+            <h2>Pick an Exam Date</h2>
+            <h3>When should I begin?</h3>
+          </div>
+          <div class="roadmap-step__content">
+            <p class="roadmap-step__lead">For most students, about two months is enough time to prepare consistently without letting test prep take over everything else.</p>
+            <div class="timeline" aria-label="Suggested eight-week test prep timeline">
+              <div><b>8 weeks out</b><span>Take a diagnostic and identify your starting point.</span></div>
+              <div><b>6–7 weeks out</b><span>Learn the recurring question types and core strategies.</span></div>
+              <div><b>3–5 weeks out</b><span>Practice weak areas and review every missed question.</span></div>
+              <div><b>1–2 weeks out</b><span>Complete timed sections and one final full practice test.</span></div>
+            </div>
+            <p class="roadmap-aside">A typical plan is one focused session each week plus roughly two hours of practice between sessions. Starting earlier gives you more flexibility; starting later simply means the plan needs to be more focused.</p>
+            <div class="roadmap-actions">
+              <a class="button button--crimson" href="/faq">Read common prep questions</a>
+              <a class="text-link" href="/start/#get-started">Continue to step three <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </section>
+
+        <section id="get-started" class="roadmap-step roadmap-step--dark" data-step-section>
+          <div class="roadmap-step__number" aria-hidden="true">03</div>
+          <div class="roadmap-step__heading">
+            <p>Step three</p>
+            <h2>Get Started with Test Prep</h2>
+            <h3>How does test prep work?</h3>
+          </div>
+          <div class="roadmap-step__content">
+            <p class="roadmap-step__lead">Good preparation is a cycle: establish a baseline, learn a small set of repeatable strategies, practice them, and use your mistakes to decide what comes next.</p>
+            <ol class="prep-cycle">
+              <li><span>01</span><div><b>Measure</b><p>Start with a full practice test or a timed section.</p></div></li>
+              <li><span>02</span><div><b>Learn</b><p>Recognize the question types and the steps that solve them.</p></div></li>
+              <li><span>03</span><div><b>Practice</b><p>Build accuracy first, then add timing and repetition.</p></div></li>
+              <li><span>04</span><div><b>Adjust</b><p>Review mistakes and focus the next week where it matters most.</p></div></li>
+            </ol>
+            <div class="roadmap-actions">
+              <a class="button button--light" href="/contact">Build your prep plan</a>
+              <a class="text-link" href="/tutoring">See how tutoring works <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+</SquarespaceShellLayout>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('.step-nav');
+  const header = document.querySelector<HTMLElement>('#header');
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-step-link]'));
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-step-section]'));
+
+  const sizeNav = () => {
+    if (nav && header) nav.style.setProperty('--header-height', `${header.offsetHeight}px`);
+  };
+
+  const setActive = (id: string) => {
+    links.forEach((link) => {
+      const active = link.dataset.stepLink === id;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  sizeNav();
+  window.addEventListener('resize', sizeNav, { passive: true });
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible) setActive(visible.target.id);
+  }, { rootMargin: '-25% 0px -55% 0px', threshold: [0, .15, .35] });
+
+  sections.forEach((section) => observer.observe(section));
+</script>
+
+<style>
+  :global(#page.start-main) { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .start-page { overflow-x: clip; background: var(--color-surface); color: var(--color-text-dark); }
+  .start-main { width: 100%; min-width: 0; overflow: hidden; }
+  .start-page *, .start-page *::before, .start-page *::after { box-sizing: border-box; }
+
+  .start-hero { position: relative; min-height: 500px; display: grid; place-items: center; padding: clamp(4rem, 8vw, 6.5rem) var(--space-section-h); overflow: hidden; background: var(--color-surface); }
+  .start-hero::before { content: ''; position: absolute; inset: 0; opacity: .38; background-image: linear-gradient(rgba(31,27,23,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(31,27,23,.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, #000, transparent 82%); }
+  .start-hero__inner { position: relative; z-index: 1; width: min(100%, 920px); text-align: center; }
+  .start-kicker, .roadmap-step__heading > p { margin: 0 0 1rem; color: var(--color-accent-crimson); font: 700 .72rem/1 var(--font-sans); letter-spacing: .17em; text-transform: uppercase; }
+  .start-hero h1 { max-width: 18ch; margin: 0 auto; color: var(--color-text-dark); font: 700 clamp(2.15rem, 4vw, 3.5rem)/1.02 var(--font-serif); letter-spacing: -.025em; text-wrap: balance; }
+  .start-hero h1 em { color: var(--color-highlight-vivid); font-weight: 700; }
+  .start-hero__lede { max-width: 620px; margin: 1.5rem auto 0; color: var(--color-muted); font: 300 1rem/1.65 var(--font-sans); }
+  .start-hero__cta { display: inline-flex; align-items: center; gap: 1rem; margin-top: 1.5rem; padding-bottom: .35rem; color: var(--color-text-dark); border-bottom: 1px solid var(--color-text-dark); font: 600 .78rem/1.3 var(--font-sans); letter-spacing: .04em; text-decoration: none; }
+  .start-hero__cta span { color: var(--color-accent-crimson); font-size: 1rem; }
+  .start-hero__route { position: absolute; left: max(2rem, 5vw); bottom: 2rem; display: flex; align-items: center; color: rgba(31,27,23,.45); font: 600 .65rem/1 var(--font-sans); letter-spacing: .12em; }
+  .start-hero__route i { width: clamp(2.5rem, 6vw, 6rem); height: 1px; margin: 0 .65rem; background: rgba(31,27,23,.25); }
+
+  .step-nav { --header-height: 90px; position: sticky; top: var(--header-height); z-index: 80; background: rgba(255,255,255,.95); border-block: 1px solid #ddd6cb; backdrop-filter: blur(12px); }
+  .step-nav__inner { width: min(100%, 1180px); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .step-nav a { position: relative; display: flex; align-items: center; justify-content: center; gap: .75rem; min-height: 68px; padding: .8rem 1rem; color: #777068; font: 600 .79rem/1.2 var(--font-sans); letter-spacing: .025em; text-decoration: none; transition: color 180ms ease, background-color 180ms ease; }
+  .step-nav a + a { border-left: 1px solid #e5dfd6; }
+  .step-nav a::after { content: ''; position: absolute; inset: auto 0 -1px; height: 3px; background: var(--color-accent-crimson); transform: scaleX(0); transition: transform 200ms ease; }
+  .step-nav a b { color: #aaa198; font-size: .64rem; letter-spacing: .1em; }
+  .step-nav a:hover, .step-nav a.is-active { color: var(--color-text-dark); background: var(--color-surface-warm); }
+  .step-nav a.is-active::after { transform: scaleX(1); }
+  .step-nav a.is-active b { color: var(--color-accent-crimson); }
+
+  .roadmap-step { position: relative; min-height: 680px; display: grid; grid-template-columns: minmax(250px, .72fr) minmax(0, 1.28fr); column-gap: clamp(3rem, 8vw, 9rem); align-content: center; padding: clamp(4.75rem, 8vw, 7rem) max(var(--space-section-h), calc((100vw - 1180px) / 2)); scroll-margin-top: 150px; background: var(--color-surface); overflow: hidden; }
+  .roadmap-step__number { position: absolute; right: max(var(--space-section-h), calc((100vw - 1180px) / 2)); top: clamp(3rem, 7vw, 6rem); color: rgba(31,27,23,.055); font: 400 clamp(9rem, 22vw, 20rem)/.8 var(--font-serif); letter-spacing: -.06em; }
+  .roadmap-step__heading, .roadmap-step__content { position: relative; z-index: 1; }
+  .roadmap-step__heading { position: sticky; top: calc(var(--header-height, 90px) + 110px); align-self: start; }
+  .roadmap-step__heading h2 { max-width: 11ch; margin: 0; font: 700 clamp(2rem, 3vw, 2.8rem)/1.05 var(--font-serif); letter-spacing: -.02em; }
+  .roadmap-step__heading h3 { max-width: 18ch; margin: 1rem 0 0; color: var(--color-accent-crimson); font: 400 clamp(1.25rem, 2vw, 1.55rem)/1.2 var(--font-serif); }
+  .roadmap-step__content { max-width: 680px; }
+  .roadmap-step__lead { margin: 0 0 2.25rem; color: var(--color-text-dark); font: 400 clamp(1.2rem, 1.8vw, 1.45rem)/1.48 var(--font-serif); }
+  .decision-grid { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid #dcd5cb; }
+  .decision-grid article { padding: clamp(1.5rem, 3vw, 2.25rem); }
+  .decision-grid article + article { border-left: 1px solid #dcd5cb; }
+  .decision-grid article > span { display: inline-grid; width: 46px; height: 46px; place-items: center; color: #fff; background: #1f1b17; border-radius: 50%; font: 700 .68rem/1 var(--font-sans); letter-spacing: .06em; }
+  .decision-grid h4 { margin: 1.25rem 0 .65rem; font: 400 1.35rem/1.15 var(--font-serif); }
+  .decision-grid p, .roadmap-aside { margin: 0; color: #6b645c; font: 300 .97rem/1.62 var(--font-sans); }
+  .roadmap-note { margin-top: 1rem; padding: 1rem 1.15rem; color: var(--color-muted); background: var(--color-bg); border-left: 3px solid var(--color-accent-crimson); font: 300 .95rem/1.55 var(--font-sans); }
+  .roadmap-note strong { color: #25211d; font-weight: 600; }
+  .roadmap-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.75rem; margin-top: 2rem; }
+  .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: .9rem 1.35rem; border: 1px solid currentColor; border-radius: 999px; font: 600 .76rem/1 var(--font-sans); letter-spacing: .055em; text-decoration: none; transition: transform 160ms ease, background-color 160ms ease; }
+  .button:hover { transform: translateY(-2px); }
+  .button--dark { color: #fff; background: #1f1b17; border-color: #1f1b17; }
+  .button--crimson { color: #fff; background: var(--color-accent-crimson); border-color: var(--color-accent-crimson); }
+  .button--light { color: #1f1b17; background: #fff; border-color: #fff; }
+  .text-link { color: #29241f; font: 600 .78rem/1.3 var(--font-sans); letter-spacing: .035em; text-decoration: none; border-bottom: 1px solid currentColor; }
+
+  .roadmap-step--paper { background: var(--color-bg); }
+  .timeline { border-top: 1px solid #cfc6ba; }
+  .timeline div { display: grid; grid-template-columns: 150px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid #cfc6ba; }
+  .timeline b { color: #29241f; font: 600 .76rem/1.4 var(--font-sans); letter-spacing: .035em; text-transform: uppercase; }
+  .timeline span { color: #625b53; font: 300 .98rem/1.5 var(--font-sans); }
+  .roadmap-aside { margin-top: 1.5rem; max-width: 60ch; }
+
+  .roadmap-step--dark { color: var(--color-text-light); background: var(--color-bg-dark); }
+  .roadmap-step--dark .roadmap-step__number { color: rgba(255,255,255,.045); }
+  .roadmap-step--dark .roadmap-step__heading h3, .roadmap-step--dark .roadmap-step__heading > p { color: var(--color-highlight-vivid); }
+  .roadmap-step--dark .roadmap-step__lead { color: rgba(255,255,255,.86); }
+  .roadmap-step--dark .text-link { color: #fff; }
+  .prep-cycle { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255,255,255,.2); }
+  .prep-cycle li { display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+  .prep-cycle > li > span { padding-top: .2rem; color: var(--color-highlight-vivid); font: 700 .67rem/1 var(--font-sans); letter-spacing: .1em; }
+  .prep-cycle b { display: block; font: 400 1.3rem/1.1 var(--font-serif); }
+  .prep-cycle p { margin: .3rem 0 0; color: rgba(255,255,255,.62); font: 300 .95rem/1.5 var(--font-sans); }
+
+  a:focus-visible { outline: 3px solid var(--color-accent-gold-light); outline-offset: 4px; }
+
+  @media (max-width: 760px) {
+    .start-hero { min-height: 420px; padding-block: 3.5rem; }
+    .start-hero__inner { width: calc(100vw - 3rem); }
+    .start-hero h1 { font-size: clamp(2.15rem, 11vw, 3.5rem); }
+    .start-hero__break { display: block; }
+    .start-hero__lede { width: 100%; }
+    .start-hero__route { display: none; }
+    .step-nav { width: 100vw; max-width: 100vw; overflow-x: auto; scrollbar-width: none; }
+    .step-nav__inner { width: max-content; min-width: 100%; grid-template-columns: repeat(3, minmax(160px, 1fr)); }
+    .step-nav a { min-height: 58px; padding-inline: 1rem; justify-content: flex-start; }
+    .roadmap-step { min-height: 0; grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem; scroll-margin-top: 125px; }
+    .roadmap-step__number { right: .75rem; top: 3rem; font-size: 7rem; }
+    .roadmap-step__heading { position: relative; top: auto; }
+    .roadmap-step__heading h2 { max-width: 11ch; font-size: clamp(2rem, 10vw, 2.8rem); }
+    .decision-grid { grid-template-columns: 1fr; }
+    .decision-grid article + article { border-left: 0; border-top: 1px solid #dcd5cb; }
+  }
+
+  @media (max-width: 430px) {
+    .timeline div { grid-template-columns: 1fr; gap: .35rem; }
+    .roadmap-actions { align-items: flex-start; flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button, .step-nav a::after { transition: none; }
+  }
+</style>
