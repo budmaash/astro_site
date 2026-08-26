@@ -89,6 +89,15 @@ export const shellConfig: ShellConfig = {
   navigation: [
     { href: '/', label: 'Home', home: true },
     {
+      href: '/start',
+      label: 'WHERE TO BEGIN',
+      children: [
+        { href: '/start', label: 'START HERE' },
+        { href: '/practice-tests', label: 'FREE PRACTICE TESTS' },
+        { href: '/tests', label: 'TEST INFO' },
+      ],
+    },
+    {
       href: '/tests',
       label: 'ACT/SAT Info',
       children: [
@@ -97,7 +106,6 @@ export const shellConfig: ShellConfig = {
         { href: '/act-vs-sat', label: 'ACT vs SAT' },
       ],
     },
-    { href: '/tutoring', label: 'Why Tutoring?' },
     { href: '/about', label: 'About Me' },
     { href: '/faq', label: 'FAQs' },
   ],

@@ -60,9 +60,11 @@ const mobileNavMarkup = config.navigation
 
         return `
             <div class="container header-menu-nav-item header-menu-nav-item--collection ht-header-mobile-group">
-              <div class="header-menu-nav-item-content ht-header-mobile-group__label">
-                ${item.label}
-              </div>
+              <a href="${item.href}" class="ht-header-mobile-group__link">
+                <div class="header-menu-nav-item-content ht-header-mobile-group__label">
+                  ${item.label}
+                </div>
+              </a>
               <ul class="ht-header-mobile-submenu">
 ${childMarkup}
               </ul>
@@ -258,6 +260,11 @@ renderedHeaderMarkup = replaceOnce(
 
   .ht-header-mobile-group__label {
     opacity: 1;
+  }
+
+  .ht-header-mobile-group__link {
+    color: inherit;
+    text-decoration: none;
   }
 
   .ht-header-mobile-submenu {
