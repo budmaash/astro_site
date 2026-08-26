@@ -2,10 +2,11 @@
 import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
-import { shellConfig } from '../config/shell';
+import { createShellConfig } from '../config/shell';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
+const defaultConfig = createShellConfig({ siteTitle: 'Reach out anytime!' });
+const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>
   <div id="siteWrapper" class="clearfix site-wrapper">
