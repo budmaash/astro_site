@@ -10,14 +10,14 @@ const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 const IMG = '/lessons/punctuation2';
 
 const navItems = [
-  { href: '#prerequisites', label: 'Prerequisites' },
-  { href: '#complete-complete', label: '"Complete | Complete"' },
-  { href: '#run-ons', label: 'Run-ons' },
-  { href: '#colons', label: 'Colons' },
-  { href: '#commas', label: 'Commas' },
-  { href: '#dashes', label: 'Dashes' },
-  { href: '#title-occupation-name', label: 'Title/Occupation + Name' },
-  { href: '#niche-question-types', label: 'Niche question types' },
+  { href: '/lessons/punctuation/#prerequisites', label: 'Prerequisites' },
+  { href: '/lessons/punctuation/#complete-complete', label: '"Complete | Complete"' },
+  { href: '/lessons/punctuation/#run-ons', label: 'Run-ons' },
+  { href: '/lessons/punctuation/#colons', label: 'Colons' },
+  { href: '/lessons/punctuation/#commas', label: 'Commas' },
+  { href: '/lessons/punctuation/#dashes', label: 'Dashes' },
+  { href: '/lessons/punctuation/#title-occupation-name', label: 'Title/Occupation + Name' },
+  { href: '/lessons/punctuation/#niche-question-types', label: 'Niche question types' },
 ];
 ---
 <SquarespaceShellLayout config={config}>
@@ -655,18 +655,34 @@ const navItems = [
       var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav-link]'));
       if (!navLinks.length) return;
 
+      function getLinkId(link) {
+        return new URL(link.getAttribute('href'), window.location.href).hash.slice(1);
+      }
+
+      function getScrollOffset() {
+        var header = document.getElementById('header');
+        return (header ? header.getBoundingClientRect().height : 0) + 24;
+      }
+
+      function updateScrollOffset() {
+        document.documentElement.style.setProperty('--lesson-scroll-offset', getScrollOffset() + 'px');
+      }
+
       var sections = navLinks
         .map(function (link) {
-          var id = link.getAttribute('href').slice(1);
+          var id = getLinkId(link);
           return document.getElementById(id);
         })
         .filter(Boolean);
 
       function setActive(id) {
         navLinks.forEach(function (link) {
-          link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+          link.classList.toggle('is-active', getLinkId(link) === id);
         });
       }
+
+      updateScrollOffset();
+      window.addEventListener('resize', updateScrollOffset, { passive: true });
 
       if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(
@@ -687,7 +703,7 @@ const navItems = [
 
       navLinks.forEach(function (link) {
         link.addEventListener('click', function (event) {
-          var id = link.getAttribute('href').slice(1);
+          var id = getLinkId(link);
           var target = document.getElementById(id);
           if (!target) return;
 
@@ -697,7 +713,8 @@ const navItems = [
           event.preventDefault();
           event.stopPropagation();
 
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var targetTop = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
 
           if (window.history && window.history.pushState) {
             window.history.pushState(null, '', '#' + id);
@@ -924,7 +941,7 @@ const navItems = [
   .ht-pn-section {
     background: var(--color-surface);
     padding: clamp(3rem, 6vw, 5rem) 0;
-    scroll-margin-top: 6.5rem;
+    scroll-margin-top: var(--lesson-scroll-offset, 9rem);
   }
 
   .ht-pn-section--tint {
