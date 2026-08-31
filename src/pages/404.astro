@@ -1,0 +1,284 @@
+---
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+import { createShellConfig } from '../config/shell';
+
+const config = createShellConfig({
+  siteTitle: 'Page Not Found | Hasan Tutoring',
+  description: 'That page could not be found. Return to Hasan Tutoring or explore our free ACT and SAT resources.',
+});
+---
+
+<SquarespaceShellLayout config={config}>
+  <main class="not-found" id="page" tabindex="-1">
+    <a class="brand" href="/" aria-label="Hasan Tutoring home">
+      <img
+        src="/sqs-shell/HASAN+TUTORING-logo.png"
+        alt="Hasan Tutoring — ACT and SAT tutoring in Overland Park and Kansas City"
+        width="1500"
+        height="385"
+      />
+    </a>
+
+    <section class="error-card" aria-labelledby="not-found-title">
+      <div class="error-art" aria-hidden="true">
+        <span class="digit">4</span>
+        <span class="answer-bubble">
+          <span class="bubble-letter">?</span>
+        </span>
+        <span class="digit">4</span>
+      </div>
+
+      <div class="error-copy">
+        <p class="eyebrow"><span></span> Question not found</p>
+        <h1 id="not-found-title">This page isn’t<br />on the test.</h1>
+        <p class="lede">The page may have moved, or the link might need a second look. No points lost—let’s get you back on track.</p>
+
+        <nav class="actions" aria-label="404 page options">
+          <a class="primary-action" href="/">
+            Back to home
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4" /></svg>
+          </a>
+          <a class="secondary-action" href="/practice-tests">Browse free practice tests</a>
+        </nav>
+      </div>
+
+      <p class="margin-note" aria-hidden="true">Pencils down.<br />Try another page.</p>
+    </section>
+
+    <footer class="error-footer">
+      <span>ACT + SAT tutoring</span>
+      <span class="footer-rule"></span>
+      <span>Kansas City &amp; online</span>
+    </footer>
+  </main>
+</SquarespaceShellLayout>
+
+<style>
+  :global(html) {
+    background: #fff;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #fff;
+  }
+
+  :global(#ht-scroll-top) {
+    display: none !important;
+  }
+
+  .not-found {
+    --ink: #161512;
+    --paper: #fff;
+    --red: #f20d12;
+    --gold: #c6a764;
+    min-height: 100svh;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 5vw, 5rem) clamp(1.25rem, 2vw, 2rem);
+    color: var(--ink);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .brand {
+    display: block;
+    width: clamp(15rem, 26vw, 24rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  .brand img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .error-card {
+    width: min(100%, 78rem);
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(22rem, 1.05fr) minmax(24rem, 0.95fr);
+    gap: clamp(3rem, 8vw, 8.5rem);
+    align-items: center;
+    position: relative;
+    padding: clamp(3rem, 6vh, 5.5rem) 0;
+  }
+
+  .error-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.075em;
+    filter: drop-shadow(0 22px 28px rgba(63, 49, 28, 0.08));
+  }
+
+  .digit {
+    font-family: var(--font-serif);
+    font-size: clamp(10rem, 20vw, 18rem);
+    font-weight: 400;
+    line-height: 0.72;
+  }
+
+  .answer-bubble {
+    width: clamp(7rem, 13vw, 11rem);
+    aspect-ratio: 1;
+    border: clamp(4px, 0.45vw, 7px) solid var(--ink);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: relative;
+    flex: 0 0 auto;
+    margin-inline: clamp(0.15rem, 0.8vw, 0.75rem);
+    transform: rotate(-4deg);
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .bubble-letter {
+    font: italic 400 clamp(4rem, 8vw, 7rem)/1 var(--font-serif);
+    transform: translateY(-0.08em);
+  }
+
+  .error-copy {
+    min-width: 0;
+  }
+
+  .eyebrow {
+    margin: 0 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font: 700 0.78rem/1 var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #8b1a1a;
+  }
+
+  .eyebrow span {
+    width: 2.75rem;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  h1 {
+    margin: 0;
+    font: 400 clamp(3rem, 5.6vw, 5.6rem)/0.94 var(--font-serif);
+    letter-spacing: -0.045em;
+  }
+
+  .lede {
+    max-width: 34rem;
+    margin: 1.65rem 0 0;
+    color: #5f5a52;
+    font: 400 clamp(1rem, 1.5vw, 1.2rem)/1.6 var(--font-sans);
+  }
+
+  .actions {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem 1.6rem;
+  }
+
+  .primary-action,
+  .secondary-action {
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .primary-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.95rem 1.4rem;
+    border-radius: 999px;
+    color: #fff;
+    background: var(--ink);
+  }
+
+  .primary-action:hover { background: #8b1a1a; }
+  .primary-action svg { width: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.7; }
+
+  .secondary-action {
+    color: var(--ink);
+    border-bottom: 1px solid var(--gold);
+    padding-block: 0.25rem;
+  }
+
+  .secondary-action:hover { color: #8b1a1a; border-color: #8b1a1a; }
+
+  .primary-action:focus-visible,
+  .secondary-action:focus-visible,
+  .brand:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 4px;
+  }
+
+  .margin-note {
+    position: absolute;
+    right: -4.25rem;
+    top: 50%;
+    margin: 0;
+    font: 600 0.68rem/1.45 var(--font-sans);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #5f5a52;
+    transform: rotate(90deg) translateX(50%);
+    transform-origin: right center;
+  }
+
+  .error-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #5f5a52;
+    font: 600 0.7rem/1 var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .footer-rule { width: 2.5rem; height: 1px; background: var(--gold); }
+
+  @media (max-width: 820px) {
+    .error-card {
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .error-art { order: 0; }
+    .error-copy { order: 1; }
+    .digit { font-size: clamp(7.25rem, 29vw, 11rem); }
+    .answer-bubble { width: clamp(5.75rem, 20vw, 8rem); }
+    .eyebrow, .actions { justify-content: center; }
+    .lede { margin-inline: auto; }
+    .margin-note { display: none; }
+    .brand { margin-inline: auto; }
+    .actions { flex-direction: column; align-items: center; }
+    .primary-action { justify-content: center; }
+    .secondary-action { white-space: normal; }
+    .error-footer { justify-content: center; flex-wrap: wrap; }
+  }
+
+  @media (max-width: 480px) {
+    .not-found { min-height: 100svh; }
+    .brand { width: min(17rem, 82vw); }
+    .error-card { gap: 1.8rem; padding: 2.2rem 0 2.5rem; }
+    .digit { font-size: clamp(6.75rem, 29vw, 8.5rem); }
+    .answer-bubble { width: clamp(5.25rem, 20vw, 6.5rem); }
+    h1 { font-size: clamp(2.55rem, 12vw, 3.5rem); }
+    .lede { font-size: 1rem; }
+    .actions { flex-direction: column; align-items: stretch; }
+    .primary-action { justify-content: center; }
+    .secondary-action { align-self: center; white-space: normal; }
+    .error-footer { font-size: 0.58rem; gap: 0.65rem; flex-wrap: wrap; }
+    .footer-rule { width: 1.25rem; }
+  }
+
+</style>
