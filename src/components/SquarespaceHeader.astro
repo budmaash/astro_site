@@ -135,6 +135,65 @@ renderedHeaderMarkup = replaceOnce(
 ---
 <Fragment set:html={renderedHeaderMarkup} />
 
+<script is:inline>
+  (() => {
+    const header = document.getElementById('header');
+    if (!header || header.dataset.mobileMenuReady === 'true') return;
+
+    const menu = header.querySelector('[data-test="header-menu"]');
+    const buttons = [...header.querySelectorAll('[data-test="header-burger"]')];
+    if (!menu || buttons.length === 0) return;
+
+    header.dataset.mobileMenuReady = 'true';
+    menu.id ||= 'ht-mobile-menu';
+
+    const setOpen = (open, { restoreFocus = false } = {}) => {
+      document.body.classList.toggle('header--menu-open', open);
+
+      buttons.forEach((button) => {
+        button.classList.toggle('burger--active', open);
+        button.setAttribute('aria-expanded', String(open));
+        button.setAttribute('aria-controls', menu.id);
+
+        const openTitle = button.querySelector('.js-header-burger-open-title');
+        const closeTitle = button.querySelector('.js-header-burger-close-title');
+        if (openTitle) openTitle.hidden = open;
+        if (closeTitle) closeTitle.hidden = !open;
+      });
+
+      menu.setAttribute('aria-hidden', String(!open));
+      if (restoreFocus) {
+        const visibleButton = buttons.find((button) => button.offsetParent !== null);
+        visibleButton?.focus();
+      }
+    };
+
+    buttons.forEach((button) => {
+      button.setAttribute('type', 'button');
+      button.addEventListener('click', () => {
+        setOpen(!document.body.classList.contains('header--menu-open'));
+      });
+    });
+
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.classList.contains('header--menu-open')) {
+        setOpen(false, { restoreFocus: true });
+      }
+    });
+
+    const desktopQuery = window.matchMedia('(min-width: 800px) and (pointer: fine)');
+    desktopQuery.addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
+
+    setOpen(false);
+  })();
+</script>
+
 <style is:global>
   #header {
     position: sticky !important;
