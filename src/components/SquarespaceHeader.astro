@@ -43,43 +43,14 @@ ${childMarkup}
 
 const mobileNavMarkup = config.navigation
   .map(
-    (item) => {
-      if (item.children?.length) {
-        const childMarkup = item.children
-          .map(
-            (child) => `
-              <li class="ht-header-mobile-submenu__item">
-                <a href="${child.href}" class="ht-header-mobile-submenu__link">
-                  <div class="header-menu-nav-item-content">
-                    ${child.label}
-                  </div>
-                </a>
-              </li>`,
-          )
-          .join('\n');
-
-        return `
-            <div class="container header-menu-nav-item header-menu-nav-item--collection ht-header-mobile-group">
-              <a href="${item.href}" class="ht-header-mobile-group__link">
-                <div class="header-menu-nav-item-content ht-header-mobile-group__label">
-                  ${item.label}
-                </div>
-              </a>
-              <ul class="ht-header-mobile-submenu">
-${childMarkup}
-              </ul>
-            </div>`;
-      }
-
-      return `
+    (item) => `
             <div class="container header-menu-nav-item header-menu-nav-item--collection${item.home ? ' header-menu-nav-item--homepage' : ''}">
               <a href="${item.href}">
                 <div class="header-menu-nav-item-content">
                   ${item.label}
                 </div>
               </a>
-            </div>`;
-    },
+            </div>`,
   )
   .join('\n');
 
@@ -91,7 +62,7 @@ const replaceOnce = (input, searchValue, replaceValue) => {
 
 const desktopNavRegex = /<nav class="header-nav-list">[\s\S]*?<\/nav>/;
 const mobileNavRegex =
-  /<div class="header-menu-nav-wrapper">[\s\S]*?<\/div>\n\n              \n                <div class="user-accounts-link header-menu-nav-item/;
+  /<div class="header-menu-nav-wrapper">[\s\S]*?(?=\s*<div class="user-accounts-link header-menu-nav-item)/;
 const desktopLoginRegex =
   /\s*<div class="user-accounts-link header-nav-item header-nav-item--collection customerAccountLoginDesktop loaded"[\s\S]*?<\/div>\s*/;
 const mobileLoginRegex =
@@ -102,7 +73,7 @@ let renderedHeaderMarkup = headerMarkup
   .replace(desktopNavRegex, `<nav class="header-nav-list">\n${desktopNavMarkup}\n                    </nav>`)
   .replace(
     mobileNavRegex,
-    `<div class="header-menu-nav-wrapper">\n${mobileNavMarkup}\n</div>\n\n              \n                <div class="user-accounts-link header-menu-nav-item`,
+    `<div class="header-menu-nav-wrapper">\n${mobileNavMarkup}\n</div>`,
   )
   .replace(desktopLoginRegex, '\n')
   .replace(mobileLoginRegex, '\n')
