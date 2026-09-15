@@ -174,7 +174,6 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
     <SquarespaceFooter config={config} />
   </div>
 
-  <script is:inline defer="true" src={config.siteBundle} type="text/javascript"></script>
   <script is:inline>
     (function () {
       var form = document.querySelector('.ht-contact-form');
