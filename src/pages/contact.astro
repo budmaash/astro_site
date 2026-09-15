@@ -3,9 +3,10 @@ import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
 import { createShellConfig } from '../config/shell';
+import { contactPageNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'Reach out anytime!' });
+const defaultConfig = createShellConfig({ siteTitle: 'Reach out anytime!', schema: [contactPageNode] });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

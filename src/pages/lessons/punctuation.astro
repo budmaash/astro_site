@@ -3,9 +3,10 @@ import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../../config/shell';
 import { createShellConfig } from '../../config/shell';
+import { punctuationLessonNode } from '../../config/schema';
 import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'SAT Punctuation Guide' });
+const defaultConfig = createShellConfig({ siteTitle: 'SAT Punctuation Guide', schema: [punctuationLessonNode] });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
 const IMG = '/lessons/punctuation2';

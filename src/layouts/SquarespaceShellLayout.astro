@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import type { ShellConfig } from '../config/shell';
 import { shellConfig } from '../config/shell';
+import { buildGraph } from '../config/schema';
 
 const htmlAttrs = {
   xmlnsOg: 'http://opengraphprotocol.org/schema/',
@@ -20,6 +21,11 @@ const {
 // Self-referencing canonical, always slash-less so /about and /about/ agree.
 const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const canonical = new URL(canonicalPath, Astro.site ?? 'https://hasantutoring.com').href;
+
+// Organization + WebSite are always included; pages add their own nodes.
+// Never emitted on noindex pages -- unshipped work should not describe the
+// business to crawlers.
+const jsonLd = noindex ? null : buildGraph(config.schema);
 ---
 <!DOCTYPE html>
 <html lang={htmlAttrs.lang} class={htmlAttrs.class} xmlns:og={htmlAttrs.xmlnsOg} xmlns:fb={htmlAttrs.xmlnsFb}>
@@ -32,6 +38,7 @@ const canonical = new URL(canonicalPath, Astro.site ?? 'https://hasantutoring.co
     <meta name="description" content={config.description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
+    {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}
     <link rel="icon" type="image/x-icon" href={config.favicon} />
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="3f995c22-850b-4556-ade3-ce076f182e62"></script>
     <link rel="preconnect" href="https://images.squarespace-cdn.com/" />

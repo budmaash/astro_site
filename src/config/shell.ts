@@ -1,3 +1,5 @@
+import type { SchemaNode } from './schema';
+
 export type ShellNavItem = {
   href?: string;
   label: string;
@@ -30,6 +32,8 @@ export type ShellConfig = {
     columns: ShellFooterColumn[];
   };
   navigation: ShellNavItem[];
+  /** Page-specific JSON-LD nodes. Organization + WebSite are always added. */
+  schema: SchemaNode[];
 };
 
 export type ShellConfigOverride = Partial<
@@ -107,6 +111,7 @@ export const shellConfig: ShellConfig = {
     { href: '/about', label: 'About Me' },
     { href: '/faq', label: 'FAQs' },
   ],
+  schema: [],
 };
 
 export function createShellConfig(overrides: ShellConfigOverride = {}): ShellConfig {
@@ -123,5 +128,6 @@ export function createShellConfig(overrides: ShellConfigOverride = {}): ShellCon
       columns: overrides.footer?.columns ?? shellConfig.footer.columns,
     },
     navigation: overrides.navigation ?? shellConfig.navigation,
+    schema: overrides.schema ?? [],
   };
 }

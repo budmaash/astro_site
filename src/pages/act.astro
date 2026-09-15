@@ -3,9 +3,10 @@ import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
 import { createShellConfig } from '../config/shell';
+import { actServiceNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'Detailed Info about the ACT' });
+const defaultConfig = createShellConfig({ siteTitle: 'Detailed Info about the ACT', schema: [actServiceNode] });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

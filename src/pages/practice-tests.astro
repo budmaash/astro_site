@@ -4,6 +4,7 @@ import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import actLogo from '../assets/images/ACT_logo.webp';
 import satLogo from '../assets/images/SAT_logo.png';
 import { createShellConfig } from '../config/shell';
+import { practiceTestsNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
 const actAppUrl = 'https://app.hasantutoring.com/act-practice-test';
@@ -11,6 +12,7 @@ const satAppUrl = 'https://app.hasantutoring.com/sat-practice-test';
 const config = createShellConfig({
   siteTitle: 'Free SAT & ACT Practice Tests | Hasan Tutoring',
   description: 'Take a free SAT or ACT practice test and get a detailed score report.',
+  schema: [practiceTestsNode],
 });
 
 const directionContract = `
