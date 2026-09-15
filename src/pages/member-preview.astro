@@ -7,7 +7,7 @@ import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
 const { config = shellConfig }: { config?: ShellConfig } = Astro.props;
 ---
-<SquarespaceShellLayout config={config}>
+<SquarespaceShellLayout config={config} noindex={true}>
   <div id="siteWrapper" class="clearfix site-wrapper">
     <SquarespaceHeader config={config} />
 

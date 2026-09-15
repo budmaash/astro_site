@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /member-preview
+
+Sitemap: https://hasantutoring.com/sitemap-index.xml

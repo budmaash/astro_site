@@ -14,7 +14,13 @@ const htmlAttrs = {
 const {
   config = shellConfig,
   directionContract,
-}: { config?: ShellConfig; directionContract?: string } = Astro.props;
+  noindex = false,
+}: { config?: ShellConfig; directionContract?: string; noindex?: boolean } =
+  Astro.props;
+
+// Self-referencing canonical, always slash-less so /about and /about/ agree.
+const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(canonicalPath, Astro.site ?? 'https://hasantutoring.com').href;
 ---
 <!DOCTYPE html>
 <html lang={htmlAttrs.lang} class={htmlAttrs.class} xmlns:og={htmlAttrs.xmlnsOg} xmlns:fb={htmlAttrs.xmlnsFb}>
@@ -26,6 +32,8 @@ const {
 
     <title>{config.siteTitle}</title>
     <meta name="description" content={config.description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="icon" type="image/x-icon" href={config.favicon} />
     <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="3f995c22-850b-4556-ade3-ce076f182e62"></script>
     <link rel="preconnect" href="https://images.squarespace-cdn.com/" />

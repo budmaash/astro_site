@@ -81,7 +81,7 @@ export const shellConfig: ShellConfig = {
       {
         heading: 'My Philosophy',
         html: [
-          '<p><strong>Recogize these are exams are extremely repetitive and therefore LEARNABLE.</strong> There are only so many different types of questions, and I teach students to learn to recognize them and the simple steps to answer each one. I meet one-on-one with each student, track their progress, and focus on their needs at their pace.</p>',
+          '<p><strong>Recognize these exams are extremely repetitive and therefore LEARNABLE.</strong> There are only so many different types of questions, and I teach students to learn to recognize them and the simple steps to answer each one. I meet one-on-one with each student, track their progress, and focus on their needs at their pace.</p>',
         ],
       },
     ],
