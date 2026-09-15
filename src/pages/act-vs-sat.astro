@@ -5,7 +5,10 @@ import type { ShellConfig } from '../config/shell';
 import { createShellConfig } from '../config/shell';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'ACT vs. SAT Comparison' });
+const defaultConfig = createShellConfig({
+  siteTitle: 'ACT vs SAT: Which Test Should You Take?',
+  description: 'The real differences between the ACT and SAT — math range, reading passages, vocabulary and timing — and how to decide which one fits you.',
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

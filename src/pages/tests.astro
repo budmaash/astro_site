@@ -7,7 +7,10 @@ import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 import actLogo from '../assets/images/ACT_logo.webp';
 import satLogo from '../assets/images/SAT_logo.png';
 
-const defaultConfig = createShellConfig({ siteTitle: 'Learn about the ACT vs. SAT' });
+const defaultConfig = createShellConfig({
+  siteTitle: 'ACT & SAT Test Information | Hasan Tutoring',
+  description: 'Everything to know about both exams — format, scoring, timing and subject matter — plus help deciding which of the two tests to take.',
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

@@ -2,11 +2,16 @@
 import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
-import { shellConfig } from '../config/shell';
+import { createShellConfig } from '../config/shell';
 import { tutoringServiceNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = { ...shellConfig, schema: [tutoringServiceNode] };
+const defaultConfig = createShellConfig({
+  siteTitle: '1-on-1 ACT & SAT Tutoring in Overland Park — $140/hr',
+  description:
+    'Private ACT and SAT tutoring at $140/hour in Overland Park, the Kansas City metro and online — a fraction of what the big prep companies charge.',
+  schema: [tutoringServiceNode],
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

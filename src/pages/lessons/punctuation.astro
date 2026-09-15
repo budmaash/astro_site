@@ -6,7 +6,11 @@ import { createShellConfig } from '../../config/shell';
 import { punctuationLessonNode } from '../../config/schema';
 import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'SAT Punctuation Guide', schema: [punctuationLessonNode] });
+const defaultConfig = createShellConfig({
+  siteTitle: 'SAT & ACT Punctuation Rules: Commas, Colons & Dashes',
+  description: 'Every punctuation rule tested on the SAT and ACT — complete sentences, run-ons, colons, commas and dashes — with the steps for each question type.',
+  schema: [punctuationLessonNode],
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
 const IMG = '/lessons/punctuation2';

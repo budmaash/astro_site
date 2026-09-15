@@ -6,7 +6,11 @@ import { createShellConfig } from '../config/shell';
 import { personNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'About Me, How I Teach', schema: [personNode] });
+const defaultConfig = createShellConfig({
+  siteTitle: 'About Majid Hasan — ACT & SAT Tutor Since 2006',
+  description: 'Majid Hasan has taught the ACT and SAT since 2006 — at Kaplan, at Get Smarter Prep in Overland Park, and now one-on-one across Kansas City and online.',
+  schema: [personNode],
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

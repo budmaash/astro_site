@@ -47,9 +47,9 @@ export type ShellConfigOverride = Partial<
 };
 
 export const shellConfig: ShellConfig = {
-  siteTitle: 'Hasan Tutoring | Personalized ACT & SAT Preparation',
+  siteTitle: 'Hasan Tutoring | ACT & SAT Tutoring in Overland Park & KC',
   description:
-    'Personalized ACT and SAT tutoring in the Kansas City area and online, with practical strategies tailored to each student.',
+    'One-on-one ACT and SAT tutoring in Overland Park, the Kansas City metro, and online. Free full-length practice tests — no account, no sales pitch.',
   favicon:
     'https://images.squarespace-cdn.com/content/v1/6719d488c1d7644f3ed87605/f9b991be-6150-45fb-9276-f2464992f9d7/favicon.ico?format=100w',
   bodyId: 'collection-698e6a52b79d7e742279daa8',

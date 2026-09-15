@@ -6,7 +6,11 @@ import { createShellConfig } from '../config/shell';
 import { actServiceNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'Detailed Info about the ACT', schema: [actServiceNode] });
+const defaultConfig = createShellConfig({
+  siteTitle: 'ACT Guide: Format, Scoring, Sections & Test Dates',
+  description: 'How the ACT works section by section — English, Math, Reading and Science — with the question types and strategies I teach students in Kansas City.',
+  schema: [actServiceNode],
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>

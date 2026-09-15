@@ -6,7 +6,11 @@ import { createShellConfig } from '../config/shell';
 import { contactPageNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
-const defaultConfig = createShellConfig({ siteTitle: 'Reach out anytime!', schema: [contactPageNode] });
+const defaultConfig = createShellConfig({
+  siteTitle: 'Contact Hasan Tutoring — ACT & SAT Tutor in Kansas City',
+  description: 'Call 913.210.0611 or email Majid@HasanTutoring.com. Honest advice on the ACT and SAT, a free practice test, and no pressure to buy anything.',
+  schema: [contactPageNode],
+});
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 ---
 <SquarespaceShellLayout config={config}>
