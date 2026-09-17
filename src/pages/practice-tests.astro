@@ -245,9 +245,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   .exam-picker__header {
     display: grid;
-    /* The downloads column sizes to the two full-size logos so they sit
-       side by side; the heading takes the remaining space. */
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: clamp(1.25rem, 2.5vw, 2rem);
     align-items: start;
   }
@@ -264,38 +262,28 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   .exam-picker__downloads {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem 1.5rem;
-    /* Logos differ in height (178px vs 225px), so align on the bottom edge
-       to keep the two labels on the same line. */
-    align-items: flex-end;
+    gap: .75rem 1.5rem;
+    align-items: center;
     justify-content: flex-end;
     padding-top: .45rem;
   }
 
   .exam-picker__downloads a {
     display: inline-flex;
-    flex-direction: column;
-    gap: .6rem;
+    gap: .55rem;
     align-items: center;
     color: var(--color-text-dark);
+    border-bottom: 1px solid currentColor;
     font: 600 .82rem/1.4 var(--font-sans);
     letter-spacing: .03em;
     text-decoration: none;
-    transition: color 160ms ease;
+    transition: color 160ms ease, border-color 160ms ease;
   }
 
-  /* Logos render at their intrinsic size (SAT 282x178, ACT 225x225) and
-     shrink only when the column gets narrower than the image. */
   .exam-picker__downloads img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* The underline belongs on the label, not the whole column. */
-  .exam-picker__downloads a span {
-    border-bottom: 1px solid currentColor;
-    transition: border-color 160ms ease;
+    width: 2rem;
+    height: 1.5rem;
+    object-fit: contain;
   }
 
   .exam-picker__downloads a:hover { color: var(--color-accent-crimson); }
