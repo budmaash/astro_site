@@ -3,6 +3,7 @@ import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../../config/shell';
 import { createShellConfig } from '../../config/shell';
+import { createLessonImages } from '../../config/lessonImages';
 import { punctuationLessonNode } from '../../config/schema';
 import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
 
@@ -13,7 +14,9 @@ const defaultConfig = createShellConfig({
 });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
-const IMG = '/lessons/punctuation2';
+const img = await createLessonImages(
+  import.meta.glob<{ default: ImageMetadata }>('../../assets/lessons/sat-punctuation/*.png', { eager: true }),
+);
 
 const navItems = [
   { href: '/lessons/punctuation/#prerequisites', label: 'Prerequisites' },
@@ -40,7 +43,7 @@ const navItems = [
           <p class="ht-eyebrow ht-eyebrow--crimson">SAT Reading &amp; Writing</p>
           <h1 class="ht-pn-hero__h1">Punctuation (Boundaries)</h1>
           <p class="ht-pn-hero__lead">
-            Much of the Standard English Conventions questions on the Reading
+            Many of the Standard English Conventions questions on the Reading
             and Writing modules of the SAT are what the College Board calls
             “Boundaries” (the other known as “Form, Structure, and Sense”).
             These are essentially questions about punctuation. This guide
@@ -242,9 +245,9 @@ const navItems = [
             examples.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P1.png`} alt="Diagram: 'complete?' on both sides of a sentence boundary, arrows meeting at a dashed divider." loading="lazy" />
-            <img src={`${IMG}/P2.png`} alt="Same diagram with boxes below showing a semicolon, a period, and a comma-plus-'and' as the possible boundary marks." loading="lazy" />
-            <img src={`${IMG}/P3.png`} alt="Worked example: 'I took the SATs, and I crushed it.' with both halves labeled complete and checked." loading="lazy" />
+            <img {...img('P1')} alt="Diagram: 'complete?' on both sides of a sentence boundary, arrows meeting at a dashed divider." loading="lazy" />
+            <img {...img('P2')} alt="Same diagram with boxes below showing a semicolon, a period, and a comma-plus-'and' as the possible boundary marks." loading="lazy" />
+            <img {...img('P3')} alt="Worked example: 'I took the SATs, and I crushed it.' with both halves labeled complete and checked." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -254,8 +257,8 @@ const navItems = [
             which it is. Therefore A works, it's the correct answer.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P4.png`} alt="SAT-style question about deep-sea fish proteins and TMAO, with both halves of answer choice A marked complete on either side of the period." loading="lazy" />
-            <img src={`${IMG}/P6.png`} alt="Reasoning notes: 'Let's test A) — read up to the period and check if it's complete — read from after to the end and check. Since they both are, a period works.'" loading="lazy" />
+            <img {...img('P4')} alt="SAT-style question about deep-sea fish proteins and TMAO, with both halves of answer choice A marked complete on either side of the period." loading="lazy" />
+            <img {...img('P6')} alt="Reasoning notes: 'Let's test A) — read up to the period and check if it's complete — read from after to the end and check. Since they both are, a period works.'" loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -267,8 +270,8 @@ const navItems = [
             requires a complete sentence before and after.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P7.png`} alt="SAT-style question about video game graphics, testing a comma-plus-FANBOYS ('but') answer choice." loading="lazy" />
-            <img src={`${IMG}/P10.png`} alt="Answer choice D crossed out, with a note showing the clause before the comma-plus-FANBOYS is incomplete." loading="lazy" />
+            <img {...img('P7')} alt="SAT-style question about video game graphics, testing a comma-plus-FANBOYS ('but') answer choice." loading="lazy" />
+            <img {...img('P10')} alt="Answer choice D crossed out, with a note showing the clause before the comma-plus-FANBOYS is incomplete." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -276,7 +279,7 @@ const navItems = [
             correct, answer choice A.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P11.png`} alt="SAT-style question about marginalia in a book once owned by Walt Whitman, with comma-plus-FANBOYS answer choice A correct." loading="lazy" />
+            <img {...img('P11')} alt="SAT-style question about marginalia in a book once owned by Walt Whitman, with comma-plus-FANBOYS answer choice A correct." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -289,7 +292,7 @@ const navItems = [
             complete sentence.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P12.png`} alt="SAT-style question with three answer choices sharing a period, semicolon, or comma-plus-FANBOYS — all eliminated because the text after the boundary isn't complete." loading="lazy" />
+            <img {...img('P12')} alt="SAT-style question with three answer choices sharing a period, semicolon, or comma-plus-FANBOYS — all eliminated because the text after the boundary isn't complete." loading="lazy" />
           </div>
         </div>
       </section>
@@ -310,43 +313,43 @@ const navItems = [
             by nothing.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P13.png`} alt="Diagram labeled 'Run-Ons' showing two complete sentences joined incorrectly by only a comma, only a FANBOYS word, or nothing, with a red X." loading="lazy" />
+            <img {...img('P13')} alt="Diagram labeled 'Run-Ons' showing two complete sentences joined incorrectly by only a comma, only a FANBOYS word, or nothing, with a red X." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            On the SAT, they're testing almost always as incorrect answers
+            On the SAT, they're almost always tested as incorrect answers
             when you see that there are answers with periods, semicolons,
             comma+FANBOYS, or colons (which we'll talk about soon).
           </p>
 
           <p class="ht-pn-body">
-            Let's revisit this problem. 2, 1, 22. We already saw that there
+            Let's revisit this problem. We already saw that there
             were two complete sentences. One up to the word
             "configurations." and another from "TMAO" to the period. B
             separates them with nothing, C with only a comma, and D with
             only a FANBOYS ("and").
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P14.png`} alt="SAT-style question about deep-sea fish proteins and TMAO, revisited to test answers B, C, and D for run-ons." loading="lazy" />
-            <img src={`${IMG}/P15.png`} alt="Diagram marking both halves of the TMAO sentence as complete, testing options between them." loading="lazy" />
-            <img src={`${IMG}/P16.png`} alt="Annotation showing B (nothing), C (only a comma), and D (only 'and') are all run-ons." loading="lazy" />
+            <img {...img('P14')} alt="SAT-style question about deep-sea fish proteins and TMAO, revisited to test answers B, C, and D for run-ons." loading="lazy" />
+            <img {...img('P15')} alt="Diagram marking both halves of the TMAO sentence as complete, testing options between them." loading="lazy" />
+            <img {...img('P16')} alt="Annotation showing B (nothing), C (only a comma), and D (only 'and') are all run-ons." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            We see two completes, up to "value" and from "when"
+            We see two completes, up to "value" and from "when".
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P19.png`} alt="Answer choices tested for run-ons, with the correct comma-plus-FANBOYS choice identified." loading="lazy" />
+            <img {...img('P19')} alt="Answer choices tested for run-ons, with the correct comma-plus-FANBOYS choice identified." loading="lazy" />
           </div>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P20.png`} alt="Diagram marking the clauses ending in 'value' and beginning with 'when' as two complete sentences." loading="lazy" />
+            <img {...img('P20')} alt="Diagram marking the clauses ending in 'value' and beginning with 'when' as two complete sentences." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Again, two completes, up to "percents" and from "such"
+            Again, two completes, up to "percent" and from "such".
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P22.png`} alt="Answer choices A, B, and D crossed out as run-ons, leaving the correct choice." loading="lazy" />
+            <img {...img('P22')} alt="Answer choices A, B, and D crossed out as run-ons, leaving the correct choice." loading="lazy" />
           </div>
         </div>
       </section>
@@ -378,15 +381,15 @@ const navItems = [
             first phrase. A it is.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P25.png`} alt="SAT-style question about a jam-tasting experiment, testing whether a colon can follow the complete clause 'The number of jams available for tasting varied.'" loading="lazy" />
-            <img src={`${IMG}/P26.png`} alt="Annotation confirming the complete clause before the colon and the example/explanation relationship after it." loading="lazy" />
+            <img {...img('P25')} alt="SAT-style question about a jam-tasting experiment, testing whether a colon can follow the complete clause 'The number of jams available for tasting varied.'" loading="lazy" />
+            <img {...img('P26')} alt="Annotation confirming the complete clause before the colon and the example/explanation relationship after it." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Running the same test, we see that B is correct.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P28.png`} alt="SAT-style question running the same colon test, with answer choice B correct." loading="lazy" />
+            <img {...img('P28')} alt="SAT-style question running the same colon test, with answer choice B correct." loading="lazy" />
           </div>
         </div>
       </section>
@@ -414,7 +417,7 @@ const navItems = [
           </p>
 
           <p class="ht-pn-body">
-            Checkout this question. You notice that A) has "<span class="ht-pn-mono">,and</span>"
+            Check out this question. You notice that A) has "<span class="ht-pn-mono">,and</span>"
             but does not have a complete before it. That's out. Then let's
             check the answer with a comma. I read the sentence without the
             phrase now located inside two commas "a fictionalized … sisters,"
@@ -423,9 +426,9 @@ const navItems = [
             for…</em> It flows. Choice C is correct.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P29.png`} alt="SAT-style question about Julia Alvarez's novel In the Time of the Butterflies, testing whether a phrase is a removable interjection." loading="lazy" />
-            <img src={`${IMG}/P49.png`} alt="Answer choice A crossed out because the clause before 'and' is not complete." loading="lazy" />
-            <img src={`${IMG}/P50.png`} alt="Confirmation that choice C is correct because the sentence still flows once the interjection is removed." loading="lazy" />
+            <img {...img('P29')} alt="SAT-style question about Julia Alvarez's novel In the Time of the Butterflies, testing whether a phrase is a removable interjection." loading="lazy" />
+            <img {...img('P49')} alt="Answer choice A crossed out because the clause before 'and' is not complete." loading="lazy" />
+            <img {...img('P50')} alt="Confirmation that choice C is correct because the sentence still flows once the interjection is removed." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -435,32 +438,32 @@ const navItems = [
             require, so we can eliminate them for that reason.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P45.png`} alt="SAT-style question testing whether 'for instance' can be removed as an interjection." loading="lazy" />
-            <img src={`${IMG}/P51.png`} alt="Diagram showing the phrase 'for instance' isolated and tested for removability." loading="lazy" />
-            <img src={`${IMG}/P52.png`} alt="Confirmation that removing the interjection leaves a complete, flowing sentence." loading="lazy" />
+            <img {...img('P45')} alt="SAT-style question testing whether 'for instance' can be removed as an interjection." loading="lazy" />
+            <img {...img('P51')} alt="Diagram showing the phrase 'for instance' isolated and tested for removability." loading="lazy" />
+            <img {...img('P52')} alt="Confirmation that removing the interjection leaves a complete, flowing sentence." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Here's two more examples that work the exact same way.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P53.png`} alt="SAT-style question about the 12th Amendment and US presidential elections, testing an interjection." loading="lazy" />
-            <img src={`${IMG}/P54.png`} alt="SAT-style question about carbon-13 hibernation research, testing an interjection." loading="lazy" />
+            <img {...img('P53')} alt="SAT-style question about the 12th Amendment and US presidential elections, testing an interjection." loading="lazy" />
+            <img {...img('P54')} alt="SAT-style question about carbon-13 hibernation research, testing an interjection." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Let's check out an example of the second way the SAT tests comma
             usage: separating Independent and Dependent clauses. Notice that
             with C) and D) we do not have a required complete starting from
-            "positing", and in D) we do not have an example or explanation
+            "positing", and in B) we do not have an example or explanation
             (though it is close). Notice that phrase starts with an "ing"
             word, "positing"? A common type of dependent clause. And
             "Epicurus…soul" works as an Independent. Choice A it is.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P40.png`} alt="SAT-style question about Epicurus and pleasure, testing where a comma should separate an independent clause from a dependent clause." loading="lazy" />
-            <img src={`${IMG}/P55.png`} alt="Diagram marking the independent and dependent clauses on either side of 'positing.'" loading="lazy" />
-            <img src={`${IMG}/P56.png`} alt="Answer choices A and C circled with reasoning about which options avoid a run-on." loading="lazy" />
+            <img {...img('P40')} alt="SAT-style question about Epicurus and pleasure, testing where a comma should separate an independent clause from a dependent clause." loading="lazy" />
+            <img {...img('P55')} alt="Diagram marking the independent and dependent clauses on either side of 'positing.'" loading="lazy" />
+            <img {...img('P56')} alt="The Epicurus question's answer choices, with choice A (soul,” positing) circled." loading="lazy" />
           </div>
         </div>
       </section>
@@ -479,7 +482,7 @@ const navItems = [
             Dashes are tested the exact same ways as the two comma rules we
             just went over, though they are far less common on the SAT. A
             sentence can have only 0, 1, or 2 in a sentence. If you have
-            one, it MUST be to separate Independent and Dependent clause. If
+            one, it MUST be to separate Independent and Dependent clauses. If
             you have two, they MUST be to bookend interjections. They rarely
             ask about Ind. and Dep clauses.
           </p>
@@ -491,17 +494,17 @@ const navItems = [
             installers' cooperation" and we see it flows. Choice B it is.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P44.png`} alt="SAT-style question about solar panel installers and pollinator populations, with one dash already present in the sentence." loading="lazy" />
-            <img src={`${IMG}/P57.png`} alt="Confirmation that the interjection between dashes can be removed and the sentence still flows." loading="lazy" />
+            <img {...img('P44')} alt="SAT-style question about solar panel installers and pollinator populations, with one dash already present in the sentence." loading="lazy" />
+            <img {...img('P57')} alt="Confirmation that the interjection between dashes can be removed and the sentence still flows." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Another example that works the same way.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P32.png`} alt="SAT-style question about Sophie Calle's photography exhibition, testing dash placement." loading="lazy" />
-            <img src={`${IMG}/P68.png`} alt="Diagram testing whether the phrase between dashes can be removed from the sentence." loading="lazy" />
-            <img src={`${IMG}/P69.png`} alt="Confirmation that the phrase flows once removed, making the two-dash answer correct." loading="lazy" />
+            <img {...img('P32')} alt="SAT-style question about Sophie Calle's photography exhibition, testing dash placement." loading="lazy" />
+            <img {...img('P68')} alt="Diagram testing whether the phrase between dashes can be removed from the sentence." loading="lazy" />
+            <img {...img('P69')} alt="Confirmation that the phrase flows once removed, making the two-dash answer correct." loading="lazy" />
           </div>
         </div>
       </section>
@@ -517,11 +520,11 @@ const navItems = [
           </div>
 
           <p class="ht-pn-body">
-            There are their own type of question. Though it looks like it's
+            These are their own type of question. Though it looks like it's
             testing comma usage, you should handle it differently. The name
             of the question-type tells you exactly what it is: when you see
             a title/occupation right before a name. "SAT tutor Majid Hasan",
-            "theoretical physicist Robert J. Oppenheimer", "cartoon
+            "theoretical physicist J. Robert Oppenheimer", "cartoon
             character Krusty the Clown", etc.
           </p>
           <p class="ht-pn-body">
@@ -532,16 +535,16 @@ const navItems = [
             Check out two examples.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P58.png`} alt="SAT-style question about screen actor Anna May Wong, testing whether commas belong around the title-plus-name construction." loading="lazy" />
-            <img src={`${IMG}/P59.png`} alt="A second SAT-style example testing the title/occupation-plus-name pattern with no commas around the name." loading="lazy" />
+            <img {...img('P58')} alt="SAT-style question about screen actor Anna May Wong, testing whether commas belong around the title-plus-name construction." loading="lazy" />
+            <img {...img('P59')} alt="A second SAT-style example testing the title/occupation-plus-name pattern with no commas around the name." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             <strong>The exception:</strong> every once in a while, you'll
             need a comma after the name (never before) if there's an
-            interjection right after the name (or maybe a dependant clause).
+            interjection right after the name (or maybe a dependent clause).
             "The book was written by legendary journalist Bob Woodward, who
-            won a Pulitzer prize the following year." Here we'd need a comma
+            won a Pulitzer Prize the following year." Here we'd need a comma
             after the name to separate the independent and dependent
             clauses.
           </p>
@@ -552,7 +555,7 @@ const navItems = [
             before the name, but we need one right after.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P60.png`} alt="ACT-style question showing an interjection right after the name 'Ien Chi,' requiring a comma after the name but not before it." loading="lazy" />
+            <img {...img('P60')} alt="ACT-style question showing an interjection right after the name 'Ien Chi,' requiring a comma after the name but not before it." loading="lazy" />
           </div>
         </div>
       </section>
@@ -577,22 +580,22 @@ const navItems = [
             being used like commas in a list.
           </p>
           <p class="ht-pn-body">
-            In this first example, it has be to B) since that's the only
+            In this first example, it has to be B) since that's the only
             option that would have two semicolons in the sentence.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P61.png`} alt="SAT-style question where only one answer choice would create two semicolons in the sentence." loading="lazy" />
-            <img src={`${IMG}/P63.png`} alt="Annotation confirming answer choice B as the only option producing two semicolons." loading="lazy" />
-            <img src={`${IMG}/P62.png`} alt="Full question text showing the semicolon used as a separator in a list." loading="lazy" />
+            <img {...img('P61')} alt="SAT-style question where only one answer choice would create two semicolons in the sentence." loading="lazy" />
+            <img {...img('P63')} alt="Annotation confirming answer choice B as the only option producing two semicolons." loading="lazy" />
+            <img {...img('P62')} alt="Full question text showing the semicolon used as a separator in a list." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             In this second example, we have two options that would result in
             two semicolons. Therefore, we need to follow the pattern:
-            "…dedicated; …fostering; and educating…"
+            "…growing…; fostering…; and educating…"
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P64.png`} alt="SAT-style question where two answer choices would both produce two semicolons, requiring the existing list pattern to be followed." loading="lazy" />
+            <img {...img('P64')} alt="SAT-style question where two answer choices would both produce two semicolons, requiring the existing list pattern to be followed." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -607,14 +610,14 @@ const navItems = [
           </p>
           <p class="ht-pn-body">
             Notice that answer choice C) would imply that the idea that her
-            subsequent career was more than just solving equations with the
-            idea that she helped usher in the digital age? Rather, it should
+            subsequent career was more than just solving equations contrasts
+            with the idea that she helped usher in the digital age. Rather, it should
             be that the idea that she solved equations in the war contrasts
             with the idea that the rest of her career was about more than
             just equations. Choice A makes this clear.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P70.png`} alt="SAT-style question about a mathematician's wartime and postwar career, testing which transition correctly links two complete sentences." loading="lazy" />
+            <img {...img('P70')} alt="SAT-style question about a mathematician's wartime and postwar career, testing which transition correctly links two complete sentences." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -625,7 +628,7 @@ const navItems = [
             collectively by a group of experts, which doesn't make sense.
           </p>
           <div class="ht-pn-imgrow">
-            <img src={`${IMG}/P67.png`} alt="SAT-style question about a sociologist on a historic-sites review board, testing which transition correctly links two complete sentences." loading="lazy" />
+            <img {...img('P67')} alt="SAT-style question about a sociologist on a historic-sites review board, testing which transition correctly links two complete sentences." loading="lazy" />
           </div>
         </div>
       </section>

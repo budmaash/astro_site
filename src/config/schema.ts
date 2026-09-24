@@ -158,6 +158,16 @@ export const punctuationLessonNode: SchemaNode = {
   isAccessibleForFree: true,
 };
 
+export const actPunctuationLessonNode: SchemaNode = {
+  ...punctuationLessonNode,
+  '@id': `${SITE_URL}/act_lessons/punctuation#lesson`,
+  name: 'ACT punctuation guide',
+  url: `${SITE_URL}/act_lessons/punctuation`,
+  description:
+    'A guide to the punctuation and sentence-boundary rules tested on the ACT, with the steps for each question type.',
+  about: { '@type': 'Thing', name: 'ACT English punctuation' },
+};
+
 export const contactPageNode: SchemaNode = {
   '@type': 'ContactPage',
   '@id': `${SITE_URL}/contact#page`,
