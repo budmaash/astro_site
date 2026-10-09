@@ -1,0 +1,22 @@
+---
+import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
+import CoursebookVideoPage from '../../components/CoursebookVideoPage.astro';
+import { actVideoLessons, actVideoHub } from '../../data/actVideoLessons';
+import { createShellConfig } from '../../config/shell';
+import { videoHubNode } from '../../config/schema';
+import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
+
+const config = createShellConfig({
+  siteTitle: actVideoHub.pageTitle,
+  description: actVideoHub.metaDescription,
+  schema: [videoHubNode(actVideoHub, actVideoLessons)],
+});
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+    <CoursebookVideoPage videos={actVideoLessons} contentsLabel={actVideoHub.contentsLabel} hub={actVideoHub} />
+    <SquarespaceFooter config={config} />
+  </div>
+</SquarespaceShellLayout>

@@ -24,6 +24,8 @@
  *    Service describes what is actually offered without overclaiming.
  */
 
+import { vimeoEmbedUrl, type VideoLesson } from '../data/videoLessons';
+
 /** Canonical origin. Bare domain: www 301-redirects here. */
 export const SITE_URL = 'https://hasantutoring.com';
 
@@ -176,6 +178,63 @@ export const contactPageNode: SchemaNode = {
   about: { '@id': ORG_ID },
   mainEntity: { '@id': ORG_ID },
 };
+
+/** ISO 8601 duration for VideoObject, e.g. 294 -> 'PT4M54S'. */
+const isoDuration = (seconds: number) => `PT${Math.floor(seconds / 60)}M${seconds % 60}S`;
+
+type VideoHub = { name: string; path: string };
+
+/**
+ * One video's own page: a VideoObject (the page's main content) plus a
+ * breadcrumb back to its hub. Each video has exactly one watch page.
+ */
+export function videoPageNodes(video: VideoLesson, hub: VideoHub): SchemaNode[] {
+  const url = `${SITE_URL}${video.path}`;
+  return [
+    {
+      '@type': 'VideoObject',
+      '@id': `${url}#video`,
+      name: video.pageTitle.replace(/ \| Hasan Tutoring$/, ''),
+      description: video.metaDescription,
+      thumbnailUrl: video.thumbnail,
+      uploadDate: video.uploadDate,
+      duration: isoDuration(video.seconds),
+      embedUrl: vimeoEmbedUrl(video),
+      url,
+      inLanguage: 'en',
+      educationalLevel: 'High school',
+      learningResourceType: video.section === 'question' ? 'Question explanation' : 'Video lesson',
+      isAccessibleForFree: true,
+      publisher: { '@id': ORG_ID },
+      creator: { '@id': PERSON_ID },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Resources', item: `${SITE_URL}/resources` },
+        { '@type': 'ListItem', position: 2, name: hub.name, item: `${SITE_URL}${hub.path}` },
+        { '@type': 'ListItem', position: 3, name: video.title },
+      ],
+    },
+  ];
+}
+
+/** A video hub page: an ItemList pointing at every video's own page. */
+export function videoHubNode(hub: VideoHub, videos: VideoLesson[]): SchemaNode {
+  return {
+    '@type': 'ItemList',
+    '@id': `${SITE_URL}${hub.path}#list`,
+    name: hub.name,
+    url: `${SITE_URL}${hub.path}`,
+    numberOfItems: videos.length,
+    itemListElement: videos.map((video, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${SITE_URL}${video.path}`,
+    })),
+  };
+}
 
 /** Build the JSON-LD @graph for a page. */
 export function buildGraph(pageNodes: SchemaNode[] = []): string {

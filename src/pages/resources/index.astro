@@ -1,0 +1,30 @@
+---
+import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
+import ResourcesBody from '../../components/ResourcesBody.astro';
+import { createShellConfig } from '../../config/shell';
+import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
+
+const config = createShellConfig({
+  siteTitle: 'ACT & SAT Test Prep Resources | Hasan Tutoring',
+  description: 'Explore ACT and SAT lessons, visual guides, video examples, and downloadable practice tests from Hasan Tutoring.',
+});
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+    <div id="page" class="ht-resources-page">
+      <ResourcesBody />
+    </div>
+    <SquarespaceFooter config={config} />
+  </div>
+</SquarespaceShellLayout>
+
+<style is:global>
+  #page.ht-resources-page {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+</style>

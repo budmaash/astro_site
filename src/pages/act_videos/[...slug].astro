@@ -1,0 +1,32 @@
+---
+import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
+import CoursebookVideoPage from '../../components/CoursebookVideoPage.astro';
+import { actVideoLessons, actVideoHub } from '../../data/actVideoLessons';
+import type { VideoLesson } from '../../data/videoLessons';
+import { createShellConfig } from '../../config/shell';
+import { videoPageNodes } from '../../config/schema';
+import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
+
+// One page per video at its `path`, e.g. /sat_videos/test-8/module-1/question-20.
+export function getStaticPaths() {
+  return actVideoLessons.map((video) => ({
+    params: { slug: video.path.slice(actVideoHub.path.length + 1) },
+    props: { video },
+  }));
+}
+
+const { video } = Astro.props as { video: VideoLesson };
+const config = createShellConfig({
+  siteTitle: video.pageTitle,
+  description: video.metaDescription,
+  schema: videoPageNodes(video, actVideoHub),
+});
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+    <CoursebookVideoPage videos={actVideoLessons} contentsLabel={actVideoHub.contentsLabel} hub={actVideoHub} current={video} />
+    <SquarespaceFooter config={config} />
+  </div>
+</SquarespaceShellLayout>

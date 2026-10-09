@@ -1,0 +1,737 @@
+---
+import { getImage } from 'astro:assets';
+import { resources as resourceEntries, resourceTypes } from '../data/resources';
+
+// Optimize imported preview images; plain public paths are used as-is.
+const resources = await Promise.all(resourceEntries.map(async (resource) => ({
+  ...resource,
+  image: typeof resource.image === 'string'
+    ? resource.image
+    : (await getImage({ src: resource.image, width: 1200, format: 'webp' })).src,
+})));
+
+const featured = resources[0];
+const collections = (['ACT', 'SAT'] as const).map((exam) => ({
+  exam,
+  groups: resourceTypes.map((type) => ({
+    type,
+    entries: resources.filter((resource) => resource.exam === exam && resource.type === type),
+  })),
+}));
+---
+<!-- Resources body adapted from docs/test-prep-resources-body-handoff.html. -->
+
+<style>
+  @font-face {
+    font-family: proxima-nova;
+    src: url(https://use.typekit.net/af/d7ff92/00000000000000007735e609/31/l?subset_id=2&fvd=n4&v=3) format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: proxima-nova;
+    src: url(https://use.typekit.net/af/5be242/00000000000000007735e603/31/l?subset_id=2&fvd=n7&v=3) format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: adobe-garamond-pro;
+    src: url(https://use.typekit.net/af/1a756d/00000000000000007735d927/31/l?subset_id=2&fvd=n4&v=3) format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  .resources-handoff {
+    --resources-bg: oklch(.9648 .0086 84.57);
+    --resources-surface: oklch(1 0 89.88);
+    --resources-fg: oklch(.1776 0 89.88);
+    --resources-muted: oklch(.4698 .0142 79.72);
+    --resources-border: oklch(.8987 .0145 84.59);
+    --resources-accent: oklch(.4158 .1484 26.59);
+    --resources-warm: #fbfaf7;
+    --resources-gold: #c6a764;
+    --resources-sans: proxima-nova, "Helvetica Neue", Arial, sans-serif;
+    --resources-serif: adobe-garamond-pro, Georgia, "Times New Roman", serif;
+    --resources-gutter: clamp(1.5rem, 5vw, 6rem);
+    --resources-content: 1200px;
+    --resources-fast: 150ms ease;
+    display: block;
+    width: 100%;
+    background: var(--resources-surface);
+    color: var(--resources-fg);
+    font: 400 16px/1.65 var(--resources-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .resources-handoff,
+  .resources-handoff *,
+  .resources-handoff *::before,
+  .resources-handoff *::after {
+    box-sizing: border-box;
+  }
+
+  .resources-handoff button,
+  .resources-handoff a {
+    font: inherit;
+  }
+
+  .resources-handoff a {
+    color: inherit;
+  }
+
+  .resources-handoff button {
+    cursor: pointer;
+  }
+
+  .resources-handoff img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .resources-handoff h1,
+  .resources-handoff h2,
+  .resources-handoff h3,
+  .resources-handoff p {
+    margin-top: 0;
+  }
+
+  .resources-handoff :focus-visible {
+    outline: 3px solid var(--resources-accent);
+    outline-offset: 3px;
+  }
+
+  .resources-handoff [hidden] {
+    display: none !important;
+  }
+
+  .resources-handoff .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .resources-handoff .resources-shell {
+    width: min(100% - 2 * var(--resources-gutter), var(--resources-content));
+    margin-inline: auto;
+  }
+
+  .resources-handoff :is(#latest, #exam-libraries, #act-resources, #sat-resources) {
+    scroll-margin-top: 6rem;
+  }
+
+  .resources-handoff .top-resources {
+    padding: clamp(1.25rem, 2vw, 2rem) var(--resources-gutter) clamp(1.5rem, 2.5vw, 2rem);
+    border-bottom: 1px solid var(--resources-border);
+  }
+
+  .resources-handoff .top-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .resources-handoff .library-link {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: .65rem 0;
+    border-block: 1px solid var(--resources-border);
+  }
+
+  .resources-handoff .library-link a {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    min-height: 44px;
+    border-bottom: 1px solid var(--resources-gold);
+    color: var(--resources-accent);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color var(--resources-fast), border-color var(--resources-fast);
+  }
+
+  .resources-handoff .library-link a::after {
+    content: "→";
+  }
+
+  .resources-handoff .library-link a:hover {
+    border-color: var(--resources-accent);
+    color: var(--resources-fg);
+  }
+
+  .resources-handoff .latest-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem 2rem;
+    margin-bottom: .25rem;
+  }
+
+  .resources-handoff .latest-header h1 {
+    margin-bottom: 0;
+    color: var(--resources-fg);
+    font: 400 clamp(2.8rem, 6vw, 5.8rem)/.96 var(--resources-serif);
+    letter-spacing: -.04em;
+  }
+
+  .resources-handoff .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: .45rem;
+  }
+
+  .resources-handoff .filter {
+    min-height: 42px;
+    padding: .55rem .9rem;
+    border: 1px solid var(--resources-border);
+    border-radius: 0;
+    background: var(--resources-surface);
+    color: var(--resources-muted);
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .resources-handoff .filter[aria-pressed="true"] {
+    border-color: var(--resources-fg);
+    background: var(--resources-fg);
+    color: var(--resources-surface);
+  }
+
+  .resources-handoff .latest-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+    gap: 1px;
+    border: 1px solid var(--resources-border);
+    background: var(--resources-border);
+  }
+
+  .resources-handoff .lead-resource {
+    display: grid;
+    grid-template-rows: 360px auto;
+    background: var(--resources-surface);
+  }
+
+  .resources-handoff .lead-visual {
+    position: relative;
+    min-height: 0;
+    background: var(--resources-warm);
+  }
+
+  .resources-handoff .lead-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .resources-handoff .lead-visual[data-mode="contain"] img {
+    object-fit: contain;
+  }
+
+  .resources-handoff .lead-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: grid;
+    width: 64px;
+    height: 64px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--resources-surface);
+    color: var(--resources-fg);
+    font-size: 1.25rem;
+    transform: translate(-50%, -50%);
+  }
+
+  .resources-handoff .lead-copy {
+    padding: 2rem;
+  }
+
+  .resources-handoff .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem .8rem;
+    margin-bottom: .7rem;
+    color: var(--resources-accent);
+    font-size: .66rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .resources-handoff .meta span + span::before {
+    margin-right: .8rem;
+    color: var(--resources-border);
+    content: "/";
+  }
+
+  .resources-handoff .lead-copy h2 {
+    margin-bottom: .65rem;
+    font: 400 clamp(2.1rem, 3.8vw, 3.4rem)/1 var(--resources-serif);
+    letter-spacing: -.025em;
+  }
+
+  .resources-handoff .lead-copy p {
+    max-width: 54ch;
+    color: var(--resources-muted);
+  }
+
+  .resources-handoff .action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 46px;
+    padding: .7rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--resources-gold);
+    background: transparent;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .resources-handoff .action::after {
+    content: "↗";
+    font-size: 1rem;
+  }
+
+  .resources-handoff .action:hover {
+    color: var(--resources-accent);
+  }
+
+  .resources-handoff .new-list {
+    display: flex;
+    flex-direction: column;
+    background: var(--resources-warm);
+  }
+
+  .resources-handoff .new-item {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    min-height: 116px;
+    padding: 1.25rem;
+    border: 0;
+    border-bottom: 1px solid var(--resources-border);
+    background: transparent;
+    color: var(--resources-fg);
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .resources-handoff .new-item:last-child {
+    border-bottom: 0;
+  }
+
+  .resources-handoff .new-item:hover {
+    background: var(--resources-surface);
+  }
+
+  .resources-handoff .new-item[aria-pressed="true"] {
+    background: var(--resources-surface);
+  }
+
+  .resources-handoff .new-item[aria-pressed="true"] .new-item-title {
+    color: var(--resources-accent);
+  }
+
+  .resources-handoff .new-item img {
+    width: 92px;
+    height: 72px;
+    object-fit: cover;
+  }
+
+  .resources-handoff .new-item[data-mode="contain"] img {
+    object-fit: contain;
+    background: var(--resources-surface);
+  }
+
+  .resources-handoff .new-item-title {
+    display: block;
+    margin: 0 0 .25rem;
+    font: 400 1.25rem/1.08 var(--resources-serif);
+  }
+
+  .resources-handoff .new-item-meta {
+    display: block;
+    margin: 0;
+    color: var(--resources-muted);
+    font-size: .69rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .resources-handoff .new-item-copy {
+    min-width: 0;
+  }
+
+  .resources-handoff .libraries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--resources-border);
+  }
+
+  .resources-handoff .exam-library {
+    padding: clamp(2rem, 3vw, 2.5rem) var(--resources-gutter) clamp(4rem, 7vw, 6rem);
+  }
+
+  .resources-handoff .exam-library:first-child {
+    background: var(--resources-surface);
+  }
+
+  .resources-handoff .exam-library:last-child {
+    border-left: 1px solid var(--resources-border);
+    background: var(--resources-warm);
+  }
+
+  .resources-handoff .exam-head {
+    max-width: 520px;
+    margin-bottom: 2.7rem;
+  }
+
+  .resources-handoff .exam-head h2 {
+    margin-bottom: .65rem;
+    font: 400 clamp(3rem, 5vw, 4.8rem)/.95 var(--resources-serif);
+    letter-spacing: -.035em;
+  }
+
+  .resources-handoff .category-list {
+    border-top: 1px solid var(--resources-border);
+  }
+
+  .resources-handoff .category {
+    border-bottom: 1px solid var(--resources-border);
+  }
+
+  .resources-handoff .category summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 98px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .resources-handoff .category summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .resources-handoff .category-name {
+    font: 400 1.35rem/1.05 var(--resources-serif);
+  }
+
+  .resources-handoff .category-count {
+    margin-left: auto;
+    color: var(--resources-muted);
+    font-size: .82rem;
+  }
+
+  .resources-handoff .category-toggle {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    border: 1px solid var(--resources-fg);
+    color: var(--resources-fg);
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: background var(--resources-fast), color var(--resources-fast);
+  }
+
+  .resources-handoff .category-toggle::before {
+    content: "+";
+  }
+
+  .resources-handoff .category[open] .category-toggle::before {
+    content: "−";
+  }
+
+  .resources-handoff .category summary:hover .category-toggle,
+  .resources-handoff .category[open] .category-toggle {
+    background: var(--resources-fg);
+    color: var(--resources-surface);
+  }
+
+  .resources-handoff .category-content {
+    padding: 0 0 1.25rem;
+  }
+
+  .resources-handoff .category-empty {
+    color: var(--resources-muted);
+    font-size: .9rem;
+  }
+
+  .resources-handoff .library-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .9rem 0;
+    border-top: 1px solid var(--resources-border);
+    text-decoration: none;
+  }
+
+  .resources-handoff .library-entry:hover .library-entry-title {
+    color: var(--resources-accent);
+  }
+
+  .resources-handoff .library-entry-title {
+    display: block;
+    font: 400 1.25rem/1.15 var(--resources-serif);
+  }
+
+  .resources-handoff .library-entry-meta {
+    display: block;
+    margin-top: .25rem;
+    color: var(--resources-muted);
+    font-size: .72rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .resources-handoff .library-entry-arrow {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 1000px) {
+    .resources-handoff .libraries {
+      grid-template-columns: 1fr;
+    }
+
+    .resources-handoff .exam-library:last-child {
+      border-top: 1px solid var(--resources-border);
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .resources-handoff .latest-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resources-handoff .new-list {
+      display: block;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .resources-handoff .latest-header {
+      display: block;
+    }
+
+    .resources-handoff .filters {
+      justify-content: flex-start;
+      margin-top: 1rem;
+    }
+
+    .resources-handoff .latest-header h1 {
+      white-space: normal;
+    }
+
+    .resources-handoff .lead-resource {
+      grid-template-rows: 250px auto;
+    }
+
+    .resources-handoff .new-item {
+      grid-template-columns: 78px minmax(0, 1fr);
+    }
+
+    .resources-handoff .new-item img {
+      width: 78px;
+      height: 62px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .resources-handoff .libraries {
+      display: block;
+    }
+
+    .resources-handoff .exam-library {
+      padding-block: 2rem 3.7rem;
+    }
+
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .resources-handoff *,
+    .resources-handoff *::before,
+    .resources-handoff *::after {
+      scroll-behavior: auto !important;
+      transition-duration: .01ms !important;
+    }
+  }
+</style>
+
+<div class="resources-handoff" data-od-id="resources-body-handoff">
+  <main id="resources-main" tabindex="-1" aria-labelledby="resources-page-title" data-od-id="resources-main">
+    <section class="top-resources" id="latest" data-od-id="latest-resources">
+      <div class="resources-shell top-grid">
+        <p class="library-link"><a href="#exam-libraries">Entire library</a></p>
+
+        <div>
+          <div class="latest-header">
+            <h1 id="resources-page-title" data-od-id="resources-title">Latest resources</h1>
+            <div class="filters" aria-label="Filter recent resources" data-od-id="resource-filters">
+              <button class="filter" type="button" aria-pressed="true" data-filter="all">All</button>
+              <button class="filter" type="button" aria-pressed="false" data-filter="act">ACT</button>
+              <button class="filter" type="button" aria-pressed="false" data-filter="sat">SAT</button>
+            </div>
+          </div>
+
+          <div class="latest-grid" data-od-id="latest-resource-grid">
+            <article class="lead-resource" id="lead-resource" aria-labelledby="lead-title">
+              <div class="lead-visual" id="lead-visual" data-mode={featured.imageMode ?? 'cover'}>
+                <img id="lead-image" src={featured.image} alt={featured.imageAlt} loading="eager" />
+                <span class="lead-play" id="lead-play" aria-hidden="true" hidden={featured.type !== 'Video'}>▶</span>
+              </div>
+              <div class="lead-copy">
+                <div class="meta">
+                  <span id="lead-exam">{featured.exam}</span>
+                  <span id="lead-subjects">{featured.subjects.join(' + ')}</span>
+                  <span id="lead-type">{featured.type}</span>
+                </div>
+                <h2 id="lead-title">{featured.title}</h2>
+                <p id="lead-description">{featured.description}</p>
+                <a class="action" id="lead-link" href={featured.href} target={featured.external ? '_blank' : undefined} rel={featured.external ? 'noopener noreferrer' : undefined} download={featured.download}>{featured.action}</a>
+              </div>
+            </article>
+
+            <div class="new-list" id="recent-list" role="group" aria-label="Five most recent resources">
+              {resources.map((resource, index) => (
+                <button class="new-item" type="button" data-resource-id={resource.id} data-mode={resource.imageMode ?? 'cover'} aria-controls="lead-resource" aria-pressed={index === 0 ? 'true' : 'false'} hidden={index >= 5}>
+                  <img src={resource.image} alt="" loading="lazy" />
+                  <span class="new-item-copy">
+                    <strong class="new-item-title">{resource.title}</strong>
+                    <small class="new-item-meta">{resource.exam} / {resource.subjects.join(' + ')} / {resource.type}</small>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <p class="sr-only" id="resource-selection-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="libraries" id="exam-libraries" aria-label="ACT and SAT resource libraries" data-od-id="exam-libraries">
+      {collections.map(({ exam, groups }) => (
+        <section class="exam-library" id={`${exam.toLowerCase()}-resources`} aria-labelledby={`${exam.toLowerCase()}-resources-title`}>
+          <div class="exam-head">
+            <h2 id={`${exam.toLowerCase()}-resources-title`}>{exam} resources</h2>
+          </div>
+          <div class="category-list">
+            {groups.map(({ type, entries }) => (
+              <details class="category">
+                <summary>
+                  <span class="category-name">{type}s</span>
+                  <span class="category-count">{entries.length} {entries.length === 1 ? 'resource' : 'resources'}</span>
+                  <span class="category-toggle" aria-hidden="true"></span>
+                </summary>
+                <div class="category-content">
+                  {entries.length ? entries.map((resource) => (
+                    <a class="library-entry" href={resource.href} target={resource.external ? '_blank' : undefined} rel={resource.external ? 'noopener noreferrer' : undefined} download={resource.download}>
+                      <span>
+                        <strong class="library-entry-title">{resource.title}</strong>
+                        <small class="library-entry-meta">{resource.exam} / {resource.subjects.join(' + ')} / {resource.type}</small>
+                      </span>
+                      <span class="library-entry-arrow" aria-hidden="true">{resource.download ? '↓' : '↗'}</span>
+                    </a>
+                  )) : <p class="category-empty">No {exam} {type.toLowerCase()}s are available yet.</p>}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+      ))}
+    </section>
+  </main>
+</div>
+
+<script id="resources-data" type="application/json" is:inline set:html={JSON.stringify(resources).replace(/</g, String.fromCharCode(92) + 'u003c')}></script>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-od-id="resources-body-handoff"]');
+    const data = document.getElementById('resources-data');
+    if (!root || !data) return;
+
+    const items = JSON.parse(data.textContent || '[]');
+    const list = root.querySelector('#recent-list');
+    const visual = root.querySelector('#lead-visual');
+    const image = root.querySelector('#lead-image');
+    const play = root.querySelector('#lead-play');
+    const exam = root.querySelector('#lead-exam');
+    const subjects = root.querySelector('#lead-subjects');
+    const type = root.querySelector('#lead-type');
+    const title = root.querySelector('#lead-title');
+    const description = root.querySelector('#lead-description');
+    const link = root.querySelector('#lead-link');
+    const status = root.querySelector('#resource-selection-status');
+    const filters = [...root.querySelectorAll('.filter')];
+
+    function show(item) {
+      image.src = item.image;
+      image.alt = item.imageAlt;
+      visual.dataset.mode = item.imageMode || 'cover';
+      play.hidden = item.type !== 'Video';
+      exam.textContent = item.exam;
+      subjects.textContent = item.subjects.join(' + ');
+      type.textContent = item.type;
+      title.textContent = item.title;
+      description.textContent = item.description;
+      link.href = item.href;
+      link.textContent = item.action;
+      if (item.external) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      } else {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
+      if (item.download) link.setAttribute('download', '');
+      else link.removeAttribute('download');
+      list.querySelectorAll('[data-resource-id]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.resourceId === item.id));
+      });
+      status.textContent = `Featured resource: ${item.title}`;
+    }
+
+    list.addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-resource-id]');
+      if (!button || !list.contains(button)) return;
+      const item = items.find((entry) => entry.id === button.dataset.resourceId);
+      if (item) show(item);
+    });
+
+    filters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        const choice = filter.dataset.filter;
+        const visible = items.filter((item) => choice === 'all' || item.exam.toLowerCase() === choice).slice(0, 5);
+        const visibleIds = new Set(visible.map((item) => item.id));
+        filters.forEach((button) => button.setAttribute('aria-pressed', String(button === filter)));
+        list.querySelectorAll('[data-resource-id]').forEach((button) => {
+          button.hidden = !visibleIds.has(button.dataset.resourceId);
+        });
+        if (visible.length) show(visible[0]);
+      });
+    });
+  })();
+</script>

@@ -108,6 +108,7 @@ export const shellConfig: ShellConfig = {
         { href: '/act-vs-sat', label: 'ACT vs SAT' },
       ],
     },
+    { href: '/resources', label: 'Resources' },
     { href: '/about', label: 'About Me' },
     { href: '/faq', label: 'FAQs' },
   ],
