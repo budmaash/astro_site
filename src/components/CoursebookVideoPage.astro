@@ -103,29 +103,21 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
             <p class="lede">{current.description}</p>
           </header>
 
-          <div class="video-wrap">
-            <div class="video" data-od-id="vimeo-player">
-              <iframe
-                src={vimeoEmbedUrl(current)}
-                title={`${current.title} video`}
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+          <div class="video-row">
+            <div class="video-wrap">
+              <div class="video" data-od-id="vimeo-player">
+                <iframe
+                  src={vimeoEmbedUrl(current)}
+                  title={`${current.title} video`}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="caption">
+                <strong>Figure {String(currentIndex + 1).padStart(2, '0')}</strong>
+                <span>{current.caption} Video length {current.duration}.</span>
+              </div>
             </div>
-            <div class="caption">
-              <strong>Figure {String(currentIndex + 1).padStart(2, '0')}</strong>
-              <span>{current.caption} Video length {current.duration}.</span>
-            </div>
-          </div>
-
-          <div class="lesson-details" data-notes={String(hasNotes)}>
-            {hasNotes && (
-              <section class="annotation" aria-labelledby="coursebook-annotation-title" data-od-id="lesson-annotation">
-                <h2 id="coursebook-annotation-title">{current.annotationTitle}</h2>
-                <p>{current.annotationCopy}</p>
-                {current.callout && <div class="callout">{current.callout}</div>}
-              </section>
-            )}
 
             <aside class="references" aria-labelledby="coursebook-links-title" data-od-id="relevant-links">
               <h2 id="coursebook-links-title">Relevant links</h2>
@@ -134,6 +126,16 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
               </ol>
             </aside>
           </div>
+
+          {hasNotes && (
+            <div class="lesson-details">
+              <section class="annotation" aria-labelledby="coursebook-annotation-title" data-od-id="lesson-annotation">
+                <h2 id="coursebook-annotation-title">{current.annotationTitle}</h2>
+                <p>{current.annotationCopy}</p>
+                {current.callout && <div class="callout">{current.callout}</div>}
+              </section>
+            </div>
+          )}
 
           <nav class="lesson-pager" aria-label="Video navigation" data-od-id="lesson-pager">
             {previous ? (
@@ -422,14 +424,13 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   }
   .lede { max-width: 62ch; margin: 18px 0 0; color: var(--cb-muted); font-size: 17px; }
 
-  .video-wrap { width: 75%; }
+  .video-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; padding-bottom: 48px; }
   .video { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cb-fg); background: var(--cb-fg); }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
   .caption { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; padding: 13px 0 24px; border-bottom: 1px solid var(--cb-fg); color: var(--cb-muted); font-size: 12px; }
   .caption strong { color: var(--cb-fg); font-weight: 500; }
-  .lesson-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .44fr); gap: clamp(46px, 8vw, 100px); padding: 48px 0; }
-  .lesson-details[data-notes="false"] { grid-template-columns: minmax(0, 420px); }
+  .lesson-details { padding: 0 0 48px; }
   .annotation[hidden] { display: none; }
   .annotation h2, .references h2 { margin: 0 0 16px; font: 400 30px/1.05 var(--cb-serif); letter-spacing: -.01em; }
   .annotation p { max-width: 58ch; margin: 0; color: var(--cb-muted); }
@@ -488,8 +489,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
     .mobile-toolbar { display: flex; min-height: 64px; align-items: center; padding-inline: 14px; border-bottom: 1px solid var(--cb-border); }
     .menu-open { display: flex; min-height: 44px; align-items: center; gap: 9px; padding: 0 14px; border: 1px solid var(--cb-border); background: var(--cb-page); color: var(--cb-fg); cursor: pointer; }
     .article { width: min(100% - 40px, 860px); margin-inline: auto; padding-top: 24px; }
-    .video-wrap { width: 100%; }
-    .lesson-details { grid-template-columns: 1fr; }
+    .video-row { grid-template-columns: 1fr; gap: 40px; }
   }
 
   @media (max-width: 650px) {
