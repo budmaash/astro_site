@@ -151,13 +151,16 @@ export const punctuationLessonNode: SchemaNode = {
   name: 'SAT punctuation guide',
   url: `${SITE_URL}/lessons/punctuation`,
   description:
-    'A guide to the punctuation and sentence-boundary rules tested on the SAT and ACT, with the steps for each question type.',
+    'A guide to the boundaries questions in SAT Reading and Writing: the punctuation and sentence-boundary rules the SAT tests, with the steps for each question type.',
   learningResourceType: 'Study guide',
   educationalLevel: 'High school',
-  about: { '@type': 'Thing', name: 'SAT grammar and punctuation' },
+  about: { '@type': 'Thing', name: 'SAT Reading and Writing: Boundaries' },
   provider: { '@id': ORG_ID },
   author: { '@id': PERSON_ID },
   isAccessibleForFree: true,
+  // Shown in the page byline too -- bump dateModified on substantive edits.
+  datePublished: '2026-08-19',
+  dateModified: '2026-10-21',
 };
 
 export const actPunctuationLessonNode: SchemaNode = {

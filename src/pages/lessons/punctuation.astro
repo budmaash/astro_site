@@ -8,10 +8,14 @@ import { punctuationLessonNode } from '../../config/schema';
 import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
 
 const defaultConfig = createShellConfig({
-  siteTitle: 'SAT & ACT Punctuation Rules: Commas, Colons & Dashes',
-  description: 'Every punctuation rule tested on the SAT and ACT — complete sentences, run-ons, colons, commas and dashes — with the steps for each question type.',
+  siteTitle: 'SAT Punctuation Rules: Boundaries Questions Explained',
+  description: 'Every SAT Reading & Writing boundaries question — complete sentences, run-ons, colons, commas and dashes — with the step-by-step process for each type.',
   schema: [punctuationLessonNode],
 });
+
+const dateModified = punctuationLessonNode.dateModified as string;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
 const img = await createLessonImages(
@@ -41,7 +45,7 @@ const navItems = [
       <section class="ht-pn-hero">
         <div class="ht-pn-hero__inner">
           <p class="ht-eyebrow ht-eyebrow--crimson">SAT Reading &amp; Writing</p>
-          <h1 class="ht-pn-hero__h1">Punctuation (Boundaries)</h1>
+          <h1 class="ht-pn-hero__h1">Mastering SAT Punctuation (Boundaries)</h1>
           <p class="ht-pn-hero__lead">
             Many of the Standard English Conventions questions on the Reading
             and Writing modules of the SAT are what the College Board calls
@@ -51,6 +55,13 @@ const navItems = [
             Instead of just the blanket-term “boundaries,” we’ll break down
             each and every specific type of these questions, how to spot it,
             and the process to handle it.
+          </p>
+          <p class="ht-pn-hero__byline">
+            By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
+            Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
+          </p>
+          <p class="ht-pn-hero__crosslink">
+            Studying for the ACT? See the <a href="/act_lessons/punctuation">ACT punctuation guide</a>.
           </p>
         </div>
       </section>
@@ -88,7 +99,7 @@ const navItems = [
               clauses. If you can read a phrase and determine if it’s a complete
               sentence, everything else will fall into place. So what is a
               complete sentence, or rather, how should we think about them on
-              the SATs? Think of them like this: a complete sentence is exactly
+              the SAT? Think of them like this: a complete sentence is exactly
               one Independent clause + Literally any number of dependent
               clauses, including zero dependent clauses.
             </p>
@@ -143,7 +154,7 @@ const navItems = [
 
             <div class="ht-pn-card">
               <span class="ht-pn-card__num" aria-hidden="true">3</span>
-              <h4 class="ht-pn-card__h4">Phrases that start with an "ing" word.</h4>
+              <h4 class="ht-pn-card__h4">Phrases that start with an "ing" word</h4>
               <p class="ht-pn-card__body">A very common pattern that's easy to spot once you're looking for it.</p>
               <ul class="ht-pn-card__ex">
                 <li>…, starting with the lowest number.</li>
@@ -365,8 +376,8 @@ const navItems = [
           </div>
 
           <p class="ht-pn-body">
-            <strong>The rule for the SATs.</strong> Colons can be used in
-            many different ways, but on the SATs, it goes like this: you
+            <strong>The rule for the SAT.</strong> Colons can be used in
+            many different ways, but on the SAT, it goes like this: you
             MUST have a complete up to the colon, but what comes after just
             has to be an example or explanation of what came before it. It
             can be complete or incomplete. So notice it can have two
@@ -412,7 +423,7 @@ const navItems = [
             done with commas.
           </p>
           <p class="ht-pn-body">
-            The other test of commas follows this rule: on the SATs we
+            The other test of commas follows this rule: on the SAT we
             ALWAYS separate independent and dependent clauses.
           </p>
 
@@ -858,6 +869,29 @@ const navItems = [
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-6);
     line-height: 1.2;
+  }
+
+  .ht-pn-hero__byline,
+  .ht-pn-hero__crosslink {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin: var(--space-6) 0 0;
+  }
+
+  .ht-pn-hero__crosslink {
+    margin-top: var(--space-2);
+  }
+
+  .ht-pn-hero__byline time {
+    white-space: nowrap;
+  }
+
+  .ht-pn-hero__byline a,
+  .ht-pn-hero__crosslink a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ht-pn-hero__lead {

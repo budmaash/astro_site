@@ -58,6 +58,9 @@ const navItems = [
             By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
             Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
           </p>
+          <p class="ht-pn-hero__crosslink">
+            Studying for the SAT? See the <a href="/lessons/punctuation">SAT punctuation guide</a>.
+          </p>
         </div>
       </section>
 
@@ -845,14 +848,24 @@ const navItems = [
     line-height: 1.2;
   }
 
-  .ht-pn-hero__byline {
+  .ht-pn-hero__byline,
+  .ht-pn-hero__crosslink {
     font-family: var(--font-sans);
     font-size: 0.875rem;
     color: var(--color-muted);
     margin: var(--space-6) 0 0;
   }
 
-  .ht-pn-hero__byline a {
+  .ht-pn-hero__crosslink {
+    margin-top: var(--space-2);
+  }
+
+  .ht-pn-hero__byline time {
+    white-space: nowrap;
+  }
+
+  .ht-pn-hero__byline a,
+  .ht-pn-hero__crosslink a {
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 2px;
