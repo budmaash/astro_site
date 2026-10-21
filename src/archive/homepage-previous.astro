@@ -1,7 +1,6 @@
 ---
 import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
-import HomepageAnnouncement from '../components/HomepageAnnouncement.astro';
 import HomepageHero from '../components/HomepageHero.astro';
 import type { ShellConfig } from '../config/shell';
 import { shellConfig } from '../config/shell';
@@ -19,7 +18,6 @@ const { config = shellConfig }: Props = Astro.props;
 
     <main id="page" class="ht-main" tabindex="-1">
 
-      <HomepageAnnouncement />
       <HomepageHero />
 
       <!-- ======================================================
