@@ -12,6 +12,10 @@ const defaultConfig = createShellConfig({
   description: 'Every punctuation rule tested on the ACT — complete sentences, run-ons, colons, commas and dashes — with the steps for each question type.',
   schema: [actPunctuationLessonNode],
 });
+
+const dateModified = actPunctuationLessonNode.dateModified as string;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
 const img = await createLessonImages(
@@ -19,13 +23,13 @@ const img = await createLessonImages(
 );
 
 const navItems = [
-  { href: '/act_lessons/punctuation/#prerequisites', label: 'Prerequisites' },
-  { href: '/act_lessons/punctuation/#complete-complete', label: '"Complete | Complete"' },
-  { href: '/act_lessons/punctuation/#run-ons', label: 'Run-ons' },
-  { href: '/act_lessons/punctuation/#colons', label: 'Colons' },
-  { href: '/act_lessons/punctuation/#commas', label: 'Commas' },
-  { href: '/act_lessons/punctuation/#dashes', label: 'Dashes' },
-  { href: '/act_lessons/punctuation/#title-occupation-name', label: 'Title/Occupation + Name' },
+  { href: '#prerequisites', label: 'Prerequisites' },
+  { href: '#complete-complete', label: '"Complete | Complete"' },
+  { href: '#run-ons', label: 'Run-ons' },
+  { href: '#colons', label: 'Colons' },
+  { href: '#commas', label: 'Commas' },
+  { href: '#dashes', label: 'Dashes' },
+  { href: '#title-occupation-name', label: 'Title/Occupation + Name' },
 ];
 ---
 <SquarespaceShellLayout config={config}>
@@ -40,7 +44,7 @@ const navItems = [
       <section class="ht-pn-hero">
         <div class="ht-pn-hero__inner">
           <p class="ht-eyebrow ht-eyebrow--crimson">ACT ENGLISH</p>
-          <h1 class="ht-pn-hero__h1">Punctuation</h1>
+          <h1 class="ht-pn-hero__h1">Mastering ACT Punctuation Rules</h1>
           <p class="ht-pn-hero__lead">
             Much of the English section of the ACT tests your knowledge of
             punctuation, which is, in many ways, a test of sentence structure.
@@ -49,6 +53,10 @@ const navItems = [
             punctuation questions are limited and repetitive. If you learn
             these question types, how to spot them, and how to process them,
             it’s very simple. This guide will explain exactly how to do so.
+          </p>
+          <p class="ht-pn-hero__byline">
+            By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
+            Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
           </p>
         </div>
       </section>
@@ -331,7 +339,7 @@ const navItems = [
             Let's revisit this problem. We already saw that there were two
             complete sentences. One up to the word "art" and another from
             "in 2016" to the period. A separates them with nothing, C with
-            only a FANBOYS ("and"), and D with only a comma ("and").
+            only a FANBOYS ("and"), and D with only a comma.
           </p>
           <div class="ht-pn-imgrow">
             <img {...img('P11')} alt="ACT-style question 21 about the artist Torres's Sun Light series, testing punctuation around 'art' with a comma-plus-'and' answer choice." loading="lazy" />
@@ -457,7 +465,7 @@ const navItems = [
           </p>
 
           <p class="ht-pn-body">
-            Checkout this question. If we plug in answer choice J, we see
+            Check out this question. If we plug in answer choice J, we see
             that we add a comma after “centuries”. The sentence then reads
             “For instance, Baniwa women have farmed distinctly flavorful
             chili peppers for centuries, <strong>using indigenous agricultural
@@ -835,6 +843,19 @@ const navItems = [
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-6);
     line-height: 1.2;
+  }
+
+  .ht-pn-hero__byline {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    margin: var(--space-6) 0 0;
+  }
+
+  .ht-pn-hero__byline a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ht-pn-hero__lead {

@@ -168,6 +168,9 @@ export const actPunctuationLessonNode: SchemaNode = {
   description:
     'A guide to the punctuation and sentence-boundary rules tested on the ACT, with the steps for each question type.',
   about: { '@type': 'Thing', name: 'ACT English punctuation' },
+  // Shown in the page byline too -- bump dateModified on substantive edits.
+  datePublished: '2026-09-24',
+  dateModified: '2026-10-21',
 };
 
 export const contactPageNode: SchemaNode = {
