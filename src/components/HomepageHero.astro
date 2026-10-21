@@ -162,8 +162,8 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
-    grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
-    min-height: min(760px, calc(100vh - var(--header-height, 82px)));
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    min-height: min(416px, calc(100vh - var(--header-height, 82px)));
   }
 
   .ht-home-hero__copy {
@@ -175,14 +175,14 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
     flex-direction: column;
     justify-content: center;
     padding:
-      clamp(4rem, 8vw, 7rem)
+      clamp(2rem, 3.2vw, 2.75rem)
       clamp(2rem, 5vw, 5rem)
-      clamp(4rem, 8vw, 7rem)
+      clamp(2rem, 3.2vw, 2.75rem)
       max(var(--space-section-h), calc((100vw - var(--content-full)) / 2));
   }
 
   .ht-home-hero__eyebrow {
-    margin: 0 0 var(--space-6);
+    margin: 0 0 var(--space-4);
     color: var(--color-accent-crimson);
     font-family: var(--font-sans);
     font-size: var(--text-xs);
@@ -193,11 +193,11 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
   }
 
   .ht-home-hero__title {
-    max-width: 11ch;
+    max-width: 14ch;
     margin: 0;
     color: var(--color-text-dark);
     font-family: var(--font-serif);
-    font-size: clamp(3.15rem, 5.25vw, 5.5rem);
+    font-size: clamp(3rem, 4.5vw, 4.75rem);
     font-weight: 400;
     line-height: 1.02;
     letter-spacing: -0.035em;
@@ -209,7 +209,7 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
 
   .ht-home-hero__lede {
     max-width: 54ch;
-    margin: 1.7rem 0 0;
+    margin: 1.2rem 0 0;
     color: var(--color-muted);
     font-family: var(--font-sans);
     font-size: clamp(1rem, 1.35vw, var(--text-md));
@@ -224,14 +224,14 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
     gap: var(--space-3);
     width: 100%;
     max-width: 580px;
-    margin-top: 2.25rem;
+    margin-top: 1.5rem;
   }
 
   .ht-home-hero__action {
     display: flex;
     box-sizing: border-box;
     min-width: 0;
-    min-height: 116px;
+    min-height: 84px;
     align-items: flex-end;
     justify-content: space-between;
     gap: var(--space-4);
@@ -334,7 +334,7 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
   .ht-home-hero__visual {
     position: relative;
     min-width: 0;
-    min-height: 560px;
+    min-height: 320px;
     margin: 0;
     overflow: hidden;
     background: var(--color-bg);
@@ -581,7 +581,7 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
     }
 
     .ht-home-hero__visual {
-      min-height: 440px;
+      min-height: 380px;
     }
 
     .ht-home-hero__visual::before {
@@ -591,7 +591,7 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
 
   @media (max-width: 700px) {
     .ht-home-hero__copy {
-      padding: 3.75rem var(--space-section-h) 3rem;
+      padding: 3rem var(--space-section-h) 2.5rem;
     }
 
     .ht-home-hero__title {
@@ -606,11 +606,11 @@ const scenes = panels.map((panel) => ({ key: panel.key, dur: SCENE_DURATION, ken
     }
 
     .ht-home-hero__action {
-      min-height: 94px;
+      min-height: 84px;
     }
 
     .ht-home-hero__visual {
-      min-height: 340px;
+      min-height: 300px;
     }
 
   }

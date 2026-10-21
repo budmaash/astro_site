@@ -1,0 +1,129 @@
+---
+import { announcedResources, resources } from '../data/resources';
+
+const announced = announcedResources.flatMap(({ id, label }) => {
+  const resource = resources.find((entry) => entry.id === id);
+  return resource ? [{ href: resource.href, title: label ?? resource.title }] : [];
+});
+---
+
+{announced.length > 0 && (
+  <aside class="ht-announce" aria-label="New resources">
+    <div class="ht-announce__inner">
+      <span class="ht-announce__badge">New</span>
+      <ul class="ht-announce__list">
+        {announced.map((resource) => (
+          <li><a href={resource.href}>{resource.title}</a></li>
+        ))}
+      </ul>
+      <a class="ht-announce__all" href="/resources">
+        All resources
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+    </div>
+  </aside>
+)}
+
+<style>
+  .ht-announce {
+    background: var(--color-text-dark);
+    color: var(--color-surface);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.35;
+  }
+
+  .ht-announce__inner {
+    display: flex;
+    box-sizing: border-box;
+    min-height: 56px;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 0.85rem max(var(--space-section-h), calc((100vw - var(--content-full)) / 2));
+  }
+
+  .ht-announce__badge {
+    flex: 0 0 auto;
+    padding: 0.15rem 0.5rem;
+    background: var(--color-accent-crimson);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+  }
+
+  .ht-announce__list {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ht-announce a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .ht-announce__list a {
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    text-underline-offset: 3px;
+  }
+
+  .ht-announce a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .ht-announce a:focus-visible {
+    outline: 2px solid var(--color-surface);
+    outline-offset: 3px;
+  }
+
+  .ht-announce__all {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.72) !important;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ht-announce__all:hover {
+    color: #fff !important;
+  }
+
+  .ht-announce__all svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  @media (max-width: 700px) {
+    .ht-announce__inner {
+      gap: var(--space-3);
+    }
+
+    .ht-announce__list {
+      flex-direction: column;
+    }
+
+    .ht-announce__all {
+      font-size: 0;
+      gap: 0;
+    }
+
+    .ht-announce__all svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>

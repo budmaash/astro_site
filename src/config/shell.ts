@@ -109,8 +109,14 @@ export const shellConfig: ShellConfig = {
       ],
     },
     { href: '/resources', label: 'Resources' },
-    { href: '/about', label: 'About Me' },
-    { href: '/faq', label: 'FAQs' },
+    {
+      href: '/faq',
+      label: 'FAQs',
+      children: [
+        { href: '/faq', label: 'FAQS' },
+        { href: '/about', label: 'ABOUT ME' },
+      ],
+    },
   ],
   schema: [],
 };
