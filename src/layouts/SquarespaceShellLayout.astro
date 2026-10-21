@@ -21,6 +21,7 @@ const {
 // Self-referencing canonical, always slash-less so /about and /about/ agree.
 const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const canonical = new URL(canonicalPath, Astro.site ?? 'https://hasantutoring.com').href;
+const ogImage = new URL(config.ogImage, Astro.site ?? 'https://hasantutoring.com').href;
 
 // Organization + WebSite are always included; pages add their own nodes.
 // Never emitted on noindex pages -- unshipped work should not describe the
@@ -37,6 +38,18 @@ const jsonLd = noindex ? null : buildGraph(config.schema);
     <title>{config.siteTitle}</title>
     <meta name="description" content={config.description} />
     <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hasan Tutoring" />
+    <meta property="og:title" content={config.siteTitle} />
+    <meta property="og:description" content={config.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={config.siteTitle} />
+    <meta name="twitter:description" content={config.description} />
+    <meta name="twitter:image" content={ogImage} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}
     <link rel="icon" type="image/x-icon" href={config.favicon} />
