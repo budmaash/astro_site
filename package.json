@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && npm run check:links",
+    "build": "astro build && node scripts/build-shell-css.mjs && npm run check:links",
     "preview": "astro preview",
     "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.6",
-    "astro": "^4.13.0"
+    "astro": "^4.13.0",
+    "purgecss": "^6.0.0"
   }
 }
