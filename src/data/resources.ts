@@ -2,6 +2,8 @@ import actPunctuationPreview from '../assets/lessons/act-punctuation/P6_2.png';
 import satPunctuationPreview from '../assets/lessons/sat-punctuation/P10.png';
 import satTest8MathPreview from '../assets/resources/sat-test-8-math-preview.png';
 import actTest2MathPreview from '../assets/resources/act-test-2-math-preview.png';
+import examFolderPreview from '../assets/resources/exam-folder.png';
+import probabilityPreview from '../assets/resources/probabilities-preview.png';
 
 export const resourceTypes = ['Lesson', 'Video', 'Document'] as const;
 
@@ -37,7 +39,7 @@ export const resources: Resource[] = [
     subjects: ['Reading and Writing'],
     type: 'Lesson',
     title: 'SAT Punctuation Lesson',
-    description: 'Learn how to handle all punctuation (known as boundaries) questions on the Reading and Writing section of the SATs. A full guide with multiple examples for every type of question.',
+    description: 'Learn how to handle all punctuation (known as boundaries) questions on the Reading and Writing section of the SAT. A full guide with multiple examples for every type of question.',
     href: '/lessons/punctuation',
     action: 'Read the lesson',
     image: satPunctuationPreview,
@@ -62,7 +64,7 @@ export const resources: Resource[] = [
     type: 'Video',
     title: 'All Math Explanations, Test 8',
     description: 'Full, detailed explanations to all 54 Math questions from SAT Digital Paper Test 8',
-    href: '/sat_videos/test-8/module-1/question-1',
+    href: '/sat_videos',
     action: 'Watch the video',
     image: satTest8MathPreview,
     imageAlt: 'SAT Math question 24 about triangles PQR and LMN, with a hand-drawn sketch of triangle PQR on the xy-plane',
@@ -75,7 +77,7 @@ export const resources: Resource[] = [
     type: 'Video',
     title: 'All ACT Math Explanations, Practice Test 2',
     description: 'Detailed explanations for all 45 Math Questions from the new ACT format, ACT Practice Test 2.',
-    href: '/act_videos/test-2/math/question-1',
+    href: '/act_videos',
     action: 'Watch the video',
     image: actTest2MathPreview,
     imageAlt: 'ACT Math question 44 about two hyperbolas and an ellipse through their vertices, with a hand-drawn sketch of the ellipse',
@@ -103,7 +105,7 @@ export const resources: Resource[] = [
     description: 'A visual reference for core probability ideas.',
     href: '/lessons/probabilities.png',
     action: 'Open the document',
-    image: '/lessons/probabilities.png',
+    image: probabilityPreview,
     imageAlt: 'Probability reference graphic',
     imageMode: 'contain',
   },
@@ -116,7 +118,7 @@ export const resources: Resource[] = [
     description: 'Download a full digital SAT practice test.',
     href: '/sat-practice-test-1-digital.pdf',
     action: 'Download the PDF',
-    image: '/practice-tests/exam-folder.png',
+    image: examFolderPreview,
     imageAlt: 'An exam folder with study materials',
     download: true,
   },
@@ -129,7 +131,7 @@ export const resources: Resource[] = [
     description: 'Another full digital SAT practice test for timed review.',
     href: '/sat-practice-test-8-digital.pdf',
     action: 'Download the PDF',
-    image: '/practice-tests/exam-folder.png',
+    image: examFolderPreview,
     imageAlt: 'An exam folder with study materials',
     download: true,
   },

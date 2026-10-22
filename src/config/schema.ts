@@ -24,6 +24,7 @@
  *    Service describes what is actually offered without overclaiming.
  */
 
+import type { Resource } from '../data/resources';
 import { vimeoEmbedUrl, type VideoLesson } from '../data/videoLessons';
 
 /** Canonical origin. Bare domain: www 301-redirects here. */
@@ -240,6 +241,34 @@ export function videoHubNode(hub: VideoHub, videos: VideoLesson[]): SchemaNode {
       url: `${SITE_URL}${video.path}`,
     })),
   };
+}
+
+/** /resources: a CollectionPage whose ItemList points at every resource in the library. */
+export function resourcesPageNodes(resources: Resource[]): SchemaNode[] {
+  const url = `${SITE_URL}/resources`;
+  return [
+    {
+      '@type': 'CollectionPage',
+      '@id': `${url}#page`,
+      url,
+      name: 'Free ACT & SAT Resources',
+      isPartOf: { '@id': WEBSITE_ID },
+      publisher: { '@id': ORG_ID },
+      mainEntity: { '@id': `${url}#list` },
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${url}#list`,
+      name: 'Free ACT & SAT test prep resources',
+      numberOfItems: resources.length,
+      itemListElement: resources.map((resource, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: resource.title,
+        url: new URL(resource.href, SITE_URL).href,
+      })),
+    },
+  ];
 }
 
 /** Build the JSON-LD @graph for a page. */

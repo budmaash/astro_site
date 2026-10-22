@@ -179,6 +179,14 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
     margin-bottom: .25rem;
   }
 
+  .resources-handoff .resources-intro {
+    max-width: 62ch;
+    margin: 1rem 0 1.5rem;
+    color: var(--resources-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
   .resources-handoff .latest-header h1 {
     margin-bottom: 0;
     color: var(--resources-fg);
@@ -478,6 +486,28 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
     font-size: .9rem;
   }
 
+  .resources-handoff .library-more {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    min-height: 44px;
+    margin-top: .5rem;
+    color: var(--resources-accent);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .resources-handoff .library-more::after {
+    content: "→";
+  }
+
+  .resources-handoff .library-more:hover {
+    color: var(--resources-fg);
+  }
+
   .resources-handoff .library-entry {
     display: flex;
     align-items: center;
@@ -588,13 +618,18 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
 
         <div>
           <div class="latest-header">
-            <h1 id="resources-page-title" data-od-id="resources-title">Latest resources</h1>
+            <h1 id="resources-page-title" data-od-id="resources-title">Free ACT &amp; SAT Resources</h1>
             <div class="filters" aria-label="Filter recent resources" data-od-id="resource-filters">
               <button class="filter" type="button" aria-pressed="true" data-filter="all">All</button>
               <button class="filter" type="button" aria-pressed="false" data-filter="act">ACT</button>
               <button class="filter" type="button" aria-pressed="false" data-filter="sat">SAT</button>
             </div>
           </div>
+          <p class="resources-intro">
+            Free lessons, step-by-step video explanations for every math question
+            on SAT Practice Test 8 and ACT Practice Test 2, and full-length
+            practice tests to download. No account needed.
+          </p>
 
           <div class="latest-grid" data-od-id="latest-resource-grid">
             <article class="lead-resource" id="lead-resource" aria-labelledby="lead-title">
@@ -655,6 +690,9 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
                       <span class="library-entry-arrow" aria-hidden="true">{resource.download ? '↓' : '↗'}</span>
                     </a>
                   )) : <p class="category-empty">No {exam} {type.toLowerCase()}s are available yet.</p>}
+                  {type === 'Document' && (
+                    <a class="library-more" href="/practice-tests">All free practice tests</a>
+                  )}
                 </div>
               </details>
             ))}
