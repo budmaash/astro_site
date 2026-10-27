@@ -3,12 +3,16 @@ import { getImage } from 'astro:assets';
 import { resources as resourceEntries, resourceTypes } from '../data/resources';
 
 // Optimize imported preview images; plain public paths are used as-is.
-const resources = await Promise.all(resourceEntries.map(async (resource) => ({
-  ...resource,
-  image: typeof resource.image === 'string'
-    ? resource.image
-    : (await getImage({ src: resource.image, width: 1200, format: 'webp' })).src,
-})));
+// Keep the optimized size so the lead image can declare its dimensions.
+const resources = await Promise.all(resourceEntries.map(async (resource) => {
+  if (typeof resource.image === 'string') return { ...resource, imageSize: undefined };
+  const optimized = await getImage({ src: resource.image, width: 1200, format: 'webp' });
+  return {
+    ...resource,
+    image: optimized.src,
+    imageSize: { width: optimized.attributes.width, height: optimized.attributes.height },
+  };
+}));
 
 const featured = resources[0];
 const collections = (['ACT', 'SAT'] as const).map((exam) => ({
@@ -634,7 +638,7 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
           <div class="latest-grid" data-od-id="latest-resource-grid">
             <article class="lead-resource" id="lead-resource" aria-labelledby="lead-title">
               <div class="lead-visual" id="lead-visual" data-mode={featured.imageMode ?? 'cover'}>
-                <img id="lead-image" src={featured.image} alt={featured.imageAlt} loading="eager" />
+                <img id="lead-image" src={featured.image} alt={featured.imageAlt} width={featured.imageSize?.width} height={featured.imageSize?.height} loading="eager" />
                 <span class="lead-play" id="lead-play" aria-hidden="true" hidden={featured.type !== 'Video'}>▶</span>
               </div>
               <div class="lead-copy">
@@ -652,7 +656,7 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
             <div class="new-list" id="recent-list" role="group" aria-label="Five most recent resources">
               {resources.map((resource, index) => (
                 <button class="new-item" type="button" data-resource-id={resource.id} data-mode={resource.imageMode ?? 'cover'} aria-controls="lead-resource" aria-pressed={index === 0 ? 'true' : 'false'} hidden={index >= 5}>
-                  <img src={resource.image} alt="" loading="lazy" />
+                  <img src={resource.image} alt="" width="92" height="72" loading="lazy" />
                   <span class="new-item-copy">
                     <strong class="new-item-title">{resource.title}</strong>
                     <small class="new-item-meta">{resource.exam} / {resource.subjects.join(' + ')} / {resource.type}</small>

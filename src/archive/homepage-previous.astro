@@ -174,6 +174,8 @@ const { config = shellConfig }: Props = Astro.props;
     color: var(--color-text-dark);
     text-decoration: none;
     border-bottom: 1px solid var(--color-accent-gold);
+    /* Inline, so the top padding only enlarges the tap area to 24px. */
+    padding-top: 4px;
     padding-bottom: 2px;
     transition: color var(--transition-fast);
   }

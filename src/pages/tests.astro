@@ -24,6 +24,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
            ====================================================== -->
       <section class="ht-tests-hero">
         <div class="ht-tests-hero__inner">
+          <h1 class="ht-tests-hero__h1">ACT &amp; SAT Test Information</h1>
           <p class="ht-tests-hero__lead">
             <span>Use this page to learn the basics of each exam — how they're structured,</span>
             <span>how timing and scoring work, and what topics each one covers.</span>
@@ -41,7 +42,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
           <div class="ht-test-card">
             <div class="ht-test-card__heading">
               <h2 class="ht-test-card__h2">The ACT</h2>
-              <img class="ht-test-card__logo" src={actLogo.src} alt="ACT" />
+              <img class="ht-test-card__logo" src={actLogo.src} width={actLogo.width} height={actLogo.height} alt="ACT" />
             </div>
 
             <p class="ht-test-card__intro">
@@ -87,7 +88,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
           <div class="ht-test-card">
             <div class="ht-test-card__heading">
               <h2 class="ht-test-card__h2">The SAT</h2>
-              <img class="ht-test-card__logo" src={satLogo.src} alt="SAT" />
+              <img class="ht-test-card__logo" src={satLogo.src} width={satLogo.width} height={satLogo.height} alt="SAT" />
             </div>
 
             <p class="ht-test-card__intro">
