@@ -1,0 +1,564 @@
+---
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import { createShellConfig } from '../config/shell';
+import { satVocabularyNode } from '../config/schema';
+import { vocabularyLevels, vocabularyWordCount } from '../data/satVocabulary';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+
+const totalWords = vocabularyWordCount.toLocaleString('en-US');
+
+const config = createShellConfig({
+  siteTitle: `SAT Vocabulary List: ${totalWords} Words With Simple Definitions`,
+  description: `Every vocabulary word tested so far on the SAT, ${totalWords} words with short, simple definitions, grouped into easy, medium and hard. Free PDF download.`,
+  schema: [satVocabularyNode],
+});
+
+const dateModified = satVocabularyNode.dateModified as string;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// Each level's words, split into A-Z blocks for the letter index.
+const levels = vocabularyLevels.map((level) => {
+  const letters = new Map<string, Array<[string, string]>>();
+  for (const entry of level.words) {
+    const letter = entry[0][0].toUpperCase();
+    letters.set(letter, [...(letters.get(letter) ?? []), entry]);
+  }
+  return { ...level, letters: [...letters] };
+});
+---
+<SquarespaceShellLayout config={config}>
+  <div id="siteWrapper" class="clearfix site-wrapper">
+    <SquarespaceHeader config={config} />
+
+    <main id="page" class="ht-main" tabindex="-1">
+
+      <section class="ht-vocab-hero">
+        <div class="ht-vocab-hero__inner">
+          <p class="ht-eyebrow ht-eyebrow--crimson">SAT Reading &amp; Writing</p>
+          <h1 class="ht-vocab-hero__h1">SAT Vocabulary List</h1>
+          <p class="ht-vocab-hero__lead">
+            A comprehensive list of all the vocabulary words tested so far on
+            the SAT, along with concise, simple definitions to make your study
+            easy. The {totalWords} words are grouped into easy, medium and hard,
+            so you can start with the basics and work up.
+          </p>
+          <p class="ht-vocab-hero__byline">
+            By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
+            Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
+          </p>
+          <div class="ht-vocab-hero__actions">
+            <a class="ht-btn ht-btn--dark" href="/sat-vocabulary-list.pdf" download>Download the PDF</a>
+            <a class="ht-vocab-hero__more" href="/resources">More free resources</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="ht-vocab-toolbar">
+        <div class="ht-vocab-toolbar__inner">
+          <nav class="ht-vocab-levels" aria-label="Difficulty levels">
+            {levels.map((level) => (
+              <a href={`#${level.id}`}>
+                {level.name} <span>{level.words.length}</span>
+              </a>
+            ))}
+          </nav>
+          <div class="ht-vocab-search" data-vocab-search hidden>
+            <label for="vocab-filter">Find a word</label>
+            <input id="vocab-filter" type="search" placeholder="Type a word or definition" autocomplete="off" spellcheck="false" />
+            <p class="ht-vocab-search__status" aria-live="polite" data-vocab-status></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ht-vocab-body">
+        {levels.map((level) => (
+          <section class="ht-vocab-level" id={level.id} data-vocab-level>
+            <header class="ht-vocab-level__head">
+              <h2>{level.name} words</h2>
+              <p>{level.words.length} words</p>
+            </header>
+            <nav class="ht-vocab-letters" aria-label={`${level.name} words by letter`}>
+              {level.letters.map(([letter]) => (
+                <a href={`#${level.id}-${letter.toLowerCase()}`}>{letter}</a>
+              ))}
+            </nav>
+            {level.letters.map(([letter, words]) => (
+              <div class="ht-vocab-block" data-vocab-block>
+                <h3 id={`${level.id}-${letter.toLowerCase()}`}>{letter}</h3>
+                <dl class="ht-vocab-list">
+                  {words.map(([word, definition]) => (
+                    <div data-vocab-row>
+                      <dt>{word}</dt>
+                      <dd>{definition}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </section>
+        ))}
+        <p class="ht-vocab-empty" data-vocab-empty hidden>No words match that search.</p>
+      </div>
+
+      <section class="ht-cta-strip">
+        <h2 class="ht-cta-strip__h2">Want help with Reading and Writing?</h2>
+        <p class="ht-cta-strip__body">
+          Knowing the words is half of it. The other half is reading the
+          context the way the SAT expects. I'm happy to work through real
+          questions with you.
+        </p>
+        <div class="ht-cta-strip__btns">
+          <a href="/contact" class="ht-btn ht-btn--white">Get in touch</a>
+          <a href="tel:9132100611" class="ht-btn ht-btn--ghost">913.210.0611</a>
+        </div>
+      </section>
+
+    </main>
+
+    <SquarespaceFooter config={config} />
+  </div>
+
+  <script is:inline>
+    (function () {
+      var box = document.querySelector('[data-vocab-search]');
+      if (!box) return;
+      var input = box.querySelector('input');
+      var status = document.querySelector('[data-vocab-status]');
+      var empty = document.querySelector('[data-vocab-empty]');
+      var rows = Array.prototype.slice.call(document.querySelectorAll('[data-vocab-row]'));
+      var blocks = Array.prototype.slice.call(document.querySelectorAll('[data-vocab-block]'));
+      var levels = Array.prototype.slice.call(document.querySelectorAll('[data-vocab-level]'));
+      var text = rows.map(function (row) { return row.textContent.toLowerCase(); });
+
+      box.hidden = false;
+
+      input.addEventListener('input', function () {
+        var query = input.value.trim().toLowerCase();
+        var shown = 0;
+        rows.forEach(function (row, i) {
+          var match = !query || text[i].indexOf(query) !== -1;
+          row.hidden = !match;
+          if (match) shown += 1;
+        });
+        blocks.forEach(function (block) {
+          block.hidden = !block.querySelector('[data-vocab-row]:not([hidden])');
+        });
+        levels.forEach(function (level) {
+          level.classList.toggle('is-filtered', !!query);
+          level.hidden = !level.querySelector('[data-vocab-block]:not([hidden])');
+        });
+        empty.hidden = shown > 0;
+        status.textContent = query ? shown + (shown === 1 ? ' match' : ' matches') : '';
+      });
+    })();
+  </script>
+</SquarespaceShellLayout>
+
+<style>
+  :global(#page.ht-main) {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .ht-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-text-dark);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ht-eyebrow--crimson {
+    color: var(--color-accent-crimson);
+  }
+
+  /* ----------------------------------------------------------------
+     Hero
+  ---------------------------------------------------------------- */
+  .ht-vocab-hero {
+    background: var(--color-surface);
+    padding: clamp(2rem, 3vw, 3rem) var(--space-section-h) clamp(2rem, 4vw, 3rem);
+    text-align: center;
+  }
+
+  .ht-vocab-hero__inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .ht-vocab-hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-6);
+    line-height: 1.2;
+  }
+
+  .ht-vocab-hero__lead {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--text-md);
+    color: var(--color-muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .ht-vocab-hero__byline {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin: var(--space-6) 0 0;
+  }
+
+  .ht-vocab-hero__byline time {
+    white-space: nowrap;
+  }
+
+  .ht-vocab-hero__byline a,
+  .ht-vocab-hero__more {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .ht-vocab-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3) var(--space-6);
+    margin-top: var(--space-6);
+  }
+
+  .ht-vocab-hero__more {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    padding-block: 0.4rem;
+  }
+
+  /* ----------------------------------------------------------------
+     Toolbar: level links + search
+  ---------------------------------------------------------------- */
+  .ht-vocab-toolbar {
+    background: var(--color-surface-warm);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-6) var(--space-section-h);
+  }
+
+  .ht-vocab-toolbar__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-8, 2rem);
+    max-width: var(--content-wide);
+    margin: 0 auto;
+  }
+
+  .ht-vocab-levels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ht-vocab-levels a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .ht-vocab-levels a:hover {
+    border-color: var(--color-text-dark);
+  }
+
+  .ht-vocab-levels span {
+    color: var(--color-muted);
+    font-weight: 400;
+  }
+
+  .ht-vocab-search {
+    display: grid;
+    grid-template-columns: auto minmax(0, 18rem);
+    align-items: center;
+    gap: 0.25rem 0.75rem;
+  }
+
+  .ht-vocab-search[hidden] {
+    display: none;
+  }
+
+  .ht-vocab-search label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-widest);
+    color: var(--color-muted);
+  }
+
+  .ht-vocab-search input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    background: var(--color-surface);
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+  }
+
+  .ht-vocab-search input:focus {
+    outline: 2px solid var(--color-text-dark);
+    outline-offset: 1px;
+  }
+
+  .ht-vocab-search__status {
+    grid-column: 2;
+    min-height: 1.2em;
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+  }
+
+  /* ----------------------------------------------------------------
+     Word lists
+  ---------------------------------------------------------------- */
+  .ht-vocab-body {
+    max-width: var(--content-wide);
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem) var(--space-section-h) clamp(3rem, 6vw, 5rem);
+  }
+
+  .ht-vocab-level + .ht-vocab-level {
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .ht-vocab-level[hidden],
+  .ht-vocab-block[hidden],
+  .ht-vocab-list > div[hidden] {
+    display: none;
+  }
+
+  .ht-vocab-level__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: var(--space-3);
+    border-bottom: 3px solid var(--color-accent-crimson);
+  }
+
+  .ht-vocab-level__head h2 {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-xl);
+    color: var(--color-text-dark);
+    line-height: 1.2;
+  }
+
+  .ht-vocab-level__head p {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .ht-vocab-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: var(--space-4) 0 var(--space-2);
+  }
+
+  .ht-vocab-level.is-filtered .ht-vocab-letters {
+    display: none;
+  }
+
+  .ht-vocab-letters a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    color: var(--color-text-dark);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .ht-vocab-letters a:hover {
+    background: var(--color-bg);
+  }
+
+  .ht-vocab-block h3 {
+    margin: var(--space-6) 0 var(--space-2);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--text-md);
+    color: var(--color-accent-crimson);
+    scroll-margin-top: 9rem;
+  }
+
+  .ht-vocab-level {
+    scroll-margin-top: 9rem;
+  }
+
+  .ht-vocab-list {
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .ht-vocab-list > div {
+    display: grid;
+    grid-template-columns: minmax(8rem, 13rem) minmax(0, 1fr);
+    gap: 0.25rem 1.5rem;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ht-vocab-list > div:nth-child(even) {
+    background: var(--color-surface-warm);
+  }
+
+  .ht-vocab-list dt {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    color: var(--color-text-dark);
+  }
+
+  .ht-vocab-list dd {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .ht-vocab-empty {
+    margin: var(--space-6) 0 0;
+    font-family: var(--font-sans);
+    color: var(--color-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .ht-vocab-search {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .ht-vocab-search__status {
+      grid-column: 1;
+    }
+
+    .ht-vocab-list > div {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ----------------------------------------------------------------
+     Buttons + CTA strip
+  ---------------------------------------------------------------- */
+  .ht-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .ht-btn--dark {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--dark:hover {
+    opacity: 0.9;
+  }
+
+  .ht-btn--white {
+    background: var(--color-surface);
+    color: var(--color-bg-dark);
+    border: 1.5px solid transparent;
+  }
+
+  .ht-btn--white:hover {
+    opacity: 0.9;
+  }
+
+  .ht-btn--ghost {
+    background: transparent;
+    color: var(--color-text-light);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+  }
+
+  .ht-btn--ghost:hover {
+    border-color: var(--color-text-light);
+  }
+
+  .ht-cta-strip {
+    background: var(--color-bg-dark);
+    padding: clamp(3rem, 6vw, 5rem) var(--space-section-h);
+    text-align: center;
+  }
+
+  .ht-cta-strip__h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-6);
+    line-height: var(--leading-snug);
+  }
+
+  .ht-cta-strip__body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .ht-cta-strip__btns {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

@@ -42,6 +42,18 @@ const SHELL_FILES = [
 // Toggled by scripts but never present in the markup as written.
 const SAFELIST = { standard: [], deep: [], greedy: [] };
 
+// Read HTML for selectors only from tags (names and attributes) and inline
+// scripts. Visible text can't put a class on an element, and scanning it let
+// ordinary words such as "events" or "bright" in the SAT vocabulary list keep
+// large Squarespace rule blocks that match nothing.
+const htmlExtractor = (content) => {
+  const markup = [
+    ...content.matchAll(/<script\b[^>]*>[\s\S]*?<\/script>/gi),
+    ...content.matchAll(/<[^>]+>/g),
+  ].map(([match]) => match).join(' ');
+  return markup.match(/[\w-/:]+(?<!:)/g) ?? [];
+};
+
 if (!existsSync(DIST)) {
   console.error(`shell-css: "${DIST}" does not exist -- run the build first.`);
   process.exit(1);
@@ -63,6 +75,7 @@ const [purged] = await new PurgeCSS().purge({
   content: [...htmlFiles, ...jsFiles],
   css: [{ raw: original }],
   safelist: SAFELIST,
+  extractors: [{ extractor: htmlExtractor, extensions: ['html'] }],
 });
 
 const css = purged.css;

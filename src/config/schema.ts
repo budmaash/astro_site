@@ -177,6 +177,29 @@ export const actPunctuationLessonNode: SchemaNode = {
   dateModified: '2026-10-21',
 };
 
+export const satVocabularyNode: SchemaNode = {
+  '@type': 'LearningResource',
+  '@id': `${SITE_URL}/sat-vocabulary#lesson`,
+  name: 'SAT vocabulary list',
+  url: `${SITE_URL}/sat-vocabulary`,
+  description:
+    'Every vocabulary word tested so far in SAT Reading and Writing, with short, simple definitions, grouped by difficulty.',
+  learningResourceType: 'Vocabulary list',
+  educationalLevel: 'High school',
+  about: { '@type': 'Thing', name: 'SAT Reading and Writing: Words in Context' },
+  provider: { '@id': ORG_ID },
+  author: { '@id': PERSON_ID },
+  isAccessibleForFree: true,
+  encoding: {
+    '@type': 'MediaObject',
+    contentUrl: `${SITE_URL}/sat-vocabulary-list.pdf`,
+    encodingFormat: 'application/pdf',
+  },
+  // Shown in the page byline too -- bump dateModified when the list changes.
+  datePublished: '2026-10-28',
+  dateModified: '2026-10-28',
+};
+
 export const contactPageNode: SchemaNode = {
   '@type': 'ContactPage',
   '@id': `${SITE_URL}/contact#page`,
