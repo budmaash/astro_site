@@ -3,7 +3,6 @@ import satPunctuationPreview from '../assets/lessons/sat-punctuation/P10.png';
 import satTest8MathPreview from '../assets/resources/sat-test-8-math-preview.png';
 import actTest2MathPreview from '../assets/resources/act-test-2-math-preview.png';
 import examFolderPreview from '../assets/resources/exam-folder.png';
-import probabilityPreview from '../assets/resources/probabilities-preview.png';
 
 export const resourceTypes = ['Lesson', 'Video', 'Document'] as const;
 
@@ -95,19 +94,6 @@ export const resources: Resource[] = [
     image: '/practice_test_splash.webp',
     imageAlt: 'Sample ACT practice test score reports',
     download: true,
-  },
-  {
-    id: 'sat-probability',
-    exam: 'SAT',
-    subjects: ['Math'],
-    type: 'Document',
-    title: 'Probability review',
-    description: 'A visual reference for core probability ideas.',
-    href: '/lessons/probabilities.png',
-    action: 'Open the document',
-    image: probabilityPreview,
-    imageAlt: 'Probability reference graphic',
-    imageMode: 'contain',
   },
   {
     id: 'sat-practice-test-1',
