@@ -141,6 +141,7 @@ export const resources: Resource[] = [
 // Resources named in the "New" strip above the homepage hero, in display order.
 // `label` replaces the resource's title in the strip only.
 export const announcedResources: Array<{ id: string; label?: string }> = [
+  { id: 'sat-vocabulary', label: 'SAT Vocab List' },
   { id: 'sat-test-8-math-videos', label: 'SAT Math - 54 Video Explanations, Test 8' },
   { id: 'act-test-2-math-videos', label: 'ACT Math - 45 Video Explanations, Practice Test 2' },
   { id: 'act-punctuation', label: 'ACT Punctuation Guide' },
