@@ -3,6 +3,7 @@ import satPunctuationPreview from '../assets/lessons/sat-punctuation/P10.png';
 import satTest8MathPreview from '../assets/resources/sat-test-8-math-preview.png';
 import actTest2MathPreview from '../assets/resources/act-test-2-math-preview.png';
 import examFolderPreview from '../assets/resources/exam-folder.png';
+import satVocabularyPreview from '../assets/resources/sat-vocabulary-preview.png';
 
 export const resourceTypes = ['Lesson', 'Video', 'Document'] as const;
 
@@ -32,6 +33,20 @@ export type Resource = ResourceBase & (
 // Newest first. Add a newly published resource at the beginning of this list;
 // the hero and both exam libraries read from the same entries.
 export const resources: Resource[] = [
+  {
+    id: 'sat-vocabulary',
+    exam: 'SAT',
+    subjects: ['Reading and Writing'],
+    type: 'Document',
+    title: 'All the SAT vocab you need to know',
+    description: 'A comprehensive list of all the SAT vocabulary words tested thus far on the SAT, along with concise, simple definitions to make your study easy.',
+    href: 'https://pub-ecf45bb952e245f1b3fed865c2d0f802.r2.dev/Words%20in%20Context%20-%20Vocabulary.pdf',
+    action: 'Open the PDF',
+    image: satVocabularyPreview,
+    imageAlt: 'SAT vocabulary list with short definitions: negligible, notional, novel, nuanced, and obscure',
+    imageMode: 'contain',
+    external: true,
+  },
   {
     id: 'sat-punctuation',
     exam: 'SAT',
