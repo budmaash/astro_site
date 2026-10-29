@@ -84,3 +84,46 @@ export const actPercentileMeans: Record<(typeof actPercentileColumns)[number], s
   science: '19.5',
   stem: '19.5',
 };
+
+/**
+ * Example schools for each ACT score range, shown under the percentile table.
+ * Where a range mixes public and private schools, two of each.
+ */
+export const actSchoolExamples: Array<{ range: string; schools: Array<[name: string, place: string]> }> = [
+  {
+    range: '21–25',
+    schools: [
+      ['University of Kansas', 'Lawrence, KS'],
+      ['University of Missouri', 'Columbia, MO'],
+      ['DePaul University', 'Chicago, IL'],
+      ['High Point University', 'High Point, NC'],
+    ],
+  },
+  {
+    range: '26–30',
+    schools: [
+      ['Florida State University', 'Tallahassee, FL'],
+      ['Auburn University', 'Auburn, AL'],
+      ['Baylor University', 'Waco, TX'],
+      ['Gonzaga University', 'Spokane, WA'],
+    ],
+  },
+  {
+    range: '31–33',
+    schools: [
+      ['University of Illinois Urbana-Champaign', 'Champaign, IL'],
+      ['William & Mary', 'Williamsburg, VA'],
+      ['Boston University', 'Boston, MA'],
+      ['Wake Forest University', 'Winston-Salem, NC'],
+    ],
+  },
+  {
+    range: '33+',
+    schools: [
+      ['Washington University in St. Louis', 'St. Louis, MO'],
+      ['Yale University', 'New Haven, CT'],
+      ['Princeton University', 'Princeton, NJ'],
+      ['Massachusetts Institute of Technology (MIT)', 'Cambridge, MA'],
+    ],
+  },
+];
