@@ -79,6 +79,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
                 target="_blank"
                 rel="noopener noreferrer"
               >Sign up or create an ACT account</a>
+              <a class="ht-btn ht-btn--primary ht-act-facts__scores" href="/act-score-percentiles">What do ACT scores mean?</a>
             </section>
           </div>
         </div>
@@ -671,6 +672,13 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
   .ht-act-facts__signup:hover {
     color: var(--color-accent-crimson);
+  }
+
+  /* Sits on its own line under the sign-up link. */
+  .ht-btn.ht-act-facts__scores {
+    display: flex;
+    width: fit-content;
+    margin-top: 1rem;
   }
 
   /* ----------------------------------------------------------------

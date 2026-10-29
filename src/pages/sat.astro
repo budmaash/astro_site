@@ -79,6 +79,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
                 target="_blank"
                 rel="noopener noreferrer"
               >Sign up for the SAT</a>
+              <a class="ht-btn ht-btn--primary ht-sat-facts__scores" href="/sat-score-percentiles">What do SAT scores mean?</a>
             </section>
           </div>
         </div>
@@ -502,6 +503,13 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
   .ht-sat-facts__signup:hover {
     color: var(--color-accent-crimson);
+  }
+
+  /* Sits on its own line under the sign-up link. */
+  .ht-btn.ht-sat-facts__scores {
+    display: flex;
+    width: fit-content;
+    margin-top: 1rem;
   }
 
   /* ----------------------------------------------------------------
