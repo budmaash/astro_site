@@ -40,7 +40,7 @@ const BUSINESS_NAME = 'Hasan Tutoring';
 const EMAIL = 'Majid@HasanTutoring.com';
 const TELEPHONE = '+1-913-210-0611';
 
-/** Where tutoring is actually offered, per /contact and /tutoring. */
+/** Where tutoring is actually offered, per /contact. */
 const AREA_SERVED: SchemaNode[] = [
   { '@type': 'City', name: 'Overland Park', containedInPlace: { '@type': 'State', name: 'Kansas' } },
   { '@type': 'AdministrativeArea', name: 'Kansas City metropolitan area' },
@@ -102,6 +102,7 @@ function serviceNode(serviceType: string, name: string, path: string): SchemaNod
   };
 }
 
+// Used by src/archive/tutoring.astro; /tutoring is not currently published.
 export const tutoringServiceNode = serviceNode(
   'ACT and SAT test preparation tutoring',
   'One-on-one ACT & SAT tutoring',

@@ -74,7 +74,6 @@ export const shellConfig: ShellConfig = {
           '<p><a data-preserve-html-node="true" href="https://my.act.org/" target="_blank">Sign Up for the ACT</a></p>',
           '<p><a data-preserve-html-node="true" href="https://satsuite.collegeboard.org/sat/dates-deadlines" target="_blank">SAT Testing Dates</a></p>',
           '<p><a data-preserve-html-node="true" href="https://satsuite.collegeboard.org/sat/registration" target="_blank">Sign Up for the SAT</a></p>',
-          '<p><a data-preserve-html-node="true" href="/tutoring#pricing">How Much for Tutoring?</a></p>',
         ],
       },
       {
