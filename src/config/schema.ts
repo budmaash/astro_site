@@ -200,6 +200,23 @@ export const satVocabularyNode: SchemaNode = {
   dateModified: '2026-10-28',
 };
 
+export const actPercentilesNode: SchemaNode = {
+  '@type': 'Article',
+  '@id': `${SITE_URL}/act-score-percentiles#article`,
+  headline: 'ACT Score Percentiles: What Your ACT Score Means',
+  url: `${SITE_URL}/act-score-percentiles`,
+  description:
+    'What ACT scores mean as percentile ranks, with the full table of national ranks for every ACT composite and section score.',
+  about: { '@type': 'Thing', name: 'ACT score percentiles' },
+  publisher: { '@id': ORG_ID },
+  author: { '@id': PERSON_ID },
+  isAccessibleForFree: true,
+  citation: 'ACT Score National Ranks, ACT, Inc., 2026-2027 reporting year',
+  // Shown in the page byline too -- bump dateModified when the table changes.
+  datePublished: '2026-10-29',
+  dateModified: '2026-10-29',
+};
+
 export const contactPageNode: SchemaNode = {
   '@type': 'ContactPage',
   '@id': `${SITE_URL}/contact#page`,
