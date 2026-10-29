@@ -917,8 +917,16 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
     .ht-act-toc {
       flex: none;
+      box-sizing: border-box;
       width: 100%;
       position: static;
+    }
+  }
+
+  /* The two timing columns need ~21rem side by side; stack them below that. */
+  @media (max-width: 400px) {
+    .ht-act-facts__list > .ht-act-facts__timing {
+      grid-template-columns: 1fr;
     }
   }
 </style>
