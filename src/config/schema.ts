@@ -217,6 +217,23 @@ export const actPercentilesNode: SchemaNode = {
   dateModified: '2026-10-29',
 };
 
+export const satPercentilesNode: SchemaNode = {
+  '@type': 'Article',
+  '@id': `${SITE_URL}/sat-score-percentiles#article`,
+  headline: 'SAT Score Percentiles: What Your SAT Score Means',
+  url: `${SITE_URL}/sat-score-percentiles`,
+  description:
+    'What SAT scores mean as percentile ranks, with tables of percentiles for every SAT total score and section score.',
+  about: { '@type': 'Thing', name: 'SAT score percentiles' },
+  publisher: { '@id': ORG_ID },
+  author: { '@id': PERSON_ID },
+  isAccessibleForFree: true,
+  citation: 'SAT user group percentiles, College Board',
+  // Shown in the page byline too -- bump dateModified when the tables change.
+  datePublished: '2026-10-29',
+  dateModified: '2026-10-29',
+};
+
 export const contactPageNode: SchemaNode = {
   '@type': 'ContactPage',
   '@id': `${SITE_URL}/contact#page`,
