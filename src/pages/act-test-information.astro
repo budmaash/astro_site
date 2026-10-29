@@ -96,22 +96,22 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
             <span class="ht-act-toc__heading">On this page</span>
             <ul class="ht-act-toc__list">
               <li class="ht-act-toc__item">
-                <a href="/act#act-intro" class="ht-act-toc__link">1 — Introduction</a>
+                <a href="/act-test-information#act-intro" class="ht-act-toc__link">1 — Introduction</a>
               </li>
               <li class="ht-act-toc__item">
-                <a href="/act#act-english" class="ht-act-toc__link">2 — English</a>
+                <a href="/act-test-information#act-english" class="ht-act-toc__link">2 — English</a>
               </li>
               <li class="ht-act-toc__item">
-                <a href="/act#act-math" class="ht-act-toc__link">3 — Math</a>
+                <a href="/act-test-information#act-math" class="ht-act-toc__link">3 — Math</a>
               </li>
               <li class="ht-act-toc__item">
-                <a href="/act#act-reading" class="ht-act-toc__link">4 — Reading</a>
+                <a href="/act-test-information#act-reading" class="ht-act-toc__link">4 — Reading</a>
               </li>
               <li class="ht-act-toc__item">
-                <a href="/act#act-science" class="ht-act-toc__link">5 — Science</a>
+                <a href="/act-test-information#act-science" class="ht-act-toc__link">5 — Science</a>
               </li>
               <li class="ht-act-toc__item">
-                <a href="/act#act-conclusion" class="ht-act-toc__link">6 — Conclusion</a>
+                <a href="/act-test-information#act-conclusion" class="ht-act-toc__link">6 — Conclusion</a>
               </li>
             </ul>
           </nav>
@@ -943,7 +943,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
     function setActive(id) {
       tocLinks.forEach(function (link) {
-        if (link.getAttribute('href') === '/act#' + id) {
+        if (link.getAttribute('href') === '/act-test-information#' + id) {
           link.classList.add('ht-act-toc__link--active');
         } else {
           link.classList.remove('ht-act-toc__link--active');

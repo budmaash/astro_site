@@ -1,25 +1,25 @@
 ---
-import SquarespaceFooter from '../../components/SquarespaceFooter.astro';
-import SquarespaceHeader from '../../components/SquarespaceHeader.astro';
-import type { ShellConfig } from '../../config/shell';
-import { createShellConfig } from '../../config/shell';
-import { createLessonImages } from '../../config/lessonImages';
-import { actPunctuationLessonNode } from '../../config/schema';
-import SquarespaceShellLayout from '../../layouts/SquarespaceShellLayout.astro';
+import SquarespaceFooter from '../components/SquarespaceFooter.astro';
+import SquarespaceHeader from '../components/SquarespaceHeader.astro';
+import type { ShellConfig } from '../config/shell';
+import { createShellConfig } from '../config/shell';
+import { createLessonImages } from '../config/lessonImages';
+import { punctuationLessonNode } from '../config/schema';
+import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
 const defaultConfig = createShellConfig({
-  siteTitle: 'ACT Punctuation Rules: Commas, Colons & Dashes',
-  description: 'Every punctuation rule tested on the ACT — complete sentences, run-ons, colons, commas and dashes — with the steps for each question type.',
-  schema: [actPunctuationLessonNode],
+  siteTitle: 'SAT Punctuation Rules: Boundaries Questions Explained',
+  description: 'Every SAT Reading & Writing boundaries question — complete sentences, run-ons, colons, commas and dashes — with the step-by-step process for each type.',
+  schema: [punctuationLessonNode],
 });
 
-const dateModified = actPunctuationLessonNode.dateModified as string;
+const dateModified = punctuationLessonNode.dateModified as string;
 const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
 const img = await createLessonImages(
-  import.meta.glob<{ default: ImageMetadata }>('../../assets/lessons/act-punctuation/*.png', { eager: true }),
+  import.meta.glob<{ default: ImageMetadata }>('../assets/lessons/sat-punctuation/*.png', { eager: true }),
 );
 
 const navItems = [
@@ -30,6 +30,7 @@ const navItems = [
   { href: '#commas', label: 'Commas' },
   { href: '#dashes', label: 'Dashes' },
   { href: '#title-occupation-name', label: 'Title/Occupation + Name' },
+  { href: '#niche-question-types', label: 'Niche question types' },
 ];
 ---
 <SquarespaceShellLayout config={config}>
@@ -43,23 +44,24 @@ const navItems = [
            ====================================================== -->
       <section class="ht-pn-hero">
         <div class="ht-pn-hero__inner">
-          <p class="ht-eyebrow ht-eyebrow--crimson">ACT ENGLISH</p>
-          <h1 class="ht-pn-hero__h1">Mastering ACT Punctuation Rules</h1>
+          <p class="ht-eyebrow ht-eyebrow--crimson">SAT Reading &amp; Writing</p>
+          <h1 class="ht-pn-hero__h1">Mastering SAT Punctuation (Boundaries)</h1>
           <p class="ht-pn-hero__lead">
-            Much of the English section of the ACT tests your knowledge of
-            punctuation, which is, in many ways, a test of sentence structure.
-            In real-life English, punctuation rules are expansive, covering all
-            kinds of nuanced, specific rules. Fortunately for us, the ACT’s
-            punctuation questions are limited and repetitive. If you learn
-            these question types, how to spot them, and how to process them,
-            it’s very simple. This guide will explain exactly how to do so.
+            Many of the Standard English Conventions questions on the Reading
+            and Writing modules of the SAT are what the College Board calls
+            “Boundaries” (the other known as “Form, Structure, and Sense”).
+            These are essentially questions about punctuation. This guide
+            explains how to handle all boundaries/punctuation problems.
+            Instead of just the blanket-term “boundaries,” we’ll break down
+            each and every specific type of these questions, how to spot it,
+            and the process to handle it.
           </p>
           <p class="ht-pn-hero__byline">
             By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
             Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
           </p>
           <p class="ht-pn-hero__crosslink">
-            Studying for the SAT? See the <a href="/lessons/punctuation">SAT punctuation guide</a>.
+            Studying for the ACT? See the <a href="/act-punctuation-guide">ACT punctuation guide</a>.
           </p>
         </div>
       </section>
@@ -97,7 +99,7 @@ const navItems = [
               clauses. If you can read a phrase and determine if it’s a complete
               sentence, everything else will fall into place. So what is a
               complete sentence, or rather, how should we think about them on
-              the ACT? Think of them like this: a complete sentence is exactly
+              the SAT? Think of them like this: a complete sentence is exactly
               one Independent clause + Literally any number of dependent
               clauses, including zero dependent clauses.
             </p>
@@ -152,7 +154,7 @@ const navItems = [
 
             <div class="ht-pn-card">
               <span class="ht-pn-card__num" aria-hidden="true">3</span>
-              <h4 class="ht-pn-card__h4">Phrases that start with an "ing" word.</h4>
+              <h4 class="ht-pn-card__h4">Phrases that start with an "ing" word</h4>
               <p class="ht-pn-card__body">A very common pattern that's easy to spot once you're looking for it.</p>
               <ul class="ht-pn-card__ex">
                 <li>…, starting with the lowest number.</li>
@@ -185,7 +187,7 @@ const navItems = [
 
           <h3 class="ht-pn-h3">Common sentence-structure patterns</h3>
           <p class="ht-pn-body">
-            These are the shapes you'll see over and over on the ACT. Getting
+            These are the shapes you'll see over and over on the SAT. Getting
             fast at spotting them makes every boundary question easier.
           </p>
 
@@ -256,21 +258,18 @@ const navItems = [
           <div class="ht-pn-imgrow">
             <img {...img('P1')} alt="Diagram: 'complete?' on both sides of a sentence boundary, arrows meeting at a dashed divider." loading="lazy" />
             <img {...img('P2')} alt="Same diagram with boxes below showing a semicolon, a period, and a comma-plus-'and' as the possible boundary marks." loading="lazy" />
-            <img {...img('P3')} alt="Worked example: 'I took the ACT, and crushed it.' marked wrong, and 'I took the ACT, and I crushed it.' marked correct." loading="lazy" />
+            <img {...img('P3')} alt="Worked example: 'I took the SATs, and I crushed it.' with both halves labeled complete and checked." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Here we see a semi-colon in answer choice C. Read from the
-            beginning of the sentence up to the semi-colon. We see that it’s
-            the only answer choice with a complete sentence before AND after
-            the semicolon.
+            Let's test the period in answer choice A. We read up to the
+            period to see if it's complete, which it is. Read from after the
+            period to the end of the sentence to see if that's complete,
+            which it is. Therefore A works, it's the correct answer.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P4')} alt="ACT-style question 19 about spectators talking to each other instead of on their phones, testing punctuation between 'phones' and 'they talked'." loading="lazy" />
-            <div class="ht-pn-imgstack">
-              <img {...img('P6')} alt="Reasoning notes: 'Let's test answer choice A) — read up to the semicolon and see if it's complete — then read from the semicolon to the period and see if it's complete.'" loading="lazy" />
-              <img {...img('P6_2')} alt="Answer choice A: 'Spectators didn't talk on their phones' and 'they talked to each other' are each marked complete on either side of the semicolon." loading="lazy" />
-            </div>
+            <img {...img('P4')} alt="SAT-style question about deep-sea fish proteins and TMAO, with both halves of answer choice A marked complete on either side of the period." loading="lazy" />
+            <img {...img('P6')} alt="Reasoning notes: 'Let's test A) — read up to the period and check if it's complete — read from after to the end and check. Since they both are, a period works.'" loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
@@ -282,32 +281,29 @@ const navItems = [
             requires a complete sentence before and after.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P7')} alt="ACT-style question 39 about White finding the work revelatory, testing punctuation between 'revelatory' and 'he's learning.'" loading="lazy" />
-            <img {...img('P7_2')} alt="Answer choice C circled, with the clauses on both sides of the semicolon each marked complete." loading="lazy" />
+            <img {...img('P7')} alt="SAT-style question about video game graphics, testing a comma-plus-FANBOYS ('but') answer choice." loading="lazy" />
+            <img {...img('P10')} alt="Answer choice D crossed out, with a note showing the clause before the comma-plus-FANBOYS is incomplete." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Here's an example when a comma+FANBOYS is
-            correct, answer choice B
+            correct, answer choice A.
           </p>
           <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P11')} alt="ACT-style question 21 about the artist Torres's Sun Light series, testing punctuation around 'art' with a comma-plus-'and' answer choice." loading="lazy" />
-              <img {...img('P11_2')} alt="Answer choice B, with the clauses on both sides of the comma-plus-'and' each marked complete." loading="lazy" />
-            </div>
+            <img {...img('P11')} alt="SAT-style question about marginalia in a book once owned by Walt Whitman, with comma-plus-FANBOYS answer choice A correct." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Here we see an example of a question where the Complete Complete
-            punctuation mark, here a semicolon, does not work. Reading up to
-            the semicolon in choice B, we see it’s complete. However, from
-            there to the period is not, so B is out.
+            Here's an example where we see that three
+            answer choices contain one of the three "complete|complete"
+            punctuations. We can see that no other words are changed among
+            those three answers, meaning, logically, none of them can be
+            correct. Indeed, if we were to test the phrase after, starting
+            with "the stitching…", we'd see that it does not create a
+            complete sentence.
           </p>
           <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P12')} alt="ACT-style question 37 about Jones refusing to sell his land, testing punctuation between 'land' and 'because'." loading="lazy" />
-              <img {...img('P12_2')} alt="Answer choice B crossed out: the clause before the semicolon is complete, but 'because he wanted the area to be conserved' is not." loading="lazy" />
-            </div>
+            <img {...img('P12')} alt="SAT-style question with three answer choices sharing a period, semicolon, or comma-plus-FANBOYS — all eliminated because the text after the boundary isn't complete." loading="lazy" />
           </div>
         </div>
       </section>
@@ -332,62 +328,39 @@ const navItems = [
           </div>
 
           <p class="ht-pn-body">
-            On the ACT, they're usually tested as incorrect answers when you
-            see that there are answers with periods, semicolons,
-            comma+FANBOYS, or colons (which we'll talk about soon). However,
-            we'll see some where they're testing on their own.
+            On the SAT, they're almost always tested as incorrect answers
+            when you see that there are answers with periods, semicolons,
+            comma+FANBOYS, or colons (which we'll talk about soon).
           </p>
 
           <p class="ht-pn-body">
-            Let's revisit this problem. We already saw that there were two
-            complete sentences. One up to the word "art" and another from
-            "in 2016" to the period. A separates them with nothing, C with
-            only a FANBOYS ("and"), and D with only a comma.
+            Let's revisit this problem. We already saw that there
+            were two complete sentences. One up to the word
+            "configurations." and another from "TMAO" to the period. B
+            separates them with nothing, C with only a comma, and D with
+            only a FANBOYS ("and").
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P11')} alt="ACT-style question 21 about the artist Torres's Sun Light series, testing punctuation around 'art' with a comma-plus-'and' answer choice." loading="lazy" />
-            <img {...img('P11_3')} alt="Answer choice A: 'Interconnectedness eventually…Torres's art' and 'in 2016, with…series, he paid homage… inspired him' are each complete, with nothing between them — a run-on." loading="lazy" />
-            <div class="ht-pn-imgstack">
-              <img {...img('P11_4')} alt="Answer choice C: the same two complete clauses joined by only 'and' — a run-on." loading="lazy" />
-              <img {...img('P11_5')} alt="Answer choice D: the same two complete clauses joined by only a comma — a comma splice." loading="lazy" />
-              <img {...img('P11_6')} alt="Question 21 with A, C, and D crossed out as run-ons — A has nothing, C only a FANBOYS, D only a comma — leaving B." loading="lazy" />
-            </div>
+            <img {...img('P14')} alt="SAT-style question about deep-sea fish proteins and TMAO, revisited to test answers B, C, and D for run-ons." loading="lazy" />
+            <img {...img('P15')} alt="Diagram marking both halves of the TMAO sentence as complete, testing options between them." loading="lazy" />
+            <img {...img('P16')} alt="Annotation showing B (nothing), C (only a comma), and D (only 'and') are all run-ons." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Revisiting another problem. We already know that B is an
-            incorrect use of a semicolon, but notice that C and D create Run
-            Ons.
+            We see two completes, up to "value" and from "when".
           </p>
           <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P12')} alt="ACT-style question 37 about Jones refusing to sell his land, testing punctuation between 'land' and 'because'." loading="lazy" />
-              <img {...img('P12_3')} alt="Answer choices B, C, and D crossed out: B uses a semicolon without two complete clauses, C joins two complete clauses with only a comma, and D joins them with nothing — both run-ons." loading="lazy" />
-            </div>
+            <img {...img('P19')} alt="Answer choices tested for run-ons, with the correct comma-plus-FANBOYS choice identified." loading="lazy" />
+          </div>
+          <div class="ht-pn-imgrow">
+            <img {...img('P20')} alt="Diagram marking the clauses ending in 'value' and beginning with 'when' as two complete sentences." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Here we see an example of a question where there are no ‘Complete
-            Complete’ punctuation options nor a colon. You can identify that
-            B, C, and D create Run Ons, while A creates a common sentence
-            structure of Independent – Dependent as we saw at the beginning of
-            this guide.
+            Again, two completes, up to "percent" and from "such".
           </p>
           <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P20')} alt="ACT-style question 23 about a robot's flippers reversing direction in shallow water, testing what follows the comma after 'water'." loading="lazy" />
-              <img {...img('P20_2')} alt="Diagram: the clause ending in 'water' is complete, so with a comma after it, choices B, C, and D would put a complete clause after the comma — all eliminated." loading="lazy" />
-            </div>
-          </div>
-
-          <p class="ht-pn-body">
-            And another nearly identical problem.
-          </p>
-          <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P22')} alt="ACT-style question 50 about a researcher who later expanded her study of sharks, testing what follows the comma after 'study'." loading="lazy" />
-              <img {...img('P22_2')} alt="Diagram: 'She later expanded the study' is complete, so any choice that puts another complete clause after the comma is a run-on — two completes with only a comma." loading="lazy" />
-            </div>
+            <img {...img('P22')} alt="Answer choices A, B, and D crossed out as run-ons, leaving the correct choice." loading="lazy" />
           </div>
         </div>
       </section>
@@ -403,8 +376,8 @@ const navItems = [
           </div>
 
           <p class="ht-pn-body">
-            <strong>The rule for the ACT.</strong> Colons can be used in
-            many different ways, but on the ACT, it goes like this: you
+            <strong>The rule for the SAT.</strong> Colons can be used in
+            many different ways, but on the SAT, it goes like this: you
             MUST have a complete up to the colon, but what comes after just
             has to be an example or explanation of what came before it. It
             can be complete or incomplete. So notice it can have two
@@ -413,34 +386,21 @@ const navItems = [
           </p>
 
           <p class="ht-pn-body">
-            Let's test answer choice A. From "The display" to "mission" is
-            complete, so we're good so far. Then what follows the colon to
-            the end of the sentence is an explanation of the first phrase.
-            A it is.
+            Let's test answer choice A. From "The number" to "varied" is
+            complete, so we're good so far. Then what follows "some
+            shoppers" to the end of the sentence is an explanation of the
+            first phrase. A it is.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P25')} alt="ACT-style question 38 about Clarke's display being emblematic of his mission, testing whether a colon can follow 'mission.'" loading="lazy" />
-            <img {...img('P26')} alt="Answer choice A: 'The display … mission' is complete, and 'making green … accessible' is an example or explanation, so the colon works." loading="lazy" />
+            <img {...img('P25')} alt="SAT-style question about a jam-tasting experiment, testing whether a colon can follow the complete clause 'The number of jams available for tasting varied.'" loading="lazy" />
+            <img {...img('P26')} alt="Annotation confirming the complete clause before the colon and the example/explanation relationship after it." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Running the same test, we see that H is correct.
+            Running the same test, we see that B is correct.
           </p>
           <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P28')} alt="ACT-style question 34 about the extremophile bacterium C. metallidurans, with the colon answer choice highlighted." loading="lazy" />
-              <img {...img('P28_2')} alt="Colon test: 'C. metallidurans is an extremophile' is complete, and 'a bacterium … conditions' is an example or explanation, so the colon works." loading="lazy" />
-            </div>
-          </div>
-
-          <p class="ht-pn-body">
-            An example where the colon test does not work.
-          </p>
-          <div class="ht-pn-imgrow">
-            <div class="ht-pn-imgstack">
-              <img {...img('P28_3')} alt="ACT-style question 53 about shark intelligence, with the colon after 'springboard' highlighted." loading="lazy" />
-              <img {...img('P28_4')} alt="Colon test: 'Using these … springboard' is not a complete sentence, so the colon doesn't work." loading="lazy" />
-            </div>
+            <img {...img('P28')} alt="SAT-style question running the same colon test, with answer choice B correct." loading="lazy" />
           </div>
         </div>
       </section>
@@ -463,68 +423,58 @@ const navItems = [
             done with commas.
           </p>
           <p class="ht-pn-body">
-            The other test of commas follows this rule: on the ACT we
+            The other test of commas follows this rule: on the SAT we
             ALWAYS separate independent and dependent clauses.
           </p>
 
           <p class="ht-pn-body">
-            Check out this question. If we plug in answer choice J, we see
-            that we add a comma after “centuries”. The sentence then reads
-            “For instance, Baniwa women have farmed distinctly flavorful
-            chili peppers for centuries, <strong>using indigenous agricultural
-            techniques</strong>, to create a seasoning called pimenta
-            jiquitaia.” When we take out the bolded text now surrounded by
-            commas, the sentence flows: <em>Baniwa women have farmed
-            distinctly flavorful chili peppers for centuries to create a
-            seasoning called pimenta jiquitaia.</em>
+            Check out this question. You notice that A) has "<span class="ht-pn-mono">,and</span>"
+            but does not have a complete before it. That's out. Then let's
+            check the answer with a comma. I read the sentence without the
+            phrase now located inside two commas "a fictionalized … sisters,"
+            and see that the sentence flows: <em>Julia Alvarez's 1994 novel
+            In the Time of the Butterflies can serve as a starting point
+            for…</em> It flows. Choice C is correct.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P29')} alt="ACT-style question 8 about Baniwa women farming chili peppers, with answer choice J ('centuries, using') circled." loading="lazy" />
-            <img {...img('P29_2')} alt="Testing whether 'using … techniques' between the commas is removable." loading="lazy" />
-            <img {...img('P29_3')} alt="With the phrase removed, 'peppers for centuries to create a seasoning called…' still reads correctly, so it is removable." loading="lazy" />
+            <img {...img('P29')} alt="SAT-style question about Julia Alvarez's novel In the Time of the Butterflies, testing whether a phrase is a removable interjection." loading="lazy" />
+            <img {...img('P49')} alt="Answer choice A crossed out because the clause before 'and' is not complete." loading="lazy" />
+            <img {...img('P50')} alt="Confirmation that choice C is correct because the sentence still flows once the interjection is removed." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Another quick example. B) Since we can remove the phrase "a
-            medieval author and dramatist" choice B is correct. Notice that
-            A) has a dash after “dramatist”. As we’ll see, that would have
-            worked if there were also a dash after “author”.
+            Another quick example. B) Since we can remove the phrase "for
+            instance" choice B is correct. Notice none of the others have
+            complete sentences up to the word "newts", which they all
+            require, so we can eliminate them for that reason.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P45')} alt="ACT-style question 11 about the medieval playwright Hrosvitha, with answer choice B ('author and dramatist,') circled." loading="lazy" />
-            <img {...img('P45_2')} alt="Answer choice B: 'a medieval author and dramatist' is removable, so it can sit between two commas." loading="lazy" />
+            <img {...img('P45')} alt="SAT-style question testing whether 'for instance' can be removed as an interjection." loading="lazy" />
+            <img {...img('P51')} alt="Diagram showing the phrase 'for instance' isolated and tested for removability." loading="lazy" />
+            <img {...img('P52')} alt="Confirmation that removing the interjection leaves a complete, flowing sentence." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Here's two more examples that work the exact same way.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P53')} alt="ACT-style question 47 about Synsepalum dulcificum, with answer choice A circled; the phrase 'called miracle fruit' is marked removable." loading="lazy" />
-            <img {...img('P54')} alt="ACT-style question 21 about undersea equipment, with answer choice B ('equipment, however,') circled; 'however' is marked removable." loading="lazy" />
+            <img {...img('P53')} alt="SAT-style question about the 12th Amendment and US presidential elections, testing an interjection." loading="lazy" />
+            <img {...img('P54')} alt="SAT-style question about carbon-13 hibernation research, testing an interjection." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
-            Let's check out an example of the second way the ACT tests comma
+            Let's check out an example of the second way the SAT tests comma
             usage: separating Independent and Dependent clauses. Notice that
-            with A) and B) we do not have a required complete up to the colon
-            or up to the semicolon. We can see the common
-            dependent-independent structure of the sentence, which need to
-            be separated. Thus C) is correct.
+            with C) and D) we do not have a required complete starting from
+            "positing", and in B) we do not have an example or explanation
+            (though it is close). Notice that phrase starts with an "ing"
+            word, "positing"? A common type of dependent clause. And
+            "Epicurus…soul" works as an Independent. Choice A it is.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P40')} alt="ACT-style question 53 about shark intelligence, with A and B crossed out and answer choice C ('springboard,') circled." loading="lazy" />
-            <img {...img('P55')} alt="'Using these … springboard' is marked not complete, ruling out the colon and semicolon choices." loading="lazy" />
-            <img {...img('P56')} alt="Answer choice C: 'Using these … springboard' marked dependent and 'Clark began … animal' marked independent, with the comma between them circled." loading="lazy" />
-          </div>
-
-          <p class="ht-pn-body">
-            If we read the sentence, we can see that structure again goes
-            Dependent-Independent. “Even more fortunately” is dependent and
-            “he had already created…” is independent. Thus, we need a comma
-            between the two, and D) is correct.
-          </p>
-          <div class="ht-pn-imgrow">
-            <img {...img('P52')} alt="ACT-style question 43 with answer choice D ('Even more fortunately,') circled; 'Even more fortunately' is marked dependent and 'he had already created' independent, with a comma between them." loading="lazy" />
+            <img {...img('P40')} alt="SAT-style question about Epicurus and pleasure, testing where a comma should separate an independent clause from a dependent clause." loading="lazy" />
+            <img {...img('P55')} alt="Diagram marking the independent and dependent clauses on either side of 'positing.'" loading="lazy" />
+            <img {...img('P56')} alt="The Epicurus question's answer choices, with choice A (soul,” positing) circled." loading="lazy" />
           </div>
         </div>
       </section>
@@ -541,9 +491,9 @@ const navItems = [
 
           <p class="ht-pn-body">
             Dashes are tested the exact same ways as the two comma rules we
-            just went over, though they are far less common on the ACT. A
+            just went over, though they are far less common on the SAT. A
             sentence can have only 0, 1, or 2 in a sentence. If you have
-            one, it MUST be to separate Independent and Dependent clause. If
+            one, it MUST be to separate Independent and Dependent clauses. If
             you have two, they MUST be to bookend interjections. They rarely
             ask about Ind. and Dep clauses.
           </p>
@@ -551,20 +501,21 @@ const navItems = [
           <p class="ht-pn-body">
             Here's an example. Notice there's already a dash in the
             sentence? A pretty big indicator we should test choice B. Read
-            the sentence without the phrase "all neighborhood residents and
-            most of whom are under the age of thirty" and we see it flows.
-            Choice B it is.
+            the sentence without the phrase "assuming solar panel
+            installers' cooperation" and we see it flows. Choice B it is.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P44')} alt="ACT-style question 37 about flower-shop employees, with a dash already before 'all neighborhood residents' and answer choice B ('thirty—') circled; the phrase between the dashes is marked removable." loading="lazy" />
+            <img {...img('P44')} alt="SAT-style question about solar panel installers and pollinator populations, with one dash already present in the sentence." loading="lazy" />
+            <img {...img('P57')} alt="Confirmation that the interjection between dashes can be removed and the sentence still flows." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             Another example that works the same way.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P32')} alt="ACT-style question 27 about Torres's portraits, with A crossed out and answer choice B ('paint—mostly whites, grays, and blacks—') circled." loading="lazy" />
-            <img {...img('P68')} alt="Dash test: 'whites, grays, and blacks' between dashes is not removable, but 'mostly whites, grays, and blacks' between dashes is." loading="lazy" />
+            <img {...img('P32')} alt="SAT-style question about Sophie Calle's photography exhibition, testing dash placement." loading="lazy" />
+            <img {...img('P68')} alt="Diagram testing whether the phrase between dashes can be removed from the sentence." loading="lazy" />
+            <img {...img('P69')} alt="Confirmation that the phrase flows once removed, making the two-dash answer correct." loading="lazy" />
           </div>
         </div>
       </section>
@@ -580,11 +531,11 @@ const navItems = [
           </div>
 
           <p class="ht-pn-body">
-            There are their own type of question. Though it looks like it's
+            These are their own type of question. Though it looks like it's
             testing comma usage, you should handle it differently. The name
             of the question-type tells you exactly what it is: when you see
-            a title/occupation right before a name. "ACT tutor Majid Hasan",
-            "theoretical physicist Robert J. Oppenheimer", "cartoon
+            a title/occupation right before a name. "SAT tutor Majid Hasan",
+            "theoretical physicist J. Robert Oppenheimer", "cartoon
             character Krusty the Clown", etc.
           </p>
           <p class="ht-pn-body">
@@ -595,28 +546,100 @@ const navItems = [
             Check out two examples.
           </p>
           <div class="ht-pn-imgrow">
-            <img {...img('P71')} alt="ACT-style question 38 about “farm team” member Dionta White, with answer choice A (no commas around the name) circled and the commas in B, C, and D marked wrong." loading="lazy" />
-          </div>
-          <div class="ht-pn-imgrow">
-            <img {...img('P72')} alt="ACT-style question 66 about festival organizer Dottie Thompson and hula master “Uncle” George Na‘ope, with answer choice J (no commas) circled and the commas in the original text, G, and H marked wrong." loading="lazy" />
+            <img {...img('P58')} alt="SAT-style question about screen actor Anna May Wong, testing whether commas belong around the title-plus-name construction." loading="lazy" />
+            <img {...img('P59')} alt="A second SAT-style example testing the title/occupation-plus-name pattern with no commas around the name." loading="lazy" />
           </div>
 
           <p class="ht-pn-body">
             <strong>The exception:</strong> every once in a while, you'll
             need a comma after the name (never before) if there's an
-            interjection right after the name (or maybe a dependant clause).
+            interjection right after the name (or maybe a dependent clause).
             "The book was written by legendary journalist Bob Woodward, who
-            won a Pulitzer prize the following year." Here we'd need a comma
+            won a Pulitzer Prize the following year." Here we'd need a comma
             after the name to separate the independent and dependent
             clauses.
           </p>
           <p class="ht-pn-body">
-            Here's an example of an interjection after the name. See
+            Here's an example of an interjection after the name (it's from
+            the ACT, but it's exactly what you might see on the SAT). See
             the interjection that starts right after "Ien Chi"? So no comma
             before the name, but we need one right after.
           </p>
           <div class="ht-pn-imgrow">
             <img {...img('P60')} alt="ACT-style question showing an interjection right after the name 'Ien Chi,' requiring a comma after the name but not before it." loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           SECTION 8B — NICHE QUESTION TYPES
+           ====================================================== -->
+      <section class="ht-pn-section ht-pn-section--tint" id="niche-question-types">
+        <div class="ht-pn-section__inner">
+          <div class="ht-section-hdr">
+            <p class="ht-eyebrow ht-eyebrow--gold">Rare, but worth knowing</p>
+            <h2 class="ht-section-hdr__h2">Niche (infrequent) Question Types</h2>
+          </div>
+
+          <p class="ht-pn-body">
+            <strong>Multiple semicolons.</strong> If you see the option to
+            have 2 semicolons in a sentence, meaning there's one in the
+            sentence already and the answers would let you add another, it
+            has to be a semicolon answer choice. Sometimes that's enough to
+            answer the question, but if you have to choose, you need to
+            follow the pattern in the sentence. See, the semicolons are
+            being used like commas in a list.
+          </p>
+          <p class="ht-pn-body">
+            In this first example, it has to be B) since that's the only
+            option that would have two semicolons in the sentence.
+          </p>
+          <div class="ht-pn-imgrow">
+            <img {...img('P61')} alt="SAT-style question where only one answer choice would create two semicolons in the sentence." loading="lazy" />
+            <img {...img('P63')} alt="Annotation confirming answer choice B as the only option producing two semicolons." loading="lazy" />
+            <img {...img('P62')} alt="Full question text showing the semicolon used as a separator in a list." loading="lazy" />
+          </div>
+
+          <p class="ht-pn-body">
+            In this second example, we have two options that would result in
+            two semicolons. Therefore, we need to follow the pattern:
+            "…growing…; fostering…; and educating…"
+          </p>
+          <div class="ht-pn-imgrow">
+            <img {...img('P64')} alt="SAT-style question where two answer choices would both produce two semicolons, requiring the existing list pattern to be followed." loading="lazy" />
+          </div>
+
+          <p class="ht-pn-body">
+            <strong>Two correct comp/comp answers (transitions).</strong>
+            These questions will have two answer choices that are
+            grammatically correct. They'll correctly link two completes. The
+            question is really about which answer choice presents the
+            transition word correctly. Think of them as having three
+            statements. S1, S2, and S3. The question is whether S1 and S2
+            contrast, or whether S2 and S3 contrast. So far, it's always
+            been S1 and S2.
+          </p>
+          <p class="ht-pn-body">
+            Notice that answer choice C) would imply that the idea that her
+            subsequent career was more than just solving equations contrasts
+            with the idea that she helped usher in the digital age. Rather, it should
+            be that the idea that she solved equations in the war contrasts
+            with the idea that the rest of her career was about more than
+            just equations. Choice A makes this clear.
+          </p>
+          <div class="ht-pn-imgrow">
+            <img {...img('P70')} alt="SAT-style question about a mathematician's wartime and postwar career, testing which transition correctly links two complete sentences." loading="lazy" />
+          </div>
+
+          <p class="ht-pn-body">
+            This example is the same: Choice A) indicates Okinaka sits on
+            the review board, but that he doesn't make decisions on his own.
+            Choice B) would imply that him not making decisions alone
+            contrasts with the notion that all decisions are made
+            collectively by a group of experts, which doesn't make sense.
+          </p>
+          <div class="ht-pn-imgrow">
+            <img {...img('P67')} alt="SAT-style question about a sociologist on a historic-sites review board, testing which transition correctly links two complete sentences." loading="lazy" />
           </div>
         </div>
       </section>
@@ -630,7 +653,7 @@ const navItems = [
       <section class="ht-cta-strip">
         <h2 class="ht-cta-strip__h2">Want help putting this into practice?</h2>
         <p class="ht-cta-strip__body">
-          These patterns click fastest with real ACT questions and someone
+          These patterns click fastest with real SAT questions and someone
           to check your reasoning. I'm happy to walk through a few together.
         </p>
         <div class="ht-cta-strip__btns">
@@ -882,7 +905,7 @@ const navItems = [
   }
 
   /* ----------------------------------------------------------------
-     Left nav + content layout (kept identical to /lessons/punctuation)
+     Left nav + content layout (kept identical to /sat-punctuation-guide)
   ---------------------------------------------------------------- */
   .ht-pn-layout {
     display: grid;
@@ -1053,7 +1076,7 @@ const navItems = [
     font-weight: 600;
   }
 
-  /* Prerequisite-only styles copied from /lessons/punctuation. */
+  /* Prerequisite-only styles copied from /sat-punctuation-guide. */
   #prerequisites .ht-section-hdr { margin-bottom: var(--space-10); }
 
   #prerequisites .ht-section-hdr__lead {
@@ -1182,19 +1205,6 @@ const navItems = [
 
   .ht-pn-imgrow img:only-child {
     flex-basis: 100%;
-  }
-
-  /* Several images stacked in one column of an image row */
-  .ht-pn-imgstack {
-    flex: 1 1 260px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .ht-pn-imgstack img {
-    flex: none;
-    width: 100%;
   }
 
   /* ----------------------------------------------------------------

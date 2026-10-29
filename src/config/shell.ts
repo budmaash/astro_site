@@ -106,8 +106,8 @@ export const shellConfig: ShellConfig = {
       href: '/tests',
       label: 'ACT/SAT Info',
       children: [
-        { href: '/sat', label: 'SAT' },
-        { href: '/act', label: 'ACT' },
+        { href: '/sat-test-information', label: 'SAT' },
+        { href: '/act-test-information', label: 'ACT' },
         { href: '/act-vs-sat', label: 'ACT vs SAT' },
       ],
     },

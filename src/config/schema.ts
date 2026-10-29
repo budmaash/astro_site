@@ -108,8 +108,8 @@ export const tutoringServiceNode = serviceNode(
   '/tutoring',
 );
 
-export const actServiceNode = serviceNode('ACT test preparation', 'ACT tutoring & test prep', '/act');
-export const satServiceNode = serviceNode('SAT test preparation', 'SAT tutoring & test prep', '/sat');
+export const actServiceNode = serviceNode('ACT test preparation', 'ACT tutoring & test prep', '/act-test-information');
+export const satServiceNode = serviceNode('SAT test preparation', 'SAT tutoring & test prep', '/sat-test-information');
 
 export const practiceTestsNode: SchemaNode = {
   '@type': 'ItemList',
@@ -148,9 +148,9 @@ export const practiceTestsNode: SchemaNode = {
 
 export const punctuationLessonNode: SchemaNode = {
   '@type': 'LearningResource',
-  '@id': `${SITE_URL}/lessons/punctuation#lesson`,
+  '@id': `${SITE_URL}/sat-punctuation-guide#lesson`,
   name: 'SAT punctuation guide',
-  url: `${SITE_URL}/lessons/punctuation`,
+  url: `${SITE_URL}/sat-punctuation-guide`,
   description:
     'A guide to the boundaries questions in SAT Reading and Writing: the punctuation and sentence-boundary rules the SAT tests, with the steps for each question type.',
   learningResourceType: 'Study guide',
@@ -166,9 +166,9 @@ export const punctuationLessonNode: SchemaNode = {
 
 export const actPunctuationLessonNode: SchemaNode = {
   ...punctuationLessonNode,
-  '@id': `${SITE_URL}/act_lessons/punctuation#lesson`,
+  '@id': `${SITE_URL}/act-punctuation-guide#lesson`,
   name: 'ACT punctuation guide',
-  url: `${SITE_URL}/act_lessons/punctuation`,
+  url: `${SITE_URL}/act-punctuation-guide`,
   description:
     'A guide to the punctuation and sentence-boundary rules tested on the ACT, with the steps for each question type.',
   about: { '@type': 'Thing', name: 'ACT English punctuation' },

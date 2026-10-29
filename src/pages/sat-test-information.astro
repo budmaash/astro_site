@@ -96,16 +96,16 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
             <span class="ht-sat-toc__heading">On this page</span>
             <ul class="ht-sat-toc__list">
               <li class="ht-sat-toc__item">
-                <a href="/sat#sat-intro" class="ht-sat-toc__link">1 — Introduction</a>
+                <a href="/sat-test-information#sat-intro" class="ht-sat-toc__link">1 — Introduction</a>
               </li>
               <li class="ht-sat-toc__item">
-                <a href="/sat#sat-rw" class="ht-sat-toc__link">2 — Reading &amp; Writing</a>
+                <a href="/sat-test-information#sat-rw" class="ht-sat-toc__link">2 — Reading &amp; Writing</a>
               </li>
               <li class="ht-sat-toc__item">
-                <a href="/sat#sat-math" class="ht-sat-toc__link">3 — Math</a>
+                <a href="/sat-test-information#sat-math" class="ht-sat-toc__link">3 — Math</a>
               </li>
               <li class="ht-sat-toc__item">
-                <a href="/sat#sat-conclusion" class="ht-sat-toc__link">4 — Conclusion</a>
+                <a href="/sat-test-information#sat-conclusion" class="ht-sat-toc__link">4 — Conclusion</a>
               </li>
             </ul>
           </nav>
@@ -766,7 +766,7 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
     function setActive(id) {
       tocLinks.forEach(function (link) {
-        if (link.getAttribute('href') === '/sat#' + id) {
+        if (link.getAttribute('href') === '/sat-test-information#' + id) {
           link.classList.add('ht-sat-toc__link--active');
         } else {
           link.classList.remove('ht-sat-toc__link--active');
