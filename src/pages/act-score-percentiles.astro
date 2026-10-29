@@ -24,7 +24,7 @@ const formatDate = (iso: string) =>
 
 // [full name, short label shown on narrow screens]
 const columnNames: Record<(typeof actPercentileColumns)[number], [string, string]> = {
-  composite: ['Composite', 'Comp'],
+  composite: ['Percentile', '%ile'],
   english: ['English', 'Eng'],
   math: ['Math', 'Math'],
   reading: ['Reading', 'Read'],
@@ -215,7 +215,8 @@ const columnNames: Record<(typeof actPercentileColumns)[number], [string, string
      Body copy
   ---------------------------------------------------------------- */
   .ht-pct-body {
-    max-width: 680px;
+    /* Matches the text column on /act and /sat. */
+    max-width: 860px;
     margin: 0 auto;
     padding: var(--space-6) var(--space-section-h) clamp(3rem, 6vw, 5rem);
     box-sizing: content-box;
