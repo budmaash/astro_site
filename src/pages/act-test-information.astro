@@ -3,15 +3,19 @@ import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
 import { createShellConfig } from '../config/shell';
-import { actServiceNode } from '../config/schema';
+import { actGuideBreadcrumbNode, actGuideNode, actServiceNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
 const defaultConfig = createShellConfig({
   siteTitle: 'ACT Guide: Format, Scoring, Sections & Test Dates',
   description: 'How the ACT works section by section — English, Math, Reading and Science — with the question types and strategies I teach students in Kansas City.',
-  schema: [actServiceNode],
+  schema: [actGuideNode, actGuideBreadcrumbNode, actServiceNode],
 });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
+
+const dateModified = actGuideNode.dateModified as string;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 ---
 <SquarespaceShellLayout config={config}>
   <div id="siteWrapper" class="clearfix site-wrapper">
@@ -21,7 +25,11 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
       <section class="ht-act-facts" aria-labelledby="act-facts-title">
         <div class="ht-act-facts__inner">
-          <h1 id="act-facts-title" class="ht-act-facts__title">ACT Quick Facts</h1>
+          <h1 id="act-facts-title" class="ht-act-facts__title">ACT Guide: Format, Sections, Scoring &amp; Test Dates</h1>
+          <p class="ht-act-facts__byline">
+            By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
+            Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
+          </p>
 
           <div class="ht-act-facts__grid">
             <section class="ht-act-facts__group">
@@ -137,7 +145,8 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
               <p class="ht-act-section__p">
                 The English section is one of the easiest test sections on either
-                the ACT or the SAT. Over 35 minutes you must answer 50 questions
+                the ACT or the SAT (see <a href="/act-vs-sat">how the ACT and SAT
+                compare</a>). Over 35 minutes you must answer 50 questions
                 (10 of which won't count) that can be categorized into one of two
                 major categories: mechanics/usage and rhetoric. Mechanics and Usage
                 questions cover topics such as subject-verb agreement, punctuation,
@@ -205,7 +214,9 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
                 Basically, these questions cover the grammar topics the English
                 section tests. Punctuation questions can be broken down into two
                 types: varied punctuation and comma-only punctuation. Each type
-                has its own easy process you should use to get to the right answer.
+                has its own easy process you should use to get to the right answer
+                (I walk through both in my <a href="/act-punctuation-guide">ACT
+                punctuation guide</a>).
                 Additionally, you'll see questions related to apostrophes,
                 subject-verb agreement, pronouns, who/whom, and a few other topics.
               </p>
@@ -268,7 +279,9 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
                 of a triangle, finding the value of a trig function on the unit
                 circle, and what sine and cosine transformations look like on the
                 coordinate plane. Each type is extremely repetitive — you can follow
-                the same steps every time.
+                the same steps every time. You can see this in action in my
+                <a href="/act_videos">video explanations for every question on an
+                ACT Math practice test</a>.
               </p>
 
               <h3 class="ht-act-section__subh">Math Topics</h3>
@@ -436,9 +449,10 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
               <p class="ht-act-section__p">
                 If you or your child is planning on taking the exam soon, the
                 first thing you should do is see where you stand. Take a practice
-                test — but make sure it's a REAL ACT. You can find five of them in
-                The Real ACT book (link in my FAQs), or you can contact me for one
-                for free. The more of these basic skills you have — particularly
+                test — but make sure it's a REAL ACT in the current format. You can
+                download one and score it for free on my
+                <a href="/practice-tests">practice tests page</a>, or you can
+                contact me and I'll send you one. The more of these basic skills you have — particularly
                 in math — the better along you already are, and the easier time
                 you'll have learning the strategies that have been so successful
                 for so many of my students.
@@ -581,6 +595,23 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.2;
+  }
+
+  .ht-act-facts__byline {
+    margin: 0 0 0.9rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .ht-act-facts__byline time {
+    white-space: nowrap;
+  }
+
+  .ht-act-facts__byline a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ht-act-facts__grid {
@@ -809,6 +840,12 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
     color: var(--color-muted);
     line-height: 1.8;
     margin-bottom: 1.25rem;
+  }
+
+  .ht-act-section__p a {
+    color: var(--color-text-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ht-act-section__p:last-of-type {

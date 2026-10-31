@@ -112,6 +112,32 @@ export const tutoringServiceNode = serviceNode(
 export const actServiceNode = serviceNode('ACT test preparation', 'ACT tutoring & test prep', '/act-test-information');
 export const satServiceNode = serviceNode('SAT test preparation', 'SAT tutoring & test prep', '/sat-test-information');
 
+export const actGuideNode: SchemaNode = {
+  '@type': 'Article',
+  '@id': `${SITE_URL}/act-test-information#article`,
+  headline: 'ACT Guide: Format, Sections, Scoring & Test Dates',
+  url: `${SITE_URL}/act-test-information`,
+  description:
+    'How the ACT works section by section, with the question types and strategies for English, Math, Reading and Science.',
+  about: { '@type': 'Thing', name: 'ACT' },
+  publisher: { '@id': ORG_ID },
+  author: { '@id': PERSON_ID },
+  isAccessibleForFree: true,
+  // Shown in the page byline too -- bump dateModified on substantive edits.
+  datePublished: '2026-04-08',
+  dateModified: '2026-10-30',
+};
+
+export const actGuideBreadcrumbNode: SchemaNode = {
+  '@type': 'BreadcrumbList',
+  '@id': `${SITE_URL}/act-test-information#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'ACT/SAT Info', item: `${SITE_URL}/tests` },
+    { '@type': 'ListItem', position: 3, name: 'ACT' },
+  ],
+};
+
 export const practiceTestsNode: SchemaNode = {
   '@type': 'ItemList',
   '@id': `${SITE_URL}/practice-tests#list`,
