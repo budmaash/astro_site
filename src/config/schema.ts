@@ -139,6 +139,33 @@ export const actGuideBreadcrumbNode: SchemaNode = {
   ],
 };
 
+export const satGuideNode: SchemaNode = {
+  '@type': 'Article',
+  '@id': `${SITE_URL}/sat-test-information#article`,
+  headline: 'Digital SAT Guide: Format, Sections, Scoring & Test Dates',
+  url: `${SITE_URL}/sat-test-information`,
+  description:
+    'How the digital SAT works module by module, how it is scored, and upcoming test dates and registration deadlines.',
+  about: { '@type': 'Thing', name: 'SAT' },
+  image: `${SITE_URL}/og-default.jpg`,
+  publisher: { '@id': ORG_ID },
+  author: { '@id': PERSON_ID },
+  isAccessibleForFree: true,
+  // Shown in the page byline too -- bump dateModified on substantive edits.
+  datePublished: '2026-04-08',
+  dateModified: '2026-11-02',
+};
+
+export const satGuideBreadcrumbNode: SchemaNode = {
+  '@type': 'BreadcrumbList',
+  '@id': `${SITE_URL}/sat-test-information#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'ACT/SAT Info', item: `${SITE_URL}/tests` },
+    { '@type': 'ListItem', position: 3, name: 'SAT' },
+  ],
+};
+
 export const practiceTestsNode: SchemaNode = {
   '@type': 'ItemList',
   '@id': `${SITE_URL}/practice-tests#list`,

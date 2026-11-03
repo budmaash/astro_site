@@ -3,15 +3,37 @@ import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import type { ShellConfig } from '../config/shell';
 import { createShellConfig } from '../config/shell';
-import { satServiceNode } from '../config/schema';
+import { satGuideBreadcrumbNode, satGuideNode, satServiceNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
 const defaultConfig = createShellConfig({
-  siteTitle: 'Digital SAT Guide: Modules, Scoring & Strategy',
-  description: 'How the digital SAT works, module by module — Reading & Writing and Math — plus the recurring question types and the strategies that raise scores.',
-  schema: [satServiceNode],
+  siteTitle: 'Digital SAT Guide: Format, Sections, Scoring & Test Dates',
+  description: 'How the digital SAT works module by module, plus 2026–27 test dates and registration deadlines, from a Kansas City SAT tutor since 2007.',
+  schema: [satGuideNode, satGuideBreadcrumbNode, satServiceNode],
 });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
+
+const dateModified = satGuideNode.dateModified as string;
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// National test dates and registration deadlines from College Board. Dates
+// already past at build time drop off, so add the next season's dates as
+// College Board publishes them.
+const testDates: Array<[test: string, regular: string, late: string]> = [
+  ['2026-12-05', '2026-11-20', '2026-11-24'],
+  ['2027-03-06', '2027-02-19', '2027-02-23'],
+  ['2027-05-01', '2027-04-16', '2027-04-20'],
+  ['2027-06-05', '2027-05-21', '2027-05-25'],
+];
+const today = new Date().toISOString().slice(0, 10);
+const upcomingDates = testDates.filter(([test]) => test >= today);
+const shortDate = (iso: string, withYear = false) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    ...(withYear && { year: 'numeric' }),
+  });
 ---
 <SquarespaceShellLayout config={config}>
   <div id="siteWrapper" class="clearfix site-wrapper">
@@ -21,7 +43,11 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
       <section class="ht-sat-facts" aria-labelledby="sat-facts-title">
         <div class="ht-sat-facts__inner">
-          <h1 id="sat-facts-title" class="ht-sat-facts__title">SAT Quick Facts</h1>
+          <h1 id="sat-facts-title" class="ht-sat-facts__title">Digital SAT Guide: Format, Sections, Scoring &amp; Test Dates</h1>
+          <p class="ht-sat-facts__byline">
+            By <a href="/about">Majid Hasan</a>, ACT &amp; SAT tutor ·
+            Updated <time datetime={dateModified}>{formatDate(dateModified)}</time>
+          </p>
 
           <div class="ht-sat-facts__grid">
             <section class="ht-sat-facts__group">
@@ -70,9 +96,33 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
 
             <section class="ht-sat-facts__group">
               <h2 class="ht-sat-facts__heading">When It’s Offered</h2>
-              <p class="ht-sat-facts__months">
-                March, May, June, August, October, November, and December
-              </p>
+              {upcomingDates.length > 0 ? (
+                <table class="ht-sat-dates">
+                  <thead>
+                    <tr>
+                      <th scope="col">Test date</th>
+                      <th scope="col">Register by</th>
+                      <th scope="col">Late deadline</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {upcomingDates.map(([test, regular, late]) => (
+                      <tr>
+                        <th scope="row"><time datetime={test}>{shortDate(test, true)}</time></th>
+                        <td><time datetime={regular}>{shortDate(regular)}</time></td>
+                        <td><time datetime={late}>{shortDate(late)}</time></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p class="ht-sat-dates__source">
+                  Source: <a href="https://satsuite.collegeboard.org/sat/dates-deadlines" target="_blank" rel="noopener noreferrer">College Board</a>
+                </p>
+              ) : (
+                <p class="ht-sat-facts__months">
+                  March, May, June, August, October, November, and December
+                </p>
+              )}
               <a
                 class="ht-sat-facts__signup"
                 href="https://satsuite.collegeboard.org/sat/registration"
@@ -119,7 +169,8 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
               <h2 class="ht-sat-section__h2">The SAT can be learned</h2>
 
               <p class="ht-sat-section__p">
-                I've been teaching the SAT since 2007. Like the ACT, or rather
+                I've been teaching the SAT since 2007. Like the ACT (see
+                <a href="/act-vs-sat">how the ACT and SAT compare</a>), or rather
                 like most standardized tests, the SAT CAN BE LEARNED. The key is
                 to recognize that the exam is made up of only so many types of
                 questions. The best way to increase your score is to learn the
@@ -133,6 +184,19 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
                 The test is now conducted on an electronic device and is adaptive.
                 The new format has two scores: Reading/Writing and Math. Each
                 score is tested over two modules, for a total of four modules.
+              </p>
+
+              <h3 class="ht-sat-section__subh">How the SAT is scored</h3>
+
+              <p class="ht-sat-section__p">
+                Reading and Writing and Math are each scored from 200 to 800, for
+                a total score of 400 to 1600. The test is adaptive: how you do on
+                the first module of each section decides whether your second
+                module is easier or harder, and question difficulty affects your
+                score. A total of about 1050 is average; a 1200 beats about
+                three-quarters of test takers, and a 1400 puts you in the top 7%.
+                To see where any score falls, check my
+                <a href="/sat-score-percentiles">SAT score percentiles</a> page.
               </p>
 
               <h3 class="ht-sat-section__subh">Verbal Modules 1 and 2</h3>
@@ -181,7 +245,9 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
               <p class="ht-sat-section__p">
                 The first set of questions — about 5 or 6 — are standard
                 vocabulary questions. Students are given a prompt and must select
-                an appropriate word given the context of the text.
+                an appropriate word given the context of the text. My
+                <a href="/sat-vocabulary">SAT vocabulary list</a> has every word
+                tested so far.
               </p>
 
               <h3 class="ht-sat-section__subh">Logical Reasoning</h3>
@@ -197,7 +263,8 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
               <p class="ht-sat-section__p">
                 The final 8 or 9 questions cover standard conventions of
                 English: grammar, punctuation, verb tenses, modifiers,
-                run-ons, and so on.
+                run-ons, and so on. The punctuation rules are all in my
+                <a href="/sat-punctuation-guide">SAT punctuation guide</a>.
               </p>
 
               <h3 class="ht-sat-section__subh">Synthesizing Information</h3>
@@ -221,7 +288,9 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
                 section, it's that learning math the way you would in school is
                 not the most effective way to increase your score. Learning some
                 math is necessary, but better than that is to learn the question
-                types and the test-taking strategies.
+                types and the test-taking strategies. You can see this in action
+                in my <a href="/sat_videos">video explanations for every question
+                on an SAT Math practice test</a>.
               </p>
 
               <h3 class="ht-sat-section__subh">1. Math Knowledge</h3>
@@ -303,9 +372,12 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
               </p>
 
               <p class="ht-sat-section__p">
-                If you have any questions about my services, want some testing
-                materials, or just want some questions answered, please feel
-                free to drop me a line. Email or call anytime.
+                The best first step is to see where you stand: take a free,
+                full-length practice SAT on my
+                <a href="/practice-tests">practice tests page</a>. If you have
+                any questions about my services, want some testing materials, or
+                just want some questions answered, please feel free to drop me a
+                line. Email or call anytime.
               </p>
 
               <!-- CTA box -->
@@ -487,6 +559,69 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
     line-height: 1.5;
   }
 
+  .ht-sat-facts__byline {
+    margin: 0 0 0.9rem;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .ht-sat-facts__byline time {
+    white-space: nowrap;
+  }
+
+  .ht-sat-facts__byline a,
+  .ht-sat-dates__source a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .ht-sat-dates {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .ht-sat-dates th,
+  .ht-sat-dates td {
+    padding: 0.4rem 0.75rem 0.4rem 0;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+
+  .ht-sat-dates th:last-child,
+  .ht-sat-dates td:last-child {
+    padding-right: 0;
+  }
+
+  .ht-sat-dates thead th {
+    padding-top: 0;
+    color: var(--color-text-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .ht-sat-dates tbody th {
+    color: var(--color-text-dark);
+    font-weight: 600;
+  }
+
+  .ht-sat-dates td {
+    color: var(--color-muted);
+    font-weight: 300;
+  }
+
+  .ht-sat-dates__source {
+    margin: 0.5rem 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+  }
+
   .ht-sat-facts__signup {
     display: inline-block;
     margin-top: 1.25rem;
@@ -639,6 +774,12 @@ const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
     color: var(--color-muted);
     line-height: 1.8;
     margin-bottom: 1.25rem;
+  }
+
+  .ht-sat-section__p a {
+    color: var(--color-text-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ht-sat-section__p:last-of-type {
