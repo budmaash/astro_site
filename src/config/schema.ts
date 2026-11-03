@@ -125,7 +125,7 @@ export const actGuideNode: SchemaNode = {
   isAccessibleForFree: true,
   // Shown in the page byline too -- bump dateModified on substantive edits.
   datePublished: '2026-04-08',
-  dateModified: '2026-10-30',
+  dateModified: '2026-11-02',
 };
 
 export const actGuideBreadcrumbNode: SchemaNode = {
