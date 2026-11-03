@@ -118,8 +118,9 @@ export const actGuideNode: SchemaNode = {
   headline: 'ACT Guide: Format, Sections, Scoring & Test Dates',
   url: `${SITE_URL}/act-test-information`,
   description:
-    'How the ACT works section by section, with the question types and strategies for English, Math, Reading and Science.',
+    'How the ACT works section by section, how it is scored, and upcoming test dates and registration deadlines.',
   about: { '@type': 'Thing', name: 'ACT' },
+  image: `${SITE_URL}/og-default.jpg`,
   publisher: { '@id': ORG_ID },
   author: { '@id': PERSON_ID },
   isAccessibleForFree: true,

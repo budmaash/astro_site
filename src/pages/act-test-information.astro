@@ -7,8 +7,8 @@ import { actGuideBreadcrumbNode, actGuideNode, actServiceNode } from '../config/
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 
 const defaultConfig = createShellConfig({
-  siteTitle: 'ACT Guide: Format, Scoring, Sections & Test Dates',
-  description: 'How the ACT works section by section — English, Math, Reading and Science — with the question types and strategies I teach students in Kansas City.',
+  siteTitle: 'ACT Guide: Format, Sections, Scoring & Test Dates',
+  description: 'How the ACT works section by section, plus 2026–27 test dates and registration deadlines, from a Kansas City ACT tutor since 2007.',
   schema: [actGuideNode, actGuideBreadcrumbNode, actServiceNode],
 });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
@@ -102,7 +102,7 @@ const shortDate = (iso: string, withYear = false) =>
                     <tr>
                       <th scope="col">Test date</th>
                       <th scope="col">Register by</th>
-                      <th scope="col">Late</th>
+                      <th scope="col">Late deadline</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,6 +115,9 @@ const shortDate = (iso: string, withYear = false) =>
                     ))}
                   </tbody>
                 </table>
+                <p class="ht-act-dates__source">
+                  Source: <a href="https://www.act.org/content/act/en/products-and-services/the-act/registration.html" target="_blank" rel="noopener noreferrer">ACT</a>
+                </p>
               ) : (
                 <p class="ht-act-facts__months">
                   February, April, June, July, September, October, and December
@@ -232,6 +235,19 @@ const shortDate = (iso: string, withYear = false) =>
                 affect your 1–36 composite score. Instead, if you decide to take
                 it, you'll receive an extra Writing score from 2–12 and a
                 Writing/English combined score from 1–36.
+              </p>
+
+              <h3 class="ht-act-section__subh">How the ACT is scored</h3>
+
+              <p class="ht-act-section__p">
+                Each section is scored from 1 to 36. Your composite score is the
+                average of your English, Math, and Reading scores, rounded to the
+                nearest whole number. If you take Science, you'll get a separate
+                Science score and a STEM score (Math and Science combined), but
+                neither affects your composite. The average composite is about 19;
+                a 21 beats about two-thirds of test takers, and a 33 puts you in
+                the top 2%. To see where any score falls, check my
+                <a href="/act-score-percentiles">ACT score percentiles</a> page.
               </p>
             </div><!-- /#act-intro -->
 
@@ -762,6 +778,19 @@ const shortDate = (iso: string, withYear = false) =>
   .ht-act-dates td {
     color: var(--color-muted);
     font-weight: 300;
+  }
+
+  .ht-act-dates__source {
+    margin: 0.5rem 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+  }
+
+  .ht-act-dates__source a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .ht-act-facts__signup {
