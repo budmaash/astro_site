@@ -116,6 +116,22 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
                   allowfullscreen
                 ></iframe>
               </div>
+              <nav class="video-nav" aria-label="Video navigation" data-od-id="lesson-pager">
+                {previous ? (
+                  <a class="video-nav__button" href={previous.path} rel="prev" aria-label={`Previous: ${previous.title}`}>
+                    <span aria-hidden="true">←</span> Previous
+                  </a>
+                ) : (
+                  <span class="video-nav__button" aria-disabled="true"><span aria-hidden="true">←</span> Previous</span>
+                )}
+                {next ? (
+                  <a class="video-nav__button" href={next.path} rel="next" aria-label={`Next: ${next.title}`}>
+                    Next <span aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <span class="video-nav__button" aria-disabled="true">Next <span aria-hidden="true">→</span></span>
+                )}
+              </nav>
             </div>
 
             <aside class="references" aria-labelledby="coursebook-links-title" data-od-id="relevant-links">
@@ -136,31 +152,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
             </div>
           )}
 
-          <nav class="lesson-pager" aria-label="Video navigation" data-od-id="lesson-pager">
-            {previous ? (
-              <a class="turn" href={previous.path} rel="prev">
-                <span aria-hidden="true">←</span>
-                <span><small>Previous video</small><strong>{previous.title}</strong></span>
-              </a>
-            ) : (
-              <span class="turn turn-disabled">
-                <span aria-hidden="true">←</span>
-                <span><small>Previous video</small><strong>Start of list</strong></span>
-              </span>
-            )}
-            <a class="all-resources" href="/resources">Back to resources</a>
-            {next ? (
-              <a class="turn turn-next" href={next.path} rel="next">
-                <span><small>Next video</small><strong>{next.title}</strong></span>
-                <span aria-hidden="true">→</span>
-              </a>
-            ) : (
-              <span class="turn turn-next turn-disabled">
-                <span><small>Next video</small><strong>End of list</strong></span>
-                <span aria-hidden="true">→</span>
-              </span>
-            )}
-          </nav>
         </>
       ) : (
         <>
@@ -280,6 +271,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
     --cb-fg: var(--color-text, oklch(.1776 0 89.88));
     --cb-muted: var(--color-muted, oklch(.4698 .0142 79.72));
     --cb-border: var(--color-border, oklch(.8987 .0145 84.59));
+    --cb-border-strong: var(--color-border-strong, #c8c2b8);
     --cb-accent: var(--color-accent-crimson, oklch(.4158 .1484 26.59));
     --cb-gold: var(--color-accent-gold, oklch(.73 .075 83));
     --cb-serif: var(--font-serif, adobe-garamond-pro, Georgia, "Times New Roman", serif);
@@ -426,6 +418,10 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .lede { max-width: 62ch; margin: 18px 0 0; color: var(--cb-muted); font-size: 17px; }
 
   .video-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; padding-bottom: 48px; }
+  .video-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
+  .video-nav__button { display: inline-flex; align-items: center; gap: 8px; padding: .7em 1.4em; border: 1px solid var(--cb-border-strong); border-radius: 999px; color: var(--cb-fg); font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color 150ms var(--cb-ease), color 150ms var(--cb-ease); }
+  a.video-nav__button:hover { border-color: var(--cb-fg); color: var(--cb-accent); }
+  .video-nav__button[aria-disabled="true"] { opacity: .35; }
   .video { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cb-fg); background: var(--cb-fg); }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
@@ -441,15 +437,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .references a::before { color: var(--cb-muted); content: counter(reference, decimal-leading-zero); font-size: 10px; letter-spacing: .05em; }
   .references a:hover { color: var(--cb-accent); }
 
-  .lesson-pager { display: grid; grid-template-columns: 1fr auto 1fr; border-block: 1px solid var(--cb-fg); }
-  .turn { display: flex; min-height: 100px; align-items: center; gap: 15px; padding: 16px 0; color: var(--cb-fg); text-align: left; text-decoration: none; }
-  a.turn:hover { color: var(--cb-accent); }
-  .turn-next { justify-content: flex-end; text-align: right; }
-  .turn-disabled { opacity: .35; }
-  .turn small, .turn strong { display: block; }
-  .turn small { color: var(--cb-muted); font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
-  .turn strong { margin-top: 5px; font: 400 17px/1.1 var(--cb-serif); }
-  .all-resources { display: flex; min-width: 150px; align-items: center; justify-content: center; border-inline: 1px solid var(--cb-border); font-size: 10px; font-weight: 500; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; }
   .hub-section { padding: 40px 0 8px; border-top: 1px solid var(--cb-fg); }
   .hub-section + .hub-section { margin-top: 32px; }
   .hub-section h2 { margin: 0 0 6px; font: 400 34px/1.05 var(--cb-serif); letter-spacing: -.01em; }
@@ -494,9 +481,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   @media (max-width: 650px) {
     .article { width: min(100% - 28px, 860px); }
     .article-heading h1 { font-size: 44px; }
-    .lesson-pager { grid-template-columns: 1fr 1fr; }
-    .all-resources { grid-column: 1 / -1; grid-row: 2; min-height: 56px; border-top: 1px solid var(--cb-border); border-inline: 0; }
-    .turn { min-height: 88px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
