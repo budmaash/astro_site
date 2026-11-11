@@ -73,7 +73,6 @@ const actTest2MathQuestions: VideoLesson[] = actTest2MathVideos.map(([question, 
     { label: 'ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
     { label: 'All ACT math videos', href: '/act_videos' },
     { label: 'Free practice tests', href: '/practice-tests' },
-    { label: 'All ACT resources', href: '/resources#act-resources' },
   ],
 }));
 

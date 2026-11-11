@@ -129,7 +129,6 @@ const satTest8Questions: VideoLesson[] = satTest8Videos.map(([module, question, 
     { label: 'Digital SAT Practice Test 8', href: '/sat-practice-test-8-digital.pdf' },
     { label: 'All SAT math videos', href: '/sat_videos' },
     { label: 'Free practice tests', href: '/practice-tests' },
-    { label: 'All SAT resources', href: '/resources#sat-resources' },
   ],
 }));
 
