@@ -408,6 +408,17 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
     padding: clamp(2rem, 3vw, 2.5rem) var(--resources-gutter) clamp(4rem, 7vw, 6rem);
   }
 
+  /* Line the outer edges up with the content above, which sits two gutters
+     in, or centered at full width. Side by side, each column is half the
+     page, so the centered margin is 100% - content / 2. */
+  .resources-handoff .exam-library:first-child {
+    padding-left: max(2 * var(--resources-gutter), calc(100% - var(--resources-content) / 2));
+  }
+
+  .resources-handoff .exam-library:last-child {
+    padding-right: max(2 * var(--resources-gutter), calc(100% - var(--resources-content) / 2));
+  }
+
   .resources-handoff .exam-library:first-child {
     background: var(--resources-surface);
   }
@@ -556,6 +567,11 @@ const collections = (['ACT', 'SAT'] as const).map((exam) => ({
     .resources-handoff .exam-library:last-child {
       border-top: 1px solid var(--resources-border);
       border-left: 0;
+    }
+
+    .resources-handoff .exam-library:first-child,
+    .resources-handoff .exam-library:last-child {
+      padding-inline: max(2 * var(--resources-gutter), calc((100% - var(--resources-content)) / 2));
     }
   }
 
