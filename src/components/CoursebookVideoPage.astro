@@ -9,7 +9,7 @@ interface Props {
   hub: { name: string; path: string; eyebrow: string; intro: string };
   // The video this page shows; omitted on the hub page.
   current?: VideoLesson;
-  // Show the Lessons group in the sidebar and on the hub. Off for ACT.
+  // Show the Lessons group in the sidebar and on the hub. Off for ACT and SAT.
   showLessons?: boolean;
 }
 
@@ -118,18 +118,18 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
               </div>
               <nav class="video-nav" aria-label="Video navigation" data-od-id="lesson-pager">
                 {previous ? (
-                  <a class="video-nav__button" href={previous.path} rel="prev" aria-label={`Previous: ${previous.title}`}>
+                  <a class="video-nav__link" href={previous.path} rel="prev" aria-label={`Previous: ${previous.title}`}>
                     <span aria-hidden="true">←</span> Previous
                   </a>
                 ) : (
-                  <span class="video-nav__button" aria-disabled="true"><span aria-hidden="true">←</span> Previous</span>
+                  <span class="video-nav__link" aria-disabled="true"><span aria-hidden="true">←</span> Previous</span>
                 )}
                 {next ? (
-                  <a class="video-nav__button" href={next.path} rel="next" aria-label={`Next: ${next.title}`}>
+                  <a class="video-nav__link" href={next.path} rel="next" aria-label={`Next: ${next.title}`}>
                     Next <span aria-hidden="true">→</span>
                   </a>
                 ) : (
-                  <span class="video-nav__button" aria-disabled="true">Next <span aria-hidden="true">→</span></span>
+                  <span class="video-nav__link" aria-disabled="true">Next <span aria-hidden="true">→</span></span>
                 )}
               </nav>
             </div>
@@ -271,7 +271,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
     --cb-fg: var(--color-text, oklch(.1776 0 89.88));
     --cb-muted: var(--color-muted, oklch(.4698 .0142 79.72));
     --cb-border: var(--color-border, oklch(.8987 .0145 84.59));
-    --cb-border-strong: var(--color-border-strong, #c8c2b8);
     --cb-accent: var(--color-accent-crimson, oklch(.4158 .1484 26.59));
     --cb-gold: var(--color-accent-gold, oklch(.73 .075 83));
     --cb-serif: var(--font-serif, adobe-garamond-pro, Georgia, "Times New Roman", serif);
@@ -419,9 +418,9 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
 
   .video-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr); gap: clamp(28px, 4vw, 56px); align-items: start; padding-bottom: 48px; }
   .video-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
-  .video-nav__button { display: inline-flex; align-items: center; gap: 8px; padding: .7em 1.4em; border: 1px solid var(--cb-border-strong); border-radius: 999px; color: var(--cb-fg); font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color 150ms var(--cb-ease), color 150ms var(--cb-ease); }
-  a.video-nav__button:hover { border-color: var(--cb-fg); color: var(--cb-accent); }
-  .video-nav__button[aria-disabled="true"] { opacity: .35; }
+  .video-nav__link { display: inline-flex; align-items: center; gap: 8px; padding: 6px 0; color: var(--cb-fg); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 150ms var(--cb-ease); }
+  a.video-nav__link:hover { color: var(--cb-accent); }
+  .video-nav__link[aria-disabled="true"] { opacity: .35; }
   .video { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cb-fg); background: var(--cb-fg); }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
