@@ -76,19 +76,62 @@ const actTest2MathQuestions: VideoLesson[] = actTest2MathVideos.map(([question, 
   ],
 }));
 
+// Vimeo folder "ACT Practice Test 2/English". Each video covers a range of questions:
+// [first question, last question, Vimeo ID, duration in seconds, publish date, thumbnail key].
+// These embed publicly, so there is no privacy hash.
+const actTest2EnglishVideos: Array<[number, number, string, number, string, string]> = [
+  [1, 10, '1244081198', 1312, '2026-11-06', '2222770972-cc2d603c06d426120094e633e3ee7a5c96969c79b72fe511397b35542b1eee3b-d'],
+  [11, 15, '1245626558', 504, '2026-11-10', '2224807763-64fb7298ff32498365cc94ee9e2f6b9c71935d852c97ba817a6375a676d9c810-d'],
+  [16, 25, '1245628106', 1052, '2026-11-10', '2224809885-263f98e66f2006133fc99ffe66db65d677a791c75bd7345c26534b8acb4939d5-d'],
+  [26, 35, '1245739368', 935, '2026-11-11', '2224952988-3f285f38904baa292d31d765816bc837f93a346b1c5cf73e2710a8dbfd320d5f-d'],
+  [36, 45, '1245739369', 377, '2026-11-11', '2224952816-6f274e6fe667c5dad26a1b7a7bda8586c405e89ce21a1004028f7a7c4b7a5dbb-d'],
+  [46, 50, '1245739371', 1315, '2026-11-11', '2224953012-45d8be65fea9fa095a03a963d97c4962bdbe76062f5c9590a27cfedeb83f2b71-d'],
+];
+
+const actTest2EnglishQuestions: VideoLesson[] = actTest2EnglishVideos.map(([first, last, vimeoId, seconds, uploadDate, thumbnail]) => ({
+  id: `act-test-2-english-questions-${first}-${last}`,
+  path: `/act_videos/test-2/english/questions-${first}-${last}`,
+  section: 'question',
+  test: 'ACT Practice Test 2',
+  group: 'English',
+  shortTitle: `Questions ${first}–${last}`,
+  title: `Questions ${first}–${last}`,
+  pageTitle: `ACT Practice Test 2 English, Questions ${first}–${last} Explained | Hasan Tutoring`,
+  metaDescription: `Watch step-by-step video explanations of ACT Practice Test 2, English Questions ${first}–${last} (${formatDuration(seconds)}).`,
+  eyebrow: 'ACT Practice Test 2 · English',
+  duration: formatDuration(seconds),
+  seconds,
+  vimeoId,
+  thumbnail: vimeoThumbnail(thumbnail),
+  uploadDate,
+  description: `Video explanations of ACT Practice Test 2, English Questions ${first}–${last}.`,
+  caption: `ACT Practice Test 2, English Questions ${first}–${last}, explained step by step.`,
+  links: [
+    { label: 'ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
+    { label: 'All ACT videos', href: '/act_videos' },
+    { label: 'Free practice tests', href: '/practice-tests' },
+  ],
+}));
+
+// Test order: English, then Math. This is also the sidebar and previous/next order.
 // Add ACT lesson videos (section: 'lesson') ahead of the question explanations.
 export const actVideoLessons: VideoLesson[] = [
+  ...actTest2EnglishQuestions,
   ...actTest2MathQuestions,
 ];
 
-const actQuestionCount = actVideoLessons.filter((video) => video.section === 'question').length;
+const actQuestionCount = actTest2MathQuestions.length;
 
 export const actVideoHub = {
   name: 'ACT Math Video Explanations',
   path: '/act_videos',
   eyebrow: 'ACT Math · Practice Test 2',
   contentsLabel: 'Contents · ACT Math',
-  questionsLabel: 'Math Explanations, Practice Test 2',
+  questionsLabel: 'Explanations, Practice Test 2',
+  groupLabels: {
+    English: 'English Explanations, Practice Test 2',
+    Math: 'Math Explanations, Practice Test 2',
+  },
   intro: `Step-by-step video explanations for all ${actQuestionCount} math questions on ACT Practice Test 2. Choose a question to watch its explanation.`,
   pageTitle: 'ACT Math Video Explanations: Practice Test 2 | Hasan Tutoring',
   metaDescription: `Free step-by-step video explanations for all ${actQuestionCount} math questions on ACT Practice Test 2, one short video per question.`,

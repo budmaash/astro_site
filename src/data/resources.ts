@@ -2,6 +2,7 @@ import actPunctuationPreview from '../assets/lessons/act-punctuation/P6_2.png';
 import satPunctuationPreview from '../assets/lessons/sat-punctuation/P10.png';
 import satTest8MathPreview from '../assets/resources/sat-test-8-math-preview.png';
 import actTest2MathPreview from '../assets/resources/act-test-2-math-preview.png';
+import actTest2EnglishPreview from '../assets/resources/act-test-2-english-preview.png';
 import examFolderPreview from '../assets/resources/exam-folder.png';
 import satVocabularyPreview from '../assets/resources/sat-vocabulary-preview.png';
 
@@ -33,6 +34,19 @@ export type Resource = ResourceBase & (
 // Newest first. Add a newly published resource at the beginning of this list;
 // the hero and both exam libraries read from the same entries.
 export const resources: Resource[] = [
+  {
+    id: 'act-test-2-english-videos',
+    exam: 'ACT',
+    subjects: ['English'],
+    type: 'Video',
+    title: 'ACT English Explanations, Practice Test 2',
+    description: 'Detailed explanations for all 50 English Questions from the new ACT format, ACT Practice Test 2.',
+    href: '/act_videos/test-2/english/questions-1-10',
+    action: 'Watch the video',
+    image: actTest2EnglishPreview,
+    imageAlt: 'ACT English question 1, asking which choice is least redundant, beside a passage about the Choctaw World Series of Stickball',
+    imageMode: 'contain',
+  },
   {
     id: 'sat-vocabulary',
     exam: 'SAT',

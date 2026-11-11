@@ -6,8 +6,16 @@ interface Props {
   // Sidebar heading, e.g. 'Contents · SAT Math'.
   contentsLabel: string;
   // The hub page (e.g. /sat_videos) that lists every video.
-  // questionsLabel heads the question list in the sidebar.
-  hub: { name: string; path: string; eyebrow: string; intro: string; questionsLabel: string };
+  // questionsLabel heads the question list in the sidebar. With groupLabels,
+  // each group (e.g. 'English', 'Math') gets its own collapsible list instead.
+  hub: {
+    name: string;
+    path: string;
+    eyebrow: string;
+    intro: string;
+    questionsLabel: string;
+    groupLabels?: Record<string, string>;
+  };
   // The video this page shows; omitted on the hub page.
   current?: VideoLesson;
   // Show the Lessons group in the sidebar and on the hub. Off for ACT and SAT.
@@ -30,6 +38,13 @@ const questionGroups = [...new Set(questionVideos.map((video) => video.group ?? 
   const videos = questionVideos.filter((video) => (video.group ?? '') === name);
   return { name, test: videos[0]?.test, videos };
 });
+
+// Sidebar lists: one per group when the hub names them, otherwise a single
+// list with each group as a sub-heading.
+const groupLabels = hub.groupLabels;
+const questionSections = groupLabels
+  ? questionGroups.map((group) => ({ label: groupLabels[group.name] ?? group.name, groups: [group], split: true }))
+  : [{ label: hub.questionsLabel, groups: questionGroups, split: false }];
 
 // Old links used /sat_videos/#<id>; the hub forwards those to the video's own page.
 const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((video) => [video.id, video.path]));
@@ -59,16 +74,23 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
     </div>
     )}
 
-    {questionVideos.length > 0 && (
-      <details class="chapter-group question-group" open={!showLessons || current?.section === 'question'}>
-        <summary class="group-label group-toggle" id="coursebook-group-question">
-          <span>{hub.questionsLabel}</span>
-          <span class="group-count">{questionVideos.length}</span>
+    {questionSections.map(({ label, groups, split }, sectionIndex) => {
+      const count = groups.reduce((total, group) => total + group.videos.length, 0);
+      const holdsCurrent = groups.some((group) => group.videos.some((video) => video.id === current?.id));
+      // A split list opens on its own pages and on the hub; a single list
+      // opens whenever there is no Lessons group above it.
+      const open = split ? !current || holdsCurrent : !showLessons || current?.section === 'question';
+      const summaryId = `coursebook-group-question-${sectionIndex}`;
+      return count > 0 && (
+      <details class="chapter-group question-group" open={open}>
+        <summary class="group-label group-toggle" id={summaryId}>
+          <span>{label}</span>
+          <span class="group-count">{count}</span>
         </summary>
-        {questionGroups.map(({ name, videos }, groupIndex) => (
+        {groups.map(({ name, videos }, groupIndex) => (
           <div class="question-subgroup">
-            {name && <p class="subgroup-label" id={`coursebook-question-group-${groupIndex}`}>{name}</p>}
-            <ol class="chapter-list" aria-labelledby={name ? `coursebook-question-group-${groupIndex}` : 'coursebook-group-question'}>
+            {!split && name && <p class="subgroup-label" id={`${summaryId}-${groupIndex}`}>{name}</p>}
+            <ol class="chapter-list" aria-labelledby={!split && name ? `${summaryId}-${groupIndex}` : summaryId}>
               {videos.map((video) => (
                 <li>
                   <a
@@ -86,7 +108,8 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
           </div>
         ))}
       </details>
-    )}
+      );
+    })}
   </nav>
 
   <div class="menu-scrim" aria-hidden="true"></div>
@@ -337,6 +360,9 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .question-group[open] .group-toggle::after { content: "−"; }
   .group-count { margin-left: auto; color: var(--cb-muted); font-weight: 500; letter-spacing: .04em; }
   .question-group:not([open]) .group-toggle { border-bottom: 1px solid var(--cb-border); }
+  /* Stacked question lists sit flush, with a single divider between them. */
+  .question-group + .question-group { margin-top: 0; }
+  .question-group:not([open]) + .question-group .group-toggle { border-top: 0; }
   .chapter-list { margin: 0; padding: 0; list-style: none; }
   .group-empty { margin: 0; padding: 0 24px 6px; color: var(--cb-muted); font-size: 13px; }
   .subgroup-label {
