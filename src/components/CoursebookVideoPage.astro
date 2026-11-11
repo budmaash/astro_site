@@ -116,10 +116,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
                   allowfullscreen
                 ></iframe>
               </div>
-              <div class="caption">
-                <strong>Figure {String(currentIndex + 1).padStart(2, '0')}</strong>
-                <span>{current.caption} Video length {current.duration}.</span>
-              </div>
             </div>
 
             <aside class="references" aria-labelledby="coursebook-links-title" data-od-id="relevant-links">
@@ -433,8 +429,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .video { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cb-fg); background: var(--cb-fg); }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  .caption { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; padding: 13px 0 24px; border-bottom: 1px solid var(--cb-fg); color: var(--cb-muted); font-size: 12px; }
-  .caption strong { color: var(--cb-fg); font-weight: 500; }
   .lesson-details { padding: 0 0 48px; }
   .annotation[hidden] { display: none; }
   .annotation h2, .references h2 { margin: 0 0 16px; font: 400 30px/1.05 var(--cb-serif); letter-spacing: -.01em; }
@@ -500,7 +494,6 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   @media (max-width: 650px) {
     .article { width: min(100% - 28px, 860px); }
     .article-heading h1 { font-size: 44px; }
-    .caption { grid-template-columns: 1fr; gap: 3px; }
     .lesson-pager { grid-template-columns: 1fr 1fr; }
     .all-resources { grid-column: 1 / -1; grid-row: 2; min-height: 56px; border-top: 1px solid var(--cb-border); border-inline: 0; }
     .turn { min-height: 88px; }
