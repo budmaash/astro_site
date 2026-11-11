@@ -101,10 +101,9 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
       {current ? (
         <>
           <header class="article-heading">
-            <a class="resources-link" href={hub.path}>← All {hub.name.toLowerCase()}</a>
+            <a class="resources-link" href="/resources">← Back to resources</a>
             <p class="category">{current.eyebrow}</p>
             <h1 data-od-id="video-title">{current.title}</h1>
-            <p class="lede">{current.description}</p>
           </header>
 
           <div class="video-row">
