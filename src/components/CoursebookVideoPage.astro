@@ -9,9 +9,11 @@ interface Props {
   hub: { name: string; path: string; eyebrow: string; intro: string };
   // The video this page shows; omitted on the hub page.
   current?: VideoLesson;
+  // Show the Lessons group in the sidebar and on the hub. Off for ACT.
+  showLessons?: boolean;
 }
 
-const { videos: allVideos, contentsLabel, hub, current } = Astro.props;
+const { videos: allVideos, contentsLabel, hub, current, showLessons = true } = Astro.props;
 
 // Sidebar order is also the previous/next order: lessons, then question explanations.
 const lessonVideos = allVideos.filter((video) => video.section === 'lesson');
@@ -37,6 +39,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
     <button class="menu-close" type="button" aria-label="Close contents">×</button>
     <p class="contents-label"><a href={hub.path}>{contentsLabel}</a></p>
 
+    {showLessons && (
     <div class="chapter-group">
       <p class="group-label" id="coursebook-group-lesson">Lessons</p>
       {lessonVideos.length ? (
@@ -53,9 +56,10 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
         </ol>
       ) : <p class="group-empty">No lessons yet.</p>}
     </div>
+    )}
 
     {questionVideos.length > 0 && (
-      <details class="chapter-group question-group" open={current?.section === 'question'}>
+      <details class="chapter-group question-group" open={!showLessons || current?.section === 'question'}>
         <summary class="group-label group-toggle" id="coursebook-group-question">
           <span>Question Explanations</span>
           <span class="group-count">{questionVideos.length}</span>
@@ -172,6 +176,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
             <p class="lede">{hub.intro}</p>
           </header>
 
+          {showLessons && (
           <section class="hub-section" aria-labelledby="hub-lessons-title">
             <h2 id="hub-lessons-title">Lessons</h2>
             {lessonVideos.length ? (
@@ -182,6 +187,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
               </ol>
             ) : <p class="hub-empty">No lessons yet.</p>}
           </section>
+          )}
 
           {questionVideos.length > 0 && (
             <section class="hub-section" aria-labelledby="hub-questions-title">
