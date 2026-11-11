@@ -88,6 +88,7 @@ export const actVideoHub = {
   path: '/act_videos',
   eyebrow: 'ACT Math · Practice Test 2',
   contentsLabel: 'Contents · ACT Math',
+  questionsLabel: 'Math Explanations, Practice Test 2',
   intro: `Step-by-step video explanations for all ${actQuestionCount} math questions on ACT Practice Test 2. Choose a question to watch its explanation.`,
   pageTitle: 'ACT Math Video Explanations: Practice Test 2 | Hasan Tutoring',
   metaDescription: `Free step-by-step video explanations for all ${actQuestionCount} math questions on ACT Practice Test 2, one short video per question.`,

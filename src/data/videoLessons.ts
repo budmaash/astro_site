@@ -144,6 +144,7 @@ export const satVideoHub = {
   path: '/sat_videos',
   eyebrow: 'SAT Math · Practice Test 8',
   contentsLabel: 'Contents · SAT Math',
+  questionsLabel: 'Math Explanations, Test 8',
   intro: `Step-by-step video explanations for all ${satQuestionCount} math questions on SAT Practice Test 8, organized by module. Choose a question to watch its explanation.`,
   pageTitle: 'SAT Math Video Explanations: Practice Test 8 | Hasan Tutoring',
   metaDescription: `Free step-by-step video explanations for all ${satQuestionCount} math questions on SAT Practice Test 8, organized by module.`,

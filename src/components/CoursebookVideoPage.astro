@@ -6,7 +6,8 @@ interface Props {
   // Sidebar heading, e.g. 'Contents · SAT Math'.
   contentsLabel: string;
   // The hub page (e.g. /sat_videos) that lists every video.
-  hub: { name: string; path: string; eyebrow: string; intro: string };
+  // questionsLabel heads the question list in the sidebar.
+  hub: { name: string; path: string; eyebrow: string; intro: string; questionsLabel: string };
   // The video this page shows; omitted on the hub page.
   current?: VideoLesson;
   // Show the Lessons group in the sidebar and on the hub. Off for ACT and SAT.
@@ -61,7 +62,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
     {questionVideos.length > 0 && (
       <details class="chapter-group question-group" open={!showLessons || current?.section === 'question'}>
         <summary class="group-label group-toggle" id="coursebook-group-question">
-          <span>Question Explanations</span>
+          <span>{hub.questionsLabel}</span>
           <span class="group-count">{questionVideos.length}</span>
         </summary>
         {questionGroups.map(({ name, videos }, groupIndex) => (
