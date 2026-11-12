@@ -7,11 +7,6 @@ import { actServiceNode, actTutoringBreadcrumbNode } from '../config/schema';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
 import { longDate, nextActDate, upcomingActDates } from '../data/actTestDates';
 
-// While the copy still has [bracketed] gaps, the page is noindex (which also
-// drops its JSON-LD) and astro.config.mjs keeps it out of the sitemap. At
-// launch, set this to false and remove the sitemap exclusion.
-const DRAFT = true;
-
 const defaultConfig = createShellConfig({
   siteTitle: 'ACT Tutoring & Prep in Kansas City | Hasan Tutoring',
   description:
@@ -104,7 +99,7 @@ const faqs = [
   },
 ];
 ---
-<SquarespaceShellLayout config={config} noindex={DRAFT}>
+<SquarespaceShellLayout config={config}>
   <div id="siteWrapper" class="clearfix site-wrapper">
     <SquarespaceHeader config={config} />
 

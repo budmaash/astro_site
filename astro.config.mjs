@@ -15,14 +15,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Routes that exist but should not be advertised to search engines:
-      // member-preview is unshipped members-area work, /practice-test is
-      // a 301 redirect to /practice-tests, and /act-tutoring and
-      // /sat-tutoring are noindex drafts until their copy lands (remove them
-      // here at launch).
+      // member-preview is unshipped members-area work, and /practice-test is
+      // a 301 redirect to /practice-tests.
       filter: (page) =>
-        !page.includes('/member-preview') &&
-        !/\/practice-test\/?$/.test(page) &&
-        !/\/(act|sat)-tutoring\/?$/.test(page),
+        !page.includes('/member-preview') && !/\/practice-test\/?$/.test(page),
       // List the slash-less form so the sitemap matches each page's canonical
       // (SquarespaceShellLayout strips the slash). Done here rather than with
       // trailingSlash: 'never', which 404'd every /path/ URL (see d689efb).
