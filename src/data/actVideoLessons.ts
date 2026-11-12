@@ -70,8 +70,8 @@ const actTest2MathQuestions: VideoLesson[] = actTest2MathVideos.map(([question, 
   description: `A video explanation of ACT Practice Test 2, Math Question ${question}.`,
   caption: `ACT Practice Test 2, Math Question ${question}, explained step by step.`,
   links: [
-    { label: 'ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
-    { label: 'All ACT math videos', href: '/act_videos' },
+    { label: 'Download ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
+    { label: 'All ACT videos', href: '/act_videos' },
     { label: 'Free practice tests', href: '/practice-tests' },
   ],
 }));
@@ -108,7 +108,7 @@ const actTest2EnglishQuestions: VideoLesson[] = actTest2EnglishVideos.map(([firs
   description: `Video explanations of ACT Practice Test 2, English Questions ${first}–${last}.`,
   caption: `ACT Practice Test 2, English Questions ${first}–${last}, explained step by step.`,
   links: [
-    { label: 'ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
+    { label: 'Download ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
     { label: 'All ACT videos', href: '/act_videos' },
     { label: 'Free practice tests', href: '/practice-tests' },
   ],
@@ -128,6 +128,10 @@ export const actVideoHub = {
   name: 'ACT Video Explanations',
   path: '/act_videos',
   contentsLabel: 'Contents · ACT',
+  tutoringLink: {
+    href: '/act-tutoring',
+    text: 'Want help with your ACT performance? → 1-on-1 ACT tutoring in Kansas City.',
+  },
   questionsLabel: 'Explanations, Practice Test 2',
   groupLabels: {
     English: 'English Explanations, Practice Test 2',
