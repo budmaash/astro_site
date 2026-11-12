@@ -91,7 +91,14 @@ export const shellConfig: ShellConfig = {
     ],
   },
   navigation: [
-    { href: '/', label: 'Home', home: true },
+    {
+      href: '/act-tutoring',
+      label: 'Tutoring',
+      children: [
+        { href: '/act-tutoring', label: 'ACT TUTORING' },
+        { href: '/sat-tutoring', label: 'SAT TUTORING' },
+      ],
+    },
     {
       href: '/start',
       label: 'WHERE TO BEGIN',
