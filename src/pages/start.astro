@@ -3,6 +3,22 @@ import SquarespaceFooter from '../components/SquarespaceFooter.astro';
 import SquarespaceHeader from '../components/SquarespaceHeader.astro';
 import { createShellConfig } from '../config/shell';
 import SquarespaceShellLayout from '../layouts/SquarespaceShellLayout.astro';
+import { longDate, shortDate, upcomingActDates } from '../data/actTestDates';
+import { upcomingSatDates } from '../data/satTestDates';
+
+// The next national date for each test that registration is still open for,
+// with the regular deadline until it passes, then the late one.
+const today = new Date().toISOString().slice(0, 10);
+const nextOpen = (dates: Array<[test: string, regular: string, late: string]>) => {
+  const date = dates.find(([, , late]) => late >= today);
+  if (!date) return null;
+  const [test, regular, late] = date;
+  return regular >= today ? { test, deadline: regular, late: false } : { test, deadline: late, late: true };
+};
+const nextTestDates = [
+  { exam: 'ACT', href: '/act-test-information', date: nextOpen(upcomingActDates()) },
+  { exam: 'SAT', href: '/sat-test-information', date: nextOpen(upcomingSatDates()) },
+].filter((row) => row.date);
 
 const config = createShellConfig({
   siteTitle: 'Start Your ACT or SAT Prep | Hasan Tutoring',
@@ -70,8 +86,26 @@ const config = createShellConfig({
             <p>Step two</p>
             <h2>Pick an Exam Date</h2>
             <h3>When should I begin?</h3>
+            {nextTestDates.length > 0 && (
+              <div class="next-dates">
+                <p class="next-dates__label">Next test dates</p>
+                <dl>
+                  {nextTestDates.map(({ exam, href, date }) => (
+                    <div class="next-dates__row">
+                      <dt><a href={href}>{exam}</a></dt>
+                      <dd>
+                        <time class="next-dates__test" datetime={date!.test}>{longDate(date!.test)}</time>
+                        <span>
+                          Register by <time datetime={date!.deadline}>{shortDate(date!.deadline)}</time>{date!.late && ' (late)'}
+                        </span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
             <div class="step-contact">
-              <p>Feel free to reach out do discuss your specific situation.</p>
+              <p>Feel free to reach out to discuss your specific situation.</p>
               <a class="start-contact-cta" href="/contact">Contact Me</a>
             </div>
           </div>
@@ -102,7 +136,7 @@ const config = createShellConfig({
           <div class="roadmap-step__heading">
             <p>Step three</p>
             <h2>Get Started with Test Prep</h2>
-            <h3>What are the next steps</h3>
+            <h3>What are the next steps?</h3>
             <div class="step-contact">
               <p>Feel free to reach out and we'll set something up specific to you</p>
               <a class="start-contact-cta" href="/contact">Contact Me</a>
@@ -178,8 +212,19 @@ const config = createShellConfig({
   .roadmap-step__number { position: absolute; right: max(var(--space-section-h), calc((100vw - 1180px) / 2)); top: clamp(3rem, 7vw, 6rem); color: rgba(31,27,23,.055); font: 400 clamp(9rem, 22vw, 20rem)/.8 var(--font-serif); letter-spacing: -.06em; }
   .roadmap-step__heading, .roadmap-step__content { position: relative; z-index: 1; }
   .roadmap-step__heading { position: relative; top: auto; align-self: start; }
-  .roadmap-step__heading h2 { max-width: 11ch; margin: 0; font: 700 clamp(2rem, 3vw, 2.8rem)/1.05 var(--font-serif); letter-spacing: -.02em; }
+  /* Same type as the homepage hero title, at this smaller size. */
+  .roadmap-step__heading h2 { max-width: 11ch; margin: 0; font: 400 clamp(2rem, 3vw, 2.8rem)/1.02 var(--font-serif); letter-spacing: -.035em; color: var(--color-text-dark); }
   .roadmap-step__heading h3 { max-width: 18ch; margin: 1rem 0 0; color: var(--color-highlight-vivid); font: 400 clamp(1.25rem, 2vw, 1.55rem)/1.2 var(--font-serif); }
+  .next-dates { max-width: 22rem; margin-top: 2rem; }
+  .next-dates__label { margin: 0 0 .5rem; color: var(--color-highlight-vivid); font: 700 .75rem/1.2 var(--font-sans); letter-spacing: .14em; text-transform: uppercase; }
+  .next-dates dl { margin: 0; }
+  .next-dates__row { display: grid; grid-template-columns: 3.25rem 1fr; gap: 1rem; align-items: baseline; padding: .85rem 0; border-top: 1px solid var(--color-border); }
+  .next-dates__row:last-child { border-bottom: 1px solid var(--color-border); }
+  .next-dates dt { font: 700 .875rem/1.2 var(--font-sans); letter-spacing: .06em; }
+  .next-dates dt a { color: var(--color-text-dark); text-decoration: underline; text-underline-offset: 3px; }
+  .next-dates dd { margin: 0; }
+  .next-dates__test { display: block; color: var(--color-text-dark); font: 400 1.5rem/1.1 var(--font-serif); }
+  .next-dates dd span { display: block; margin-top: .25rem; color: var(--color-muted); font: 300 .875rem/1.4 var(--font-sans); }
   .step-contact { margin-top: 2rem; }
   .step-contact p { max-width: 28ch; margin: 0; color: var(--color-muted); font: 300 1rem/1.65 var(--font-sans); }
   .start-contact-cta { display: inline-flex; min-height: 46px; margin-top: 1.5rem; padding: .85rem 1.4rem; align-items: center; justify-content: center; color: #fff; background: var(--color-text-dark); border: 1px solid var(--color-text-dark); border-radius: 999px; font: 600 .8rem/1 var(--font-sans); letter-spacing: .04em; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease; }
