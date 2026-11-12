@@ -8,13 +8,15 @@ interface Props {
   // The hub page (e.g. /sat_videos) that lists every video.
   // questionsLabel heads the question list in the sidebar. With groupLabels,
   // each group (e.g. 'English', 'Math') gets its own collapsible list instead.
+  // With sectionHeadings, the hub page gives each group its own section too.
   hub: {
     name: string;
     path: string;
-    eyebrow: string;
+    eyebrow?: string;
     intro: string;
     questionsLabel: string;
     groupLabels?: Record<string, string>;
+    sectionHeadings?: Record<string, string>;
   };
   // The video this page shows; omitted on the hub page.
   current?: VideoLesson;
@@ -45,6 +47,23 @@ const groupLabels = hub.groupLabels;
 const questionSections = groupLabels
   ? questionGroups.map((group) => ({ label: groupLabels[group.name] ?? group.name, groups: [group], split: true }))
   : [{ label: hub.questionsLabel, groups: questionGroups, split: false }];
+
+// Hub page sections: one per group when the hub names them, otherwise a
+// single 'Question explanations' section.
+const sectionHeadings = hub.sectionHeadings;
+const hubSections = sectionHeadings
+  ? questionGroups.map((group, index) => ({
+      id: `hub-questions-title-${index}`,
+      heading: sectionHeadings[group.name] ?? group.name,
+      note: undefined,
+      groups: [group],
+    }))
+  : [{
+      id: 'hub-questions-title',
+      heading: 'Question explanations',
+      note: 'One short video for each question, in test order.',
+      groups: questionGroups,
+    }];
 
 // Old links used /sat_videos/#<id>; the hub forwards those to the video's own page.
 const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((video) => [video.id, video.path]));
@@ -181,7 +200,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
         <>
           <header class="article-heading">
             <a class="resources-link" href="/resources">← Return to resources</a>
-            <p class="category">{hub.eyebrow}</p>
+            {hub.eyebrow && <p class="category">{hub.eyebrow}</p>}
             <h1 data-od-id="video-title">{hub.name}</h1>
             <p class="lede">{hub.intro}</p>
           </header>
@@ -199,11 +218,11 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
           </section>
           )}
 
-          {questionVideos.length > 0 && (
-            <section class="hub-section" aria-labelledby="hub-questions-title">
-              <h2 id="hub-questions-title">Question explanations</h2>
-              <p>One short video for each question, in test order.</p>
-              {questionGroups.map(({ name, test, videos }) => (
+          {questionVideos.length > 0 && hubSections.map(({ id, heading, note, groups }) => (
+            <section class="hub-section" aria-labelledby={id}>
+              <h2 id={id}>{heading}</h2>
+              {note && <p>{note}</p>}
+              {groups.map(({ name, test, videos }) => (
                 <div class="hub-group">
                   <h3>{[test, name].filter(Boolean).join(' · ')}</h3>
                   <ol class="hub-grid">
@@ -214,7 +233,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
                 </div>
               ))}
             </section>
-          )}
+          ))}
         </>
       )}
     </main>
@@ -444,7 +463,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .lede { max-width: 62ch; margin: 18px 0 0; color: var(--cb-muted); font-size: 17px; }
 
   .video-row { padding-bottom: 48px; }
-  .video-wrap { max-width: 860px; }
+  .video-wrap { max-width: 1032px; }
   .video-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; }
   .video-nav__link { display: inline-flex; align-items: center; gap: 8px; padding: 6px 0; color: var(--cb-fg); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 150ms var(--cb-ease); }
   a.video-nav__link:hover { color: var(--cb-accent); }
@@ -467,6 +486,7 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .hub-section + .hub-section { margin-top: 32px; }
   .hub-section h2 { margin: 0 0 6px; font: 400 34px/1.05 var(--cb-serif); letter-spacing: -.01em; }
   .hub-section > p { margin: 0 0 22px; color: var(--cb-muted); }
+  .hub-section h2 + .hub-group { margin-top: 22px; }
   .hub-group + .hub-group { margin-top: 30px; }
   .hub-group h3 { margin: 0 0 12px; color: var(--cb-accent); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
   .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1px; margin: 0; padding: 0; border: 1px solid var(--cb-border); background: var(--cb-border); list-style: none; }

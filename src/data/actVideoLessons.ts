@@ -94,7 +94,8 @@ const actTest2EnglishQuestions: VideoLesson[] = actTest2EnglishVideos.map(([firs
   section: 'question',
   test: 'ACT Practice Test 2',
   group: 'English',
-  shortTitle: `Questions ${first}–${last}`,
+  // Word joiners keep the range on one line, e.g. 'Questions / 1–10' not 'Questions 1– / 10'.
+  shortTitle: `Questions ${first}\u2060–\u2060${last}`,
   title: `Questions ${first}–${last}`,
   pageTitle: `ACT Practice Test 2 English, Questions ${first}–${last} Explained | Hasan Tutoring`,
   metaDescription: `Watch step-by-step video explanations of ACT Practice Test 2, English Questions ${first}–${last} (${formatDuration(seconds)}).`,
@@ -121,18 +122,22 @@ export const actVideoLessons: VideoLesson[] = [
 ];
 
 const actQuestionCount = actTest2MathQuestions.length;
+const actEnglishQuestionCount = Math.max(...actTest2EnglishVideos.map(([, last]) => last));
 
 export const actVideoHub = {
-  name: 'ACT Math Video Explanations',
+  name: 'ACT Video Explanations',
   path: '/act_videos',
-  eyebrow: 'ACT Math · Practice Test 2',
-  contentsLabel: 'Contents · ACT Math',
+  contentsLabel: 'Contents · ACT',
   questionsLabel: 'Explanations, Practice Test 2',
   groupLabels: {
     English: 'English Explanations, Practice Test 2',
     Math: 'Math Explanations, Practice Test 2',
   },
-  intro: `Step-by-step video explanations for all ${actQuestionCount} math questions on ACT Practice Test 2. Choose a question to watch its explanation.`,
-  pageTitle: 'ACT Math Video Explanations: Practice Test 2 | Hasan Tutoring',
-  metaDescription: `Free step-by-step video explanations for all ${actQuestionCount} math questions on ACT Practice Test 2, one short video per question.`,
+  sectionHeadings: {
+    English: 'English Explanations',
+    Math: 'Math Explanations',
+  },
+  intro: `Step-by-step video explanations for all ${actQuestionCount} math questions and ${actEnglishQuestionCount} English questions on ACT Practice Test 2.`,
+  pageTitle: 'ACT Video Explanations: Practice Test 2 | Hasan Tutoring',
+  metaDescription: `Free step-by-step video explanations for all ${actQuestionCount} math and ${actEnglishQuestionCount} English questions on ACT Practice Test 2.`,
 };
