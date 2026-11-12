@@ -25,6 +25,7 @@
  */
 
 import type { Resource } from '../data/resources';
+import { inPersonAreas } from '../data/serviceAreas';
 import { vimeoEmbedUrl, type VideoLesson } from '../data/videoLessons';
 
 /** Canonical origin. Bare domain: www 301-redirects here. */
@@ -88,8 +89,24 @@ export const personNode: SchemaNode = {
   knowsAbout: ['ACT test preparation', 'SAT test preparation', 'Standardized test tutoring'],
 };
 
+/** In-person cities on both sides of the state line, plus the metro and online. */
+const TUTORING_HUB_AREA_SERVED: SchemaNode[] = [
+  ...inPersonAreas.map(({ city, state }) => ({
+    '@type': 'City',
+    name: city,
+    containedInPlace: { '@type': 'State', name: state },
+  })),
+  { '@type': 'AdministrativeArea', name: 'Kansas City metropolitan area' },
+  { '@type': 'Place', name: 'Online (worldwide)' },
+];
+
 /** A tutoring service offering. */
-function serviceNode(serviceType: string, name: string, path: string): SchemaNode {
+function serviceNode(
+  serviceType: string,
+  name: string,
+  path: string,
+  areaServed: SchemaNode[] = AREA_SERVED,
+): SchemaNode {
   return {
     '@type': 'Service',
     '@id': `${SITE_URL}${path}#service`,
@@ -97,7 +114,7 @@ function serviceNode(serviceType: string, name: string, path: string): SchemaNod
     name,
     url: `${SITE_URL}${path}`,
     provider: { '@id': ORG_ID },
-    areaServed: AREA_SERVED,
+    areaServed,
     audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
   };
 }
@@ -109,8 +126,40 @@ export const tutoringServiceNode = serviceNode(
   '/tutoring',
 );
 
-export const actServiceNode = serviceNode('ACT test preparation', 'ACT tutoring & test prep', '/act-test-information');
-export const satServiceNode = serviceNode('SAT test preparation', 'SAT tutoring & test prep', '/sat-test-information');
+// The service lives on the /act-tutoring hub; /act-test-information
+// references the same node by @id. Add `offers` once pricing is published.
+export const actServiceNode = serviceNode(
+  'ACT test preparation',
+  'ACT tutoring & prep in Kansas City',
+  '/act-tutoring',
+  TUTORING_HUB_AREA_SERVED,
+);
+// Likewise the SAT service lives on /sat-tutoring; /sat-test-information
+// references it by @id.
+export const satServiceNode = serviceNode(
+  'SAT test preparation',
+  'SAT tutoring & prep in Kansas City',
+  '/sat-tutoring',
+  TUTORING_HUB_AREA_SERVED,
+);
+
+export const actTutoringBreadcrumbNode: SchemaNode = {
+  '@type': 'BreadcrumbList',
+  '@id': `${SITE_URL}/act-tutoring#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'ACT Tutoring' },
+  ],
+};
+
+export const satTutoringBreadcrumbNode: SchemaNode = {
+  '@type': 'BreadcrumbList',
+  '@id': `${SITE_URL}/sat-tutoring#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'SAT Tutoring' },
+  ],
+};
 
 export const actGuideNode: SchemaNode = {
   '@type': 'Article',
