@@ -114,15 +114,87 @@ const actTest2EnglishQuestions: VideoLesson[] = actTest2EnglishVideos.map(([firs
   ],
 }));
 
-// Test order: English, then Math. This is also the sidebar and previous/next order.
+// Vimeo folder "ACT Practice Test 2/Reading". One video per question:
+// [passage, question, Vimeo ID, duration in seconds, publish date, thumbnail key].
+// These embed publicly, so there is no privacy hash. They are recorded at 4:3 (1440x1080)
+// and shown 30% larger than the default 4:3 player.
+const actTest2ReadingVideos: Array<[number, number, string, number, string, string]> = [
+  [1, 1, '1248255127', 222, '2026-11-19', '2228264166-da0595e2417a4c5593df599f3728c3937e546f3bcb8be2aa8d87e1852acc9cdf-d'],
+  [1, 2, '1248255124', 149, '2026-11-19', '2228264147-f403a5abd90b696d7bade6550e6ae3d77fa9173887d229ecdea2082c1f3e5e52-d'],
+  [1, 3, '1248255125', 117, '2026-11-19', '2228264008-ae7469ae35b48a4229fe23c12714818505a92de066f2e110e4cdc7b98f18a63f-d'],
+  [1, 4, '1248255123', 142, '2026-11-19', '2228264030-db5c79a98532723460cc9494e489719e77eea0f1e341b8030f37690af1c4bd25-d'],
+  [1, 5, '1248255235', 175, '2026-11-19', '2228264230-2886184c8339780dbe7ddf1361f7fbf595f2460bdfc5751d899ad644edbf241a-d'],
+  [1, 6, '1248255239', 68, '2026-11-19', '2228264052-40794b5f26ef6d9ca17c4d26438c64bfd9d8d37004539e953ab6f28836fb7707-d'],
+  [1, 7, '1248255244', 100, '2026-11-19', '2228264056-a33d9fb6b97907e7ea238c85de941c6eb457093fcb9dc36bfb4c7db52753c52b-d'],
+  [1, 8, '1248255272', 94, '2026-11-19', '2228264200-66a061d084feffb5a058db79a7a421e61aa1f80d04cdd09201208333b6ed4d87-d'],
+  [1, 9, '1248255281', 174, '2026-11-19', '2228264130-a533232db9db3e6559ac392901d8772facbc082f61c17c635acabeecf618bc97-d'],
+  [2, 10, '1248587288', 240, '2026-11-20', '2228723484-5bb102e4e6df33ff12a9667046f196108ba18ee986a29005477b84205af9f62f-d'],
+  [2, 11, '1248587289', 99, '2026-11-20', '2228723576-967131347285e2a92125a6e1d86ffe329a2f394721f6750320dc2ff7c3779791-d'],
+  [2, 12, '1248587292', 257, '2026-11-20', '2228723597-a7343db30b96d3e3f6aa1ae73faabb61951f19ddced61529e681be458afaf706-d'],
+  [2, 13, '1248587290', 112, '2026-11-20', '2228723575-8ffac165d3ef793f9f359fdac58631d91ec71934f00303eaf29fe5e565c7691e-d'],
+  [2, 14, '1248587516', 166, '2026-11-20', '2228723713-9d399c446649f4833aa58340853fdee0f03493e9770583e64807e800f29bc4b5-d'],
+  [2, 15, '1248587515', 187, '2026-11-20', '2228723702-e198be20388b405848d6b3155f187413db9873ae5b9c88cd026332b007aed7a2-d'],
+  [2, 16, '1248587518', 123, '2026-11-20', '2228723669-dc9c6553e92400eb0e4a9862a2a260f1c8a97a08107d6f7f9395f2085f600be8-d'],
+  [2, 17, '1248587517', 151, '2026-11-20', '2228723703-e1cd6625a2b265f00e215614434af684b9c78712d003da9e14e1855fd8c5b51c-d'],
+  [2, 18, '1248587549', 139, '2026-11-20', '2228723733-9d22261d694f2c385fc8c0520caf37a6d64f26d456d69067ba25ba0690e764b9-d'],
+  [3, 19, '1248587574', 144, '2026-11-20', '2228723842-7fb6b4ea2e57ee9428feacd1db69ff2cda4f33699853afb52fbf6e6892f58ae9-d'],
+  [3, 20, '1248587573', 51, '2026-11-20', '2228723742-546b1541fa43957aab61122458ab8e78488d30a777fea170d0bdd03161e5d4eb-d'],
+  [3, 21, '1248587592', 121, '2026-11-20', '2228723796-9490665b15fbb1bf61b88a0ff06cfc8ef6466d512b589014ff885a4d6a733686-d'],
+  [3, 22, '1248587599', 92, '2026-11-20', '2228723835-ba6c0a9b12ffd82a28947ded8676a5f3894730f17157e11e7cbb9a6b0d2b72af-d'],
+  [3, 23, '1248587604', 111, '2026-11-20', '2228723786-f4f5aaa7ecc3a45025f0ad9f763f7296c1fabce332b2e74b6ed063e0470d5bc2-d'],
+  [3, 24, '1248587619', 111, '2026-11-20', '2228723798-33f374034adc3f4204cdb9e30d785e33c510594be8e015c8c410a5bd663afa8f-d'],
+  [3, 25, '1248587628', 139, '2026-11-20', '2228723829-6184d6c4727e00deb9cbde73267936616b9f259b54d489061c1197f1f70db93c-d'],
+  [3, 26, '1248587639', 90, '2026-11-20', '2228723804-a86b1998a0369bbd388e56bc1b9899c144c9c4b6ddb119fe3a7e352ca2ecf8f6-d'],
+  [3, 27, '1248587648', 140, '2026-11-20', '2228723941-d854563cbddc6c952a89755ca47945b9476dcedb106da210808435c4c0ed3859-d'],
+  [4, 28, '1248587656', 128, '2026-11-20', '2228723974-a9fe10c0a37f0f989317847e9f7336710e73cdbebe5d31d39c2135ae484272d5-d'],
+  [4, 29, '1248587663', 119, '2026-11-20', '2228723926-41d560e8d07c4679ffc1022183d09b033cc199720fd9060cc22c8b1ddb4efa21-d'],
+  [4, 30, '1248587672', 151, '2026-11-20', '2228724008-3f05ec987a0c7918b32e1ee5afb150df8f675a9c0da609bc8de86e4987d0fceb-d'],
+  [4, 31, '1248587799', 118, '2026-11-20', '2228724221-8ef5e9f685eea2e5b02e711b8bc0075ae495a581bb5428967168914e751e4a39-d'],
+  [4, 32, '1248587800', 112, '2026-11-20', '2228724158-6616c804e1f358d7cbff114f02aed1218f240be5adb6c53e36981fc2e76abc96-d'],
+  [4, 33, '1248587798', 116, '2026-11-20', '2228724126-53eaf00f3f4624e970561062b56537a55558d4102206401efe8b9fd1038246c8-d'],
+  [4, 34, '1248587802', 86, '2026-11-20', '2228724113-789f905834db84baa5c249b239e80e9442f7bfe74c226ead991aae58eeba6f99-d'],
+  [4, 35, '1248587860', 80, '2026-11-20', '2228724214-8475f0f8c8b5c46d6a105e1da66e485db3f26feaea47d3f2d373068237a49336-d'],
+  [4, 36, '1248587874', 109, '2026-11-20', '2228724160-3a74a21e66fa78df624f8cbf2c5d6c048e62e7cf366cc878b8e72a377d2503ce-d'],
+];
+
+const actTest2ReadingQuestions: VideoLesson[] = actTest2ReadingVideos.map(([passage, question, vimeoId, seconds, uploadDate, thumbnail]) => ({
+  id: `act-test-2-reading-question-${question}`,
+  path: `/act_videos/test-2/reading/question-${question}`,
+  section: 'question',
+  test: 'ACT Practice Test 2',
+  group: 'Reading',
+  shortTitle: `Question ${question}`,
+  title: `Question ${question}`,
+  pageTitle: `ACT Practice Test 2 Reading, Question ${question} Explained | Hasan Tutoring`,
+  metaDescription: `Watch a step-by-step video explanation of ACT Practice Test 2, Reading Question ${question} (Passage ${passage}, ${formatDuration(seconds)}).`,
+  eyebrow: `ACT Practice Test 2 · Reading · Passage ${passage}`,
+  duration: formatDuration(seconds),
+  seconds,
+  vimeoId,
+  aspectRatio: '4/3',
+  displayScale: 1.3,
+  thumbnail: vimeoThumbnail(thumbnail),
+  uploadDate,
+  description: `A video explanation of ACT Practice Test 2, Reading Question ${question} (Passage ${passage}).`,
+  caption: `ACT Practice Test 2, Reading Question ${question}, explained step by step.`,
+  links: [
+    { label: 'Download ACT Practice Test 2', href: '/Practice%20Test%202.pdf' },
+    { label: 'All ACT videos', href: '/act_videos' },
+    { label: 'Free practice tests', href: '/practice-tests' },
+  ],
+}));
+
+// Test order: English, Math, then Reading. This is also the sidebar and previous/next order.
 // Add ACT lesson videos (section: 'lesson') ahead of the question explanations.
 export const actVideoLessons: VideoLesson[] = [
   ...actTest2EnglishQuestions,
   ...actTest2MathQuestions,
+  ...actTest2ReadingQuestions,
 ];
 
 const actQuestionCount = actTest2MathQuestions.length;
 const actEnglishQuestionCount = Math.max(...actTest2EnglishVideos.map(([, last]) => last));
+const actReadingQuestionCount = actTest2ReadingQuestions.length;
 
 export const actVideoHub = {
   name: 'ACT Video Explanations',
@@ -136,12 +208,14 @@ export const actVideoHub = {
   groupLabels: {
     English: 'English Explanations, Practice Test 2',
     Math: 'Math Explanations, Practice Test 2',
+    Reading: 'Reading Explanations, Practice Test 2',
   },
   sectionHeadings: {
     English: 'English Explanations',
     Math: 'Math Explanations',
+    Reading: 'Reading Explanations',
   },
-  intro: `Step-by-step video explanations for all ${actQuestionCount} math questions and ${actEnglishQuestionCount} English questions on ACT Practice Test 2.`,
+  intro: `Step-by-step video explanations for all ${actQuestionCount} math questions and ${actEnglishQuestionCount} English questions on ACT Practice Test 2, plus ${actReadingQuestionCount} reading questions.`,
   pageTitle: 'ACT Video Explanations: Practice Test 2 | Hasan Tutoring',
-  metaDescription: `Free step-by-step video explanations for all ${actQuestionCount} math and ${actEnglishQuestionCount} English questions on ACT Practice Test 2.`,
+  metaDescription: `Free step-by-step video explanations for all ${actQuestionCount} math and ${actEnglishQuestionCount} English questions on ACT Practice Test 2, plus ${actReadingQuestionCount} reading questions.`,
 };

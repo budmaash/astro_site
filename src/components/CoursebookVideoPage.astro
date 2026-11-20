@@ -156,7 +156,14 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
               {hub.tutoringLink && (
                 <p class="tutoring-link"><a href={hub.tutoringLink.href}>{hub.tutoringLink.text}</a></p>
               )}
-              <div class="video" data-od-id="vimeo-player">
+              <div
+                class="video"
+                data-od-id="vimeo-player"
+                style={[
+                  current.aspectRatio && `--video-ratio: ${current.aspectRatio}`,
+                  current.displayScale && `--video-scale: ${current.displayScale}`,
+                ].filter(Boolean).join('; ') || undefined}
+              >
                 <iframe
                   src={vimeoEmbedUrl(current)}
                   title={`${current.title} video`}
@@ -477,7 +484,9 @@ const hashRedirects = current ? null : Object.fromEntries(videoLessons.map((vide
   .video-nav__link { display: inline-flex; align-items: center; gap: 8px; padding: 6px 0; color: var(--cb-fg); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 150ms var(--cb-ease); }
   a.video-nav__link:hover { color: var(--cb-accent); }
   .video-nav__link[aria-disabled="true"] { opacity: .35; }
-  .video { position: relative; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--cb-fg); background: var(--cb-fg); }
+  /* --video-ratio overrides 16:9 per video. The max-width keeps narrower videos
+     no taller than a full-width 16:9 player (1032px wide); --video-scale enlarges that cap. */
+  .video { position: relative; overflow: hidden; aspect-ratio: var(--video-ratio, 16/9); max-width: calc(1032px * 9 / 16 * var(--video-ratio, 16/9) * var(--video-scale, 1));border: 1px solid var(--cb-fg); background: var(--cb-fg); }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
   .lesson-details { padding: 0 0 48px; }

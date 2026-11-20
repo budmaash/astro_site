@@ -24,6 +24,10 @@ export type VideoLesson = {
   vimeoId: string;
   // Privacy hash from the Vimeo embed URL (the `h` parameter).
   vimeoHash?: string;
+  // Width/height of the video when it isn't 16:9, e.g. '4/3'. The player matches it.
+  aspectRatio?: string;
+  // Multiplies the player's usual maximum width, e.g. 1.3 for 30% larger. Still limited by the column.
+  displayScale?: number;
   // Vimeo thumbnail (1280x720) and publish date, used for VideoObject structured data.
   thumbnail: string;
   uploadDate: string;
