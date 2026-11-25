@@ -12,8 +12,13 @@ const defaultConfig = createShellConfig({
   description: 'Everything to know about both exams — format, scoring, timing and subject matter — plus help deciding which of the two tests to take.',
 });
 const { config = defaultConfig }: { config?: ShellConfig } = Astro.props;
+
+// Hidden from public view for now: noindex (which also drops its JSON-LD),
+// unlinked from the menu, and kept out of the sitemap in astro.config.mjs.
+// To bring it back, set this to false and remove the sitemap exclusion.
+const HIDDEN = true;
 ---
-<SquarespaceShellLayout config={config}>
+<SquarespaceShellLayout config={config} noindex={HIDDEN}>
   <div id="siteWrapper" class="clearfix site-wrapper">
     <SquarespaceHeader config={config} />
 

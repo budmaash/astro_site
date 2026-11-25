@@ -103,13 +103,13 @@ export const shellConfig: ShellConfig = {
       href: '/start',
       label: 'WHERE TO BEGIN',
       children: [
-        { href: '/start', label: 'START HERE' },
-        { href: '/practice-tests', label: 'FREE PRACTICE TESTS' },
-        { href: '/tests', label: 'TEST INFO' },
+        { href: '/start', label: 'THE TESTING PROCESS' },
+        { href: '/practice-tests', label: 'TAKE A PRACTICE TEST' },
       ],
     },
     {
-      href: '/tests',
+      // /tests is hidden for now (noindex), so the menu heading opens the SAT page.
+      href: '/sat-test-information',
       label: 'ACT/SAT Info',
       children: [
         { href: '/sat-test-information', label: 'SAT' },
