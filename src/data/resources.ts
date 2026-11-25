@@ -5,6 +5,8 @@ import actTest2MathPreview from '../assets/resources/act-test-2-math-preview.png
 import actTest2EnglishPreview from '../assets/resources/act-test-2-english-preview.png';
 import examFolderPreview from '../assets/resources/exam-folder.png';
 import satVocabularyPreview from '../assets/resources/sat-vocabulary-preview.png';
+import actPunctuationPdfPreview from '../assets/resources/act-punctuation-pdf-preview.png';
+import satPunctuationPdfPreview from '../assets/resources/sat-punctuation-pdf-preview.png';
 
 export const resourceTypes = ['Lesson', 'Video', 'Document'] as const;
 
@@ -34,6 +36,34 @@ export type Resource = ResourceBase & (
 // Newest first. Add a newly published resource at the beginning of this list;
 // the hero and both exam libraries read from the same entries.
 export const resources: Resource[] = [
+  {
+    id: 'sat-punctuation-pdf',
+    exam: 'SAT',
+    subjects: ['Reading and Writing'],
+    type: 'Document',
+    title: 'SAT Punctuation Guide (PDF)',
+    description: 'The full SAT punctuation (boundaries) lesson as a printable PDF, with every rule and worked example.',
+    href: '/sat-punctuation-guide.pdf',
+    action: 'Download the PDF',
+    image: satPunctuationPdfPreview,
+    imageAlt: 'First page of the SAT punctuation guide PDF, titled Mastering SAT Punctuation (Boundaries)',
+    imageMode: 'contain',
+    download: true,
+  },
+  {
+    id: 'act-punctuation-pdf',
+    exam: 'ACT',
+    subjects: ['English'],
+    type: 'Document',
+    title: 'ACT Punctuation Guide (PDF)',
+    description: 'The full ACT punctuation lesson as a printable PDF, with every rule and worked example.',
+    href: '/act-punctuation-guide.pdf',
+    action: 'Download the PDF',
+    image: actPunctuationPdfPreview,
+    imageAlt: 'First page of the ACT punctuation guide PDF, titled Mastering ACT Punctuation Rules',
+    imageMode: 'contain',
+    download: true,
+  },
   {
     id: 'act-test-2-english-videos',
     exam: 'ACT',
