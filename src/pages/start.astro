@@ -55,7 +55,6 @@ const config = createShellConfig({
             <h3>Which test should I take?</h3>
             <nav class="step-one-links" aria-label="Step one resources">
               <a class="start-contact-cta" href="/practice-tests">Practice Tests</a>
-              <a class="start-contact-cta" href="/tests">Test Information</a>
               <a class="start-contact-cta" href="/act-test-information">ACT</a>
               <a class="start-contact-cta" href="/sat-test-information">SAT</a>
               <a class="start-contact-cta" href="/contact">Contact Me</a>
@@ -70,8 +69,6 @@ const config = createShellConfig({
               <p>If you do about the same on both practice tests, go with whichever test you like better, whichever you feel more comfortable with.</p>
 
               <p>For the ACT, you can download a pdf document of the exam, time yourself, grade it, and see your results. For the SAT, you can log into the Bluebook Exam app offered by College Board (you’ll need to create a username and password), take a digital exam, and automatically see your results. Or, you can <a href="/practice-tests">take a practice test here</a> and get a custom score report. No need for a mandatory “consultation” (sales pitch)..</p>
-
-              <p>If you want more information about the exams, such as format, timing, subject matter etc, please checkout <a href="/tests">tests</a>.</p>
 
               <p>If you want more in-depth information about each exam, please checkout <a href="/act-test-information">ACT</a>, <a href="/sat-test-information">SAT</a></p>
 
@@ -190,13 +187,13 @@ const config = createShellConfig({
   .start-main { width: 100%; min-width: 0; overflow: visible; }
   .start-page *, .start-page *::before, .start-page *::after { box-sizing: border-box; }
 
-  .start-hero { position: relative; min-height: 500px; display: grid; place-items: center; padding: clamp(4rem, 8vw, 6.5rem) var(--space-section-h); overflow: hidden; background: var(--color-surface); }
+  .start-hero { position: relative; display: grid; align-items: center; justify-items: start; padding: clamp(2.5rem, 5vw, 4rem) max(var(--space-section-h), calc((100vw - 1180px) / 2)); overflow: hidden; background: var(--color-surface); }
   .start-hero::before { content: ''; position: absolute; inset: 0; opacity: .38; background-image: linear-gradient(rgba(31,27,23,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(31,27,23,.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, #000, transparent 82%); }
-  .start-hero__inner { position: relative; z-index: 1; width: min(100%, 920px); text-align: center; }
+  .start-hero__inner { position: relative; z-index: 1; width: min(100%, 920px); text-align: left; }
   .start-kicker, .roadmap-step__heading > p { margin: 0 0 1rem; color: var(--color-highlight-vivid); font: 700 .72rem/1 var(--font-sans); letter-spacing: .17em; text-transform: uppercase; }
-  .start-hero h1 { max-width: 22ch; margin: 0 auto; color: var(--color-text-dark); font-family: var(--font-serif); font-size: clamp(1.8rem, 3.2vw, 2.8rem); font-weight: 400; line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
+  .start-hero h1 { max-width: 22ch; margin: 0; color: var(--color-text-dark); font-family: var(--font-serif); font-size: clamp(1.8rem, 3.2vw, 2.8rem); font-weight: 400; line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
   .start-hero h1 span { color: var(--color-highlight-vivid); }
-  .start-hero__lede { max-width: 620px; margin: 1.5rem auto 0; color: var(--color-muted); font: 300 1rem/1.65 var(--font-sans); }
+  .start-hero__lede { max-width: 620px; margin: 1.5rem 0 0; color: var(--color-muted); font: 300 1rem/1.65 var(--font-sans); }
   .start-hero__cta { display: inline-flex; align-items: center; gap: 1rem; margin-top: 1.5rem; padding-bottom: .35rem; color: var(--color-text-dark); border-bottom: 1px solid var(--color-text-dark); font: 600 .78rem/1.3 var(--font-sans); letter-spacing: .04em; text-decoration: none; }
   .start-hero__cta span { color: var(--color-highlight-vivid); font-size: 1rem; }
 
@@ -275,8 +272,8 @@ const config = createShellConfig({
   a:focus-visible { outline: 3px solid var(--color-accent-gold-light); outline-offset: 4px; }
 
   @media (max-width: 760px) {
-    .start-hero { min-height: 420px; padding-block: 3.5rem; }
-    .start-hero__inner { width: calc(100vw - 3rem); }
+    .start-hero { padding: 2.5rem 1.5rem; }
+    .start-hero__inner { width: 100%; }
     .start-hero__lede { width: 100%; }
     .step-nav { width: 100vw; max-width: 100vw; overflow-x: auto; scrollbar-width: none; }
     .step-nav__inner { width: max-content; min-width: 100%; grid-template-columns: repeat(3, minmax(160px, 1fr)); }
